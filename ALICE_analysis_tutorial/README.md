@@ -1,40 +1,28 @@
-* [Setup the tutorial](setup/README.md)
-    * [Obtain the code](setup/Code.md)
-    * [Get the data](setup/Data.md)
-    * [A first look at your task](setup/FirstLook.md)
+* [Step 1 - Setup the tutorial](setup/README.md)
 
 ---
 
-* [Running the task](running/README.md)
-    * [Take a look at the output](running/Output.md)
+* [Step 2 - Running the task](running/README.md)
 
 ---
 
-* [Modify the task](modify/README.md)
-    * [The event loop](modify/Event.md)
-    * [All set?](modify/Allset.md)
+* [Step 3 - Modify the task](modify/README.md)
 
 ---
 
-* [The track loop](track/README.md)
-    * [Track selection](track/TrackSelection.md)
+* [Step 4 -The track loop](track/README.md)
 
 ---
 
-* [Particle identification](pid/README.md)
-    * [PID response](pid/Response.md)
+* [Step 5 -Particle identification](pid/README.md)
 
 ---
 
-* [Run your code on GRID](grid/README.md)
-    * [A little test ..](grid/Test.md)
-    * [And then the real thing](grid/Full.md)
+* [Step 6 -Run your code on GRID](grid/README.md)
 
 ---
 
 * [Bonus content](bonus/README.md)
-    * [Minimal systematics](bonus/systematics.md)
-    * [Make it presentable](bonus/beautify.md)
 
 ---
 

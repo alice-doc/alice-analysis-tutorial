@@ -42,3 +42,19 @@ Make sure though, that the macro ’knows’ where you stored the AliAOD.root fi
 By default, the macro will run the task just on your laptop. Later on, we’ll see how you can run your analysis on GRID.
 
 `BEWARE` are you using ROOT6 , or running MacOS High Sierra? We try to make the tutorial as compatible as possible with the latest standards, but there might be some surprises - ping us if something doesn’t work.
+# Take a look at the output
+
+If all goes well, your simple task runs over the input data, and fills one histogram with the distribution of transverse momentum of all charged particle tracks in all events. 
+
+Once the task is done running, take a look at the outputfile 
+
+```
+AnalysisResults.root
+```
+ that has generated. The easiest way to do so is to open a TBrowser (ROOT’s ’graphical user interface’) while you are in (ali)root 
+
+```
+new TBrowser
+```
+
+and take a look at the distribution in the histogram. No idea how to use a TBrowser, or what a TBrowser even is? Don’t hesitate to ask, and take a look at the [ROOT user’s guide](https://root.cern.ch/root/htmldoc/guides/users-guide/ROOTUsersGuide.html).
