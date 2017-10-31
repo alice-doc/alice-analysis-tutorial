@@ -1,4 +1,4 @@
-# Particle Identification
+# Step 5
 
 In this section, we’ll try to identify particles, by using the amount of energy they have lost per distance traveled in the Time Projection Chamber (TPC). Some specific technical information on how to implement this in your task is given at the end of this document, but general steps to follow are explained here. First, the goals. What we want to do is
 

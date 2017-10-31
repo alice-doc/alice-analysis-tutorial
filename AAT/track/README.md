@@ -1,4 +1,4 @@
-# The track loop
+# Step 4
 
 In this exercise we are going to study the particles that are produced in each event. Out end goal is to identify charged pions, but first we’ll familiarize ourselves with the analysis code some more.
 

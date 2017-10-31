@@ -1,4 +1,4 @@
-# Run your code on GRID ..
+# Step 6
 
 
 Is your pion analysis running smoothly on your laptop? If yes, then it is time to 'scale things up' a bit. We will run your task on the GRID. 
