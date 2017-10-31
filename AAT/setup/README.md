@@ -1,7 +1,9 @@
 # Step 1
 
 In these exercises, we will use the example task that was explained in the lesson, and use it as a basis to write a *mini-analysis*: centrality dependence of charged pion production at mid-rapidity.
-Follow each of the steps in this webpage, and feel free to ask questions at any point!# Obtain the code
+Follow each of the steps in this webpage, and feel free to ask questions at any point!
+
+# Obtain the code
 
 Our starting point for these exercises is the example analysis ‘AliAnalysisTaskMyTask.cxx’ that was covered during the lesson. Of course it wouldn’t be very efficient to copy and paste the code for your ‘empty’ analysis task from the slides of the lecture. You can use different methods to obtain it, suggested here in order of adventerousness
 
@@ -11,10 +13,37 @@ Our starting point for these exercises is the example analysis ‘AliAnalysisTas
 
 3. The quickest way: download the .tar file that you can find attached to today’s session’s agenda and extract the files to your local hard drive
 
-Whichever approach you chose, the end result should be that you have stored these files on your laptop. One word of caution: _the path in which you store these files cannot contain spaces! E.g. /home/my awesome task/ will not work, use /home/my_awesome_task/_[<sup>1</sup>](#fn1).
+Whichever approach you chose, the end result should be that you have stored these files on your laptop. One word of caution: _the path in which you store these files cannot contain spaces! E.g. /home/my awesome task/ will not work, use /home/my_awesome_task/ 
+.
+
+
+# A first look at your task
+
+As a start, just take a look at code that makes up the task. You should see the files that were also covered in the first part of the talk:
+
+*   AliAnalysisTaskMyTask.cxx
+
+*   AliAnalysisTaskMyTask.h
+
+*   AddMyTask.C
+
+*   runAnalysis.C
+
+Try to find where all the code snippets that were shown during the presentation fit in, and wonder if you can answer the following questions
+
+*   which function is called for each event?
+
+*   where are the output histogram defined?
+
+*   where are the output histogram filled?
+
+Remember, that for now, the name ‘AliAnalysisTaskMyTask’ doesn’t sound so bad, but when you develop a task ‘in real life’, make sure to give it a meaningful name, that explains what the task is aimed at.
+
+
+
 # Get the data
 
-To run this task, you will also need to download an input file **AliAOD.root**, which contains some actual reconstructed collisions. We will be looking at Pb-Pb data that was taken in 2010. 
+To run this task, you will also need to download an input file **AliAOD.root**, which contains some actual reconstructed collisions. We will be looking at Pb-Pb data that was taken in 2015. 
 
 ## Source your environment
 We will get the data form the ALICE file catalogue, so first, we need to make sure that we can access that. Load your ALICE environment like Dario has showed you yesterday, e.g. by doing
@@ -50,7 +79,7 @@ To authenticate yourself, obtain a token
 alien-token-init <username>
 ``` 
 
-where <username> is your CERN username. You should be prompted to provide your PEM pass phrase, which is ** not the same as your CERN password ** unless you set them to be the same yourself. 
+where #username# is your CERN username. You should be prompted to provide your PEM pass phrase, which is ** not the same as your CERN password ** unless you set them to be the same yourself. 
 
 
 If all goes well, you will see something like
@@ -109,26 +138,8 @@ and copy the AliAOD.root file that is inside this folder to your ** local ** har
 cp AliAOD.root file:.
 ```
 
+Note the syntax of the copy command. 
+
 ## Trouble ?
 If for some reason this does not work for you - no fear. You can also download one a file  [here](ttps://cernbox.cern.ch/index.php/s/ZP2gJBE265FiSAX) , but first ask one of the helpers to see if we cannot fix it. 
-# A first look at your task
 
-As a start, just take a look at code that makes up the task. You should see the files that were also covered in the first part of the talk:
-
-*   AliAnalysisTaskMyTask.cxx
-
-*   AliAnalysisTaskMyTask.h
-
-*   AddMyTask.C
-
-*   runAnalysis.C
-
-Try to find where all the code snippets that were shown during the presentation fit in, and wonder if you can answer the following questions
-
-*   which function is called for each event?
-
-*   where are the output histogram defined?
-
-*   where are the output histogram filled?
-
-Remember, that for now, the name ‘AliAnalysisTaskMyTask’ doesn’t sound so bad, but when you develop a task ‘in real life’, make sure to give it a meaningful name, that explains what the task is aimed at.
