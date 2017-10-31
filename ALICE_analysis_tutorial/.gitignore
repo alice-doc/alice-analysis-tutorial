@@ -1,0 +1,12 @@
+*~
+*.o
+*.d
+*.so
+*.root
+*.xml
+*.pcm
+.DS_Store
+_book/
+node_modules/
+*.pyc
+*.swp
