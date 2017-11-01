@@ -1,8 +1,3 @@
-# Step 1
-
-In these exercises, we will use the example task that was explained in the lesson, and use it as a basis to write a *mini-analysis*: centrality dependence of charged pion production at mid-rapidity.
-Follow each of the steps in this webpage, and feel free to ask questions at any point!
-
 # Obtain the code
 
 Our starting point for these exercises is the example analysis ‘AliAnalysisTaskMyTask.cxx’ that was covered during the lesson. Of course it wouldn’t be very efficient to copy and paste the code for your ‘empty’ analysis task from the slides of the lecture. You can use different methods to obtain it, suggested here in order of adventerousness
