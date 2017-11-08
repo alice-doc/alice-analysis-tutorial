@@ -1,7 +1,9 @@
 {
-  "title": "ALICE analysis tutorial",
-  "description": "Introduction to the common analysis techniques and tools of ALICE.",
-  "styles": {"website": "css/website.css"},
+  "title": "ALICE Analysis Tutorial",
+  "description": "Introduction to the common analysis techniques and tools of ALICE",
+  "styles": {
+    "website": "css/website.css"
+  },
   "plugins": [
     "katex",
     "panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#master",
