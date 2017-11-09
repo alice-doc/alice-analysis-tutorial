@@ -11,7 +11,7 @@ node_js: '4.1'
 script:
   - make
 after_success:
-  - '[ "${TRAVIS_PULL_REQUEST}" = false ] && make publish'
+  - make publish
 env:
   global:
     secure: "FxeUuZOishgnyCZ25/5UtKXBLKbLZWBrCBgEVriA9yO1xZilaHFtf7NfNxKKET6hDhUYib5py9HBF7Ozwdw+M/UeixI4yJtAezqDj7wKAh1bbxaLPBVlEFkNsP9GOSsMF2nvU4h+GdkOGbzWDAxpb96lCJYzB3JXUb4jhSWuZIM1Oi9LLh9r78MtxITK/F6a3gFA+OBOifABqV42xlEpebHZHwpbVcJhYX7grN3nGtnmB/TwBO7vDJXqamUDNfyc7etBFtSqwuMUpq9lUq1Vl5yESNVRNp04Wn+uwga492LfZBvmtClbn0gKW3TQbai1xn2CNSojJx5WtZ2+Twz+0b2RQpT9F/pbUQl5giTY2hfZa09ixjRwsPnlvTX5cTqQBadfBIdwtNsYaIHHqkuhJpeyr8IMKNWXBYefCxJjYYa/8zxOh8q7es23Sh52buMoADspsq5kXM3xnj4Vqgeu2qLzA8cB6I4kqU9GqbYtqx9pMXPV6KvJN3GiGGtV/gOqU1dFlsL2MvQIzRq+LmdYemwB/3utZTyHgOSGVNkIJtq8F3EIJXFCC7SST8RijMKVlqakXtB6RdGSNiwlsIrknOwjAbHzp6FWDLF46FqUfZ97K+crJ2SbhuBNtHdQNGbzziV19rshvoqZB27B7UacyBxw0yBkygywRAWrXgvAaYs="
