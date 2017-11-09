@@ -6,3 +6,5 @@ node_modules/
 book.pdf
 /analysis-essentials.pdf
 /_publish
+/_prs
+/env.sh
