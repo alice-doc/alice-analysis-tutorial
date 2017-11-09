@@ -14,4 +14,4 @@ clean:
 	@rm -rf node_modules
 
 publish: all
-	@ghp-import -n -p -r https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG) _book
+	@ghp-import -n -f -p -r https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG) _book
