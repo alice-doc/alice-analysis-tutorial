@@ -1,1 +1,2 @@
-# Welcome to the ALICE analysis tutorial
+Welcome to the ALICE analysis tutorial
+======================================
