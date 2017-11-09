@@ -10,8 +10,7 @@ node_modules:
 	gitbook install
 
 clean:
-	@rm -rf _book
-	@rm -rf node_modules
+	@rm -rf _book _publish node_modules
 
 publish: all
 	@./publish.sh
