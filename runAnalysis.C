@@ -5,6 +5,8 @@
 #include "AliAnalysisTaskMyTask.h"
 #endif
 
+# this comment is not a comment in c++
+
 void runAnalysis()
 {
     // set if you want to run the analysis locally (kTRUE), or on grid (kFALSE)
