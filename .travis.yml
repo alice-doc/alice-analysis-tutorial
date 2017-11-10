@@ -3,10 +3,12 @@ branches:
     - master
 sudo: false
 language: node_js
-install:
-  - npm install gitbook-cli -g
+#install:
+#  - npm install gitbook-cli -g
 node_js: '4.1'
 script:
+  - echo yabba yabba hey
+  - false
   - make
 after_success:
   - '[ "$TRAVIS_PULL_REQUEST" = "false" ] && ./publish.sh'
