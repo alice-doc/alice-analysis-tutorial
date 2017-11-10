@@ -1,4 +1,4 @@
-.PHONY: all clean serve
+.PHONY: all clean serve publish
 
 all: node_modules
 	gitbook build
@@ -10,4 +10,7 @@ node_modules:
 	gitbook install
 
 clean:
-	@rm -rf _book _publish node_modules
+	@rm -rf _book node_modules
+
+publish: all
+	@./publish.sh
