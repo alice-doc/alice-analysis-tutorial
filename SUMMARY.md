@@ -7,4 +7,5 @@
   * [Step 6 -Run your code on GRID](analysis/grid.md)
   * [Bonus content](analysis/bonus.md)
   * [Some hints](analysis/hints.md)
+  * [Transition from ROOT5 to ROOT6](analysis/ROOT5-to-6.md)
 
