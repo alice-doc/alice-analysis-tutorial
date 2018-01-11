@@ -32,7 +32,7 @@ into ROOT. Once the macro runs in compiled mode it is expected to be fully
 compatible with the C++ standard and coding error free as the compiler will not
 tolerate compiler errors.
 
-In contrast to this *ROOT6* uses a just-in-time compiler called *CLING*. A
+In contrast to this *ROOT6* uses a just-in-time compiler called *cling*. A
 just-in-time compiler translates each statement, no matter whether it is a single
 command or a complicated macro, into machine code as it would be a program and
 only afterwards runs this piece of code. In order to translate code into machine
