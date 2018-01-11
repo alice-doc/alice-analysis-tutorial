@@ -42,13 +42,13 @@ the C++ language standard, and exceptions will not be tolerated. Furthermore thi
 also means that all symbols and objects must be known at compile time. This has
 three side effects:
 
-- Loadig Functions with ```gROOT->LoadMacro(...);`: This function loads all
+- Loadig Functions with `gROOT->LoadMacro(...);`: This function loads all
   functions it finds within the macro into ROOT during run time. For an interpreter
   this is sufficient as the functions are used after they are loaded. However the
   compiler must know all symbols used in a macro at compile time.
-- Loading libaries with ```gSystem->Load(...);`: Here we have the same problem:
+- Loading libaries with `gSystem->Load(...);`: Here we have the same problem:
   The symbols in the libraries must be known before they are used.
-- Compiling ALICE analysis tasks on the fly with ```gROOT->LoadMacro("...+");`:
+- Compiling ALICE analysis tasks on the fly with `gROOT->LoadMacro("...+");`:
   As the analysis task compiled like this will be converted in a library it must be
   know to the just-in-time compiler before.
 
@@ -109,7 +109,7 @@ most common use cases:
   As *ROOT6* compiles the macro it is possible to include macros and treat them
   as if they were header files. In order for this to work it is essential to tell
   ROOT before where to find the macro. This can be done using the preprocessor
-  macro ```R_ADD_INCLUDE_PATH(...)`. For the just-in-time compiler macros
+  macro `R_ADD_INCLUDE_PATH(...)`. For the just-in-time compiler macros
   included will look as if they were part of the code itself. The following macro
   runs under *ROOT6*:
 
@@ -146,10 +146,10 @@ most common use cases:
 ## Do I need to include headerfiles in my macros?
 
 *ROOT6* comes with a technique called pre-compiled header files. Header files
-from a certain library are compiled to a binary format by ```rootcling`, the
-successor of ```rootcint`, and loaded into *ROOT6* by an autoloading mechanism
-similar to the rootmap mechanism. Once ```rootcling` is invoked with the
-argument ```-rml name` a **.pcm**-file is created containing the pre-compiled
+from a certain library are compiled to a binary format by `rootcling`, the
+successor of `rootcint`, and loaded into *ROOT6* by an autoloading mechanism
+similar to the rootmap mechanism. Once `rootcling` is invoked with the
+argument `-rml name` a **.pcm**-file is created containing the pre-compiled
 headers. *ROOT6* will search for .pcm-files in the **LD_LIBRARY_PATH**.
 
 The following packages in ALICE provide .pcm support:
@@ -163,8 +163,8 @@ The following packages in ALICE provide .pcm support:
 For libraries providing .pcm-support **NO** headers should be included in macros.
 
 For libraries handled by the user make sure to
-- run ```rootcling` with the arguments ```-rmf` for the .rootmap file
-  and ```-rml` for the .pcm file
+- run `rootcling` with the arguments `-rmf` for the .rootmap file
+  and `-rml` for the .pcm file
 - Install both the .rootmap and the .pcm file of your library path in the 
   library location (usually PROJECT_PATH/lib)
 
@@ -178,16 +178,16 @@ Here are few examples that commonly appear in user macros and which are tolerate
   ```{.cpp}
   taskname = "mytask";
   ```
-  The variable *taskname* was not defined before. It was implicitly defined in *ROOT5* as ```const char *`. In *ROOT6* this leads to the error
+  The variable `taskname` was not defined before. It was implicitly defined in *ROOT5* as `const char *`. In *ROOT6* this leads to the error
   ```
   error: use of undeclared identifier 'taskname'
   ```
-  The variable ```taskname` must be defined with a type before a value can be assigned. In this case the proper code would be
+  The variable `taskname` must be defined with a type before a value can be assigned. In this case the proper code would be
   ```{.cpp}
   const char *taskname = "mytask";
   ```
   Thanks to c++11 *ROOT6* can also detect tghe type implicitly using the keyword
-  ```auto`. In this case the code looks the following:
+  `auto`. In this case the code looks the following:
   ```{.cpp}
   auto taskname = "mytask";
   ```
@@ -236,8 +236,8 @@ Here are few examples that commonly appear in user macros and which are tolerate
 - Handling of pointer and objects:
 
   *ROOT5* does not enforce using the proper access operator for objects, pointers and
-  references, but will allow the usage of the ```operator ->` for
-  references and the ```operator .` for pointers. *ROOT6* distinguishes
+  references, but will allow the usage of the `operator ->` for
+  references and the `operator .` for pointers. *ROOT6* distinguishes
   between them, and consequently the proper access operator needs to be used.
 
   Consider the following macro:
@@ -289,12 +289,12 @@ from ALICE libraries should **NOT** be included.
 Sometimes macros require differnt treatment for *ROOT5* and *ROOT6*. It is then
 necessary to know which ROOT version is used while the macro is running.
 
-*ROOT5* defines the preprocessor macro ```__CINT__`, which can be used to check
+*ROOT5* defines the preprocessor macro `__CINT__`, which can be used to check
 whether one is in an interpreter session. In current (up to at least v6-12-04)
-however also *ROOT6* exports ```__CINT__`, so this macro cannot be used to
+however also *ROOT6* exports `__CINT__`, so this macro cannot be used to
 distinguish between ROOT versions.
 
-*ROOT6* in addition ```__CLING__` which is not present in *ROOT5*. The following lines 
+*ROOT6* in addition `__CLING__` which is not present in *ROOT5*. The following lines 
 indicate how to run *ROOT5*/*ROOT6* specific code:
 
 ```{.cpp}
@@ -314,7 +314,7 @@ speedup in particular when the formula is evaluated multiple times (in fit
 procedures for example) it comes on cost of breaking backward compatibility, for
 which reading TFormula/TF1 object created with *ROOT6* with *ROOT5* will lead to
 errors. For what concerns TFormala a *ROOT5*-compatible version has been added to
-*ROOT6* as ```ROOT::v5::TFormula`, however something similar does not exist for
+*ROOT6* as `ROOT::v5::TFormula`, however something similar does not exist for
 TF1. In order to read a TF1 object from a ROOT file under *ROOT5* it has to be
 created under *ROOT5*.
 
