@@ -8,7 +8,9 @@ As you can see in the figure, the TPC signals of different particle species cros
 
 If you are very enthousiastic,
 
-*   try to estimate the _systematic uncertainty_ that particle identification introduces to your measurement# Make it presentable
+*   try to estimate the _systematic uncertainty_ that particle identification introduces to your measurement
+
+# Make it presentable
 
 By now, you have made quite a few nice plots. Modify the code such that the labels, titles, markers, colors, legends of your plots look decent and presentable for fellow colleagues
 
