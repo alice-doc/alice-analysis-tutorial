@@ -1,4 +1,4 @@
- Transition from ROOT5 to ROOT6
+# Transition from ROOT5 to ROOT6
 
 *ROOT6* is similar to *ROOT5*: It comes with the same library of classes (base
 classes, histogram classes like TH1, ...) which share the same interface as under
