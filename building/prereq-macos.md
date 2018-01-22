@@ -148,3 +148,48 @@ To turn SIP off:
 * Select **Restart** from the  menu.
 
 **Note:** you can always re-enable it using `csrutil enable` instead.
+
+
+## Get or upgrade pip
+
+`pip` is the Python package manager. Our build tool
+[aliBuild](https://pypi.python.org/pypi/alibuild/) and other Python dependencies are installed
+through it.
+
+In case you are using [Python from Anaconda](https://www.anaconda.com/) then you have `pip` already.
+Check it by typing:
+
+```bash
+type pip
+```
+
+at your shell prompt. In case you don't use Anaconda, please install `pip` with this command:
+
+```bash
+sudo easy_install pip
+```
+
+Note that you need admin permissions for running the above command. Once done, check that `pip` got
+installed under `/usr/local/bin`:
+
+```bash
+type pip
+```
+
+It should yield:
+
+```
+pip is /usr/local/bin/pip
+```
+
+
+## Get or upgrade required Python packages
+
+Some Python packages are required for building our software. They are mostly related to ROOT 6. Just
+run:
+
+```bash
+sudo pip install matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
+```
+
+> It is important to specify the version of `ipython`.
