@@ -129,3 +129,65 @@ sudo pip install git+https://github.com/alisw/alibuild@master --upgrade
 ```
 
 > Do not forget to drop `sudo` and add `--user` in case you do not have root permissions!
+
+
+## Build ALICE software
+
+ALICE software is made of several dependencies, and aliBuild takes care of downloading them for you.
+If you have exported the `$ALIBUILD_WORK_DIR` variable as described above, source code for all
+dependencies will be "hidden" there. You want, however, to be able to see and control the source
+code for the components you are developing: in our example we will show how to do that for AliRoot,
+AliPhysics and (if you also develop Run 3 software) O2.
+
+
+### Initialize or update your work area
+
+We will assume our work area is `~/alice`. Let's create it and download the source of the packages
+we need to develop.
+
+```bash
+mkdir ~/alice
+cd ~/alice
+```
+
+For Run 2 software:
+
+```bash
+aliBuild init AliRoot,AliPhysics
+```
+
+For Run 3 software (you can have both Run 2 and Run 3 source code under the same directory):
+
+```bash
+aliBuild init O2 --defaults o2
+```
+
+> Do not forget the `--defaults o2`, aliBuild will complain if you don't specify it.
+
+The commands above will finish with a message like:
+
+```
+==> Development directory . created for aliroot, aliphysics
+```
+
+If you do `ls`, you will see the AliRoot, AliPhysics and O2 directories, plus an additional alidist
+directory: this is the place containing the software recipes, telling aliBuild how to construct our
+software, and you can ignore it.
+
+{% callout "Software and recipes must be updated manually!" %}
+`aliBuild init` downloads software, and the recipes directory, for you the first time, but then they
+will behave like any other Git directory and aliBuild will never update them any longer. You will
+need to take care of the update yourself.
+
+This means, in most cases, moving into the software directory and doing something like:
+
+```bash
+git checkout master
+git reset --hard origin/master
+git pull
+```
+
+Note that the operation above differs for O2 (where the default branch is `dev`, not `master`), and
+the `git reset --hard` command is destructive: it will align your repository to the upstream one by
+making you lose all your local changes.
+{% endcallout %}
