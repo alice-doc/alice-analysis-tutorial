@@ -191,3 +191,104 @@ Note that the operation above differs for O2 (where the default branch is `dev`,
 the `git reset --hard` command is destructive: it will align your repository to the upstream one by
 making you lose all your local changes.
 {% endcallout %}
+
+
+### Check your prerequisites
+
+aliBuild comes with the command `aliDoctor` that will help you identifying if your prerequisites
+were installed correctly. In general, aliBuild is capable of building all required software
+dependencies, but it has also the ability to take them "from the system" if possible, resulting in
+less time spent for building for you.
+
+Run the `aliDoctor` command to check dependencies for Run 2 software:
+
+```bash
+cd ~/alice
+aliDoctor AliPhysics
+```
+
+For Run 2 software based on ROOT 6 (note: this is the only option on macOS):
+
+```bash
+cd ~/alice
+aliDoctor AliPhysics --defaults root6
+```
+
+For Run 3 software:
+
+```bash
+cd ~/alice
+aliDoctor O2 --defaults o2
+```
+
+aliDoctor will warn you that some packages have to be built as they could not be found from the
+system. If you have followed the instructions, this list should contain **nothing more than**:
+
+* boost
+* CMake
+* GSL
+* nanomsg
+* protobuf
+* Vc
+* yaml-cpp
+
+If the output is longer than this list, please go through the prerequisites once again and run
+aliDoctor again. If the output contains those packages, or less packages, then you are fine and you
+may continue.
+
+> If you think a package is shown but should not be in the list because you are sure you have
+> installed it, it might just be that its version it's incompatible (this frequently happens with
+> `CMake`) or you are missing the "development" package for that component.
+
+
+### Build and rebuild
+
+If you have followed the prerequisites part thoroughly, and if you have double-checked it with
+`aliDoctor`, it's time to run your build.
+
+Remember that you have checked out _manually_ the sources for AliRoot, AliPhysics and O2, so before
+building make sure your sources are up to date by following the instructions above.
+
+There are different ways of building Run 2 software depending on your configuration and your
+desired features. The build command is:
+
+```bash
+cd ~/alice
+aliBuild build AliPhysics [--defaults DEFAULTS]
+```
+
+Choose your `--defaults` accordingly:
+
+| Defaults     | ROOT 6 | GEANT3, 4, DPMJET | Works on macOS |
+| ------------ | ------ | ----------------- | -------------- |
+| `<none>`     | no     | yes               | no             |
+| `user`       | no     | no _(faster)_     | no             |
+| `root6`      | yes    | yes               | yes            |
+| `user-root6` | yes    | no _(faster)_     | yes            |
+
+Note that **it is mandatory to use ROOT 6 on macOS**. ROOT 5 builds do not work there. In most cases
+the `user` (and `user-root6`) installation is sufficient and takes less time and disk space.
+
+You will need to run the **exact same command** when rebuilding, with the same `--defaults` option.
+
+The same command is used both for building the first time, and rebuilding: aliBuild is smart and
+**it will rebuild only what changed**.
+
+{% callout "Why has aliBuild rebuilt everything!?!? 😠🤬" %}
+One or more of the following actions might change the way aliBuild sees and uses the dependencies
+and might result in a **full** (or almost full) rebuild. So, if an important conference is
+approaching, **plan the following actions accordingly as they might increase the build time**:
+
+* Updating recipes in `alidist`
+* Removing the cache `$ALIBUILD_WORK_DIR` or forgetting to export the variable
+* Adding or removing system dependencies as seen by `aliDoctor`
+* Updating your operating system or compilers (including Xcode on macOS)
+{% endcallout %}
+
+If you need to build Run 3 software, simply do:
+
+```bash
+aliBuild build O2 --defaults o2
+```
+
+on every platform.
