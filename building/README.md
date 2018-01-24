@@ -61,7 +61,7 @@ Now add the two following lines to your `~/.bashrc` or `~/.bash_profile` (depend
 configuration):
 
 ```bash
-export ALIBUILD_WORK_DIR="$HOME/.alicesw"
+export ALIBUILD_WORK_DIR="$HOME/alice/sw"
 eval "`alienv shell-helper`"
 ```
 
@@ -69,7 +69,7 @@ The first line tells what directory is used as "build cache", the second line in
 helper" that makes easier to run certain aliBuild-related commands.
 
 You need to close and reopen your terminal for the change to be effective. The directory
-`~/.alicesw` will be created the first time you run aliBuild.
+`~/alice/sw` will be created the first time you run aliBuild.
 
 > Note that this directory tends to grow in size over time, and it is the one you need to remove in
 > case of cleanups.
