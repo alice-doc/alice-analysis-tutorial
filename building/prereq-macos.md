@@ -193,3 +193,24 @@ sudo pip install matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel no
 ```
 
 > It is important to specify the version of `ipython`.
+
+
+## Exclude your work directory from Spotlight
+
+Mac users have two nice features, Time Machine for backups and Spotlight for searches, that might
+have a detrimental effect on your Mac's performances.
+
+Spotlight, in particular, indexes _every_ created file, and since during our build and installation
+processes we create _a lot_ of files we don't really want to index, it's better to tell Spotlight
+not to index our working directory.
+
+We are assuming our working directory is `~/alice`. Before telling Spotlight to exclude it, we need
+to create an empty one, so in a Terminal do:
+
+```bash
+make ~/alice
+```
+
+(you can also use the Finder for that.) Then, go to the ** (Apple) menu → System preferences →
+Spotlight**. Click on the **Privacy** tab, then hit the **+** sign at the bottom of the window. Now
+select the `~/alice` directory and confirm.
