@@ -47,6 +47,7 @@ it will be just more difficult for you to get support for it. We will be happy t
 documentation for additional operating systems!
 
 * [macOS Sierra (10.12) and High Sierra (10.13)](prereq-macos.md)
+* [Ubuntu 17.10 and 16.04 LTS](prereq-ubuntu.md)
 
 
 ## Get or upgrade aliBuild
@@ -231,10 +232,11 @@ system. If you have followed the instructions, this list should contain **nothin
 * protobuf
 * Vc
 * yaml-cpp
+* ZeroMQ
 
-If the output is longer than this list, please go through the prerequisites once again and run
-aliDoctor again. If the output contains those packages, or less packages, then you are fine and you
-may continue.
+In particular, you should never have `Python` or `Python-modules`. If the output is longer than this
+list, please go through the prerequisites once again and run `aliDoctor` again. If the output
+contains those packages, or less packages, then you are fine and you may continue.
 
 > If you think a package is shown but should not be in the list because you are sure you have
 > installed it, it might just be that its version it's incompatible (this frequently happens with

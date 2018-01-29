@@ -10,3 +10,4 @@
   * [Transition from ROOT5 to ROOT6](analysis/ROOT5-to-6.md)
 * [Building ALICE software](building/README.md)
   * [aliBuild prerequisites on macOS](building/prereq-macos.md)
+  * [aliBuild prerequisites on Ubuntu](building/prereq-ubuntu.md)
