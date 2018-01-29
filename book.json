@@ -8,6 +8,7 @@
     "katex",
     "panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8",
     "collapsible-menu",
-    "block-align"
+    "block-align",
+    "page-toc"
   ]
 }

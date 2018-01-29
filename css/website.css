@@ -7,3 +7,7 @@
 .page-inner ol {
   margin-bottom: 1em !important;
 }
+
+.page-toc {
+  float: none;
+}
