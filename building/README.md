@@ -294,3 +294,70 @@ aliBuild build O2 --defaults o2
 ```
 
 on every platform.
+
+aliBuild installation will finish with a clear indication of what to do to use the software you
+have just built. This part is covered in the next section.
+
+
+## Use the software you have built
+
+aliBuild comes with a tool called `alienv`: this tool is used to load the correct environment for
+the software you have built. Notably, `alienv` can manage multiple versions of the same software
+without conflicts.
+
+Just open a terminal and type:
+
+```bash
+alienv q
+```
+
+to display the list of available packages. To load the latest version you have built of AliPhysics,
+do:
+
+```bash
+alienv enter AliPhysics/latest
+```
+
+> Note that this command will load AliPhysics **and all its dependencies** automatically, so there
+> is absolutely no need to also load, _e.g._, AliRoot or ROOT!
+
+The `enter` command drops you to a new shell, meaning that you can "clean up" your environment by
+simply exiting it.
+
+> Please also note that aliBuild will tell you exactly what you need to type in order to load the
+> software you have just built. Just use aliBuild's suggestion in place of `AliPhysics/latest`
+> wherever appropriate.
+
+If you know what you are doing, you can also load the environment in your _current_ shell:
+
+```bash
+alienv load AliPhysics/latest
+```
+
+In this case, you will clear the environment by doing:
+
+```bash
+alienv unload AliPhysics/latest
+```
+
+If you want to load the environment inside a script you are developing, just add this line:
+
+```bash
+source $(alienv printenv AliPhysics/latest)
+```
+
+{% callout "Do not load alienv automatically!" %}
+Even if this is technically possible, it is strongly not recommended to load the environment with
+`alienv` in your `~/.bashrc`! **You must keep your environment pristine for safely running
+aliBuild.** By not loading the environment automatically, you will avoid a huge source of errors.
+
+Do you still find annoying to type `alienv enter AliPhysics/latest` every time you want to use it?
+You can add the following line in your `~/.bashrc` to make it more convenient:
+
+```bash
+alias ali='alienv enter AliPhysics/latest'
+```
+
+You are creating an alias called `ali`, that will load the environment by just typing it at the
+prompt. Of course you can use any name you want.
+{% endcallout %}
