@@ -48,6 +48,7 @@ documentation for additional operating systems!
 
 * [macOS Sierra (10.12) and High Sierra (10.13)](prereq-macos.md)
 * [Ubuntu 17.10 and 16.04 LTS](prereq-ubuntu.md)
+* [CentOS 7](prereq-centos7.md)
 
 
 ## Get or upgrade aliBuild
@@ -233,6 +234,7 @@ system. If you have followed the instructions, this list should contain **nothin
 * Vc
 * yaml-cpp
 * ZeroMQ
+* SWIG
 
 In particular, you should never have `Python` or `Python-modules`. If the output is longer than this
 list, please go through the prerequisites once again and run `aliDoctor` again. If the output

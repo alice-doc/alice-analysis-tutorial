@@ -1,5 +1,5 @@
-aliBuild prerequisites on macOS
-===============================
+aliBuild prerequisites for macOS
+================================
 
 ALICE software compiles just fine on macOS using Apple-provided build tools. We exclusively support
 the following two versions of macOS:
@@ -214,3 +214,6 @@ make ~/alice
 (you can also use the Finder for that.) Then, go to the ** (Apple) menu → System preferences →
 Spotlight**. Click on the **Privacy** tab, then hit the **+** sign at the bottom of the window. Now
 select the `~/alice` directory and confirm.
+
+You are now ready for [installing aliBuild and start building ALICE
+software](README.md#get-or-upgrade-alibuild)
