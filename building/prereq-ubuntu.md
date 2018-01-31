@@ -1,5 +1,5 @@
-aliBuild prerequisites on Ubuntu
-================================
+aliBuild prerequisites for Ubuntu
+=================================
 
 At ALICE we do our best to support two versions of Ubuntu: the latest and greatest, and the latest
 LTS (Long Term Support) release. What we currently support is:
@@ -52,4 +52,5 @@ Once this is done, install (as root) the required Python packages:
 sudo pip install matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
 ```
 
-You are now ready for building ALICE software.
+You are now ready for [installing aliBuild and start building ALICE
+software](README.md#get-or-upgrade-alibuild)
