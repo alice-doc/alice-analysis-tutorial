@@ -17,6 +17,6 @@ class TestRefsInMarkdownFiles(unittest.TestCase):
             if path.endswith('.md'):
                 with open(path) as f:
                     refs = pat.findall(f.read())
-                files = [os.path.normpath(os.path.join(root, ref))
-                         for ref in refs if not ':' in ref and not ref.startswith('#')]
+                files = [os.path.normpath(os.path.join(root, ref.split('#', 1)[0]))
+                         for ref in refs if not ':' in ref ]
                 to_check += [f for f in files if f not in checked]
