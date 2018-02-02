@@ -113,7 +113,7 @@ autopoint is /usr/local/opt/gettext/bin/autopoint
 Your Xcode installation is missing a Fortran compiler, unfortunately. We need it for some parts of
 our code, therefore you must install it.
 
-The GCC project has a [downloads page for macOS](https://gcc.gnu.org/wiki/GFortranBinaries): get the version that corresponds to your operating
+The GCC project has a [downloads page for macOS](https://gcc.gnu.org/wiki/GFortranBinaries#MacOS): get the version that corresponds to your operating
 system the most. This means that if gfortran for your operating system version is not out yet, you
 can safely download the one for the previous version.
 
