@@ -192,6 +192,16 @@ git pull
 Note that the operation above differs for O2 (where the default branch is `dev`, not `master`), and
 the `git reset --hard` command is destructive: it will align your repository to the upstream one by
 making you lose all your local changes.
+
+If you want to checkout a specific version of the software, you have again to bear in mind that
+AliRoot, AliPhysics and O2 are normal Git repositories. Do something like:
+
+```bash
+( cd AliRoot && git checkout v5-09-11 )
+( cd AliPhysics && git checkout v5-09-11-01 )
+```
+
+instead of using `master` and pulling from there.
 {% endcallout %}
 
 
