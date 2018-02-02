@@ -208,7 +208,7 @@ We are assuming our working directory is `~/alice`. Before telling Spotlight to 
 to create an empty one, so in a Terminal do:
 
 ```bash
-make ~/alice
+mkdir ~/alice
 ```
 
 (you can also use the Finder for that.) Then, go to the ** (Apple) menu → System preferences →
