@@ -12,3 +12,4 @@
   * [aliBuild prerequisites for macOS](building/prereq-macos.md)
   * [aliBuild prerequisites for Ubuntu](building/prereq-ubuntu.md)
   * [aliBuild prerequisites for CentOS 7](building/prereq-centos7.md)
+  * [aliBuild prerequisites for Fedora](building/prereq-fedora.md)
