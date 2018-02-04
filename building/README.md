@@ -49,6 +49,7 @@ documentation for additional operating systems!
 * [macOS Sierra (10.12) and High Sierra (10.13)](prereq-macos.md)
 * [Ubuntu 17.10 and 16.04 LTS](prereq-ubuntu.md)
 * [CentOS 7](prereq-centos7.md)
+* [Fedora 27](prereq-fedora.md)
 
 
 ## Get or upgrade aliBuild
