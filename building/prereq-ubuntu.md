@@ -21,15 +21,13 @@ contribution](../README.md) if you have more information!
 
 ## Ubuntu Docker image
 
-Not an Ubuntu user, but you want to build on Ubuntu still? You can use the official [Ubuntu Docker
-image](https://hub.docker.com/_/ubuntu/) like this:
+Not an Ubuntu user, but you want to build on Ubuntu still? You can use one of the official [Ubuntu
+Docker images](https://hub.docker.com/_/ubuntu/). The images corresponding to the supported Ubuntu
+versions are:
 
-```bash
-docker run ubuntu:17.10
-```
-
-With Docker you can use Ubuntu to run ALICE software even if we don't support your current operating
-system.
+* `ubuntu:16.04`
+* `ubuntu:17.10`
+* `ubuntu:18.04`
 
 
 ## Install or upgrade required packages
