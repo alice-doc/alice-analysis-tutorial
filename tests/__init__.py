@@ -1,1 +1,1 @@
-from .test_references import TestRefsInMarkdownFiles
+from .test_doc import TestDoc
