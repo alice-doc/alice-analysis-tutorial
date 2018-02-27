@@ -10,11 +10,8 @@ pristine CentOS 7 as well.
 ## CentOS 7 Docker image
 
 You can use Docker to run a CentOS 7 environment even if your OS is different. Check the official
-[CentOS images](https://hub.docker.com/_/centos/). Run CentOS 7 with:
-
-```bash
-docker run centos:7
-```
+[CentOS images](https://hub.docker.com/_/centos/). The image corresponding to a base CentOS 7
+installation is `centos:7`.
 
 
 ## Install or upgrade required packages
