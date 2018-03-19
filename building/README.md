@@ -286,12 +286,17 @@ the `user` (and `user-root6`) installation is sufficient and takes less time and
 
 You will need to run the **exact same command** when rebuilding, with the same `--defaults` option.
 
+{% callout "Build with ROOT 5 and 6 at the same time" %}
+If you want to build, using the same source, against ROOT 5 and ROOT 6 at the same time, you can do
+that, it's explained [later on](#build-and-use-the-same-source-with-different-options).
+{% endcallout %}
+
 The same command is used both for building the first time, and rebuilding: aliBuild is smart and
 **it will rebuild only what changed**.
 
-{% callout "Why has aliBuild rebuilt everything!?!? 😠🤬" %}
+{% callout "Why is aliBuild rebuilding everything?!?!? 😠🤬" %}
 One or more of the following actions might change the way aliBuild sees and uses the dependencies
-and might result in a **full** (or almost full) rebuild. So, if an important conference is
+and might result in a **full** (or nearly full) rebuild. So, if an important conference is
 approaching, **plan the following actions accordingly as they might increase the build time**:
 
 * Updating recipes in `alidist`
@@ -373,4 +378,70 @@ alias ali='alienv enter AliPhysics/latest'
 
 You are creating an alias called `ali`, that will load the environment by just typing it at the
 prompt. Of course you can use any name you want.
+{% endcallout %}
+
+
+## Build and use the same source with different options
+
+aliBuild and alienv give you the ability to build the same development source with different
+defaults without duplicating the source, and without conflicts.
+
+Imagine we are under `~/alice` and we have cloned AliRoot and AliPhysics with the `aliBuild init`
+command above. We build AliPhysics _twice_, once with ROOT 5 and a second time against ROOT 6.
+
+{% callout "ROOT package in development mode" %}
+Bear in mind that in this example we are assuming you don't have ROOT in development mode, _i.e._
+you have _only_ cloned AliRoot and AliPhysics in your current directory (with `aliBuild init`), not
+ROOT!
+
+If you did that, then you need to manually enter the ROOT directory and checkout the proper ROOT
+version by yourself.
+{% endcallout %}
+
+Here's the ROOT 5 build command:
+
+```bash
+aliBuild build AliPhysics --defaults user
+```
+
+The command ends with a message saying what to do to use the package:
+
+```bash
+alienv enter AliPhysics/latest-master-user
+```
+
+Notice that aliBuild tells you **what is the exact alienv command to run to use this build**. Let's
+do the same with ROOT 6:
+
+```bash
+aliBuild build AliPhysics --defaults user-root6
+```
+
+Now, the message tells us to type:
+
+```bash
+alienv enter AliPhysics/latest-master-user-root6
+```
+
+to use the package. As you can see, current defaults are the last part of the package name.
+
+There are three things to keep in mind:
+
+* aliBuild always tells you what is the package name to load at the end of the build
+* you can load the two environments separately, in two different shells, with no chance of a mixup
+* you have used the same set of sources for generating two distinct builds
+
+It is also possible to directly run `aliroot` (or any command you want) without "entering" the
+environment:
+
+```bash
+alienv setenv AliPhysics/latest-master-user -c aliroot
+alienv setenv AliPhysics/latest-master-user-root6 -c aliroot
+```
+
+The `aliroot` command will be run with the correct environment in both cases.
+
+{% callout "Migrating from ROOT 5 to ROOT 6" %}
+While you are at it, if you want to migrate your existing code to ROOT 6 (and make sure it works
+there) check out our [migration guide](../analysis/ROOT5-to-6.md).
 {% endcallout %}
