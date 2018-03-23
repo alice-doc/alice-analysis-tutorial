@@ -38,10 +38,16 @@ Refresh the list of packages first (you need root, _i.e._ `sudo`, permissions):
 sudo apt update
 ```
 
-Install packages (one long line, just copy and paste it):
+**On Ubuntu 16.04 and 17.10**, install packages with the following long line:
 
 ```bash
 sudo apt install curl libcurl4-openssl-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libssl-dev libxml2-dev git unzip python-pip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev libboost-all-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release environment-modules
+```
+
+**On Ubuntu 18.04**, install the following list instead:
+
+```bash
+sudo apt install curl libcurl4-gnutls-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libssl1.0 libssl1.0-dev libxml2-dev git unzip python-pip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev libboost-all-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release environment-modules
 ```
 
 Once this is done, install (as root) the required Python packages:
