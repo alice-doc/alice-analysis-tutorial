@@ -75,7 +75,7 @@ Note that by default if you type now `gcc` at the prompt you will not see the ne
 enable it explicitly:
 
 ```bash
-source /opt/rh/devtoolset-6/enable
+source scl_source enable devtoolset-6
 ```
 
 You can either do it in every shell manually, or add it to your `~/.bashrc` or `~/.bash_profile`. If
