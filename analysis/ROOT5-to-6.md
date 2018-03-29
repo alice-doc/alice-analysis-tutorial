@@ -7,7 +7,7 @@ like under *ROOT5*. Therefore it is possible to build and run the ALICE
 simulation, reconstruction and analysis framework under ROOT6. AliPhysics can be
 built against *ROOT6* in the following way:
 
-```{.sh}
+```bash
 aliBuild -z --defaults root6 build AliPhysics
 ```
 
@@ -73,7 +73,7 @@ most common use cases:
   find the resulting object. This has to be cast into a pointer to an object of
   the expected type. Example:
 
-  ```{.cpp}
+  ```C++
   TMacro physseladd(gSystem->ExpandPathName("$ALICE_PHYSICS/OADB/macros/AddTaskPhysicsSelection.C"));
   AliPhysicsSelectionTask *physseltask = reinterpret_cast<AliPhysicsSelectionTask *>(physseladd.Exec());
   ```
@@ -96,7 +96,7 @@ most common use cases:
   reinterpret_cast in order to access the content of the output objects. The
   following example runs the add macro for the physics selection task:
 
-  ```{.cpp}
+  ```C++
   AliPhysicsSelectionTask *physseltask = reinterpret_cast<AliPhysicsSelectionTask *>(gInterpreter->ProcessLine(Form(".x %s", gSystem->ExpandPathName("$ALICE_PHYSICS/OADB/macros/AddTaskPhysicsSelection.C"))))
   ```
 
@@ -113,7 +113,7 @@ most common use cases:
   included will look as if they were part of the code itself. The following macro
   runs under *ROOT6*:
 
-  ```{.cpp}
+  ```C++
   #ifdef __CLING__
   // Tell  ROOT where to find AliRoot headers
   R__ADD_INCLUDE_PATH($ALICE_ROOT)
@@ -175,7 +175,7 @@ Here are few examples that commonly appear in user macros and which are tolerate
 - Undefined symbols:
 
   Maybe you have something like this in your code:
-  ```{.cpp}
+  ```C++
   taskname = "mytask";
   ```
   The variable `taskname` was not defined before. It was implicitly defined in *ROOT5* as `const char *`. In *ROOT6* this leads to the error
@@ -183,12 +183,12 @@ Here are few examples that commonly appear in user macros and which are tolerate
   error: use of undeclared identifier 'taskname'
   ```
   The variable `taskname` must be defined with a type before a value can be assigned. In this case the proper code would be
-  ```{.cpp}
+  ```C++
   const char *taskname = "mytask";
   ```
   Thanks to c++11 *ROOT6* can also detect tghe type implicitly using the keyword
   `auto`. In this case the code looks the following:
-  ```{.cpp}
+  ```C++
   auto taskname = "mytask";
   ```
   This will however not be transparent to *ROOT5* as *ROOT5* doesn't understand
@@ -200,7 +200,7 @@ Here are few examples that commonly appear in user macros and which are tolerate
 - Missing forward declarations
 
   Consider this macro:
-  ```{.cpp}
+  ```C++
   void fail_forward() {
     int result = test(2,4);
     printf("2 + 4 = %d\n", result);
@@ -220,7 +220,7 @@ Here are few examples that commonly appear in user macros and which are tolerate
   to be declared before they are used. Adding a forward declaration is 
   sufficient in order to make the macro working. The following version of
   the macro will und also under *ROOT6*:
-  ```{.cpp}
+  ```C++
   int test(int a, int b);
 
   void run_forward() {
@@ -241,7 +241,7 @@ Here are few examples that commonly appear in user macros and which are tolerate
   between them, and consequently the proper access operator needs to be used.
 
   Consider the following macro:
-  ```{.cpp}
+  ```C++
   void fail_access(){
     TH1F *ptr = new TH1F("ptr", "ptr", 1, 0., 1.);
     ptr.SetTitle("test1");
@@ -297,7 +297,7 @@ distinguish between ROOT versions.
 *ROOT6* in addition `__CLING__` which is not present in *ROOT5*. The following lines 
 indicate how to run *ROOT5*/*ROOT6* specific code:
 
-```{.cpp}
+```C++
 #if defined(__CLING__)
   // ROOT6-specific code here ...
 #elif defined(__CINT__)
@@ -337,7 +337,7 @@ understand.
   instead.
   - If your classes write stl-containers containing ROOT-objects to a ROOT-file 
     they must be declared to *ROOT5* in your LinkDef.h file. Example:
-    ```{.cpp}
+    ```C++
     #pragma link C++ class std::vector<AliAnalysisTaskEmcalJetTreeBase::AliEmcalJetInfoSummaryPP>+;
     ```
     For *ROOT6* this is not necessary.
