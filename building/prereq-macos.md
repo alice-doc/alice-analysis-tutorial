@@ -74,6 +74,31 @@ brew doctor
 and fix any potential error highlighted by the tool. **Errors and warnings should not be
 overlooked!** Pay close attention to warnings concerning outdated Xcode/compiler versions: you must upgrade Xcode to the latest available version before proceeding any further!
 
+{% callout "Clean up your Homebrew installation" %}
+Due to a [problem with the automake 1.16 package](http://gnu-automake.7480.n7.nabble.com/automake-1-16-aclocal-is-unable-to-process-AM-PATH-PYTHON-with-variable-as-value-td22860.html),
+subsequently fixed in version 1.16.1, a Homebrew workaround has been suggested on this page.
+
+If you have applied the suggested workaround, the `brew doctor` command from above complains with
+the following message:
+
+```
+Warning: Homebrew/homebrew-core is not on the master branch
+
+Check out the master branch by running:
+  git -C "$(brew --repo homebrew/core)" checkout master
+```
+
+To clean it up, it is better if you run the following commands (and not just the one suggested by
+`brew doctor`):
+
+```bash
+cd "$(brew --repo homebrew/core)"
+git checkout master
+git fetch origin master
+git reset --hard origin/master
+```
+{% endcallout %}
+
 When you are done fixing the warnings, upgrade all the currently installed Homebrew packages:
 
 ```bash
@@ -86,60 +111,6 @@ It is now time to install a bunch of required packages. Copy and paste this to y
 ```bash
 brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules
 ```
-
-{% callout "Attention: automake troubles (and a temporary workaround!)" %}
-As of now (March 1, 2018) latest `brew upgrade` runs will install automake 1.16 which is known to
-be [buggy](http://gnu-automake.7480.n7.nabble.com/automake-1-16-aclocal-is-unable-to-process-AM-PATH-PYTHON-with-variable-as-value-td22860.html).
-
-First off, check if you are running automake 1.16: **if not, just entirely skip this section and
-live happily.** Run:
-
-```bash
-automake --version
-```
-
-If the first line says:
-
-```
-automake (GNU automake) 1.16
-```
-
-then **you should apply this manual fix**. If you see something different (such as 1.16.1) then you
-are fine.
-
-While we wait for an upstream fix, there is a tricky way to get back to automake 1.15 on your
-system: you need to manually `cd` to the place Homebrew stores its recipes (which is a Git
-repository) and roll back a single change.
-
-Remove all versions of automake first:
-
-```bash
-brew remove --force automake
-```
-
-Revert Homebrew's version bump manually:
-
-```bash
-cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
-git revert 6f2d5981e77731a9a1ca360948c42d32c0d80d01 --no-edit
-```
-
-You should see:
-
-```
-[master 9de3930a7a] Revert "automake 1.16"
- 1 file changed, 3 insertions(+), 3 deletions(-)
-```
-
-Now reinstall automake as usual:
-
-```brew
-brew install automake
-```
-
-**When the problem is fixed upstream, we will publish information on how to reset the local Homebrew
-status to upstream.**
-{% endcallout %}
 
 Now, open your `~/.bash_profile` (you should have a default one; create one if it does not exist,
 and bear in mind that `~` represents your home directory) and add the following content:
