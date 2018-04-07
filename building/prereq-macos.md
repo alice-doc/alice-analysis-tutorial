@@ -14,6 +14,16 @@ from upgrading.
 **Please follow these instructions every time you install a new macOS version and every time you get
 a newer Xcode! This is non-optional!**
 
+{% callout "Upgrade your macOS/Xcode with care" %}
+The instructions you see on this page have been validated with:
+
+* macOS 10.13.4
+* Xcode 9.3
+
+Even minor version updates on macOS/Xcode may break our build chain, and it might take us days
+before fixing them. Keep an eye on this page to see if we have tested the latest versions first. 
+{% endcallout %}
+
 
 ## Get or upgrade Xcode
 
