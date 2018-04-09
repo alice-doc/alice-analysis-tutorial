@@ -7,11 +7,12 @@ essentially a CentOS 7 with some more CERN-specific packages, so these instructi
 pristine CentOS 7 as well.
 
 
-## CentOS 7 Docker image
+## Run in a CentOS 7 Docker container
 
 You can use Docker to run a CentOS 7 environment even if your OS is different. Check the official
 [CentOS images](https://hub.docker.com/_/centos/). The image corresponding to a base CentOS 7
-installation is `centos:7`.
+installation is `centos:7`. Just follow [our instructions](README.md#running-in-docker) by using
+`centos:7` as container name.
 
 
 ## Install or upgrade required packages

@@ -17,7 +17,8 @@ can for instance decide to use different path names, or a different directory st
 you, however we **do not recommend you use different ways of installing the required
 dependencies.**
 
-In case you do not have particular needs, or you don't know what you are doing, please follow the procedure **very carefully and without diverging from it at all**.
+In case you do not have particular needs, or you don't know what you are doing, please follow the
+procedure **very carefully and without diverging from it at all**.
 
 This will make support easier in case something does not work as expected.
 {% endcallout %}
@@ -50,6 +51,9 @@ documentation for additional operating systems!
 * [Ubuntu 17.10 and 16.04 LTS](prereq-ubuntu.md)
 * [CentOS 7](prereq-centos7.md)
 * [Fedora 27](prereq-fedora.md)
+
+In case your operating system is not supported, you can [run the entire build process under
+Docker](#running-in-docker).
 
 
 ## Get or upgrade aliBuild
@@ -445,3 +449,91 @@ The `aliroot` command will be run with the correct environment in both cases.
 While you are at it, if you want to migrate your existing code to ROOT 6 (and make sure it works
 there) check out our [migration guide](../analysis/ROOT5-to-6.md).
 {% endcallout %}
+
+
+## Running in Docker
+
+[Docker](https://www.docker.com/) is a popular way to run Linux containers. As a consequence you
+will get the runtime environment of a different operating system without the overhead of a virtual
+machine.
+
+This may be useful if your OS is unsupported, or if you want to have a fully isolated environment
+for your ALICE builds: you simply create a container corresponding to one of the supported Linux
+OSes and follow the corresponding prerequisites. **The examples below focus on the CentOS 7
+container as this is the reference environment for ALICE.**
+
+This is how to install Docker on:
+
+* [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+* [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/)
+* [macOS](https://docs.docker.com/docker-for-mac/install/)
+* [Windows](https://docs.docker.com/docker-for-windows/install/)
+
+If you are a macOS user, you should tune your memory settings once for all by clicking on the Docker
+whale icon in the taskbar, then **Preferences... → Advanced**. Set the CPUs to the maximum
+available, and the memory to at least 4 GB (the more the merrier). Click **Apply & Restart**.
+
+Create a persistent container by giving it a friendly name (we have chosen `aliceBuildEnvironment`):
+
+```bash
+docker run -it --name aliceBuildEnvironment -v $HOME/alice:$HOME/alice:rw centos:7
+```
+
+The `-v ...` switch tells Docker to make your system's directory `~/alice` visible under the exact
+same path in your container. This allows Docker to save your work environment on your system, not
+inside the container: your container is therefore _disposable_, even if you lose it you won't lose
+your ALICE builds.
+
+{% callout "Use the same directory path" %}
+It is quite important that you use the **exact same directory name** inside the container: this is
+the only way to make aliBuild work on the same directory both inside the container and outside. This
+allows you to share, for instance, the Git clones across installations on different platforms, and
+save you gigabytes of space!
+
+Please also note that the value of the variable `$HOME` inside the container will be different, so
+before entering the container just display its value:
+
+```bash
+echo $HOME
+```
+
+and then inside the container `cd` into that path.
+{% endcallout %}
+
+A root shell will open inside the container. It will be the same as using a CentOS 7 operating
+system (in case you've used the [centos:7](https://hub.docker.com/r/library/centos/) container)
+until you type `exit`: this means you will have to follow the [proper installation
+prerequisites](#your-operating-system) as usual.
+
+When you are done with the prerequisites you can [continue your installation as
+usual](#get-or-upgrade-alibuild) inside the container.
+
+
+### Start your saved container
+
+Since your container is persistently saved, you can always restart it if you exit it or reboot your
+computer with:
+
+```bash
+docker start aliceBuildEnvironment
+```
+
+The command will return immediately (and will do nothing if the container is already running). Once
+started (check with `docker ps`) you can connect to it as many times as you want with:
+
+```bash
+docker exec -it aliceBuildEnvironment bash
+```
+
+
+### Remove your container
+
+In case your container environment gets messed up for some reason, you can erase it completely with:
+
+```bash
+docker rm -f aliceBuildEnvironment
+```
+
+This will terminate any active session if running. Since your `~/alice` directory contains all the
+aliBuild installation artifacts, if you intend to perform an aliBuild cleanup you should remove that
+directory too.
