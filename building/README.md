@@ -320,6 +320,16 @@ on every platform.
 aliBuild installation will finish with a clear indication of what to do to use the software you
 have just built. This part is covered in the next section.
 
+{% callout "Build takes up too many laptop resources!" %}
+Building ALICE software is a resource-expensive operation. By default, aliBuild uses as many laptop
+resources as possible for building. If you need to work while building, you can use the `-j` flag to
+tell aliBuild to use fewer CPUs (just one in the example below):
+
+```bash
+aliBuild build O2 -j 1 --defaults o2
+```
+{% endcallout %}
+
 
 ## Use the software you have built
 
