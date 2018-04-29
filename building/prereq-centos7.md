@@ -1,6 +1,9 @@
 aliBuild prerequisites for CentOS 7
 ===================================
 
+<!-- Dockerfile UPLOAD_NAME alisw/o2-cc7 -->
+<!-- Dockerfile FROM centos:7 -->
+<!-- Dockerfile RUN rpmdb --rebuilddb && yum clean all -->
 For ALICE O2, our policy is [to support CERN CentOS 7 as our official deployment
 platform](https://indico.cern.ch/event/642232/#3-wp3-common-tools-and-softwar). CERN CentOS 7 is
 essentially a CentOS 7 with some more CERN-specific packages, so these instructions apply to the
@@ -19,12 +22,14 @@ installation is `centos:7`. Just follow [our instructions](README.md#running-in-
 
 Install packages (one long line, just copy and paste it), as **root user**:
 
+<!-- Dockerfile RUN_INLINE -->
 ```bash
 yum install -y git python mysql-devel curl curl-devel python python-devel python-pip bzip2 bzip2-devel autoconf automake texinfo gettext gettext-devel libtool freetype freetype-devel libpng libpng-devel sqlite sqlite-devel ncurses-devel mesa-libGLU-devel libX11-devel libXpm-devel libXext-devel libXft-devel libxml2 libxml2-devel motif motif-devel kernel-devel pciutils-devel kmod-devel bison flex perl-ExtUtils-Embed environment-modules
 ```
 
 Now get a recent version of `pip` (the Python package manager): this is required for installing aliBuild and other Python dependencies. Do, always as **root user**:
 
+<!-- Dockerfile RUN_INLINE -->
 ```
 curl -o /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py
 python /tmp/get-pip.py
@@ -32,6 +37,7 @@ python /tmp/get-pip.py
 
 Now get some Python dependencies (again **as root user**):
 
+<!-- Dockerfile RUN_INLINE -->
 ```bash
 pip install matplotlib==2.0.2 numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
 ```
@@ -61,6 +67,7 @@ be considered unsupported or experimental (therefore, again, _unsupported_).
 
 First off, enable Software Collections:
 
+<!-- Dockerfile RUN_INLINE -->
 ```bash
 yum install -y centos-release-scl
 yum-config-manager --enable rhel-server-rhscl-7-rpms
@@ -68,6 +75,7 @@ yum-config-manager --enable rhel-server-rhscl-7-rpms
 
 Get the compiler with:
 
+<!-- Dockerfile RUN_INLINE -->
 ```bash
 yum install -y devtoolset-6
 ```
@@ -75,6 +83,13 @@ yum install -y devtoolset-6
 Note that by default if you type now `gcc` at the prompt you will not see the new GCC! You need to
 enable it explicitly:
 
+<!-- Dockerfile RUN yum install -y vim-enhanced emacs-nox -->
+<!-- Dockerfile RUN rpmdb --rebuilddb && yum clean all -->
+<!-- Dockerfile RUN echo "source scl_source enable devtoolset-6" >> /etc/profile -->
+<!-- Dockerfile RUN echo "source scl_source enable devtoolset-6" >> /etc/bashrc -->
+<!-- Dockerfile RUN pip install alibuild -->
+<!-- Dockerfile RUN mkdir /lustre /cvmfs -->
+<!-- Dockerfile ENTRYPOINT ["/bin/bash"] -->
 ```bash
 source scl_source enable devtoolset-6
 ```

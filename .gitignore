@@ -6,3 +6,5 @@ node_modules/
 book.pdf
 /analysis-essentials.pdf
 /env.sh
+/building/Dockerfile_*
+/secrets.txt
