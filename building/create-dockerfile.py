@@ -2,7 +2,7 @@
 from __future__ import print_function
 import re
 from sys import argv, exit
-from os import remove
+from os import remove, environ
 from os.path import dirname, basename, isfile
 from subprocess import call
 
@@ -74,10 +74,15 @@ for fn in argv[1:]:
   dockerfile,uploadname = create_dockerfile(fn)
   if uploadname:
     if call(["docker", "build", "-f", dockerfile, "-t", uploadname, "."]) == 0:
-      try:
-        remove(dockerfile)
-      except:
-        pass
+      if environ.get("TRAVIS_PULL_REQUEST", "true") == "false" and environ.get("TRAVIS_BRANCH", "") == "master":
+        if call(["docker", "push", uploadname]) == 0:
+          try: remove(dockerfile)
+          except: pass
+        else:
+          print("ERROR: cannot push %s" % uploadname)
+          errcount = errcount+1
+      else:
+        print("WARNING: not pushing Docker image %s, not building master branch" % uploadname)
     else:
       print("ERROR: cannot create %s from %s" % (uploadname, dockerfile))
       errcount = errcount+1

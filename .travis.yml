@@ -9,7 +9,13 @@ install:
 node_js: '4.1'
 script:
   - '[ "$TRAVIS_PULL_REQUEST" = "false" ] && make publish || make'
-  - building/create-dockerfile.py $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep ^building/prereq-)
+  - |
+    set -e
+    set -o pipefail
+    if [[ $TRAVIS_PULL_REQUEST == false ]]; then
+      yes | docker login -u "$DOCK_USER" -p "$DOCK_PASSWORD"
+    fi
+    building/create-dockerfile.py $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep ^building/prereq-)
 env:
   global:
-    secure: "CBgmtCbNAdByB8Fs8J6fdNR4dkN25Vp45Kja08jh2s0eDEn4L9lFCDziq3A8xq2rG0M0LMsRA+5cNXzYBK4N/XI/uW2qkL2t9Y8v9mjhl0N9v7oqjsHjULYl+tIVUdYQFyZDFFNCtODlf36DzpVJBBAlx1iFFpETUB21UrTqsv4p2T89acQXsvlMRZsuF17HnnNCv3EuUNNKe8koT9HWAhaDM5a4qqmCK5MQu+tnObNokIKhwC+26eMRoBVr8EU4+j/rMNXBvQk1g69ytGOs7w/GW0/N8s29BsxG1Ccqh5IE26zRnr9/zJlN46UuZWeaJmialvBJ8t3CA9xlfCZBY9zEdpWxu6E7F8ohizAb4Nz+maF5cBlxsQnxEUkZZqY44+Jo9iomorcV7lj/bq4NYLa+yZhBFLfYMRQFcdIgJKtGZYTfKEByR5AKXP/7IPJ2MvAkP6UPqFJ2kjE3oZZfwwgkrPRopeHEr8yJXkNKOp49cR+saSxun7TaZG0GVLvD5bpidgC4IpZWXbJWZ5uVFsv3jmP1RIp18nHr7+8dQJLZenXSnO7As45IMARWKd+J3nBr8FNcKc7U30TsSnQJxrgHjDPuR+wcDUwZxc72UNz7PrDeZ6TRub1EPz6LIR7ad+trucpiRO9GiVd2Lf2lmaNQeMGJB0/ctFkPEAZCOmk="
+    secure: "LMmQTQMYL6wU9D03jHGtrcDm9/Z/SJBe4/92TUeJLRRoYJbxfzr8/Fy6204Zuo/c8hON3/79kCmYE99RQhy73LqhWajmnwIROcxj2q9vA8SWUW4cn2J2wPbJvRpoNEck1W9duCAP4ffKdTii0ObAEr6ZFr+eTMkmyvPakFsjjiMquaLa5vM3ytmpPjhVO/Yr7FOaG6FzVh4RnrdRx5A4LdocOmG21iyF0nWSd49J+J+lfcYT4g7pX93DESHIE8NThl4+FnjmJztyNcytQ0A/RsFkKoI5baEbMD6M5RQ8vE+McRI8jE1dTBLge1mfgnpFbvKpPhVjF8a4KNdgnjSewIlkh0UNrOdnI4HDw0mxH3euHGlFy2pcK8MS+NdY3D7nQEvy8zgZtgPA8iukK+auaBACO4rwsWQ6grm126UTiSzVvpM0DaKshL4cBv1opUU9Zs8Y3fzjZsABN++yX5f4zKFRATcO09FE1KCovrJ2O1M+0FEtWisx/eETWPVqyMmz4cRMbFHMR8EET5/12SqG9vVoP7ESnRDJeh29qsMSIcjS7D3Dqjvvs6Ir18GsH39jCMEjymwAB1ulI9eeQb61/EW33YFX/tejxJHIlj7C7zNEfLkxV9c9gxTDASJc5I51JtFUzVSbXlhpx/Ui6E2x+wVYNKwm8yjvQoAJMcUiptA="
