@@ -73,7 +73,7 @@ for fn in argv[1:]:
   print("Processing %s..." % fn)
   dockerfile,uploadname = create_dockerfile(fn)
   if uploadname:
-    if call(["docker", "build", "-f", dockerfile, "-t", uploadname, "/tmp"]) == 0:
+    if call(["docker", "build", "-f", dockerfile, "-t", uploadname, "."]) == 0:
       try:
         remove(dockerfile)
       except:
