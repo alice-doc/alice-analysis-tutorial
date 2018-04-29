@@ -33,7 +33,7 @@ python /tmp/get-pip.py
 Now get some Python dependencies (again **as root user**):
 
 ```bash
-pip install matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
+pip install matplotlib==2.0.2 numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
 ```
 
 
