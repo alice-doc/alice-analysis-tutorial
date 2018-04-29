@@ -12,17 +12,10 @@ pristine CentOS 7 as well.
 
 ## Run in a CentOS 7 Docker container
 
-You can use Docker to run a CentOS 7 environment even if your OS is different. Instructions on this
-page apply cleanly on an [official](https://hub.docker.com/_/centos/) `centos:7` Docker container.
-Get the latest ALICE container (with the prerequisites and aliBuild already installed) with:
-
-```bash
-docker pull alisw/o2-cc7
-docker run -it --rm alisw/o2-cc7
-```
-
-See our ["running in Docker" instructions](README.md#running-in-docker) and remember to use
-`alisw/o2-cc7` as container name.
+You can use Docker to run a CentOS 7 environment even if your OS is different. Check the official
+[CentOS images](https://hub.docker.com/_/centos/). The image corresponding to a base CentOS 7
+installation is `centos:7`. Just follow [our instructions](README.md#running-in-docker) by using
+`centos:7` as container name.
 
 
 ## Install or upgrade required packages
