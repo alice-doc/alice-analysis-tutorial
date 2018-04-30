@@ -412,45 +412,48 @@ If you did that, then you need to manually enter the ROOT directory and checkout
 version by yourself.
 {% endcallout %}
 
-Here's the ROOT 5 build command:
+Here's the ROOT 5 build command (note the `-z aliroot5` suffix, giving our build a special name
+that allows to distinguish it from the ROOT 6 one):
 
 ```bash
-aliBuild build AliPhysics --defaults user
+aliBuild build AliPhysics --defaults user -z aliroot5
 ```
 
 The command ends with a message saying what to do to use the package:
 
 ```bash
-alienv enter AliPhysics/latest-master-user
+alienv enter AliPhysics/latest-aliroot5-user
 ```
 
 Notice that aliBuild tells you **what is the exact alienv command to run to use this build**. Let's
-do the same with ROOT 6:
+do the same with ROOT 6 (note that we use a distinct name, `-z aliroot6`):
 
 ```bash
-aliBuild build AliPhysics --defaults user-root6
+aliBuild build AliPhysics --defaults user-root6 -z aliroot6
 ```
 
 Now, the message tells us to type:
 
 ```bash
-alienv enter AliPhysics/latest-master-user-root6
+alienv enter AliPhysics/latest-aliroot6-user-root6
 ```
 
-to use the package. As you can see, current defaults are the last part of the package name.
+to use the package. As you can see, `aliroot6` is part of the package name.
 
-There are three things to keep in mind:
+Keep in mind that:
 
 * aliBuild always tells you what is the package name to load at the end of the build
 * you can load the two environments separately, in two different shells, with no chance of a mixup
 * you have used the same set of sources for generating two distinct builds
+* `alienv enter AliPhysics/latest` will load the _latest you have built_, which can either be the
+  ROOT 5 or ROOT 6-based version: given its ambiguity, do use explicit names instead
 
 It is also possible to directly run `aliroot` (or any command you want) without "entering" the
 environment:
 
 ```bash
-alienv setenv AliPhysics/latest-master-user -c aliroot
-alienv setenv AliPhysics/latest-master-user-root6 -c aliroot
+alienv setenv AliPhysics/latest-aliroot5-user -c aliroot
+alienv setenv AliPhysics/latest-aliroot6-user-root6 -c aliroot
 ```
 
 The `aliroot` command will be run with the correct environment in both cases.
