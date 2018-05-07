@@ -72,6 +72,10 @@ for fn in argv[1:]:
     continue
   print("Processing %s..." % fn)
   dockerfile,uploadname = create_dockerfile(fn)
+  print("# This is the generated Dockerfile for %s" % uploadname)
+  with open(dockerfile) as fp:
+    print(fp.read())
+  print("# End of Dockerfile for %s" % uploadname)
   if uploadname:
     if call(["docker", "build", "-f", dockerfile, "-t", uploadname, "."]) == 0:
       if environ.get("TRAVIS_PULL_REQUEST", "true") == "false" and environ.get("TRAVIS_BRANCH", "") == "master":
