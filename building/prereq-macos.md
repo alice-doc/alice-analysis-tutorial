@@ -1,7 +1,7 @@
 aliBuild prerequisites for macOS
 ================================
 
-ALICE software compiles just fine on macOS using Apple-provided build tools. We exclusively support
+ALICE software compiles just fine on macOS using Apple-provided build tools. We support exclusively
 the following two versions of macOS:
 
 * Sierra (10.12)
@@ -15,10 +15,10 @@ from upgrading.
 a newer Xcode! This is non-optional!**
 
 {% callout "Upgrade your macOS/Xcode with care" %}
-The instructions you see on this page have been validated with:
+The instructions you see on this page have been validated **on May 13, 2018** using:
 
 * macOS 10.13.4
-* Xcode 9.3
+* Xcode 9.3.1
 
 Even minor version updates on macOS/Xcode may break our build chain, and it might take us days
 before fixing it. Keep an eye on this page to see if we have tested the latest versions first.
@@ -169,7 +169,7 @@ gfortran is /usr/local/bin/gfortran
 
 ## Disable System Integrity Protection
 
-Since El Capitan (10.11), Apple has introduced a security feature called [System Integrity
+Starting from El Capitan (10.11), Apple has introduced a security feature called [System Integrity
 Protection](https://www.macworld.com/article/2986118/security/how-to-modify-system-integrity-protection-in-el-capitan.html), or SIP.
 
 At the moment, unfortunately, ALICE software requires this feature to be turned off.
