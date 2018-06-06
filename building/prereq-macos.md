@@ -84,7 +84,8 @@ brew doctor
 and fix any potential error highlighted by the tool. **Errors and warnings should not be
 overlooked!** Pay close attention to warnings concerning outdated Xcode/compiler versions: you must upgrade Xcode to the latest available version before proceeding any further!
 
-{% callout "Clean up your Homebrew installation" %}
+{% callout "Clean up your Home
+ation" %}
 Due to a [problem with the automake 1.16 package](http://gnu-automake.7480.n7.nabble.com/automake-1-16-aclocal-is-unable-to-process-AM-PATH-PYTHON-with-variable-as-value-td22860.html),
 subsequently fixed in version 1.16.1, a Homebrew workaround has been suggested on this page.
 
@@ -119,8 +120,12 @@ It is now time to install a bunch of required packages. Copy and paste this to y
 (warning: long line):
 
 ```bash
-brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules
+brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules xz
 ```
+
+If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to
+force the reinstallation of already installed packages. You also might want to run `brew cleanup` at
+the end to free up some space.
 
 Now, open your `~/.bash_profile` (you should have a default one; create one if it does not exist,
 and bear in mind that `~` represents your home directory) and add the following content:
