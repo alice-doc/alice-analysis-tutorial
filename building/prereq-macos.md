@@ -84,8 +84,7 @@ brew doctor
 and fix any potential error highlighted by the tool. **Errors and warnings should not be
 overlooked!** Pay close attention to warnings concerning outdated Xcode/compiler versions: you must upgrade Xcode to the latest available version before proceeding any further!
 
-{% callout "Clean up your Home
-ation" %}
+{% callout "Clean up your Homebrew installation" %}
 Due to a [problem with the automake 1.16 package](http://gnu-automake.7480.n7.nabble.com/automake-1-16-aclocal-is-unable-to-process-AM-PATH-PYTHON-with-variable-as-value-td22860.html),
 subsequently fixed in version 1.16.1, a Homebrew workaround has been suggested on this page.
 
