@@ -119,8 +119,12 @@ It is now time to install a bunch of required packages. Copy and paste this to y
 (warning: long line):
 
 ```bash
-brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules
+brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules xz
 ```
+
+If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to
+force the reinstallation of already installed packages. You also might want to run `brew cleanup` at
+the end to free up some space.
 
 Now, open your `~/.bash_profile` (you should have a default one; create one if it does not exist,
 and bear in mind that `~` represents your home directory) and add the following content:
