@@ -15,9 +15,9 @@ from upgrading.
 a newer Xcode! This is non-optional!**
 
 {% callout "Upgrade your macOS/Xcode with care" %}
-The instructions you see on this page have been validated **on June 1, 2018** using:
+The instructions you see on this page have been validated **on June 11, 2018** using:
 
-* macOS 10.13.4
+* macOS 10.13.5
 * Xcode 9.4
 
 Even minor version updates on macOS/Xcode may break our build chain, and it might take us days
