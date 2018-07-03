@@ -54,15 +54,16 @@ particular care about compatibility and upgrading our recommendations. Our polic
 upgrade O2 to a newer compiler unless the corresponding Developer Toolset package is out and tested.
 
 Every recommendation change concerning the Develpoer Toolset versions is reviewed, discussed and
-voted. The **current situation (February 2018)** is:
+voted. The **current situation (July 2018)** is:
 
-* [devtoolset-6](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-6/) (GCC v6.3.1) is
-  the currently **approved and working** version for O2;
-* [devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) (GCC v7.2.1) is
-  under evaluation but **it currently does not work [due to a bug](  https://bugzilla.redhat.com/show_bug.cgi?id=1519073)**.
+* [devtoolset-7](https://www.softwarecollections.org/en/scls/rhscl/devtoolset-7/) (GCC v7.3.1) is
+  the currently **approved and working** version for O2.
 
-In short, **please use `devtoolset-6` at the moment**. All versions other than `devtoolset-6` are to
-be considered unsupported or experimental (therefore, again, _unsupported_).
+**Please make sure your `devtoolset-7` is up-to-date!** Due to
+[a bug](https://bugzilla.redhat.com/show_bug.cgi?id=1519073), versions of `devtoolset-7` with GCC
+v7.2.1 do not work.
+
+All versions other than the very latest `devtoolset-7` are to be considered unsupported.
 {% endcallout %}
 
 First off, enable Software Collections:
@@ -77,7 +78,7 @@ Get the compiler with:
 
 <!-- Dockerfile RUN_INLINE -->
 ```bash
-yum install -y devtoolset-6
+yum install -y devtoolset-7
 ```
 
 Note that by default if you type now `gcc` at the prompt you will not see the new GCC! You need to
@@ -85,13 +86,13 @@ enable it explicitly:
 
 <!-- Dockerfile RUN yum install -y vim-enhanced emacs-nox -->
 <!-- Dockerfile RUN rpmdb --rebuilddb && yum clean all -->
-<!-- Dockerfile RUN echo "source scl_source enable devtoolset-6" >> /etc/profile -->
-<!-- Dockerfile RUN echo "source scl_source enable devtoolset-6" >> /etc/bashrc -->
+<!-- Dockerfile RUN echo "source scl_source enable devtoolset-7" >> /etc/profile -->
+<!-- Dockerfile RUN echo "source scl_source enable devtoolset-7" >> /etc/bashrc -->
 <!-- Dockerfile RUN pip install alibuild -->
 <!-- Dockerfile RUN mkdir /lustre /cvmfs -->
 <!-- Dockerfile ENTRYPOINT ["/bin/bash"] -->
 ```bash
-source scl_source enable devtoolset-6
+source scl_source enable devtoolset-7
 ```
 
 You can either do it in every shell manually, or add it to your `~/.bashrc` or `~/.bash_profile`. If
