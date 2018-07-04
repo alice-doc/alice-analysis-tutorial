@@ -395,7 +395,7 @@ prompt. Of course you can use any name you want.
 {% endcallout %}
 
 
-## Build and use the same source with different options
+# Build and use the same source with different options
 
 aliBuild and alienv give you the ability to build the same development source with different
 defaults without duplicating the source, and without conflicts.
@@ -462,6 +462,43 @@ The `aliroot` command will be run with the correct environment in both cases.
 While you are at it, if you want to migrate your existing code to ROOT 6 (and make sure it works
 there) check out our [migration guide](../analysis/ROOT5-to-6.md).
 {% endcallout %}
+
+
+## Build specific releases (tags) of the software
+
+It might come useful to build a certain tag of AliRoot and AliPhysics instead of simply pulling the
+master.
+
+> Note that **we only guarantee that the current AliPhysics master works against the latest AliRoot
+> tag!** It is therefore possible (though a rare occurrence) that the current AliRoot master breaks
+> the current AliPhysics master.
+
+If you have your source code in "development mode" (_i.e._ downloaded locally by means of `aliBuild
+init`), since your AliRoot/AliPhysics/O2 directories [are mere Git
+repositories](#software-and-recipes-must-be-updated-manually), you simply need to `cd` into them and
+checkout the Git version you want.
+
+For instance, if you want to build AliPhysics against AliRoot v5-09-33, you would need to first
+move to the AliRoot directory and check the version out:
+
+```bash
+cd ~/alice/AliRoot
+git fetch origin --tags
+git checkout v5-09-33
+```
+
+Then update your AliPhysics master:
+
+```bash
+cd ~/alice/AliPhysics
+git fetch origin master
+git checkout master
+git reset --hard origin/master
+```
+
+and then build normally using the `aliBuild` command. You might want to build using different `-z`
+options [as explained here](#build-and-use-the-same-source-with-different-options) in order to have
+different builds usable in parallel without duplicating your source code.
 
 
 ## Running in Docker
