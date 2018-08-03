@@ -106,7 +106,7 @@ You can check if you are running the correct version of GCC with:
 gcc --version
 ```
 
-It should report **GCC v6.3.1**.
+It should report **GCC v7.3.1**.
 
 You are now ready for [installing aliBuild and start building ALICE
 software](README.md#get-or-upgrade-alibuild)
