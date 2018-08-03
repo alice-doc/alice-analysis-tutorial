@@ -15,7 +15,7 @@ from upgrading.
 a newer Xcode! This is non-optional!**
 
 {% callout "Upgrade your macOS/Xcode with care" %}
-The instructions you see on this page have been validated **on August 1, 2018** using:
+The instructions you see on this page have been validated **on August 3, 2018** using:
 
 * macOS 10.13.6
 * Xcode 9.4.1
@@ -228,7 +228,7 @@ Some Python packages are required for building our software. They are mostly rel
 run:
 
 ```bash
-sudo pip install matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
+sudo pip install --upgrade --force-reinstall matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
 ```
 
 > It is important to specify the version of `ipython`.
