@@ -15,10 +15,10 @@ from upgrading.
 a newer Xcode! This is non-optional!**
 
 {% callout "Upgrade your macOS/Xcode with care" %}
-The instructions you see on this page have been validated **on June 11, 2018** using:
+The instructions you see on this page have been validated **on August 3, 2018** using:
 
-* macOS 10.13.5
-* Xcode 9.4
+* macOS 10.13.6
+* Xcode 9.4.1
 
 Even minor version updates on macOS/Xcode may break our build chain, and it might take us days
 before fixing it. Keep an eye on this page to see if we have tested the latest versions first.
@@ -119,7 +119,7 @@ It is now time to install a bunch of required packages. Copy and paste this to y
 (warning: long line):
 
 ```bash
-brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules xz
+brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules xz libpng
 ```
 
 If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to
@@ -228,7 +228,7 @@ Some Python packages are required for building our software. They are mostly rel
 run:
 
 ```bash
-sudo pip install matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
+sudo pip install --upgrade --force-reinstall matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
 ```
 
 > It is important to specify the version of `ipython`.
