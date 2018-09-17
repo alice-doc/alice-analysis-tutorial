@@ -84,7 +84,7 @@ if (std::abs(fPIDResponse->NumberOfSigmasTPC(track, AliPID::kPion)) < 3 ) {
 
 
 
-## END OF TIPS - Wuhu, done reading !
+## END OF TIPS - back to business
 
 
 If you are confident that you’ve ’isolated’ the pions, create new histograms to store the pion’s
@@ -95,6 +95,6 @@ If you are confident that you’ve ’isolated’ the pions, create new histogra
 
 * azimuthal angle
 
-Change the centrality of collisions that you accept: select pions in 0-10% centraliy, and 50-60% centrality. Does the number of pions change in the way you would expect them to change ?# PID response
+Change the centrality of collisions that you accept: select pions in 0-10% centraliy, and 50-60% centrality. Does the number of pions change in the way you would expect them to change ?
 
 
