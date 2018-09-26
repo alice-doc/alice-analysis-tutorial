@@ -4,8 +4,8 @@ aliBuild prerequisites for macOS
 ALICE software compiles just fine on macOS using Apple-provided build tools. We support exclusively
 the following two versions of macOS:
 
-* Sierra (10.12)
 * High Sierra (10.13)
+* Mojave (10.14)
 
 **Any other version of macOS has to be considered not supported.** If you are in doubt about
 upgrading your operating system and you still don't see the new version here, then please refrain
@@ -15,10 +15,10 @@ from upgrading.
 a newer Xcode! This is non-optional!**
 
 {% callout "Upgrade your macOS/Xcode with care" %}
-The instructions you see on this page have been validated **on August 3, 2018** using:
+The instructions you see on this page have been validated **on October 1, 2018** using:
 
-* macOS 10.13.6
-* Xcode 9.4.1
+* macOS 10.14
+* Xcode 10.0 (10A255)
 
 Even minor version updates on macOS/Xcode may break our build chain, and it might take us days
 before fixing it. Keep an eye on this page to see if we have tested the latest versions first.
@@ -119,7 +119,7 @@ It is now time to install a bunch of required packages. Copy and paste this to y
 (warning: long line):
 
 ```bash
-brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules xz libpng
+brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules xz libpng perl
 ```
 
 If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to
@@ -195,8 +195,8 @@ To turn SIP off:
 [aliBuild](https://pypi.python.org/pypi/alibuild/) and other Python dependencies are installed
 through it.
 
-In case you are using [Python from Anaconda](https://www.anaconda.com/) then you have `pip` already.
-Check it by typing:
+In case you are using [Python from Anaconda](https://www.anaconda.com/) or Python from Homebrew
+then you have `pip` already. Check it by typing:
 
 ```bash
 type pip
@@ -221,6 +221,18 @@ It should yield:
 pip is /usr/local/bin/pip
 ```
 
+Note that the Python version installed by means of `easy_install` might be too old. Check it with:
+
+```bash
+pip --version
+```
+
+You must have at least pip 9.0.1. If this is not the case, please run:
+
+```bash
+pip install --upgrade pip==9.0.1
+```
+
 
 ## Get or upgrade required Python packages
 
@@ -231,7 +243,7 @@ run:
 sudo pip install --upgrade --force-reinstall matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
 ```
 
-> It is important to specify the version of `ipython`.
+> It is important to specify `ipython`'s version explicitly.
 
 
 ## Exclude your work directory from Spotlight

@@ -47,12 +47,12 @@ If your operating system is _not_ in the list below, it does not mean our softwa
 it will be just more difficult for you to get support for it. We will be happy to add proper
 documentation for additional operating systems!
 
-* [macOS Sierra (10.12) and High Sierra (10.13)](prereq-macos.md)
-* [Ubuntu 17.10 and 16.04 LTS](prereq-ubuntu.md)
+* [macOS High Sierra (10.13) and Mojave (10.14)](prereq-macos.md)
+* [Ubuntu 18.04 LTS, 17.10 and 16.04 LTS](prereq-ubuntu.md)
 * [CentOS 7](prereq-centos7.md)
 * [Fedora 27](prereq-fedora.md)
 
-In case your operating system is not supported, you can [run the entire build process under
+In case your operating system is not supported, you can [run the whole build process under
 Docker](#running-in-docker).
 
 
