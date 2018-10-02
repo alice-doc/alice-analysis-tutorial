@@ -39,9 +39,9 @@ This information is useful: you can see what kind of input and output your job i
 
 Make sure though, that the macro ’knows’ where you stored the AliAOD.root file on your laptop (if the AliAOD.root file is in a different folder than the analysis source code, open the runAnalysis.C file, and change the lines where the input file is accessed, just search for _AliAOD.root_ ).
 
-By default, the macro will run the task just on your laptop. Later on, we’ll see how you can run your analysis on GRID.
+By default, the macro will run the task just on your laptop. Later on, we’ll see how you can run your analysis on Grid.
 
-`BEWARE` are you using ROOT6 , or running MacOS High Sierra? We try to make the tutorial as compatible as possible with the latest standards, but there might be some surprises - ping us if something doesn’t work. A quick ROOT5 to ROOT6 guide [can be found here](https://alice-doc.github.io/alice-analysis-tutorial/analysis/ROOT5-to-6.html).
+There are some difference between interaction with ROOT5 and ROOT6; a quick ROOT5 to ROOT6 guide [can be found here](https://alice-doc.github.io/alice-analysis-tutorial/analysis/ROOT5-to-6.html).
 
 # Take a look at the output
 

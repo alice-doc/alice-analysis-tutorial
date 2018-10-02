@@ -16,7 +16,7 @@ Collisions are referred to as ‘events’. In our analysis task, the function
 ```
 AliAnalysisTaskSE::UserExec
 ```
-is called once for each event in the input data set. **You never have to explicitly call this function yourself** ! Remember, from programming 101 classes, the lecture about **inheritance** in c++ ? The UserExec function is called by a **base** class that you do not have to worry about. We will later see that this function is only called when an event passes your **trigger selection**. 
+is called once for each event in the input data set. **You never have to explicitly call this function yourself** ! Remember, from programming 101 classes, the lecture about **inheritance** in C++? The `UserExec` function is called by a **base** class that you do not have to worry about. We will later see that this function is only called when an event passes your **trigger selection**. 
 
 ## Fun !  
 
@@ -45,11 +45,10 @@ Try to run the code again, after you’ve added these histograms.
 
 # All set?
 
-It’s _almost_ time to do some physics. Not all collisions in the detector are actually usable for physics analysis. Events which happen very far from the center of the detector, for example, are usually not used for analysis (any idea why?). To make sure that we only look at high quality data, we do ’event selection’. Let’s add some event selection criteria to your task.
+It’s _almost_ time to run the modified analysis. Not all collisions in the detector are actually usable for physics analysis. Events which happen very far from the center of the detector, for example, are usually not used for analysis (any idea why?). To make sure that we only look at high quality data, we do ’event selection’. Let’s add some event selection criteria to your task.
 
-*   modify the code such that only primary vertices are accepted within 10 cm of detector center;
-Selections in the event sample or track sample are often referred to as ‘cuts’. 
-*   Usually, we want to see how much data we ‘throw away’ when applying a cut. How would you go about doing that?
+*   Modify the code such that only primary vertices are accepted within 10 cm of detector center. Such selections in the event sample or track sample are usually referred to as ‘cuts’. 
+*   Generally, we want to see how much data we ‘throw away’ when applying a cut. How would you go about doing that?
 
 Besides rejecting data via cuts, we also make data selection while data taking, by _‘triggering’_: selecting collisions in which we expect certain processes to have occurred. You can check which triggers are selected in the `AddMyTask.C` macro , where we call
 

@@ -186,13 +186,13 @@ Here are few examples that commonly appear in user macros and which are tolerate
   ```C++
   const char *taskname = "mytask";
   ```
-  Thanks to c++11 *ROOT6* can also detect the type implicitly using the keyword
+  Thanks to C++11 *ROOT6* can also detect the type implicitly using the keyword
   `auto`. In this case the code looks the following:
   ```C++
   auto taskname = "mytask";
   ```
   This will however not be transparent to *ROOT5* as *ROOT5* doesn't understand
-  c++11.
+  C++11.
 
   **Note**: On the command line *ROOT6* automatically adds the auto keyword. The 
   statement above will be possible in the interpreted mode of *ROOT6*.
@@ -323,8 +323,8 @@ created under *ROOT5*.
 It depends whether the macro now contains something which *ROOT5* does **NOT**
 understand.
 
-- *ROOT6* is fully compatible with c++11. In *ROOT5* c++11 support is not
-  implemented, but the standard c++98 is used. c++11-specific code will not
+- *ROOT6* is fully compatible with C++11. In *ROOT5* C++11 support is not
+  implemented, but the standard C++98 is used. C++11-specific code will not
   be understood.
 - All **NEW** features provided by *ROOT6* are of course not ported to *ROOT5*.
   This in particular affects:

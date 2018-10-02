@@ -1,20 +1,21 @@
-# Obtain the code
+# Obtain your source code
 
-Our starting point for these exercises is the example analysis ‘AliAnalysisTaskMyTask.cxx’, details of which were explained [in this lecture](https://indico.cern.ch/event/666222/contributions/2722466/attachments/1547895/2436752/temp.pdf). Of course it wouldn’t be very efficient to copy and paste the code for your ‘empty’ analysis task from a set of old slides. To obtain the code, choose from these two options: 
+The starting point for these exercises is the analysis template called _AliAnalysisTaskMyTask_. To obtain the source code of this analysis, choose one of the following two options: 
 
-1. Clone the GIT repository. Programmers use version control systems for developing their code. You will also use version control (in our case GIT) when you are contributing to the ALICE code base. So why not start with GIT right now? You can _clone_ the example task repository, which you can find it on [here](https://github.com/rbertens/ALICE_analysis_tutorial), by typing in a terminal
+1. Clone the Git repository. Programmers use version control systems when developing their code. You will also use version control (in our case through Git) when you are contributing to the ALICE code base. So why not start with Git right now? You can _clone_ the example task repository, which you can find it on [here](https://github.com/rbertens/ALICE_analysis_tutorial), by typing, in a terminal
 ```
 git clone git@github.com:rbertens/ALICE_analysis_tutorial.git
 ```
+This will _clone_ the remote repository, so that you have access to a carbon copy of the full repository on your local computer. 
 
-2. A more robust approach to working with GIT, is creating a remote _fork_ of a certain repository, and working on this fork. For this, you will need to open a [https://github.com/] account (which you will need in any case if you want to contribute to ALICE software). If you have a github account, you create a _fork_ of the example task repository by surfing [here](https://github.com/rbertens/ALICE_analysis_tutorial) and clicking on _fork_ at the top right of the screen. If you have forked the repository, you can proceed to cloning it on your laptop in the way as explained in option 1; this then allows you to develop the code, and push commits to your own fork
+2. A more robust approach to working with Git, is creating a remote _fork_ of a certain repository, and working on this fork. For this, you will need to open a GitHub [https://github.com/] account (which you will need in any case if you want to contribute to ALICE software). If you have a GitHub account, you create a _fork_ of the example task repository by surfing [here](https://github.com/rbertens/ALICE_analysis_tutorial) and clicking on _fork_ at the top right of the screen. If you have forked the repository, you can proceed to cloning it on your laptop in the way as explained in option 1; this then allows you to develop the code, and push commits to your own fork
 
 Whichever approach you chose, the end result should be that you have stored these files on your laptop. One word of caution: ** the path in which you store these files cannot contain spaces! E.g. /home/my  task/ will not work, use /home/my_task/ ** .
 
 
 # A first look at your task
 
-As a start, just take a look at code that makes up the task. You should see the files that were also covered in the first part of [our lecture](https://indico.cern.ch/event/666222/contributions/2722466/attachments/1547895/2436752/temp.pdf):
+As a start, just take a look at code that makes up the task:
 
 *   AliAnalysisTaskMyTask.cxx
 
@@ -24,9 +25,7 @@ As a start, just take a look at code that makes up the task. You should see the 
 
 *   runAnalysis.C
 
-If you have not followed the lecture, you will see that the code is extensively documented. 
-
-Try to find where all the code snippets that were shown during [the lecture](https://indico.cern.ch/event/666222/contributions/2722466/attachments/1547895/2436752/temp.pdf) fit in, and wonder if you can answer the following questions
+You will see that the code is extensively documented. Can you tell
 
 *   which function is called for each event?
 
@@ -43,7 +42,7 @@ Remember, that for now, the name ‘AliAnalysisTaskMyTask’ doesn’t sound so 
 To run your own analysis task, you will also need to download a file that contains reconstructed collisions. This input file is called **AliAOD.root**, short for Analysis Object Data. In the following steps, will assume that we are looking at Pb-Pb data that was taken in 2015. You can also choose to run on data from a different period or collision system.  
 
 ## Source your environment
-We will get the data form the ALICE file catalogue. To access the file catalogue, you will need to use AliEn-Runtime and have a valid GRID certificate. This means that, at this point, we will assume that you have built all the ALICE software (see [our build manual for that](https://alice-doc.github.io/alice-analysis-tutorial/building/) ).
+We will get the data form the ALICE file catalogue. To access the file catalogue, you will need to use AliEn-Runtime and have a valid Grid certificate. This means that, at this point, we will assume that you have built all the ALICE software (see [our build manual for that](https://alice-doc.github.io/alice-analysis-tutorial/building/) ).
 
 
 Load your ALICE environment as [explained here](https://alice-doc.github.io/alice-analysis-tutorial/building/#use-the-software-you-have-built), e.g. by doing
@@ -79,7 +78,7 @@ The ALICE file catalogue is only accessible if you are an ALICE member. To authe
 alien-token-init <username>
 ``` 
 
-where #username# is your CERN username. You should be prompted to provide your PEM pass phrase, which is ** not the same as your CERN password ** unless you set them to be the same yourself. 
+where _username_ is your CERN username. You should be prompted to provide your PEM pass phrase, which is ** not the same as your CERN password ** unless you set them to be the same yourself. 
 
 
 If all goes well, you will see something like
@@ -119,7 +118,7 @@ Once you have obtained a valid token, enter the alice environment shell by typin
 ```
 aliensh
 ```
-you should see
+Once you type this command, a the alice environment shell is loaded, and you should see
 ```
 [AliPhysics/latest] ~/sw $> aliensh
  [ aliensh 1.0.140x (C) ARDA/Alice: Andreas.Joachim.Peters@cern.ch/Derek.Feichtinger@cern.ch]
