@@ -26,8 +26,44 @@ cd alice-analysis-tutorial/
 git remote add <my_username> https://github.com/<my_username>/alice-analysis-tutorial
 ```
 
-Documentation is written in [Markdown](https://daringfireball.net/projects/markdown/syntax). To
-preview the documentation pages locally while you are editing them, go in the root directory of the repository and run:
+Documentation is written in [Markdown](https://daringfireball.net/projects/markdown/syntax) and it
+is generated using [GitBook](https://www.gitbook.com/). You need to install GitBook first. GitBook
+is a NodeJS package, meaning that you need `npm` to install it. You can get `npm` easily.
+
+On Ubuntu:
+
+```bash
+sudo apt install npm
+```
+
+On macOS (assuming you have [Homebrew](https://brew.sh/):
+
+```bash
+brew install npm
+```
+
+On CentOS 7 (you need [EPEL](https://fedoraproject.org/wiki/EPEL) enabled):
+
+```bash
+sudo yum install npm
+```
+
+Once `npm` is installed, you can install GitBook:
+
+```bash
+sudo npm install -g gitbook-cli
+```
+
+**Do not use `sudo` on macOS.**
+
+Once GitBook is installed, you should find it in your `$PATH`, check it with:
+
+```bash
+type gitbook
+```
+
+To preview the documentation pages locally while you are editing them, move to the repository's root
+directory and run:
 
 ```bash
 cd alice-analysis-tutorial/
