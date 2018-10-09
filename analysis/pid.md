@@ -21,16 +21,16 @@ If your histogram is _empty_ after running, try using Filterbit 1 rather than 12
 As a second step, you identify particles, and store only the TPC signal that corresponds to pions. 
 
 
-## TIPS - READ THIS FIRST
+## BEFORE YOU START ...
 
 
-To speed things up a bit, the code that you will need for this exercise is given and explained here. 
+To speed things up a bit, the code that you will need for this exercise is given and explained here. It is recommended to read the entire section prior to implementing the methods.  
 
 To identify particles, you will add an additional task to your analysis, the ‘PID response’ task. This task makes sure that parametrizations that we use for e.g. specific energy loss in the TPC are loaded. To add this task to your analysis, open your runAnalysis.C macro, and add the following lines. Make sure that these lines are called _before_ your own task is added to that analysis manager, your task will _depend_ on this task:
 
 ```cpp
 // load the necessary macros
-gROOT->LoadMacro("\$ALICE_ROOT/ANALYSIS/macros/AddTaskPIDResponse.C");
+gROOT->LoadMacro("$ALICE_ROOT/ANALYSIS/macros/AddTaskPIDResponse.C");
 AddTaskPIDResponse();
 ```
 
@@ -84,10 +84,9 @@ if (std::abs(fPIDResponse->NumberOfSigmasTPC(track, AliPID::kPion)) < 3 ) {
 
 
 
-## END OF TIPS - Wuhu, done reading !
+## time to get started
 
-
-If you are confident that you’ve ’isolated’ the pions, create new histograms to store the pion’s
+Use the code snippets given in the above sections to implement your particle identification routines. If you are confident that can ’isolate’ the pions, create new histograms to store the pion’s
 
 * transverse momentum
 
@@ -95,6 +94,6 @@ If you are confident that you’ve ’isolated’ the pions, create new histogra
 
 * azimuthal angle
 
-Change the centrality of collisions that you accept: select pions in 0-10% centraliy, and 50-60% centrality. Does the number of pions change in the way you would expect them to change ?# PID response
+Change the centrality of collisions that you accept: select pions in 0-10% centraliy, and 50-60% centrality. Does the number of pions change in the way you would expect them to change ?
 
 

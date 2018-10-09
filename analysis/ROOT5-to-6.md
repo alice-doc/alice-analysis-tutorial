@@ -22,7 +22,7 @@ For the command line interface and running macros *ROOT5* uses *CINT*, which is 
 interpreter for C/C++. An interpreter processes a macro line-by-line. It depends
 on the implementation of the interpreter how C++ code will be handled and how
 close the interpretation comes to the language standard. *ROOT5* allows for some
-deviatations from the language standards, which means that some coding errors
+deviations from the language standards, which means that some coding errors
 which would thrown by a compiler leading in a break of the compilation are still
 tolerated by *ROOT5*. Furthermore the standard library is not fully supported as
 its handling has to be implemented into the compiler. Macro can however also be
@@ -42,11 +42,11 @@ the C++ language standard, and exceptions will not be tolerated. Furthermore thi
 also means that all symbols and objects must be known at compile time. This has
 three side effects:
 
-- Loadig Functions with `gROOT->LoadMacro(...);`: This function loads all
+- Loading Functions with `gROOT->LoadMacro(...);`: This function loads all
   functions it finds within the macro into ROOT during run time. For an interpreter
   this is sufficient as the functions are used after they are loaded. However the
   compiler must know all symbols used in a macro at compile time.
-- Loading libaries with `gSystem->Load(...);`: Here we have the same problem:
+- Loading libraries with `gSystem->Load(...);`: Here we have the same problem:
   The symbols in the libraries must be known before they are used.
 - Compiling ALICE analysis tasks on the fly with `gROOT->LoadMacro("...+");`:
   As the analysis task compiled like this will be converted in a library it must be
@@ -92,7 +92,7 @@ most common use cases:
   gInterpreter->ProcessLine(). As with TMacro this method is focused on running
   a macro and not loading content from it. The ProcessLine method returns a
   long number representing an address in memory where to find the output objects.
-  This number has to be casted to the expected output type using a
+  This number has to be cast to the expected output type using a
   reinterpret_cast in order to access the content of the output objects. The
   following example runs the add macro for the physics selection task:
 
@@ -101,7 +101,7 @@ most common use cases:
   ```
 
   Adding function arguments is possible here as well as a simple string
-  reprentation after the macro path, surrounded with (). This method also works
+  representation after the macro path, surrounded with (). This method also works
   both under *ROOT5* and *ROOT6*.
 
 - Including macros:
@@ -143,11 +143,11 @@ most common use cases:
   is specific to *ROOT6*. The part including macros has to be protected (see
   below).
 
-## Do I need to include headerfiles in my macros?
+## Do I need to include header files in my macros?
 
 *ROOT6* comes with a technique called pre-compiled header files. Header files
 from a certain library are compiled to a binary format by `rootcling`, the
-successor of `rootcint`, and loaded into *ROOT6* by an autoloading mechanism
+successor of `rootcint`, and loaded into *ROOT6* by an auto-loading mechanism
 similar to the rootmap mechanism. Once `rootcling` is invoked with the
 argument `-rml name` a **.pcm**-file is created containing the pre-compiled
 headers. *ROOT6* will search for .pcm-files in the **LD_LIBRARY_PATH**.
@@ -186,13 +186,13 @@ Here are few examples that commonly appear in user macros and which are tolerate
   ```C++
   const char *taskname = "mytask";
   ```
-  Thanks to c++11 *ROOT6* can also detect tghe type implicitly using the keyword
+  Thanks to C++11 *ROOT6* can also detect the type implicitly using the keyword
   `auto`. In this case the code looks the following:
   ```C++
   auto taskname = "mytask";
   ```
   This will however not be transparent to *ROOT5* as *ROOT5* doesn't understand
-  c++11.
+  C++11.
 
   **Note**: On the command line *ROOT6* automatically adds the auto keyword. The 
   statement above will be possible in the interpreted mode of *ROOT6*.
@@ -219,7 +219,7 @@ Here are few examples that commonly appear in user macros and which are tolerate
   under *ROOT6* the macro is compiled, and now the order matters: Functions need
   to be declared before they are used. Adding a forward declaration is 
   sufficient in order to make the macro working. The following version of
-  the macro will und also under *ROOT6*:
+  the macro will run also under *ROOT6*:
   ```C++
   int test(int a, int b);
 
@@ -281,12 +281,12 @@ headers from external packages are not loaded. The consequence is that *ROOT6*
 does not know about these classes and will raise errors about unknown symbols.
 Once **all** the initial compiler errors are fixed (usually at the very top of
 the error log), the next time the macros are compiled *ROOT6* will also load the
-libraries and .pch files from exteral libraries and the errors disappear. Header
+libraries and .pch files from external libraries and the errors disappear. Header
 from ALICE libraries should **NOT** be included.
 
 ## How do I distinguish between *ROOT5* and *ROOT6* in my macros?
 
-Sometimes macros require differnt treatment for *ROOT5* and *ROOT6*. It is then
+Sometimes macros require different treatment for *ROOT5* and *ROOT6*. It is then
 necessary to know which ROOT version is used while the macro is running.
 
 *ROOT5* defines the preprocessor macro `__CINT__`, which can be used to check
@@ -305,7 +305,7 @@ indicate how to run *ROOT5*/*ROOT6* specific code:
 #endif
 ```
 
-## I heared TF1 has changed fundamentally. Is there something to be aware of?
+## I heard TF1 has changed fundamentally. Is there something to be aware of?
 
 TF1 is based on TFormula for the formula representation. TFormula got a heavy
 change: In *ROOT5* formulas were always interpreted on-the-fly. With *ROOT6* they
@@ -323,11 +323,11 @@ created under *ROOT5*.
 It depends whether the macro now contains something which *ROOT5* does **NOT**
 understand.
 
-- *ROOT6* is fully compatible with c++11. In *ROOT5* c++11 support is not
-  implemented, but the standard c++98 is used. c++11-specific code will not
+- *ROOT6* is fully compatible with C++11. In *ROOT5* C++11 support is not
+  implemented, but the standard C++98 is used. C++11-specific code will not
   be understood.
 - All **NEW** features provided by *ROOT6* are of course not ported to *ROOT5*.
-  This in particular affecs:
+  This in particular affects:
     - TTreeReader
     - TProcPool
     - TDataFrame
