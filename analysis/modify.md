@@ -24,15 +24,12 @@ It’s time to add some code to our task. First, create additional output histog
 
 *   The primary vertex positions along the beam line for all events
 
-*   The centrality of all events
-
 Just like the example histogram `fHistPt`, you have to add these histograms as members of your class. So: create the pointers in the header file, remember to initialize the pointers in your class constructors, and don’t forget to create instances of the histograms in the `UserCreateOutput` method.
 
-One of the trickiest things in programming can be _finding out what methods to use_ out of millions of lines of code. To help you out, here’s two lines of hints to obtain the vertex position along the beam line, and collision centrality, of our AOD events
+One of the trickiest things in programming can be _finding out what methods to use_ out of millions of lines of code. To help you out, here's a line of code to obtain the vertex position along the beam line
 
 ```cpp
 float vertexZ = fAOD->GetPrimaryVertex()->GetZ();
-float centrality = fAOD->GetCentrality()->GetCentralityPercentile("V0M");
 ```
 
 You can of course just copy-paste these lines into your task and hope that it works, but try to think of
