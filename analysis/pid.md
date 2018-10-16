@@ -29,7 +29,14 @@ To speed things up a bit, the code that you will need for this exercise is given
 To identify particles, you will add an additional task to your analysis, the ‘PID response’ task. This task makes sure that parametrizations that we use for e.g. specific energy loss in the TPC are loaded. To add this task to your analysis, open your runAnalysis.C macro, and add the following lines. Make sure that these lines are called _before_ your own task is added to that analysis manager, your task will _depend_ on this task:
 
 ```cpp
-// load the necessary macros
+// load the macro and add the task
+TMacro PIDadd(gSystem->ExpandPathName("$ALICE_ROOT/ANALYSIS/macros/AddTaskPIDResponse.C"));
+AliAnalysisTaskPIDResponse* PIDresponseTask = reinterpret_cast<AliAnalysisTaskPIDResponse*>(PIDadd.Exec());
+```
+
+the above code snippet will work under ROOT6. If you are running ROOT5, the lines to use are a bit different:
+
+```cpp
 gROOT->LoadMacro("$ALICE_ROOT/ANALYSIS/macros/AddTaskPIDResponse.C");
 AddTaskPIDResponse();
 ```
@@ -84,7 +91,7 @@ if (std::abs(fPIDResponse->NumberOfSigmasTPC(track, AliPID::kPion)) < 3 ) {
 
 
 
-## time to get started
+## Putting what you have read in practice
 
 Use the code snippets given in the above sections to implement your particle identification routines. If you are confident that can ’isolate’ the pions, create new histograms to store the pion’s
 
@@ -94,6 +101,29 @@ Use the code snippets given in the above sections to implement your particle ide
 
 * azimuthal angle
 
-Change the centrality of collisions that you accept: select pions in 0-10% centraliy, and 50-60% centrality. Does the number of pions change in the way you would expect them to change ?
+## Centrality
+
+Most heavy-ion analyses report their results in intervals of collision centrality. In order to access collision centrality within your analysis, you will have to add yet another task to the chain of tasks that is called in your run macro. This third task also needs to be executed *prior* your own task (note, that the procedure for obtaining centrality for run 1 data can be different - when in doubt, ask your supervisor). The task, called `AliMultSelectionTask`, can be added to the manager using the following instructions:
+
+```cpp
+    TMacro multSelection(gSystem->ExpandPathName("$ALICE_PHYSICS/OADB/COMMON/MULTIPLICITY/macros/AddTaskMultSelection.C"));
+    AliMultSelectionTask* multSelectionTask = reinterpret_cast<AliMultSelectionTask*>(multSelection.Exec());
+```
+
+or, using the ROOT5 equivalent
+
+```cpp
+    gROOT->LoadMacro("$ALICE_PHYSICS/OADB/COMMON/MULTIPLICITY/macros/AddTaskMultSelection.C");
+    AliMultSelectionTask* multSelectionTask = AddTaskMultSelection(kFALSE);
+```
+To access centrality within your analysis task, you need to obtain a pointer to the `AliMultSelection` object, and obtain the collision centrality through this object, e.g. by doing
+
+```cpp
+    Float_t centrality(0);
+    AliMultSelection *multSelection =static_cast<AliMultSelection*>(fAOD->FindListObject("MultSelection"));
+    if(multSelection) centrality = multSelection->GetMultiplicityPercentile("V0M");
+```
+
+Using the above code snippets, can you select pions in 0-10% centrality, and 50-60% centrality? Does the number of pions change in the way you would expect them to change ?
 
 
