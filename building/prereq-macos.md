@@ -24,7 +24,6 @@ Even minor version updates on macOS/Xcode may break our build chain, and it migh
 before fixing it. Keep an eye on this page to see if we have tested the latest versions first.
 {% endcallout %}
 
-
 ## Get or upgrade Xcode
 
 Xcode is the Apple-provided toolkit for developing software on Apple devices. Xcode is required as
@@ -63,6 +62,23 @@ git
 without any further option. You will be prompted in case there is a license to accept. In case the
 license has been accepted already, you'll just see the list of options for the `git` command.
 
+**If you upgrade your macOS to Mojave** you might encounter a fatal error when running your ROOT task
+missing standard C++ headers such as 
+
+```
+osx_x86-64/ROOT/v6-10-08-1/etc/cling/lib/clang/3.9.0/include/stdlib.h:8:15: fatal error: 'stdlib.h' file not found 
+#include_next <stdlib.h>
+...
+```
+
+this is due to relocation of system headers from `/usr/include`. As a temporary workaround, 
+an extra package is provided by macOS developers which add the headers to the desired path above
+(see [Xcode Release Notes](https://developer.apple.com/documentation/xcode_release_notes/xcode_10_release_notes)
+for details. To install this package, run 
+
+```
+open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+```
 
 ## Get or upgrade Homebrew
 
