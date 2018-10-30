@@ -1,4 +1,4 @@
-# Introduction - a few words on C++ classes
+# Introduction - AliAnalysisTaskSE
 
 All the code that you will find in ROOT, AliRoot and AliPhysics is written in the form of C++ *classes*. A class is **put definiiton here** . By contention, each class in AliPhysics, AliRoot, and ROOT, is stored in an independent file, which has the same name as the class it defines (so later on, we will see that your analysis class, stored in a file 'AliAnalysisTaskMyTask', is called 'AliAnalysisTaskMyTask'). If you have never heard of classes (or C++), it might be a good idea to go through the C++ manual, which you can find here
 .... here the link to the c++ manual .... and covers everything there is to know about C++, from the basics to more advanced topics. 
@@ -62,3 +62,35 @@ Our Triangle class can be written as
 ```
  
 Again, `width` and `height` are defined in the base class `Polygon`, but also the Triangle class gets its own `GetArea` method. So now we have seen how **inheritance** makes our classes (and our life) simpler: by defining common functionality in a base class, we avoid *repetition* of code, which could easily lead to mistakes. 
+# AliAnalysisTaskSE
+
+Now that you are an expert at C++ classes, you might wonder why classes are relevant to writing an analysis task. In the AliPhysics analysis framework, all analysis tasks are derived from the same base class, called `AliAnalysisTaskSE`. 
+
+{% callout "AliAnalysisTaskSE" %}
+All the analysis tasks in AliPhysics are derived from the base class `AliAnalysisTaskSE`, where SE stands for 'single event'. This class in turn, is derived from the class `AliAnalysisTask` (if you are interested, you can go through the code and follow the full chain of inheritance). 
+{% endcallout %}
+
+Since all analysis tasks derive from `AliAnalysisTaskSE`, all analyses share the following common, base methods:
+
+```cpp
+        AliAnalysisTaskSE::AliAnalysisTaskSE();
+        AliAnalysisTaskSE::AliAnalysisTaskSE(const char*);
+        AliAnalysisTaskSE::~AliAnalysisTaskSE();
+        AliAnalysisTaskSE::UserCreateOutputObjects();
+        AliAnalysisTaskSE::UserExec(Option_t*);
+        AliAnalysisTaskSE::Terminate(Option_t*);
+```
+
+These are methods that you will always need to implement. In the following section, we will explain all these methods in detail.
+
+## AliAnalysisTaskSE::UserCreateOutputObjects()
+
+In this function, the user (i.e. the analyzer) can define the output objects of the analysis. These are e.g. histograms in which you store your physics results. These output objects can be attached to the output file(s) of the analysis. 
+
+## AliAnalysisTaskSE::UserExec()
+
+This function is called *for each, single event* over which your analysis task runs. This function is your 'event loop'. If the function `AliAnalysisTaskSE::SelectCollisionCandidates(UInt_t trigger_mask)` is called, it will only be executed for events which pass the trigger selection that you have specified. 
+
+## AliAnalysisTaskSE::Terminate()
+
+The `Terminate` function is called at the very end of the analysis, when all events in your input data have been analyzed. Often, you leave the `Terminate` function empty: usually it is more practical to write a small macro that performs post-processing on your analysis output files, rather than deferring this functionality to the `Terminate` function.   

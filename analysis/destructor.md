@@ -1,64 +1,50 @@
-### For our class
+# Destructors
 
-Out class dynamically allocates memory (use of the **new**)
+We are at the end of the manual for writing a task, but we forgot to implement one important aspect of our analysis task: the destructor, copy constructor and assignment operator. Out class dynamically allocates memory (use of the **new**), for example when we create our histograms
+```cpp
 
         // create our histo and add it to the list
         fHistPt = new TH1F("fHistPt", "fHistPt", 100, 0, 100);
-        
+```        
 
-This has 3 implications:
+This has two implications:
 
--   After usage, **we** are resonsible for freeing the allocated memory
+-   After usage, **we** are responsible for freeing the allocated memory
     (else it’s **lost**!)
 
--   A bit more advanced: you have to think about the copy constructor
-    and assignment operator (maybe you recognize this warning):
+-   A bit more advanced: you might have to think about the copy constructor
+    and assignment operator 
+                   
 
-         warning: 'class AliAnalysisTaskMyTask' has pointer 
-         data members but does not override 'AliAnalysisTaskMyTask(const
-         AliAnalysisTaskMyTask&)' or 'operator=(const AliAnalysisTaskMyTask&)' 
-         [-Weffc++]"
-                    
+## Implementing the destructor
 
-[Implementing the destructor]{} We didn’t implement a destructor for our
-class
+Memory allocated with **new** cannot be used again, unless it is realased by **delete**. Never deleting memory is called a **memory leak**. Leaks are **bad**: they waste resources and can crash your system, and for that reason, we should implement a destructor
 
--   Memory allocatd with **new** cannot be used again, unless it is
-    realased by **delete**
+Suppose we have a **constructor** that looks like this
 
--   Never deleting memory is called a **memory leak**
-
--   Leaks are **bad**: they waste resources and can crash your system
-
-For that reason, we should implement a destructor
-
-[Implementing the destructor]{}
-
--   Suppose we have a **constructor** that looks like this
-
-    ``` {.numberLines .c language="C" numbers="left"}
+```cpp
     MyClass::MyClass()
     {
       n = new int;
       p = new float;
       x = new float[5];
     }
-    ```
+```
 
--   The **destructor** should be
+The **destructor** should be
 
-    ``` {.numberLines .c language="C" numbers="left"}
+```cpp
     MyClass::~MyClass()
     {
       delete n;
       delete p;
       delete[] x;
     }
-    ```
+```
 
-[Implementing the destructor]{} Our life is not so easy
+Our life is not so easy however: 
 
--   We didn’t allocate memory in the class constructor but in
+-   We did not allocate memory in the class constructor but in
     `UserCreateOutputObjects`
 
 -   We **might** want to free that memory, but what if
@@ -68,7 +54,7 @@ For that reason, we should implement a destructor
 
 -   To avoid this, initialize our pointers to NULL in the member
     initialization list
-
+```cpp
          ...
         AliAnalysisTaskMyTask::AliAnalysisTaskMyTask() : AliAnalysisTaskSE(), 
             fAOD(0), fOutputList(0), fHistPt(0)
@@ -76,18 +62,16 @@ For that reason, we should implement a destructor
             // ROOT IO constructor, don't allocate memory here!
         }
          ...
-
-[Implementing the destructor]{}
-
+```
 -   With our pointers initialized to NULL, we can go ahead and write our
     destructor
 
-    ``` {.numberLines .c language="C" numbers="left"}
+```cpp
     AliAnalysisMyTask::~AliAnalysisMyTask()
     {
       if(fOutputList) delete fOutputList;
     }
-    ```
+```
 
 -   A little trick we applied is
 
@@ -99,110 +83,54 @@ For that reason, we should implement a destructor
 -   Note that fAOD is not deleted - this pointer points to memory that
     was **not** allocated by our task
 
+{% callout "new - delete" %}
 Rule of thumb: all calls to **new** should be accompanied by a call to
 **delete** somewhere in your code
+{% endcallout %}
 
-c++ 11 has introduced ’smart pointers’\
-![image](ptr.png){height=".5\textwidth"}\
-very powerful and convenient, explained tomorrow
-
-time to try for yourself\
-.\
-.\
-https://github.com/rbertens/ALICE\_analysis\_tutorial\
-.\
-..\
-try step 6 - the others are ’bonus’
-
-So now there’s nothing between you and ....\
-![image](np.png){width="\textwidth"}\
-
-Absolute Backup
-
-[Destructors and PROOF]{}
-
--   Like I said, I unfortunately don’t know anything about PROOF
-
--   But here’s an implementation of the destructor, courtesy of Dario
-
-    ``` {.numberLines .c language="C" numbers="left"}
+## Destructors and PROOF
+If you run on `PROOF`, your analysis class is not the owner of its output list. A little trick to avoid segmentation violations when running on PROOF is to write
+```cpp
     AliAnalysisMyTask::~AliAnalysisMyTask()
     {
       if(AliAnalysisManager::GetAnalysisManager()->GetAnalysisType()
         != AliAnalysisManager::kProofAnalysis) delete fOutputList;
     }
-    ```
+```
+This only deletes the output list if you’re not running PROOF. 
 
--   This only deletes the output list if you’re not running PROOF
+## Copy constructor and assignment operator
 
--   If you are running PROOF, then you *must not* delete the output list
+Sometimes in AliRoot code you see copy constructors and assignment operators (these two always go together). In principle, we don’t need them because our analysis class is never copied (apart from the streamer actions, which do not rely on these constructors). However, you might occasionally see compiler warnings such as
 
--   Of course, you could always just leave the destructor empty
-    (recommended)
+         warning: 'class AliAnalysisTaskMyTask' has pointer 
+         data members but does not override 'AliAnalysisTaskMyTask(const
+         AliAnalysisTaskMyTask&)' or 'operator=(const AliAnalysisTaskMyTask&)' 
+         [-Weffc++]"
 
--   If you have more questions about this... ask Dario
-
-[Copy constructor and assignment operator]{}
-
--   Sometimes in AliRoot code you see copy constructors and assignment
-    operators (these two always go together)
-
--   We don’t need them because our analysis class is never copied (apart
-    from the streamer actions, which do not rely on these constructors)
-
--   In a nutshell:
-
-        MyObject A;      // initialization by default constructor
-        MyObject B(A);   // initialization by copy constructor
-        MyObject C = A;  // Also initialization by copy constructor
-        B = C;           // assignment by copy assignment operator
-
-    The copy constructor and assignment operator are **automatically
-    generated**, but if your class has **pointer members**, they need to
-    be customized (this is **not** a ROOT feature, just c++!)
-
-[Shallow and deep copies]{} ‘In making a deep copy, fields are
-dereferenced: rather than references to objects being copied, new copy
-objects are created for any referenced objects, and references to these
-placed in the target object.’
-
+Generally, these can be squashed by defining prototypes 
+```cpp
     private:
       // not implemented
       AliAnalysisTaskMyTask(const AliAnalysisTaskMyTask&); 
       AliAnalysisTaskMyTask& operator=(const AliAnalysisTaskMyTask&);
+```
+Defining these functions as `private` implicates that we do not have provide an implementation. 
 
-Generally, this suffices for end-user tasks, as these operators are
-never called
+So what does this mean, what are copy constructors and assignment operators, why do I need them, and how can I get them? If you are interested in this, keep reading. 
 
--   But be aware when writing classes which **do** require copying
+In a nutshell:
 
--   Examples are in the backup
+```cpp
+        MyObject A;      // initialization by default constructor
+        MyObject B(A);   // initialization by copy constructor
+        MyObject C = A;  // Also initialization by copy constructor
+        B = C;           // assignment by copy assignment operator
+```
+The copy constructor and assignment operator are **automatically generated**, but if your class has **pointer members**, they need to be customized (this is **not** a ROOT feature, just c++!). 
 
-[Copy constructor and assignment operator]{}
-
--   If we wanted to implement our own, we would add the following in the
-    class header file:
-
-    ``` {.numberLines .c language="C" numbers="left"}
-    ...
-    class AliAnalysisMyTask : public AliAnalysisTaskSE
-    ...
-     private:
-      AliAnalysisMyTask(const AliAnalysisMyTask&);
-      AliAnalysisMyTask& operator=(const AliAnalysisMyTask&);
-    ...
-    ```
-
--   If we have them as private, we don’t have to write an implementation
-    even if we leave these lines in the header file
-
--   If we have them as public, then we must write an implementation
-
-[Copy constructor and assignment operator]{}
-
--   Here’s what the copy constructor looks like
-
-    ``` {.numberLines .c language="C" numbers="left"}
+If we wanted to implement our own copy constructor for our class, here is what it would look like
+```cpp
     AliAnalysisMyTask::AliAnalysisMyTask
       (const AliAnalysisMyTask& other) : AliAnalysisTaskSE(other),
       fOutputList(NULL), fHistPt(NULL)
@@ -210,7 +138,7 @@ never called
       if(other.fOutputList) fOutputList = (TList*)other.fOutputList->Clone();
       if(other.fHistPt) fHistPt = new TH1F(*other.fHistPt);
     }
-    ```
+```
 
 -   Operating on NULL pointers is not allowed and the code will crash if
     you attempt to do that
@@ -218,20 +146,16 @@ never called
 -   Operating on uninitialized pointers is *undefined* and much more
     dangerous
 
--   The TProfile and most ROOT histogram classes have public copy
+-   The TH1F and most ROOT histogram classes have public copy
     constructors, so we can use them
 
 -   The TList copy constructor is private, so we need to make a Clone of
     it instead
 
-[Copy constructor and assignment operator]{}
 
--   The assignment operator is very similar to the copy constructor
+The assignment operator is very similar to the copy constructor, but it has the additional requirements for checking for self-assignment and returning a value. In our case, it could look like
 
--   But it has the additional requirements for checking for
-    self-assignment and returning a value
-
-    ``` {.numberLines .c language="C" numbers="left"}
+```cpp
     AliAnalysisMyTask& AliAnalysisMyTask::operator=
       (const AliAnalysisMyTask& other)
     {
@@ -243,4 +167,4 @@ never called
       if(other.fHistPt) fHistPt = new TProfile(*other.fHistPt);
       return *this;
     }
-    ```
+```
