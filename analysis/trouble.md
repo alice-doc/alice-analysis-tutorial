@@ -68,7 +68,7 @@ Below, we see the `UserCreateOutputObjects` and a snippet of the `UserExec()` me
        ...
        fHistPt->Fill(track->Pt());
 ```
-{% solution " Drum roll" %}
+{% solution " Click to show answer" %}
 We forgot to initialize the histogram that we try to fill: the pointer `fHistPt` has value NULL
 {% endchallenge %}
 

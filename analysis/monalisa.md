@@ -2,7 +2,6 @@
  
 ALICE uses MonALISA (Monitoring Agents using a Large Integrated Services Architecture) for monitoring and control of its Gird operations. The AliMonitor webpage, that we have seen in previous sections, provides us with access to the MonALISA services. In this section, we will cover some of these services. 
 
-![image](c2.png)
 
 {% callout "VO registration" %}
 For full access to all MonALISA serivces, make sure that you have a valid  certificate and ALICE VO registration!
@@ -11,9 +10,11 @@ For full access to all MonALISA serivces, make sure that you have a valid  certi
 ## Run numbers
 In the previous section, we have seen that data that are stored are identified by their run number. If you want to look up which run numbers correspond to a given data taking period, go to ALIMONITOR and click on the tab 'Run Condition Table' (RCT). 
 
-![image](b2.png)
+![image](c2.png)
 
 A large table is shown - you can select a data taking period from the drop down menu at the top left corner of the table. As soon as you select a data taking period, the corresponding list of run numbers is displayed in the table. 
+
+![image](b2.png)
 
 To ensure that detector systems that you need to use in your analysis were functioning properly, you can check quality flags for all detector subsystems in the columns on the right-hand side of the table. The number '1' means that data taking was successful; to only display run numbers for which data quality is guaranteed for a given sub detector, type a '1' in the field of the first row of the table that corresponds to said detector (see the circle on the top right of the above picture). 
 

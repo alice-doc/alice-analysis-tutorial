@@ -114,7 +114,7 @@ In your steering macro, you call
     SomeClass->SetAbsEta(3);
 ```
 You now launch your analysis to run on the Grid. What is the value of `fAbsEta` when the analysis starts to run at a Grid node?
-{% solution "Drum roll" %}
+{% solution "Click to show answer" %}
 After copying (e.g. to grid) the value of `fAbsEta` = 0. The member is *not persistent* (//!), so after copying, the value of `fAbsEta` will be equal to its default value as specified in the I/O constructor of your class.
 {% endchallenge %}
 
@@ -135,7 +135,7 @@ Again, we call
     SomeClass->SetAbsEta(3);
 ```          
 And launch our analysis task on the Grid. What is the value of `fAbsEta` when your task starts to run on a Grid node? 
-{% solution "Drum roll" %}
+{% solution "Click to show answer" %}
 After copying (e.g. to grid) `fAbsEta` = 3. The member is declared as *persistent*, so the value it has is retained. 
 {% endchallenge %}
 

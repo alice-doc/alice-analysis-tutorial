@@ -115,7 +115,7 @@ Physicists like to do a lot of counting, so analyses are usually based on fillin
 {% challenge " Virtual functions " %}
 In the code snippet above, we see the `virtual` keyword. Do you know what this means ? 
 
-{% solution " Drum roll " %}
+{% solution " Click to show answer " %}
 Consider the following simple program which is an example of runtime polymorphism.
 The main thing to note about the program is, derived class function is called using a base class pointer. The idea is, virtual functions are called according to the type of object pointed or referred, not according to the type of pointer or reference. In other words, virtual functions are resolved late, at runtime (which makes them powerful, but costly):
 ```cpp
