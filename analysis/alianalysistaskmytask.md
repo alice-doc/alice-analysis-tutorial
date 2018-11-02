@@ -9,6 +9,10 @@ Your own analysis task will be derived from the base class `AliAnalysisTaskSE`. 
 -   An **AddTask.C** macro which creates an **instance** of your class
     and **configures** it.
 
+{% callout "In many cases, you don't have to reinvent the wheel!" %}
+Your analysis task will be the backbone of the calculations needed to extract the results, and many classes and their members are available for your use. Example are AliAODEvent, AliAODVertex, AliAODTrack, TParticle, and many many more. These classes are typically stored in the AliRoot directory and are very rarely modified.
+{% endcallout %}
+
 ## The class header
 Let’s start by looking at our header (the .h file), where we define the prototypes of all the methods that we want to implement in our class
 
@@ -90,7 +94,7 @@ public:
    // class destructor
    virtual                 ~AliAnalysisTaskMyTask();
 ```
-The first line means that we define a class `AliAnalysisTaskMyTask`, which is derived from `AliAnalysisTaskSE`. The two functions `AliAnalysisTaskMyTask()` and `AliAnalysisTaskMyTask(const char \*name)` are *class constructors*. A class constructor is a special function in a class that is called when a new object of the class is created. We always need to define *two* class constructors for our analysis task, why this is, will be explained later. The third function is the class *destructor*. A destructor is also a special function which is called when created object is deleted. We will later see, that class that has pointer data members should include, in addition to a destructor, a copy constructor and an assignment operator - but for now we can just forget about those. 
+The first line means that we define a class `AliAnalysisTaskMyTask`, which is derived from `AliAnalysisTaskSE`. The two functions `AliAnalysisTaskMyTask()` and `AliAnalysisTaskMyTask(const char \*name)` are *class constructors*. A class constructor is a special function in a class that is called when a new object of the class is created. We always need to define *two* class constructors for our analysis task, why this is, will be explained later. The third function is the class *destructor*. A destructor is also a special function which is called when the created object is deleted. We will later see, that a class that has pointer data members should include, in addition to a destructor, a copy constructor and an assignment operator - but for now we can just forget about those. 
 
 ## AliAnalysisTaskSE inherited functions
 
@@ -148,7 +152,7 @@ void globalRaiseSalary(Employee *emp[], int n)
                                // according to the type of pointer                                  
 } 
 ```
-Outputs
+Outputs  **???**
 ```cpp
 In Derived
 ```
@@ -301,7 +305,7 @@ Once we have access to our input event, we can e.g. loop over all the tracks tha
     }
 ```
 
-Take a look at the code and make sure that you understand the logic of all the lines. In principle, this is all you need in an analysis task to runa small analysis. 
+Take a look at the code and make sure that you understand the logic of all the lines. In principle, this is all you need in an analysis task to run a small analysis. 
 
 ## Almost there: the AddTask macro
 
