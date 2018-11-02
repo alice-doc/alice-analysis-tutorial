@@ -7,7 +7,13 @@ Now that we have seen how a task is built up, we will take a look at how you can
 
 *  Run on GRID using the **LEGO** train system
 
-In this section, we will take a look at option 1: how to run on data that you have stored locally, on your own computer. To do this, we need to
+In this section, we will take a look at option 1: how to run on data that you have stored locally, on your own computer. 
+
+{% callout "Please note" %}
+For practical purposes it is (nearly) impossible to process a whole dataset locally on your laptop, but launching a local test provides you with an environment to test your analysis task!
+{% endcallout %}
+
+To run a local analysis, we need to
 
 * Compile our code, and
 * Launch our analysis
