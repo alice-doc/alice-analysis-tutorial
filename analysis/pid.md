@@ -53,7 +53,7 @@ After making changes to the header, you can add the actual identification routin
 
 *   Retrieve the AliPIDResponse object from the analysis manager;
 
-*   make our poiter ‘fPIDResponse’ point to the AliPIDResponse object;
+*   make our pointer ‘fPIDResponse’ point to the AliPIDResponse object;
 
 *   include the header for the AliPIDResponse class, so that the compiler knows how it is defined
 
