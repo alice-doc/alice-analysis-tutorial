@@ -103,7 +103,19 @@ most common use cases:
   Adding function arguments is possible here as well as a simple string
   representation after the macro path, surrounded with (). This method also works
   both under *ROOT5* and *ROOT6*.
+  
+  An example of adding function arguments using a TString literal (this method) is shown here. Suppose you
+  have a dummy AddTask file that takes a boolean and and a string as arguments. The way
+  to call this function would then be
+  
+  ```C++ 
+    TString arguments = R"((kTRUE, "test.root"))";
+    AliAnalysisTaskDummy *task = reinterpret_cast<AliAnalysisTaskDummy*>(gInterpreter->ProcessLine(".x AddTaskDummy.C" +  arguments));
+  ```
 
+  Note the syntax! The outer R"( and )" are part of the TString literal while the innner ( and ) 
+  are there for the function call of AddTaskDummmy.
+  
 - Including macros:
 
   As *ROOT6* compiles the macro it is possible to include macros and treat them
@@ -142,7 +154,31 @@ most common use cases:
   kTRUE to AddTaskPhysicsSelection) this method is very convenient. This method
   is specific to *ROOT6*. The part including macros has to be protected (see
   below).
-
+  
+  To include a macro that is not part of AliROOT or AliPhysics is a bit trickier but 
+  definitely possible. Such could be the case for a locally modified AddTask macro.
+  In this case you need to compile the macro first in an interactive session
+  
+  ```C++
+    aliroot
+    .L AddTaskDummy.C
+    exit
+  ```
+  This will generate a library file for ROOT to load. Now, in your run macro, you can add
+  the following to the preamble:
+  
+  ```C++
+    R__LOAD_LIBRARY(AliAnalysisTaskDummy_cxx.so)
+    #include "AddTaskDummy.C"
+  ```
+  
+  This will allow you to call the function directly in the body of your run macro, 
+  the same way you would as in ROOT5.
+  
+  ```C++
+    AliAnalysisTaskDummy *task = AddTaskDummy(kTRUE, "test.root");
+  ```
+  
 ## Do I need to include header files in my macros?
 
 *ROOT6* comes with a technique called pre-compiled header files. Header files
