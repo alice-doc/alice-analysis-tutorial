@@ -257,7 +257,8 @@ contains those packages, or less packages, then you are fine and you may continu
 
 > If you think a package is shown but should not be in the list because you are sure you have
 > installed it, it might just be that its version it's incompatible (this frequently happens with
-> `CMake`) or you are missing the "development" package for that component.
+> `CMake`) or you are missing the "development" package for that component. In this case, AliDoctor gives
+> an advice for the command you should enter to install the missing packages.
 
 
 ### Build and rebuild
