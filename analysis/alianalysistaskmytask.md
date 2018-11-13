@@ -1,6 +1,6 @@
 # Your analysis task
 
-Your own analysis task will be derived from the base class `AliAnalysisTaskSE`. We will use a *fixed format* to write our task, which means that we need to create three files:
+Your own analysis task will be derived from the base class `AliAnalysisTaskSE`. We will use a *fixed format* to write our tasks, which means that we need to create three files:
 
 -   The **header** file (.h) which contains function *prototypes* and in which your class members are defined
 
@@ -34,8 +34,9 @@ public:
    virtual void            UserExec(Option_t\* option);
    // called at end of analysis
    virtual void            Terminate(Option_t\* option);
-ClassDef(AliAnalysisTaskMyTask, 1);
-};
+  /// \cond CLASSDEF
+  ClassDef(AliAnalysisTaskMyTask, 1);
+  /// \endcond};
 
 #endif
 ```
@@ -174,20 +175,23 @@ Since these members are part of our class definition, we have to add them to our
     .
     .
      private:
-       AliAODEvent*  fAOD;           //! input event
-       TList*        fOutputList;    //! output list
-       TH1F*         fHistPt;        //! dummy histogram
+       AliAODEvent*  fAOD;           //!<! input event
+       TList*        fOutputList;    //!<! output list
+       TH1F*         fHistPt;        //!<! dummy histogram
 ```
 
-In the code snippet above, you might see something interesting: when we write comments that describe what our class members are doing, we prepend an explanation mark ! to the double slashes that start our comment: `//!`. Contrary to what you might think, this exclamation mark is seen by ROOT (even though it's written as a comment). We will get later to the logic of this exclamation mark, but for now a rule of thumb suffices: pointers to objects that are initialized at **run-time** (in the `User*` methods) should be marked with a `//!`. 
+In the code snippet above, you might see something interesting: when we write comments that describe what our class members are doing, we prepend an explanation the expression `!<!` to the double slashes that start our comment: `//!<!`. Contrary to what you might think, this expression mark is seen by ROOT (even though it's written as a comment) and it is essential for the correct documentation generation. We will get later to the logic of this locution, but for now a rule of thumb suffices: pointers to objects that are initialized at **run-time** (in the `User*` methods) should be marked with a `//!<!`.
 
 ## The ClassDef definition
 At the very end of our header file, we add the following line
 ```cpp
+/// \cond CLASSDEF
 ClassDef(AliAnalysisTaskMyTask, 1);
+/// \endcond
 };
 ```
-There is a lot going on behind this one single line: ClassDef is a C preprocessor macro that must be used if your class derives from TObject. ClassDef contains member declarations, i.e. it inserts a few new members into your class; the ClassDef macro family (read on and you will see that there are more) is defined in the file Rtypes.h, should you be interested. 
+There is a lot going on behind this one single line: `ClassDef` is a C preprocessor macro that must be used if your class derives from `TObject`. `ClassDef` contains member declarations, i.e. it inserts a few new members into your class; the `ClassDef` macro family (read on and you will see that there are more) is defined in the file `Rtypes.h`, should you be interested.
+The two comments sorrunding the `ClassDef` statement are required to properly produce the documentation.
 
 How all this works exactly is not very relevant at this point. We will later see that you will need to increase the version number whenever you change the definition of your class, or ROOT will not be able to handle objects written before and after this change in one process. The version number 0 (zero) disables I/O for the class completely, so we start counting at 1. 
 
@@ -196,18 +200,18 @@ How all this works exactly is not very relevant at this point. We will later see
 We are for now done with our class header, it's time to move to the implementation of the class: the `AliAnalysisTaskMyTask.cxx` file, in which we will actually *implement* our methods. Let's start by defining our class constructors. As stated before, ROOT requires **two** class constructors (we’ll get later to why this is necessary), one of which is the I/O constructor, which is not allowed to allocate any memory. So we start our implementation with
 ```cpp
         AliAnalysisTaskMyTask::AliAnalysisTaskMyTask() : AliAnalysisTaskSE(), 
-            fAOD(0), fOutputList(0), fHistPt(0)
+            fAOD{0}, fOutputList{0}, fHistPt{0}
         {
             // ROOT IO constructor, don't allocate memory here!
         }
         AliAnalysisTaskMyTask::AliAnalysisTaskMyTask(const char* name) : AliAnalysisTaskSE(name),
-            fAOD(0), fOutputList(0), fHistPt(0)
+            fAOD{0}, fOutputList{0}, fHistPt{0}
         {
             DefineInput(0, TChain::Class()); 
             DefineOutput(1, TList::Class()); 
         }
 ```
-As you see, n the constructor, we **initialize** members to their **default** values. **Always** initialize members to default values (and pointers to NULL). If you fail to do so, values contained by the members will be random, which can lead to unexpected behavior of your code. 
+As you see, n the constructor, we **initialize** members to their **default** values. **Always** initialize members to default values (and pointers to `nullptr`). If you fail to do so, values contained by the members will be random, which can lead to unexpected behavior of your code. 
 
 In the second constructor of this task, we define what the *input* and *output* is that analysis class handles. In our case, the input is of type `TChain`, and as we will later see, the output is a `TList`. 
 
@@ -237,7 +241,7 @@ f(10) will return 42. The output of f(-10) is *undefined*, since variable a was 
 ## UserCreateOutputObjects()
 In our `UserCreateOutputObjects`, we will define the output objects of our task. These are commonly histograms, profiles, etc. In our specific example, we will add one histogram, and define a list to which we will attach the histogram. 
 {% callout "Output lists" %}
-Adding all your output histograms to a list makes your life easier: the list will allow you to manipulate many output objects simultaneously. By calling `TList::SetOwner(kTRUE)`, we transfer ownership of all memory allocated by the list items to the `TList` itself, this means that in our destructor, we can simply call `delete list` to delete all our list items, rather than calling `delete` for all items individually. 
+Adding all your output histograms to a list makes your life easier: the list will allow you to manipulate many output objects simultaneously. By calling `TList::SetOwner(true)`, we transfer ownership of all memory allocated by the list items to the `TList` itself, this means that in our destructor, we can simply call `delete list` to delete all our list items, rather than calling `delete` for all items individually. 
 {% endcallout %}
 
 The implementation of the `UserCreateOutputObjects` method looks like this 
@@ -251,7 +255,7 @@ The implementation of the `UserCreateOutputObjects` method looks like this
     {
         // create a new TList that OWNS its objects
         fOutputList = new TList();
-        fOutputList->SetOwner(kTRUE);
+        fOutputList->SetOwner(true);
         
         // create our histo and add it to the list
         fHistPt = new TH1F("fHistPt", "fHistPt", 100, 0, 100);
@@ -273,24 +277,24 @@ The `UserExec` is the heart of our analysis: it is called for each event in our 
     AliAnalysisTaskMyTask::UserExec(Option_t*)
     {
       // get an event from the analysis manager
-      fAOD = dynamic_cast<AliAODEvent *>InputEvent();
+      fAOD = dynamic_cast<AliAODEvent*>(InputEvent());
 
       // check if there actually is an event
-      if(!fAOD) return;
+      if(!fAOD)
+        ::Fatal("AliAnalysisTaskMyTask::UserExec", "No AOD event found, check the event handler.");
 ```
 
 Once we have access to our input event, we can e.g. loop over all the tracks that it contains, and store the pt of the tracks in our histogram:
 
 ```cpp
-           ...
-        if(!fAOD) return;
-        // let's loop over the trakcs and fill our histogram
+        ...
+        // let's loop over the tracks and fill our histogram
     
         // first we get the number of tracks
-        Int_t iTracks(fAOD->GetNumberOfTracks());
+        int iTracks{fAOD->GetNumberOfTracks()};
     
         // and then loop over them
-        for(Int_t i(0); i < iTracks; i++) {
+        for(int i{0}; i < iTracks; i++) {
             AliAODTrack* track = static_cast<AliAODTrack*>(fAOD->GetTrack(i));
             if(!track) continue;
             
