@@ -25,7 +25,7 @@ it.** It does not mean it does not work, however, and [we will be happy to revie
 contribution](../README.md) if you have more information!
 
 
-## Run in an Ubuntu Docker container
+## Corresponding Docker containers
 
 Not an Ubuntu user, but you want to build on Ubuntu still? You can use one of the official [Ubuntu
 Docker images](https://hub.docker.com/_/ubuntu/). The images corresponding to the supported Ubuntu
@@ -35,8 +35,7 @@ versions are:
 * `ubuntu:17.10`
 * `ubuntu:18.04`
 
-Just follow [our instructions](README.md#running-in-docker) by using the `ubuntu:XX.XX` image name
-corresponding to your choice.
+You can try following those instructions in one of the containers above.
 
 
 ## Install or upgrade required packages

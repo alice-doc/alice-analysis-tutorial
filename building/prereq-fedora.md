@@ -18,12 +18,11 @@ use Docker with a supported OS (such as CentOS 7) as your development environmen
 {% endcallout %}
 
 
-## Run in a Fedora 27 Docker container
+## Corresponding Fedora container
 
 You can use Docker to run a Fedora environment even if your OS is different. Check out the official
 [Fedora images](https://hub.docker.com/_/fedora/). The image corresponding to a base Fedora 27
-installation is `fedora:27`. Just follow [our instructions](README.md#running-in-docker) by using
-`fedora:27` as container name.
+installation is `fedora:27`.
 
 
 ## Install or upgrade required packages
