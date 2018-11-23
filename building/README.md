@@ -15,7 +15,6 @@ you save plenty of time. This method works on any modern Linux distribution and 
 * [🐳 Install ALICE software with alidock](alidock.md)
 
 We also have instructions for installing your software without using our controlled environment. We
-do not recommend you to follow this path: alidock is better supported. However, you may have good
-reasons for performing a normal installation (alidock comes with a performance penalty on macOS).
+do not recommend you to follow this path, though, since alidock has better support.
 
 * [🐌 Install ALICE software manually](custom.md)

@@ -29,9 +29,35 @@ You need to log out and log back in for the group settings to be effective.
 
 ### 🍏 macOS post-installation
 
+On macOS, Docker runs in a lightweight virtual machine. There is some fine tuning to do once for all
+for making it work at a reasonable speed.
+
+First off, you should make sure you are running at least macOS High Sierra, and your main disk's
+filesystem is APFS (not supported by earlier versions of macOS). Check your filesystem by opening
+the **Disk Utility** application. Your main disk (whose name is **Macintosh HD** by default) should
+report APFS as filesystem:
+
+<center><img src="images/disk-utility-apfs.png" width="500"></center>
+
+_⚠️ Your disk should have been converted automatically to APFS during your High Sierra installation if
+possible. If this did not happen, you will still be able to use Docker, but it will be slower._
+
+Start the Docker app now. A Docker icon will appear in the menu bar. Click on it, then click
+**Preferences...** on the menu, and select the **Disk** tab. Look at the **Disk image location**:
+the filename must end with `.raw` and not with `.qcow2`, as in the picture below:
+
+<center><img src="images/docker-macos-disk.png" width="500"></center>
+
+If the extension is `.qcow2`, and your disk is APFS, you need to reset your Docker installation to
+factory settings by clicking the **Reset** bomb, and then the **Reset to factory defaults** button:
+
+<center><img src="images/docker-macos-reset.png" width="500"></center>
+
+_⚠️ You will lose your Docker volumes, if any, so beware. If you have a recent operating system with
+a solid state drive, and your installation of Docker is fresh, you probably don't need this step._
+
 Docker runs in a lightweight virtual machine with not so many resources allocated to it by default.
-Start the Docker app: a Docker icon will appear in the menu bar. Select it, click **Preferences...**
-and you will see the following window:
+Click now the **Advanced** tab and you will see the following window:
 
 <center><img src="images/docker-macos-vm.png" width="500"></center>
 
@@ -39,6 +65,14 @@ Set the number of CPUs to the maximum allowed by your Mac, and at least 4 GiB of
 want to add even more memory in case you have troubles running some software.
 
 You need to press the **Apply & Restart** button to apply the settings.
+
+Graphical applications in the container will require [XQuartz](https://www.xquartz.org/) installed
+on your Mac. Go to their [website](https://www.xquartz.org/), download the most recent package, and
+install it.
+
+_⚠️ Logging out and back in again is required after the installation._
+
+Test if it works by opening a terminal and typing `xcalc`. An ugly calculator should pop up.
 
 
 ### Verify your installation
@@ -49,7 +83,7 @@ To verify your Docker installation, open a terminal and type:
 docker run hello-world
 ```
 
-At the end of the (short) process you should see a message like:
+After some download messages (it doesn't take long) you should see something like:
 
 ```
 Hello from Docker!
