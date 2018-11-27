@@ -1,6 +1,8 @@
 # Your analysis task
 
-Your own analysis task will be derived from the base class `AliAnalysisTaskSE`. We will use a *fixed format* to write our tasks, which means that we need to create three files:
+In the previous section we discussed some of the basics of writing an analysis task from a 'theoretical viewpoint'. In this section, we will go through a working analysis class line-by-line. 
+
+As you now know, your own analysis task will be derived from the base class `AliAnalysisTaskSE`. We will use a *fixed format* to write our tasks, which means that we need to create three files:
 
 -   The **header** file (.h) which contains function *prototypes* and in which your class members are defined
 
@@ -9,11 +11,7 @@ Your own analysis task will be derived from the base class `AliAnalysisTaskSE`. 
 -   An **AddTask.C** macro which creates an **instance** of your class
     and **configures** it.
 
-{% callout "In many cases, you don't have to reinvent the wheel!" %}
-Your analysis task will be the backbone of the calculations needed to extract the results, and many classes and their members are available for your use. Example are AliAODEvent, AliAODVertex, AliAODTrack, TParticle, and many many more. These classes are typically stored in the AliRoot directory and are very rarely modified.
-{% endcallout %}
-
-## The class header
+## The class header (.h)
 Let’s start by looking at our header (the .h file), where we define the prototypes of all the methods that we want to implement in our class
 
 ```cpp
@@ -49,7 +47,7 @@ Let's to through the snippet of code line-by-line. First of all, we see
 .
 #endif
 ```
-These three lines for an *include guard* (sometimes called macro guard, or header guard). This construct is used to avoid the problem of *double inclusion*: should the header of your class be included more than once, the include guard will protect your code from double definitions which result in invalid code. 
+These three lines form an **include guard** (sometimes called macro guard, or header guard). This construct is used to avoid the problem of **double inclusion**: should the header of your class be included more than once, the include guard will protect your code from double definitions which result in invalid code. 
 
 {% challenge " Include guards" %}
 What is the risk of *not* using include guards?
@@ -95,7 +93,13 @@ public:
    // class destructor
    virtual                 ~AliAnalysisTaskMyTask();
 ```
-The first line means that we define a class `AliAnalysisTaskMyTask`, which is derived from `AliAnalysisTaskSE`. The two functions `AliAnalysisTaskMyTask()` and `AliAnalysisTaskMyTask(const char \*name)` are *class constructors*. A class constructor is a special function in a class that is called when a new object of the class is created. We always need to define *two* class constructors for our analysis task, why this is, will be explained later. The third function is the class *destructor*. A destructor is also a special function which is called when the created object is deleted. We will later see, that a class that has pointer data members should include, in addition to a destructor, a copy constructor and an assignment operator - but for now we can just forget about those. 
+The first line means that we define a class `AliAnalysisTaskMyTask`, which is derived from `AliAnalysisTaskSE`. 
+
+### Class constructors and destructor
+
+The two functions `AliAnalysisTaskMyTask()` and `AliAnalysisTaskMyTask(const char *name)` are **class constructors**. A class constructor is a special function in a class that is called when a new object of the class is created. 
+
+We always need to define *two* class constructors for our analysis task, why this is, will be explained later. The third function is the class *destructor*. A destructor is also a special function which is called when the created object is deleted. We will later see, that a class that has pointer data members should include, in addition to a destructor, a copy constructor and an assignment operator - but for now we can just forget about those. 
 
 ## AliAnalysisTaskSE inherited functions
 
@@ -109,9 +113,6 @@ After the constructors and destructors, we define the prototypes of the function
    virtual void            Terminate(Option_t* option);
 ```
 These functions will be the heart of our analysis. In the `UserCreateOutputObjects`, we will define whatever output we want to write to our `root` files. The `UserExec` function will be called for all events in the data sample that we are looking at. Finally, `Terminate` is called at the very end of the analysis. 
-
-## Adding a histogram, a TList, and more
-Physicists like to do a lot of counting, so analyses are usually based on filling *histograms*. In our example class, we want to have access to one histogram, in which we will store a distribution of transverse momentum.  
 
 {% challenge " Virtual functions " %}
 In the code snippet above, we see the `virtual` keyword. Do you know what this means ? 
@@ -161,6 +162,7 @@ So, virtual functions allow us to create a list of base class pointers and call 
 
 {% endchallenge %}
 
+
 ## Histograms, lists, and more
 Now that we have defined the methods of our analysis class, it is time to add some members. What we are going to add, are three pointer data members
 
@@ -190,12 +192,12 @@ ClassDef(AliAnalysisTaskMyTask, 1);
 /// \endcond
 };
 ```
-There is a lot going on behind this one single line: `ClassDef` is a C preprocessor macro that must be used if your class derives from `TObject`. `ClassDef` contains member declarations, i.e. it inserts a few new members into your class; the `ClassDef` macro family (read on and you will see that there are more) is defined in the file `Rtypes.h`, should you be interested.
+There is a lot going on behind this one single line: `ClassDef` is a C preprocessor macro that must be used if your class derives from `TObject`. `ClassDef` contains member declarations, i.e. it inserts a few new members into your class; the `ClassDef` macro family is defined in the file `Rtypes.h`, should you be interested.
 The two comments sorrunding the `ClassDef` statement are required to properly produce the documentation.
 
 How all this works exactly is not very relevant at this point. We will later see that you will need to increase the version number whenever you change the definition of your class, or ROOT will not be able to handle objects written before and after this change in one process. The version number 0 (zero) disables I/O for the class completely, so we start counting at 1. 
 
-# The implementation of your analysis task
+# The implementation of your analysis task (.cxx)
 
 We are for now done with our class header, it's time to move to the implementation of the class: the `AliAnalysisTaskMyTask.cxx` file, in which we will actually *implement* our methods. Let's start by defining our class constructors. As stated before, ROOT requires **two** class constructors (we’ll get later to why this is necessary), one of which is the I/O constructor, which is not allowed to allocate any memory. So we start our implementation with
 ```cpp
@@ -212,8 +214,6 @@ We are for now done with our class header, it's time to move to the implementati
         }
 ```
 As you see, n the constructor, we **initialize** members to their **default** values. **Always** initialize members to default values (and pointers to `nullptr`). If you fail to do so, values contained by the members will be random, which can lead to unexpected behavior of your code. 
-
-In the second constructor of this task, we define what the *input* and *output* is that analysis class handles. In our case, the input is of type `TChain`, and as we will later see, the output is a `TList`. 
 
 {% challenge " Undefined behavior " %}
 You have written a small function
@@ -238,8 +238,11 @@ f(-10)
 f(10) will return 42. The output of f(-10) is *undefined*, since variable a was not initialized. 
 {% endchallenge %}
 
+In the second constructor of this task, we define what the *input* and *output* is that analysis class handles. In our case, the input is of type `TChain`, and as we will later see, the output is a `TList`. 
+
+
 ## UserCreateOutputObjects()
-In our `UserCreateOutputObjects`, we will define the output objects of our task. These are commonly histograms, profiles, etc. In our specific example, we will add one histogram, and define a list to which we will attach the histogram. 
+In our `UserCreateOutputObjects` function, we will define the output objects of our task. These are commonly histograms, profiles, etc. In our specific example, we will add one histogram, and define a list to which we will attach the histogram. 
 {% callout "Output lists" %}
 Adding all your output histograms to a list makes your life easier: the list will allow you to manipulate many output objects simultaneously. By calling `TList::SetOwner(true)`, we transfer ownership of all memory allocated by the list items to the `TList` itself, this means that in our destructor, we can simply call `delete list` to delete all our list items, rather than calling `delete` for all items individually. 
 {% endcallout %}

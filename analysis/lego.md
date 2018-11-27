@@ -3,7 +3,7 @@
 By now, your code is running well on Grid, you're submitting and merging jobs like a seasoned professional. However, do you really want to 
 
 * Stay up all night to resubmit jobs? 
-* Risk losing your code because it's not committed to AliPhysics? 
+* Risk losing your code because it's not part of AliPhysics and your hard drive crashes? 
 
 To avoid these headaches, users are encouraged to run their jobs in a more automated and efficient way by using the LEGO framework. 
 
@@ -25,7 +25,9 @@ The LEGO framework is a tool to run and manage analysis trains on AliEn. It buil
 *    study the resource consumption of the train for each wagon (CPU usage, virtual and resident memory) 
 
 {% callout "Note" %}
-The fact that the trains run on the Grid, requires that all code is contained in an AliEn package. Therefore, the train uses the regularly deployed AliPhysics "AN" tags, so you will have to make sure that your analysis code is available in AliPhysics. Within AliPhysics, your analysis code will be part of a shared library that contains many other analyses from your working group or analysis group. If you have never added a class to AliPhysics, ask your PWG or PAG coordinators for help.
+The fact that the trains run on the Grid, requires that all code is contained in an AliEn package. Therefore, the train uses the regularly deployed AliPhysics "AN" tags, so you will have to make sure that your analysis code is available in AliPhysics. 
+
+Within AliPhysics, your analysis code will be part of a shared library that contains many other analyses from your working group or analysis group. If you have never added a class to AliPhysics, ask your PWG or PAG coordinators for help.
 {% endcallout %}
 
 ## How to access the LEGO train system

@@ -57,7 +57,8 @@ ROOT generates a streamer for us, but we have the task of customizing it. Custom
 
 So if we would write the object defined by the code snippets above to disk, the value of `fMinEta` and `fMaxEta` will be saved (//), but the values of  `fAOD` and `fHistPt` will be ignored (//!).
 
-{% callout " There is more " %}
+### Advanced use cases
+
 We can customize the streamer in more sophisticated ways
 
 -   The Pointer to Objects (//-$>$) calls streamer of the object
@@ -77,6 +78,13 @@ We can customize the streamer in more sophisticated ways
                       Float_t       *fClosestDistance;   //[fNvertex]
 ```           
 All this is explained in **detail** in 11.3 of the ROOT documentation https://root.cern.ch/root/htmldoc/guides/users-guide/ROOTUsersGuide.html
+
+{% callout "Streamers and doxygen" %}
+In the second subsection of this tutorial, you saw that the streamer directives looked a bit different. This is, because we sometimes use member comments in header files for yet **another** purpose: creating automatic code documentation with Doxygen. Doxygen is a way of documenting your code inside the source code itself, by factoring special comments that will be ignored by the C++ compiler. 
+
+Doxygen uses both //!< and ///< to introduce a data member comment. Until ROOT 5, this allowed using //!< for indicating a transient data member. ROOT 6 abruptly broke this compatibility and //!< does not mean transient anymore: we are now forced to use //!<! for introducing a Doxygen comment interpreted as transient in both ROOT 5 and ROOT 6.
+
+For more information, see [https://dberzano.github.io/alice/doxygen/](https://dberzano.github.io/alice/doxygen/)
 {% endcallout %}
 
 # Pitfalls 

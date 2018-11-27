@@ -65,7 +65,7 @@ but it looks **bad**
 -   Comments improve readability and maintainability
 
 -   Comments should be useful, though, and comments that are overly
-    obvious can be avoided\
+    obvious can be avoided
 
 ```cpp
     // no comment: bad

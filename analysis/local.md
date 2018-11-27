@@ -1,7 +1,7 @@
 # Running locally
 Now that we have seen how a task is built up, we will take a look at how you can run your analysis task. Basically, there are three options for running a task:
 
-*  Run on **local** data
+*  Run on **local** data (i.e. some input files that are stored on your laptop)
 
 *  Run on **GRID** (either in test or full mode) yourself
 
@@ -18,7 +18,15 @@ To run a local analysis, we need to
 * Compile our code, and
 * Launch our analysis
 
-To do so, we usually use another small macro, commonly referred to as a *steering macro*, which *steers* the analysis. This macro will create an analysis manager and data handler, will define which data files to run on, compile your code, and then instruct the analysis manager to run your analysis. An example of a steering macro to run the task `AliAnalysisTaskMyTask` on data that's stored on your laptop, looks as follows:
+### Steering macros
+
+To do so, we usually use another small macro, commonly referred to as a *steering macro*, which *steers* the analysis. This macro will 
+- create an analysis manager and data handler, 
+- will define which data files to run on, 
+- compile your code, and then 
+- instruct the analysis manager to run your analysis. 
+
+An example of a steering macro to run the task `AliAnalysisTaskMyTask` on data that's stored on your laptop, looks as follows:
 
 
 ```cpp

@@ -8,6 +8,8 @@ In this section, we’ll try to identify particles, by using the amount of energ
 
 We’ll do this by looking at the TPC signal, and seeing how well this signal corresponds to the expected signal for a certain particle species. Look at the figure for clarification, you see lines (the expected signal a particle leaves in the TPC, ‘the hypothesis’) and in colors, the actual signals that were deposited.
 
+![pid](pid.png)
+
 Start by storing the TPC signals for all charged particles in your events, in a two-dimensional histogram (such as shown in the figure). First follow the ’technical steps’ from Sec. 8, and then try to make such a plot.
 
 Hint, you can get this information by doing

@@ -1,9 +1,12 @@
 # Introduction - C++ classes
 
-All the code that you will find in ROOT, AliRoot and AliPhysics is written in the form of C++ *classes*. A class is a data type which is defined by the user, and allows for creating data members and functions specific for that class.**check this** . By contention, each class in AliPhysics, AliRoot, and ROOT, is stored in an independent file, which has the same name as the class it defines (so later on, we will see that your analysis class, stored in a file 'AliAnalysisTaskMyTask', is called 'AliAnalysisTaskMyTask'). If you have never heard of classes (or C++), it might be a good idea to go through the C++ manual, which you can find here
-**.... here the link to the c++ manual ....** and covers everything there is to know about C++, from the basics to more advanced topics.
+All the code that you will find in ROOT, AliRoot and AliPhysics is written in the form of C++ *classes*. A class is a data type which is defined by the user, and allows for creating data members and functions specific for that class. By convention, each class in AliPhysics, AliRoot, and ROOT, is stored in its own **header** (.h) and **implementation** file, which have the same name as the class it defines (so later on, we will see that your analysis class, stored in a file 'AliAnalysisTaskMyTask', is called 'AliAnalysisTaskMyTask'). 
 
-Classes are extended structures which contain both *variables* and *functions*, which are called *methods* as members. Often, variables must be *accessed* through these methods. This might sound a bit abstract, but it becomes much more clear when you look at in a small code example:
+{% callout "C++ .... ?" %}
+If you have never heard of classes (or C++), it might be a good idea to go through a C++ manual, an excellent one, with plenty of hands-on examples, can be found here: [http://www.cplusplus.com/doc/tutorial/](http://www.cplusplus.com/doc/tutorial/). 
+{% endcallout %}
+
+Classes are extended structures which contain both **variables** and **functions** (which are called **methods**) as **members**. Often, variables must be **accessed** through these methods. This might sound a bit abstract, but it becomes much more clear when you look at in a small code example:
 
 ```cpp
     class Rectangle
@@ -15,14 +18,16 @@ Classes are extended structures which contain both *variables* and *functions*, 
       int GetArea() {return height * width;}
     }
 ```
-Here we defined a class, called *Rectangle*, which has variables *width* and *height*, and a *method* called `GetArea` which gives us access to the members. 
+Here we defined a class, called **Rectangle**, which has variables **width** and **height**, and a **method** called `GetArea` which gives us access to the members. 
 
-Classes are nice and important, because they can be *derived* from one-another (a feature called *inheritance*. Look at the figure below 
+### Inheritcance
+
+Classes are nice and important, because they can be **derived** from one-another (a feature called **inheritance**. Look at the figure below 
 
 
 ![image](inheritance.png)
 
-In this figure, CRectangle is *derived* from *base* class CPolyogon, and *inherits* its members. If we want to define a second class, CTriangle, which is also a polygon and will therefore have features in common with CRectangle, we can also derive it from base class CPolyogon. This  avoids having to **repeat** common code for multiple which share features. 
+In this figure, `Rectangle` is **derived** from **base** class `Polyogon`, and *inherits* its members. If we want to define a second class, `Triangle`, which is also a polygon and will therefore have features in common with `Rectangle`, we can also derive it from base class `Polyogon`. This  avoids having to **repeat** common code for multiple which share features. 
 
 {% callout "Beware" %}
 Classes are very powerful, but inheritance can sometimes make it tricky to understand how code is structured!
@@ -37,7 +42,7 @@ class Polygon
   int width, height;
 }
 ```
-This example lives in 2-dimensional space, so our polygon is fully defined by its width and its height. The two polygons that we want to define, are a rectangle and a triangle. The Rectangle can be defined as follows
+This example lives in 2-dimensional space, so our polygon is fully defined by its width and its height. The two polygons that we want to define, are a rectangle and a triangle. The rectangle can be defined as follows
 
 ```cpp
     class Rectangle : public Polygon
@@ -50,7 +55,7 @@ This example lives in 2-dimensional space, so our polygon is fully defined by it
 
 Note that we **do not** have to define the members `height` and `width` here, as they are already defined in our base class! The only *method* that is specific to the rectangle, is the `GetArea` method. 
 
-Our Triangle class can be written as
+Our triangle class can be written as
 
 ```cpp
     class Triangle : public Polygon
@@ -65,7 +70,7 @@ Again, `width` and `height` are defined in the base class `Polygon`, but also th
 
 {% challenge "Example from AliPhysics - The AliMCEvent class" %}
 
-Take a look at the `AliMCEvent` class below
+Inheritance is used widely in C++ code, and therefore also in AliROOT and AliPhysics. Take a look at the `AliMCEvent` class below
 ```cpp
     class AliMCEvent : public AliVEvent {
       public:
@@ -74,20 +79,16 @@ Take a look at the `AliMCEvent` class below
       ....
     }
 ```
-Here `AliMCEvent` is derived from its base class `AliVEvent`, in the same way as the `Triangle` is derived from the base class `Polygon`. To exploit this feature, for example `AliESDEvent` and `AliAODEvent` are also derived from `AliVEvent`, saving many code repetitions.
+Here `AliMCEvent` is derived from its base class `AliVEvent`, in the same way as the `Triangle` is derived from the base class `Polygon`. Classes such as `AliESDEvent` and `AliAODEvent` are also derived from `AliVEvent`, preventing a lot of *boilerplate* (i.e. needlessly repetitive) code.
 {% endchallenge %}
 
-{% callout "Please note" %}
-The C++ classes are split into a *header* file (extention .h), containing the definitions and functions, and an implementation file (extension .cxx). The main reason is to speed up the compilation time - there is no way to contain the code into a single file(imagine rebuilding AliPhysics completely for adding a missing semi column..), and it separates the interface from the implementation.
+{% callout "Class headers ... ? " %}
+C++ classes are, in code bases, usually split into a *header* file (extention .h) and an implementation file (extension .cxx). A header file is generally used to define all of the functions, variables and constants contained in a class. There are multiple good reasons for splitting code into an implementation and a header - can you think of a few? 
 {% endcallout %}
 
 # AliAnalysisTaskSE
 
-Now that you are an expert at C++ classes, you might wonder why classes are relevant to writing an analysis task. In the AliPhysics analysis framework, all analysis tasks are derived from the same base class, called `AliAnalysisTaskSE`. 
-
-{% callout "AliAnalysisTaskSE" %}
-All the analysis tasks in AliPhysics are derived from the base class `AliAnalysisTaskSE`, where SE stands for 'single event'. This class in turn, is derived from the class `AliAnalysisTask` (if you are interested, you can go through the code and follow the full chain of inheritance). 
-{% endcallout %}
+Now that you are an expert at C++ classes, you might wonder why classes are relevant to writing an analysis task. The reason is the following: in the AliPhysics analysis framework, **all analysis tasks are derived from the same base class, called `AliAnalysisTaskSE`**, where SE stands for 'single event'. This class in turn, is derived from the class `AliAnalysisTask` (if you are interested, you can go through the code and follow the full chain of inheritance). 
 
 Since all analysis tasks derive from `AliAnalysisTaskSE`, all analyses share the following common, base methods:
 
@@ -100,7 +101,21 @@ Since all analysis tasks derive from `AliAnalysisTaskSE`, all analyses share the
         AliAnalysisTaskSE::Terminate(Option_t*);
 ```
 
-These are methods that you will always need to implement. In the following section, we will explain all these methods in detail.
+These are methods that you will always need to implement. 
+
+In the following section, we will go through these methods in detail.
+
+## Class constructors and destructors
+
+The functions
+
+```cpp
+        AliAnalysisTaskSE::AliAnalysisTaskSE();                 // class constructor
+        AliAnalysisTaskSE::AliAnalysisTaskSE(const char*);      // class constructor
+        AliAnalysisTaskSE::~AliAnalysisTaskSE();                // class destructor
+```
+
+are your class **construcgtors** and **destructor**. These are standard C++ features, that are called when you create or delete an instance of your class. We will later on see, why you need to define *two* different class constructors. 
 
 ## AliAnalysisTaskSE::UserCreateOutputObjects()
 
@@ -113,13 +128,13 @@ When you are designing your class for your analysis, it (obviously) pays off to 
 ## AliAnalysisTaskSE::UserExec()
 
 This function is called *for each, single event* over which your analysis task runs. This function is your 'event loop'. Examples of useful things to do in the UserExec() function:
-* Check if event is having the properties that you want to have in your analysis, if not `return;`
+* Check if an event has properties that you want to have in your analysis, if not `return;`
 * Access the physics objects specific to your analysis (e.g. the charged particles in this event, or find the highest momentum particle)
 * Fill the histograms or other output objects
 
 
 {% callout "Please note" %}
-If the function `AliAnalysisTaskSE::SelectCollisionCandidates(UInt_t trigger_mask)` is called, it will only be executed for events which pass the trigger selection that you have specified. 
+If the function `AliAnalysisTaskSE::SelectCollisionCandidates(UInt_t trigger_mask)` is called before you launch your analysis, `UserExec()` will only be executed for events which pass the trigger selection that you have specified. 
 {% endcallout %}
 
 ## AliAnalysisTaskSE::Terminate()
