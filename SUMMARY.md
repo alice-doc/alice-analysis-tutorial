@@ -24,4 +24,12 @@
   * [Bonus content](analysis/bonus.md)
   * [Some hints](analysis/hints.md)
   * [Transition from ROOT5 to ROOT6](analysis/ROOT5-to-6.md)
-
+* [Build ALICE software](building/README.md)
+  * [🐳 Using alidock](building/alidock.md)
+  * [🐌 Custom installation](building/custom.md)
+    * [Prerequisites for CentOS 7](building/prereq-centos7.md)
+    * [Prerequisites for macOS](building/prereq-macos.md)
+    * [Prerequisites for Ubuntu](building/prereq-ubuntu.md)
+    * [Prerequisites for Fedora](building/prereq-fedora.md)
+  * [🛠 Build the packages](building/build.md)
+  * [📦 Use the precompiled binaries](building/precomp.md)
