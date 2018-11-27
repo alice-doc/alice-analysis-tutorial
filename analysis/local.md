@@ -69,7 +69,7 @@ aliroot runAnalysis.C
 
 This will trigger executing of the steering macro, which will in turn launch the analysis. If all goes well, this minimal task should produce one histogram, which looks like
 
-![image](browser.png)
+![image](figures/browser.png)
 
 ## Try for yourself? 
 

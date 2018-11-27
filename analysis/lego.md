@@ -34,7 +34,7 @@ Within AliPhysics, your analysis code will be part of a shared library that cont
 
 The LEGO train system can be accessed via (https://alimonitor.cern.ch/trains/)
 
-![image](d2.png)
+![image](figures/d2.png)
 
 By clicking on the top right 'help' tab, you will be guided to a webpage where it is explained in detail how you can join a LEGO train and perform a highly efficient analysis. 
 

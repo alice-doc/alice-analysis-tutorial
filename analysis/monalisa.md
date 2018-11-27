@@ -10,11 +10,11 @@ For full access to all MonALISA serivces, make sure that you have a valid  certi
 ## Run numbers
 In the previous section, we have seen that data that are stored are identified by their run number. If you want to look up which run numbers correspond to a given data taking period, go to ALIMONITOR and click on the tab 'Run Condition Table' (RCT). 
 
-![image](c2.png)
+![image](figures/c2.png)
 
 A large table is shown - you can select a data taking period from the drop down menu at the top left corner of the table. As soon as you select a data taking period, the corresponding list of run numbers is displayed in the table. 
 
-![image](b2.png)
+![image](figures/b2.png)
 
 To ensure that detector systems that you need to use in your analysis were functioning properly, you can check quality flags for all detector subsystems in the columns on the right-hand side of the table. The number '1' means that data taking was successful; to only display run numbers for which data quality is guaranteed for a given sub detector, type a '1' in the field of the first row of the table that corresponds to said detector (see the circle on the top right of the above picture). 
 
@@ -41,13 +41,13 @@ When multiple **passes** are available for a data set, this means that the data 
 The AliMonitor webpage can be used to check which software packages are accessible on the Grid nodes. In the menu on the left-hand side of the page, click on 'Job information', then on 'User views', then on 'Grid packages'. A large table will load, if the CVMFS status is listed as 'available', a certain software package is available on Grid. If it's listed as n/a, it is (probably) archived, and *cannot* be selected for analysis. 
 
 Keep in mind: when specifying a version of the software stack to be used, to *only*  call ‘SetAliPhysicsVersion(“..”)’ in your steering macro. The right dependencies are automatically resolved. 
-![image](dada.png)
+![image](figures/dada.png)
 Daily tags (AN) of AliPhysics are a snapshot of all code that is in the central repository at 16h Geneva time. The daily tacks are usually available on Grid in about two hours after the tagging. 
 
 ## Run quota - how many jobs can you run?
 We have to share computing resources, so the number of jobs that you can run is not infinite. To check your quotas, which limit both how many jobs you can run, how much CPU hours they can consume, and how much diskspace your output files take up, click at the menu on the left-hand side of the AliMonotir page on 'Job information', then on 'User views' and then on 'Quotas. 
 
-![image](dadada.png)
+![image](figures/dadada.png)
 
 You will see the five job activity quantifiers that apply for all users
 - the number of files that you have currently stored

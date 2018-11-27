@@ -4,7 +4,7 @@ The Worldwide LHC Computing Grid, usually simply referred to as Grid, is a globa
 
 On the picture below, from [http://alimonitor.cern.ch/map.jsp](http://alimonitor.cern.ch/map.jsp), you can see the distribution of computing centers that are working for the ALICE collaboration. We will the Grid to run your analysis on a larger scale than your laptop can provide. 
 
-![image](grid.png)
+![image](figures/grid.png)
 
 To run your analysis on the Grid, all we need to do is expand our steering macro a little bit. In this section, we will explain how. 
 
