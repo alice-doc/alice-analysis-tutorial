@@ -9,16 +9,12 @@ platform](https://indico.cern.ch/event/642232/#3-wp3-common-tools-and-softwar). 
 essentially a CentOS 7 with some more CERN-specific packages, so these instructions apply to the
 pristine CentOS 7 as well.
 
-
-## Run in a CentOS 7 Docker container
-
-You can use Docker to run a CentOS 7 environment even if your OS is different. Check the official
-[CentOS images](https://hub.docker.com/_/centos/). The image corresponding to a base CentOS 7
-installation is `centos:7`. Just follow [our instructions](README.md#running-in-docker) by using
-`centos:7` as container name.
+As the primary supported platform, our [alidock](alidock.md) installation method is based on it. If
+you use alidock, you don't need to follow those prerequisites. The environment we provide is ready
+to use.
 
 
-## Install or upgrade required packages
+## Install or upgrade the required packages
 
 Install packages (one long line, just copy and paste it), as **root user**:
 
