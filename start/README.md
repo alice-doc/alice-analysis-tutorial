@@ -57,9 +57,9 @@ there are two mailing lists:
 * General questions on analysis, build problems, etc.: <alice-project-analysis-task-force@cern.ch>
 * Problems with jobs submission, certificates, trains: <alice-analysis-operations@cern.ch>
 
-The addresses above are [CERN egroups](http://egroups.cern.ch). You need a CERN account in order to
-use them. You can subscribe to the list by kindly asking Latchezar Betev via
-email: <Latchezar.Betev@cern.ch>
+You can self-subscribe to them if you are an [ALICE member](#are-you-a-registered-alice-member). Go
+to the [CERN egroups](http://egroups.cern.ch) page, search for the group name, click on it and then
+you will be presented with an option to subscribe. You can unsubscribe using the same procedure.
 
 Support for Run 3 does not rely on mailing lists. We are using [Discourse](https://discourse.org):
 

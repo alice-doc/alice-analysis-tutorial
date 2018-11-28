@@ -130,7 +130,7 @@ export PATH="$PYTHONUSERBASE/bin:$PATH"
 Open a new shell (or terminal window/tab) and install it with:
 
 ```bash
-pip3 install --upgrade alidock
+pip3 install --upgrade --user alidock
 ```
 
 {% callout "Upgrade alidock when it says so!" %}
