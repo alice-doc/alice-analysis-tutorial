@@ -115,7 +115,7 @@ The functions
         AliAnalysisTaskSE::~AliAnalysisTaskSE();                // class destructor
 ```
 
-are your class **construcgtors** and **destructor**. These are standard C++ features, that are called when you create or delete an instance of your class. We will later on see, why you need to define *two* different class constructors. 
+are your class **constructors** and **destructor**. These are standard C++ features, that are called when you create or delete an instance of your class. We will later on see, why you need to define *two* different class constructors. 
 
 ## AliAnalysisTaskSE::UserCreateOutputObjects()
 
