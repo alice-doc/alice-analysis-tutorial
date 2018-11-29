@@ -32,22 +32,19 @@ An example of a steering macro to run the task `AliAnalysisTaskMyTask` on data t
 ```cpp
     void runAnalysis() {
         // header location
-        gROOT->ProcessLine(".include $ROOTSYS/include");
-        gROOT->ProcessLine(".include $ALICE_ROOT/include");
+        gInterpreter->ProcessLine(".include $ROOTSYS/include");
+        gInterpreter->ProcessLine(".include $ALICE_ROOT/include");
 
         // create the analysis manager
-        AliAnalysisManager *mgr = new AliAnalysisManager("AnalysisMyTask");
+        AliAnalysisManager *mgr = new AliAnalysisManager("AnailysisMyTask");
         AliAODInputHandler *aodH = new AliAODInputHandler();
         mgr->SetInputEventHandler(aodH);
 
         // compile the class (locally) with debug symbols
-        gROOT->LoadMacro("AliAnalysisTaskMyTask.cxx++g");
+        gInterpreter->LoadMacro("AliAnalysisTaskMyTask.cxx++g");
 
-        // load the addtask macro
-        gROOT->LoadMacro("AddMyTask.C");
-
-        // create an instance of your analysis task
-        AliAnalysisTaskMyTask *task = AddMyTask();
+        // load the addtask macro and create the task
+        AliAnalysisTaskMyTask *task = reinterpret_cast<AliAnalysisTaskMyTask*>(gInterpreter->ExecuteMacro("AddMyTask.C"));
 
         // if you want to run locally, we need to define some input
         TChain* chain = new TChain("aodTree");
