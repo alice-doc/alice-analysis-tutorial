@@ -116,7 +116,7 @@ Time to export the **private key**:
 
 ```bash
 openssl pkcs12 -nocerts -in ~/Downloads/myCertificate.p12 -out ~/alidock/.globus/userkey.pem
-chmod 0400 userkey.pem
+chmod 0400 ~/alidock/.globus/userkey.pem
 ```
 
 When it says:
