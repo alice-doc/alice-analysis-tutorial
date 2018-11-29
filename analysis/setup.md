@@ -3,9 +3,11 @@
 The starting point for these exercises is the analysis template called _AliAnalysisTaskMyTask_. To obtain the source code of this analysis, choose one of the following two options: 
 
 1. Clone the Git repository. Programmers use version control systems when developing their code. You will also use version control (in our case through Git) when you are contributing to the ALICE code base. So why not start with Git right now? You can _clone_ the example task repository, which you can find it on [here](https://github.com/rbertens/ALICE_analysis_tutorial), by typing, in a terminal
+
+```bash
+git clone https://github.com/rbertens/ALICE_analysis_tutorial.git
 ```
-git clone git@github.com:rbertens/ALICE_analysis_tutorial.git
-```
+
 This will _clone_ the remote repository, so that you have access to a carbon copy of the full repository on your local computer. 
 
 2. A more robust approach to working with Git, is creating a remote _fork_ of a certain repository, and working on this fork. For this, you will need to open a GitHub [https://github.com/] account (which you will need in any case if you want to contribute to ALICE software). If you have a GitHub account, you create a _fork_ of the example task repository by surfing [here](https://github.com/rbertens/ALICE_analysis_tutorial) and clicking on _fork_ at the top right of the screen. If you have forked the repository, you can proceed to cloning it on your laptop in the way as explained in option 1; this then allows you to develop the code, and push commits to your own fork
