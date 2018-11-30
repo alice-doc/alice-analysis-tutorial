@@ -10,7 +10,8 @@ your computer as it makes support and your life easier.
 Install Docker
 --------------
 
-Docker has some [extensive documentation](https://docs.docker.com/install/) on how to install it.
+Docker has some [extensive documentation](https://docs.docker.com/install/) covering the
+installation.
 
 
 ### 🐧 Linux post-installation
@@ -75,69 +76,20 @@ _⚠️ Logging out and back in again is required after the installation._
 Test if it works by opening a terminal and typing `xcalc`. An ugly calculator should pop up.
 
 
-### Verify your installation
-
-To verify your Docker installation, open a terminal and type:
-
-```bash
-docker run hello-world
-```
-
-After some download messages (it doesn't take long) you should see something like:
-
-```
-Hello from Docker!
-This message shows that your installation appears to be working correctly.
-```
-
-This, indeed, means that your Docker installation is working! 🎉
-
-
 Get alidock
 -----------
 
-[alidock](https://pypi.org/project/alidock/) is a Python package. Install or upgrade it on your
-computer with:
+[alidock](https://pypi.org/project/alidock/) is available as a PyPI package. Get it with:
 
 ```bash
-pip3 install --upgrade alidock
+bash <(curl -fsSL https://bit.ly/alidock-installer)
 ```
 
-Install Python 3 if the above fails, or try `pip` instead of `pip3` if you don't want to install
-Python 3. Upon a successful installation, check if the `alidock` command exists:
+The installation will refuse to continue in case your Docker installation does not work. You will have
+to fix it first by following [these steps](#install-docker). At the end of the installation
+you may be advised to **open a new terminal** in order to use it.
 
-```bash
-type alidock
-```
-
-None of the above commands requires being root. In case you have troubles configuring your local
-Python installation, you have the two following possibilities.
-
-**Install alidock as root:** just do:
-
-```bash
-sudo pip3 install --upgrade alidock
-```
-
-**Install alidock with a custom `PYTHONUSERBASE`:** you need to setup your `~/.bashrc` first by adding
-the following lines (done once for all):
-
-```bash
-export PYTHONUSERBASE="$HOME/user_python"  # use the dir name you prefer
-export PATH="$PYTHONUSERBASE/bin:$PATH"
-```
-
-Open a new shell (or terminal window/tab) and install it with:
-
-```bash
-pip3 install --upgrade --user alidock
-```
-
-{% callout "Upgrade alidock when it says so!" %}
-alidock will nag you as soon as new updates are available. When it does so, please upgrade
-right away! Upgrades are instant and do not affect your work. You must rerun the same installation
-command to upgrade.
-{% endcallout %}
+alidock self-updates automatically whenever a new stable release is out! 🎉
 
 
 Use the alidock environment
