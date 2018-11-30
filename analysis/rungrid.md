@@ -133,8 +133,8 @@ You can check the progress of the jobs that are running on Grid by going to (htt
 The easiest way to merge your output is using the `MergeViaJDL` option that the plugin provides. Using this option will allow you to submit special *merging jobs*, which run on the Grid nodes and merge your output files. To enable merging via JDL, you have to configure your plugin as follows, *before* you start your analysis:
 
 ```cpp
-    alienHander->SetMergeViaJDL(kTRUE);
-    alienHander->SetMaxMergeStates(1);  // just one step
+    alienHandler->SetMergeViaJDL(kTRUE);
+    alienHandler->SetMaxMergeStages(1);  // just one step
     ....
     mgr->SetRunMode("full");
 ```
@@ -142,7 +142,7 @@ This will prepare the plugin for writing merging jobs, when your analysis is don
 {% callout "More than on merging stage?" %}
 By specifying
 ```cpp
-   alienHander->SetMaxMergeStates(1);
+   alienHandler->SetMaxMergeStages(1);
 ```
 we tell the plugin that all output files can be merged in one go. 
 
@@ -152,8 +152,8 @@ If your output files are quite large, you might want to increase the number of m
 When all your normal analysis jobs have finished, we want to launch the merging jobs to Grid. To do this, we again make a small modification to our steering macro, and change the run mode from `full` to `terminate`:
 
 ```cpp
-    alienHander->SetMergeViaJDL(kTRUE);
-    alienHander->SetMaxMergeStates(1);  // just one
+    alienHandler->SetMergeViaJDL(kTRUE);
+    alienHandler->SetMaxMergeStages(1);  // just one
     ....
     mgr->SetRunMode("terminate");
 ```
@@ -166,8 +166,8 @@ again. The merging jobs will be launched, and you can monitor their progress on 
 When all your *merging jobs* have finished running, there is one step to be taken still, which is downloading the output of the merging jobs, so that you have your analysis output available on your laptop. This is done by again making a small change to your steering macro:
 
 ```cpp
-    alienHander->SetMergeViaJDL(kFALSE);
-    alienHander->SetMaxMergeStates(1);  // just one
+    alienHandler->SetMergeViaJDL(kFALSE);
+    alienHandler->SetMaxMergeStages(1);  // just one
     mgr->SetRunMode("terminate");
 ```
 and running `runAnalysis.C` a final time. This will trigger downloading of the merged output files (the resulting files from the merging jobs) and a final 'local' merge of said files into one, single output file. When the process is **done** your high-statistics output files is ready - time to start writing a paper!
