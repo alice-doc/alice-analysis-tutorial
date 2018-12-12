@@ -18,7 +18,7 @@ use Docker with a supported OS (such as CentOS 7) as your development environmen
 {% endcallout %}
 
 
-## Fedora Docker image
+## Corresponding Fedora container
 
 You can use Docker to run a Fedora environment even if your OS is different. Check out the official
 [Fedora images](https://hub.docker.com/_/fedora/). The image corresponding to a base Fedora 27
@@ -30,7 +30,7 @@ installation is `fedora:27`.
 Install packages (one long line, just copy and paste it), as **root user**:
 
 ```bash
-dnf install -y git python mysql-devel curl curl-devel python python-devel python-pip bzip2 bzip2-devel autoconf automake texinfo gettext gettext-devel libtool freetype freetype-devel libpng libpng-devel sqlite sqlite-devel ncurses-devel mesa-libGLU-devel libX11-devel libXpm-devel libXext-devel libXft-devel libxml2 libxml2-devel motif motif-devel kernel-devel pciutils-devel kmod-devel bison flex perl-ExtUtils-Embed environment-modules which gcc-gfortran gcc-c++ swig rsync
+dnf install -y git python mysql-devel curl curl-devel python python-devel python-pip bzip2 bzip2-devel unzip autoconf automake texinfo gettext gettext-devel libtool freetype freetype-devel libpng libpng-devel sqlite sqlite-devel ncurses-devel mesa-libGLU-devel libX11-devel libXpm-devel libXext-devel libXft-devel libxml2 libxml2-devel motif motif-devel kernel-devel pciutils-devel kmod-devel bison flex perl-ExtUtils-Embed environment-modules which gcc-gfortran gcc-c++ swig rsync
 ```
 
 **Note:** at the time of writing (February 2018), our current software does not support OpenSSL 1.1,

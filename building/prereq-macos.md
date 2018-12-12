@@ -1,11 +1,11 @@
 aliBuild prerequisites for macOS
 ================================
 
-ALICE software compiles just fine on macOS using Apple-provided build tools. We exclusively support
+ALICE software compiles just fine on macOS using Apple-provided build tools. We support exclusively
 the following two versions of macOS:
 
-* Sierra (10.12)
 * High Sierra (10.13)
+* Mojave (10.14)
 
 **Any other version of macOS has to be considered not supported.** If you are in doubt about
 upgrading your operating system and you still don't see the new version here, then please refrain
@@ -13,6 +13,16 @@ from upgrading.
 
 **Please follow these instructions every time you install a new macOS version and every time you get
 a newer Xcode! This is non-optional!**
+
+{% callout "Upgrade your macOS/Xcode with care" %}
+The instructions you see on this page have been validated **on October 1, 2018** using:
+
+* macOS 10.14
+* Xcode 10.0 (10A255)
+
+Even minor version updates on macOS/Xcode may break our build chain, and it might take us days
+before fixing it. Keep an eye on this page to see if we have tested the latest versions first.
+{% endcallout %}
 
 
 ## Get or upgrade Xcode
@@ -74,6 +84,31 @@ brew doctor
 and fix any potential error highlighted by the tool. **Errors and warnings should not be
 overlooked!** Pay close attention to warnings concerning outdated Xcode/compiler versions: you must upgrade Xcode to the latest available version before proceeding any further!
 
+{% callout "Clean up your Homebrew installation" %}
+Due to a [problem with the automake 1.16 package](http://gnu-automake.7480.n7.nabble.com/automake-1-16-aclocal-is-unable-to-process-AM-PATH-PYTHON-with-variable-as-value-td22860.html),
+subsequently fixed in version 1.16.1, a Homebrew workaround has been suggested on this page.
+
+If you have applied the suggested workaround, the `brew doctor` command from above complains with
+the following message:
+
+```
+Warning: Homebrew/homebrew-core is not on the master branch
+
+Check out the master branch by running:
+  git -C "$(brew --repo homebrew/core)" checkout master
+```
+
+To clean it up, it is better if you run the following commands (and not just the one suggested by
+`brew doctor`):
+
+```bash
+cd "$(brew --repo homebrew/core)"
+git checkout master
+git fetch origin master
+git reset --hard origin/master
+```
+{% endcallout %}
+
 When you are done fixing the warnings, upgrade all the currently installed Homebrew packages:
 
 ```bash
@@ -84,62 +119,12 @@ It is now time to install a bunch of required packages. Copy and paste this to y
 (warning: long line):
 
 ```bash
-brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules
+brew install autoconf automake boost coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules xz libpng perl
 ```
 
-{% callout "Attention: automake troubles (and a temporary workaround!)" %}
-As of now (March 1, 2018) latest `brew upgrade` runs will install automake 1.16 which is known to
-be [buggy](http://gnu-automake.7480.n7.nabble.com/automake-1-16-aclocal-is-unable-to-process-AM-PATH-PYTHON-with-variable-as-value-td22860.html).
-
-First off, check if you are running automake 1.16: **if not, just entirely skip this section and
-live happily.** Run:
-
-```bash
-automake --version
-```
-
-If the first line says:
-
-```
-automake (GNU automake) 1.16
-```
-
-then **you should apply this manual fix**. If you see something different (such as 1.16.1) then you
-are fine.
-
-While we wait for an upstream fix, there is a tricky way to get back to automake 1.15 on your
-system: you need to manually `cd` to the place Homebrew stores its recipes (which is a Git
-repository) and roll back a single change.
-
-Remove all versions of automake first:
-
-```bash
-brew remove --force automake
-```
-
-Revert Homebrew's version bump manually:
-
-```bash
-cd /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
-git revert 6f2d5981e77731a9a1ca360948c42d32c0d80d01 --no-edit
-```
-
-You should see:
-
-```
-[master 9de3930a7a] Revert "automake 1.16"
- 1 file changed, 3 insertions(+), 3 deletions(-)
-```
-
-Now reinstall automake as usual:
-
-```brew
-brew install automake
-```
-
-**When the problem is fixed upstream, we will publish information on how to reset the local Homebrew
-status to upstream.**
-{% endcallout %}
+If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to
+force the reinstallation of already installed packages. You also might want to run `brew cleanup` at
+the end to free up some space.
 
 Now, open your `~/.bash_profile` (you should have a default one; create one if it does not exist,
 and bear in mind that `~` represents your home directory) and add the following content:
@@ -188,7 +173,7 @@ gfortran is /usr/local/bin/gfortran
 
 ## Disable System Integrity Protection
 
-Since El Capitan (10.11), Apple has introduced a security feature called [System Integrity
+Starting from El Capitan (10.11), Apple has introduced a security feature called [System Integrity
 Protection](https://www.macworld.com/article/2986118/security/how-to-modify-system-integrity-protection-in-el-capitan.html), or SIP.
 
 At the moment, unfortunately, ALICE software requires this feature to be turned off.
@@ -210,8 +195,8 @@ To turn SIP off:
 [aliBuild](https://pypi.python.org/pypi/alibuild/) and other Python dependencies are installed
 through it.
 
-In case you are using [Python from Anaconda](https://www.anaconda.com/) then you have `pip` already.
-Check it by typing:
+In case you are using [Python from Anaconda](https://www.anaconda.com/) or Python from Homebrew
+then you have `pip` already. Check it by typing:
 
 ```bash
 type pip
@@ -236,6 +221,18 @@ It should yield:
 pip is /usr/local/bin/pip
 ```
 
+Note that the Python version installed by means of `easy_install` might be too old. Check it with:
+
+```bash
+pip --version
+```
+
+You must have at least pip 9.0.1. If this is not the case, please run:
+
+```bash
+pip install --upgrade pip==9.0.1
+```
+
 
 ## Get or upgrade required Python packages
 
@@ -243,10 +240,10 @@ Some Python packages are required for building our software. They are mostly rel
 run:
 
 ```bash
-sudo pip install matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
+sudo pip install --upgrade --force-reinstall matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
 ```
 
-> It is important to specify the version of `ipython`.
+> It is important to specify `ipython`'s version explicitly.
 
 
 ## Exclude your work directory from Spotlight
