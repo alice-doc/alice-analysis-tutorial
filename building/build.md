@@ -308,7 +308,11 @@ alias ali='alienv enter AliPhysics/latest'
 ```
 
 You are creating an alias called `ali`, that will load the environment by just typing it at the
-prompt. Of course you can name it any way you want.
+prompt. Of course you can name it any way you want. **Note that if you want to use this alias within
+the alidock environment, you need to modify the .bashrc file from that environment which is located at
+~/alidock/.bashrc if you followed the standard installation procedure. Also, unlike in the case with the
+custom installation, there is no need to define the aliBuild working directory and execute the shell helper
+in your bashrc.**
 {% endcallout %}
 
 
