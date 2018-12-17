@@ -450,3 +450,10 @@ git reset --hard origin/master
 and then build normally using the `aliBuild` command. You might want to build using different `-z`
 options [as explained here](#build-the-same-source-multiple-times-with-different-options) in order
 to have different builds usable in parallel without duplicating your source code.
+
+### Suggested workflow
+If alidock was used to build AliPhysics, one should also be in the alidock environment to be able to 
+enter AliPhysics. The proposed workflow is therefore to run aliBuild (and subsequently alienv enter) inside alidock.
+Since /home/alidock in the alidock environment becomes ~/alidock on your laptop, you can use emacs from outside alidock
+to modify any scripts.
+
