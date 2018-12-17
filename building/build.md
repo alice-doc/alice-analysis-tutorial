@@ -12,9 +12,16 @@ Run 2 software, and O2 for Run 3.
 
 
 ## Prepare your source code
+{% callout "If you already have had AliPhysics or AliRoot installed from the custom installation" %}
+With the earlier method of the custom installation, it was necessary to include lines in your 
+.bashrc file regarding the aliBuild working directory as well as executing the shell helper. For the
+alidock installation these lines are not necessary and should be commented out to prevent interference
+with the aliBuild procedure from within the alidock.
+{% endcallout %}
 
 We assume your work area is `~/alice`. If you are working in an [alidock](alidock.md) environment,
 you might as well use the container's `~` directly (which corresponds to your laptop's `~/alidock`).
+
 
 So, first off, create the directory and move to it:
 
