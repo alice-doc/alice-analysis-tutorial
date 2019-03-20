@@ -162,6 +162,17 @@ cd ~/alice
 aliBuild build O2 --defaults o2
 ```
 
+If you want to build O2 and run the tests as well (same way as they are run on the pull request
+checkers), with `--debug` to see the full output:
+
+```
+cd ~/alice
+env ALIBUILD_O2_TESTS=1 aliBuild build O2 --defaults o2 --debug
+```
+
+_⚠️  It is recommended to run the first O2 build without the tests enabled to let it complete. You
+will not have to rerun it from scratch because of test failures like this._
+
 Using the combinations above in an [alidock environment](alidock.md) or on CentOS 7 will make
 aliBuild automatically download the precompiled binaries for almost all packages.
 
