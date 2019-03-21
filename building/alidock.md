@@ -25,8 +25,7 @@ sudo groupadd docker           # create docker group
 sudo usermod -aG docker $USER  # add me to the docker group
 ```
 
-You need to log out and log back in for the group settings to be effective. **Note that logging out here
-means to log out of your account, not just to start a new terminal.**
+You need to log out and log back in for the group settings to be effective.
 
 
 ### 🍏 macOS post-installation
