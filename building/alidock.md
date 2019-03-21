@@ -159,7 +159,7 @@ alidock will suggest you to run it whenever the container image is updated.
 You may want to run, within an alidock session:
 
 ```bash
-aliBuild cleanup --aggressive
+aliBuild clean --aggressive
 ```
 
 to clean up temporary space.
