@@ -227,7 +227,7 @@ later](#run-a-single-command-in-the-environment)):
 
 ```bash
 cd $ALIBUILD_WORK_DIR/BUILD/AliPhysics-latest/AliPhysics
-alienv setenv GCC-Toolchain/latest -c make -j <num-parallel-jobs>
+alienv setenv GCC-Toolchain/latest -c make -j <num-parallel-jobs> install
 ```
 
 Replace `<num-parallel-jobs>` with a sensible number (_e.g._ slightly more than the actual number of
