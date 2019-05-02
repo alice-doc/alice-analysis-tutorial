@@ -213,7 +213,7 @@ We are for now done with our class header, it's time to move to the implementati
             DefineOutput(1, TList::Class()); 
         }
 ```
-As you see, n the constructor, we **initialize** members to their **default** values. **Always** initialize members to default values (and pointers to `nullptr`). If you fail to do so, values contained by the members will be random, which can lead to unexpected behavior of your code. 
+As you see, in the constructor, we **initialize** members to their **default** values. **Always** initialize members to default values (and pointers to `nullptr`). If you fail to do so, values contained by the members will be random, which can lead to unexpected behavior of your code. 
 
 {% challenge " Undefined behavior " %}
 You have written a small function
@@ -238,7 +238,7 @@ f(-10)
 f(10) will return 42. The output of f(-10) is *undefined*, since variable a was not initialized. 
 {% endchallenge %}
 
-In the second constructor of this task, we define what the *input* and *output* is that analysis class handles. In our case, the input is of type `TChain`, and as we will later see, the output is a `TList`. 
+In the second constructor of this task, we define what the *input* and *output* does the analysis class handle. In our case, the input is of type `TChain`, and as we will see later, the output is a `TList`. 
 
 
 ## UserCreateOutputObjects()
@@ -272,7 +272,7 @@ Note that we create a `TList` and make it the owner of the memory of all its ele
 
 ## UserExec
 
-The `UserExec` is the heart of our analysis: it is called for each event in our input data set. First, we need to access our event, which we can do via ta call to the method `InputEvent` 
+The `UserExec` is the heart of our analysis: it is called for each event in our input data set. First, we need to access our event, which we can do via a call to the method `InputEvent` 
 ```cpp
     ...
     #include "AliAODEvent.h"
