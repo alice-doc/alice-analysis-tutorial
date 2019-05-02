@@ -38,7 +38,7 @@ public:
 
 #endif
 ```
-Let's to through the snippet of code line-by-line. First of all, we see
+Let's go through the snippet of code line-by-line. First of all, we see
 ```cpp
 #ifndef AliAnalysisTaskMyTask_H
 #define AliAnalysisTaskMyTask_H
