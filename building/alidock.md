@@ -2,9 +2,31 @@
 
 [![PyPI version](https://badge.fury.io/py/alidock.svg)](https://badge.fury.io/py/alidock)
 
-[alidock](https://github.com/dberzano/alidock) is our way to provide users with a consistent
+[alidock](https://github.com/alidock/alidock) is our way to provide users with a consistent
 environment and precompiled builds. It is our recommended way to install and use ALICE software on
 your computer as it makes support and your life easier.
+
+{% callout "Is alidock officially supported by ALICE?" %}
+[alidock](https://github.com/alidock/alidock) is a community-supported tool based on Docker. It
+ultimately launches a Docker container currently based on the [ALICE officially supported CERN
+CentOS 7](https://hub.docker.com/r/alisw/slc7-builder) environment. Its support model is similar to
+popular tools like [nittygriddy](https://github.com/alice-contrib/nittygriddy/).
+
+Support for alidock is done through [opening an issue on its GitHub
+repository](https://github.com/alidock/alidock/issues).
+
+What ALICE [officially
+recommends](https://indico.cern.ch/event/642232/#3-wp3-common-tools-and-softwar) is the use of the
+CERN CentOS 7 operating system. If for some reason you do not want to use alidock, you can still
+profit from this guide to configure Docker on your system, and then you can launch the official
+image manually:
+
+```bash
+docker run -it alisw/slc7-builder
+```
+
+This will be an ordinary CC7 environment so the [custom installation rules](custom.md) apply.
+{% endcallout %}
 
 
 Install Docker
@@ -159,7 +181,7 @@ alidock will suggest you to run it whenever the container image is updated.
 You may want to run, within an alidock session:
 
 ```bash
-aliBuild cleanup --aggressive
+aliBuild clean --aggressive
 ```
 
 to clean up temporary space.
