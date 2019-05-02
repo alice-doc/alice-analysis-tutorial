@@ -36,7 +36,7 @@ An example of a steering macro to run the task `AliAnalysisTaskMyTask` on data t
         gInterpreter->ProcessLine(".include $ALICE_ROOT/include");
 
         // create the analysis manager
-        AliAnalysisManager *mgr = new AliAnalysisManager("AnailysisMyTask");
+        AliAnalysisManager *mgr = new AliAnalysisManager("AnalysisMyTask");
         AliAODInputHandler *aodH = new AliAODInputHandler();
         mgr->SetInputEventHandler(aodH);
 
@@ -70,4 +70,4 @@ This will trigger executing of the steering macro, which will in turn launch the
 
 ## Try for yourself? 
 
-If you want to try this for yourself, you can now go through steps 1 through 5 of the 'Analysis tutorial exercises'.
+If you want to try this for yourself, you can now go from steps 1 through 5 of the 'Analysis tutorial exercises'.
