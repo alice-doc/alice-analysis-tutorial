@@ -193,7 +193,7 @@ ClassDef(AliAnalysisTaskMyTask, 1);
 };
 ```
 There is a lot going on behind this one single line: `ClassDef` is a C preprocessor macro that must be used if your class derives from `TObject`. `ClassDef` contains member declarations, i.e. it inserts a few new members into your class; the `ClassDef` macro family is defined in the file `Rtypes.h`, should you be interested.
-The two comments sorrunding the `ClassDef` statement are required to properly produce the documentation.
+The two comments surrounding the `ClassDef` statement are required to properly produce the documentation.
 
 How all this works exactly is not very relevant at this point. We will later see that you will need to increase the version number whenever you change the definition of your class, or ROOT will not be able to handle objects written before and after this change in one process. The version number 0 (zero) disables I/O for the class completely, so we start counting at 1. 
 
