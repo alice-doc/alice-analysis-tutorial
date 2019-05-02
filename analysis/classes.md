@@ -20,14 +20,14 @@ Classes are extended structures which contain both **variables** and **functions
 ```
 Here we defined a class, called **Rectangle**, which has variables **width** and **height**, and a **method** called `GetArea` which gives us access to the members. 
 
-### Inheritcance
+### Inheritance
 
 Classes are nice and important, because they can be **derived** from one-another (a feature called **inheritance**. Look at the figure below 
 
 
 ![image](figures/inheritance.png)
 
-In this figure, `Rectangle` is **derived** from **base** class `Polyogon`, and *inherits* its members. If we want to define a second class, `Triangle`, which is also a polygon and will therefore have features in common with `Rectangle`, we can also derive it from base class `Polyogon`. This  avoids having to **repeat** common code for multiple which share features. 
+In this figure, `Rectangle` is **derived** from **base** class `Polygon`, and *inherits* its members. If we want to define a second class, `Triangle`, which is also a polygon and will therefore have features in common with `Rectangle`, we can also derive it from base class `Polygon`. This  avoids having to **repeat** common code for multiple which share features. 
 
 {% callout "Beware" %}
 Classes are very powerful, but inheritance can sometimes make it tricky to understand how code is structured!

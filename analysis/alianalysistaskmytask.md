@@ -38,7 +38,7 @@ public:
 
 #endif
 ```
-Let's to through the snippet of code line-by-line. First of all, we see
+Let's go through the snippet of code line-by-line. First of all, we see
 ```cpp
 #ifndef AliAnalysisTaskMyTask_H
 #define AliAnalysisTaskMyTask_H
@@ -182,7 +182,7 @@ Since these members are part of our class definition, we have to add them to our
        TH1F*         fHistPt;        //!<! dummy histogram
 ```
 
-In the code snippet above, you might see something interesting: when we write comments that describe what our class members are doing, we prepend an explanation the expression `!<!` to the double slashes that start our comment: `//!<!`. Contrary to what you might think, this expression mark is seen by ROOT (even though it's written as a comment) and it is essential for the correct documentation generation. We will get later to the logic of this locution, but for now a rule of thumb suffices: pointers to objects that are initialized at **run-time** (in the `User*` methods) should be marked with a `//!<!`.
+In the code snippet above, you might see something interesting: when we write comments that describe what our class members are doing, we append the expression `!<!` to the double slashes `//` that start our comment giving us `//!<!`. Contrary to what you might think, this expression mark is seen by ROOT (even though it's written as a comment) and it is essential for the correct documentation generation. We will get later to the logic of this locution, but for now a rule of thumb suffices: pointers to objects that are initialized at **run-time** (in the `User*` methods) should be marked with a `//!<!`.
 
 ## The ClassDef definition
 At the very end of our header file, we add the following line
@@ -193,7 +193,7 @@ ClassDef(AliAnalysisTaskMyTask, 1);
 };
 ```
 There is a lot going on behind this one single line: `ClassDef` is a C preprocessor macro that must be used if your class derives from `TObject`. `ClassDef` contains member declarations, i.e. it inserts a few new members into your class; the `ClassDef` macro family is defined in the file `Rtypes.h`, should you be interested.
-The two comments sorrunding the `ClassDef` statement are required to properly produce the documentation.
+The two comments surrounding the `ClassDef` statement are required to properly produce the documentation.
 
 How all this works exactly is not very relevant at this point. We will later see that you will need to increase the version number whenever you change the definition of your class, or ROOT will not be able to handle objects written before and after this change in one process. The version number 0 (zero) disables I/O for the class completely, so we start counting at 1. 
 
@@ -213,7 +213,7 @@ We are for now done with our class header, it's time to move to the implementati
             DefineOutput(1, TList::Class()); 
         }
 ```
-As you see, n the constructor, we **initialize** members to their **default** values. **Always** initialize members to default values (and pointers to `nullptr`). If you fail to do so, values contained by the members will be random, which can lead to unexpected behavior of your code. 
+As you see, in the constructor, we **initialize** members to their **default** values. **Always** initialize members to default values (and pointers to `nullptr`). If you fail to do so, values contained by the members will be random, which can lead to unexpected behavior of your code. 
 
 {% challenge " Undefined behavior " %}
 You have written a small function
@@ -238,7 +238,7 @@ f(-10)
 f(10) will return 42. The output of f(-10) is *undefined*, since variable a was not initialized. 
 {% endchallenge %}
 
-In the second constructor of this task, we define what the *input* and *output* is that analysis class handles. In our case, the input is of type `TChain`, and as we will later see, the output is a `TList`. 
+In the second constructor of this task, we define what the *input* and *output* does the analysis class handle. In our case, the input is of type `TChain`, and as we will see later, the output is a `TList`. 
 
 
 ## UserCreateOutputObjects()
@@ -272,7 +272,7 @@ Note that we create a `TList` and make it the owner of the memory of all its ele
 
 ## UserExec
 
-The `UserExec` is the heart of our analysis: it is called for each event in our input data set. First, we need to access our event, which we can do via ta call to the method `InputEvent` 
+The `UserExec` is the heart of our analysis: it is called for each event in our input data set. First, we need to access our event, which we can do via a call to the method `InputEvent` 
 ```cpp
     ...
     #include "AliAODEvent.h"
