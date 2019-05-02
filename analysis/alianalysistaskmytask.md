@@ -182,7 +182,7 @@ Since these members are part of our class definition, we have to add them to our
        TH1F*         fHistPt;        //!<! dummy histogram
 ```
 
-In the code snippet above, you might see something interesting: when we write comments that describe what our class members are doing, we prepend an explanation with the expression `!<!` after the double slashes that start our comment: `//!<!`. Contrary to what you might think, this expression mark is seen by ROOT (even though it's written as a comment) and it is essential for the correct documentation generation. We will get later to the logic of this locution, but for now a rule of thumb suffices: pointers to objects that are initialized at **run-time** (in the `User*` methods) should be marked with a `//!<!`.
+In the code snippet above, you might see something interesting: when we write comments that describe what our class members are doing, we append the expression `!<!` to the double slashes `//` that start our comment giving us `//!<!`. Contrary to what you might think, this expression mark is seen by ROOT (even though it's written as a comment) and it is essential for the correct documentation generation. We will get later to the logic of this locution, but for now a rule of thumb suffices: pointers to objects that are initialized at **run-time** (in the `User*` methods) should be marked with a `//!<!`.
 
 ## The ClassDef definition
 At the very end of our header file, we add the following line
