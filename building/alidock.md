@@ -6,26 +6,31 @@
 environment and precompiled builds. It is our recommended way to install and use ALICE software on
 your computer as it makes support and your life easier.
 
-{% callout "Is alidock officially supported by ALICE?" %}
-[alidock](https://github.com/alidock/alidock) is a community-supported tool based on Docker. It
-ultimately launches a Docker container currently based on the [ALICE officially supported CERN
-CentOS 7](https://hub.docker.com/r/alisw/slc7-builder) environment. Its support model is similar to
-popular tools like [nittygriddy](https://github.com/alice-contrib/nittygriddy/).
+{% callout "Is alidock the right tool for you?" %}
+[alidock](https://github.com/alidock/alidock) is a community-supported tool based on Docker that
+provides a ready-to-go environment for building and using ALICE software. The underlying base
+operating system image is the [ALICE officially supported CERN CentOS
+7](https://hub.docker.com/r/alisw/slc7-builder). The advantages of using it are:
+
+* It is based on the official ALICE image used for running all the tests, so it will always work
+* You compile only what you develop: dependencies are downloaded from the central ALICE servers
+
+At the moment the tool does not support the rendering of OpenGL-based graphics. This means that, for
+instance, users of the O2 Framework will not be able to see the GUI (even though the framework
+itself will work).
+
+⚠️ **If you need to use the Framework GUI for debug purposes, you should not use alidock at the
+moment.** You can use, instead, a CentOS 7 virtual machine using the [custom installation
+guide](custom.md).
+
+Even if you prefer not using alidock for some reason, **alidock may be a "last resort" option when
+the installation does not work any longer** on your main operating system. alidock provides users
+with the [officially supported](https://indico.cern.ch/event/642232/#3-wp3-common-tools-and-softwar)
+environment, therefore it will always work, whereas fixes for other operating systems are provided
+on a best-effort basis.
 
 Support for alidock is done through [opening an issue on its GitHub
 repository](https://github.com/alidock/alidock/issues).
-
-What ALICE [officially
-recommends](https://indico.cern.ch/event/642232/#3-wp3-common-tools-and-softwar) is the use of the
-CERN CentOS 7 operating system. If for some reason you do not want to use alidock, you can still
-profit from this guide to configure Docker on your system, and then you can launch the official
-image manually:
-
-```bash
-docker run -it alisw/slc7-builder
-```
-
-This will be an ordinary CC7 environment so the [custom installation rules](custom.md) apply.
 {% endcallout %}
 
 
@@ -156,6 +161,27 @@ You can follow the following instructions for building the packages in an alidoc
 Remember, you are in an alidock session if you see `[alidock]` at your prompt.
 
 * [🛠 Build the packages](build.md)
+
+
+Edit code in alidock
+--------------------
+
+We have seen that alidock shares its home directory directory with your operating system. Your files
+are therefore visible _from outside alidock_ under `~/alidock`.
+
+Since alidock may not come with all your editors, it is recommended you use your favorite editor or
+IDE on your operating system instead. Any modification done under `~/alidock` is automatically
+visible inside the container.
+
+If your editor has the option to trigger a build with a keystroke or custom command, remember that
+it will run the command _from outside alidock_. You can tell your editor to trigger a build _inside
+alidock_ by using a custom command similar to (adapt it to your use case):
+
+```bash
+alidock exec aliBuild build AliPhysics --defaults next-root6 --debug
+```
+
+The trick lies in `alidock exec`.
 
 
 Housekeeping
