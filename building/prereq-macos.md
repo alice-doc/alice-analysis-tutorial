@@ -115,11 +115,10 @@ When you are done fixing the warnings, upgrade all the currently installed Homeb
 brew upgrade
 ```
 
-It is now time to install a bunch of required packages. Copy and paste this to your terminal
-(warning: long line):
+It is now time to install a bunch of required packages:
 
 ```bash
-brew install autoconf automake coreutils gettext gmp hub isl libmpc libtool m4 modules mpfr openssl pkg-config readline modules xz libpng perl
+brew install alisw/system-deps/o2-full-deps
 ```
 
 If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to
