@@ -1,20 +1,12 @@
 Build ALICE software
 ====================
 
-The ALICE experiment currently comprises two frameworks:
+There are two ways of building ALICE software on your computer:
 
-* [AliRoot](https://github.com/alisw/AliRoot)/[AliPhysics](https://github.com/alisw/AliPhysics) for
-  LHC Run 1 and Run 2
-* [O2](https://github.com/AliceO2Group/AliceO2) for Run 3 software on
+* [Install ALICE software with alidock](alidock.md) 
+This option provide users with a consistent environment based on containers. On non-CC7 systems you will benefit from precompiled binaries which will make you save plenty of time. This method works on any modern Linux distribution and macOS but does not offer support for GUIs. 
+_This is the recommended method for physicists doing analysis._
 
-**The preferred way to get ALICE software built on your computer is by means of
-[alidock](https://github.com/alidock/alidock).** We provide users with a consistent environment
-based on containers. By using alidock, you will benefit from precompiled binaries which will make
-you save plenty of time. This method works on any modern Linux distribution and macOS.
-
-* [🐳 Install ALICE software with alidock](alidock.md)
-
-We also have instructions for installing your software without using our controlled environment. We
-do not recommend you to follow this path, though, since alidock has better support.
-
-* [🐌 Install ALICE software manually](custom.md)
+* [Install ALICE software directly with alibuild](custom.md)
+This option provides users with a way to build the ALICE software directly on their system. On CC7 you will benefit from precompiled binaries which will make you save plenty of time. This method works on any modern Linux distribution and macOS. GUIs are supported. 
+_This is the recommended method for O2 development (including detectors)._
