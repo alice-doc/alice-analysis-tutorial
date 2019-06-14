@@ -8,3 +8,4 @@ book.pdf
 /env.sh
 /building/Dockerfile_*
 /secrets.txt
+.idea/
