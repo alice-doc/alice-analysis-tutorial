@@ -1,8 +1,8 @@
 # 🐌 Custom installation
 
 This section covers the normal ALICE software installation on your computer without using our
-custom environment. Using [alidock](alidock.md) remains the preferred installation option: if you do
-not have good reasons not to use it, we recommend you switch to it.
+custom environment. Using [alidock](https://github.com/alidock/alidock/wiki) remains the preferred
+installation option: if you do not have good reasons not to use it, we recommend you switch to it.
 
 Building software has become an increasingly complicated operation, as our software has many
 dependencies and we expect it to work both on your laptop and on the Grid. In addition, we support
@@ -39,7 +39,7 @@ this is also our official deployment platform for Run 3 software. Given the popu
 operating systems on laptops (including macOS), we provide a containerized installation method that
 allows you to keep using your favourite operating system by still having a consistent environment:
 
-* [🐳 Install using alidock](alidock.md)
+* [🐳 Install using alidock](https://github.com/alidock/alidock/wiki)
 
 Other operating systems, such as macOS, are supported _as development platforms_ and _on a
 best-effort basis_. It is easier for us to support a single known environment through alidock.

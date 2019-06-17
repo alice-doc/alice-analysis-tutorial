@@ -9,9 +9,9 @@ platform](https://indico.cern.ch/event/642232/#3-wp3-common-tools-and-softwar). 
 essentially a CentOS 7 with some more CERN-specific packages, so these instructions apply to the
 pristine CentOS 7 as well.
 
-As the primary supported platform, our [alidock](alidock.md) installation method is based on it. If
-you use alidock, you don't need to follow those prerequisites. The environment we provide is ready
-to use.
+As the primary supported platform, our [alidock](https://github.com/alidock/alidock/wiki)
+installation method is based on it. If you use alidock, you don't need to follow those
+prerequisites. The environment we provide is ready to use.
 
 
 ## Install or upgrade the required packages

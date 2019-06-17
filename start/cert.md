@@ -140,7 +140,7 @@ are stressing this point _a lot_). This question will be asked twice for confirm
 ## Test your certificate
 
 Your certificate will be available to the ALICE Grid command line client whether you are using
-[alidock](../building/alidock.md) or another installation method.
+[alidock](https://github.com/alidock/alidock/wiki) or another installation method.
 
 Enter your ALICE environment and create a "temporary access token":
 
