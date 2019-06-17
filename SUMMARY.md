@@ -2,7 +2,7 @@
   * [Get a Grid certificate](start/cert.md)
 
 * [Build ALICE software](building/README.md)
-  * [🐳 Using alidock](building/alidock.md)
+  * [🐳 Using alidock](https://github.com/alidock/alidock/wiki)
   * [🐌 Custom installation](building/custom.md)
     * [Prerequisites for CentOS 7](building/prereq-centos7.md)
     * [Prerequisites for macOS](building/prereq-macos.md)
