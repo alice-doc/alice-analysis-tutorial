@@ -8,7 +8,6 @@ install:
   - npm install gitbook-cli -g
 node_js: '4.1'
 script:
-  - '[[ $TRAVIS_PULL_REQUEST == false && $TRAVIS_BRANCH == master ]] && { docker login -u "$DOCKER_USER" -p "$DOCKER_PASS" || exit 1; } || true'
   - '[[ $TRAVIS_PULL_REQUEST == false && $TRAVIS_BRANCH == master ]] && make publish || make'
   - 'building/doc2dock.py $([[ $TRAVIS_PULL_REQUEST == false ]] && echo building/prereq-*.md || git diff --name-only $TRAVIS_COMMIT_RANGE | grep ^building/prereq-)'
 env:

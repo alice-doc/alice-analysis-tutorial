@@ -9,3 +9,4 @@ book.pdf
 /building/Dockerfile_*
 /secrets.txt
 .idea/
+/.gitbook_install
