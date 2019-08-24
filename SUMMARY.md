@@ -34,7 +34,7 @@
   * [Some hints](analysis/hints.md)
   * [Transition from ROOT5 to ROOT6](analysis/ROOT5-to-6.md)
 
-* [Rivet tutorial](rivet/rivet-tutorial.md)
+* [Rivet](rivet/rivet-tutorial.md)
   * [Getting started with Rivet](rivet/getting-started.md)
   * [Using Rivet in ALICE](rivet/rivet-in-alice.md)
   * [Implementing a Rivet analysis](rivet/implementing-rivet-analysis.md)

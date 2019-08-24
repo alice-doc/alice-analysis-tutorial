@@ -1,4 +1,4 @@
-# Using Rivet in ALICE
+# Using Rivet in ALICE (update paths to example files)
 
 Rivet has been integrated into the ALICE build system and is maintained there. Thus, it is also deployed to cvmfs, from where it can be used by Grid workernodes, interactive lxplus sessions, or other machines using software from cvmfs (e.g. CERN Linux desktops). It can also be installed locally using aliBuild. However, if you just get started and want to gain experience with Rivet, we recommend to use the cvmfs installation on lxplus, as this is maintained centrally and known to work (if it is not, please report!).
 
@@ -37,7 +37,7 @@ open /tmp/myRivetPlots/index.html (on Mac OS X, otherwise point browser to file:
 ```
 (N.B.: If on lxplus you use a directory under /tmp you have to copy from the exact host you are working on instead of lxplus.cern.ch, e.g. lxplus012.cern.ch.)
 
-# Running Rivet together with a generator
+# Running Rivet together with a generator (needs update: AliGenerators)
 
 You can use Rivet to run on the output of an arbitrary generator for which an interface to HepMC exists - e.g. those which have been integrated into the ALICE build system and are, thus, available on cvmfs or for local installation. There are two common options to run the generator and Rivet:
 * intermediate file:

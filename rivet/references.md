@@ -10,7 +10,7 @@
 
 [PWG-PP Rivet page (only for reference, not up-to-date)](https://twiki.cern.ch/twiki/bin/view/ALICE/PWGPPRivet)
 
-## related
+## ALICE framework
 
 [alibuild primer](https://alice-doc.github.io/alice-analysis-tutorial/building/)
 

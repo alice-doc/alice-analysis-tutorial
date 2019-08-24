@@ -10,4 +10,4 @@ All analyses contributed to Rivet must be shown to actually work by comparing to
   * separate validation/approval of Rivet analysis (t.b.d., could be by PB/PF)
 
 ## Submission of analysis
-The contributions to Rivet from the LHC experiments are organized through contact persons. For ALICE this is channeled through PWG-MM, i.e. after approval the analysis will be submitted centrally to the Rivet repository.
+The contributions to Rivet from the LHC experiments are organized through contact persons. For ALICE this is channeled through PAG-MC, i.e. after approval the analysis will be submitted centrally to the Rivet repository.

@@ -2,11 +2,11 @@
 
 Several heavy-ion features were added to the recent version of Rivet (2.7.x). The ones that will be used in this tutorial are described below. In order to get to know other heavy-ion features go to section ...
 
-A lot of heavy-ion analyses require calibrating on some global event observable e.g. centrality, thrust, etc. There might be multiple approaches on how to deal with this: using the calibration provided by the experiment together with the analysis, generating your own calibration files, or even using values provided by the generator. All mentioned solutions are already supported by Rivet. On top of that, the first two methods are supported in a form of a new kind of analyses, so called calibration analyses. They are 'dummy' analyses used to produce calibration plots that are afterwards used by our main analysis.
+A lot of heavy-ion analyses require the calibration of some global event observable, e.g. centrality, thrust, etc. There might be multiple approaches on how to deal with this: using the calibration provided by the experiment together with the analysis, generating your own calibration files, or even using values provided by the generator. All mentioned solutions are already supported by Rivet. On top of that, the first two methods are supported in a form of a new kind of analyses, so called calibration analyses. They are 'dummy' analyses used to produce calibration plots that are afterwards used by the main analysis.
 
 ## Calibration analysis
 
-A calibration analysis is essential in case our generator does not provide some global event observable(s) required by the main analysis. Such calibration analysis is similar to the regular one but instead of producing comparisons to the existing experimental data it produces distributions of different observables, such as impact parameter distribution. It should be pointed out that there might be multiple analyses using the same calibration analysis. An example of a calibration analysis producing a V0M multiplicity distribution and an impact parameter distribution is provided below:
+A calibration analysis is essential in case our generator does not provide some global event observable(s) required by the main analysis. Such a calibration analysis is similar to a regular one but instead of producing comparisons to the existing experimental data it produces distributions of different observables, such as impact parameter distribution. It should be pointed out that there might be multiple analyses using the same calibration analysis. An example of a calibration analysis producing a V0M multiplicity distribution and an impact parameter distribution is provided below:
 ```cpp
 #include <Rivet/Analysis.hh>
 #include <Rivet/Projections/AliceCommon.hh>
@@ -35,12 +35,12 @@ namespace Rivet {
       const HepMC::HeavyIon* hi = ge->heavy_ion();
       if (hi && hi->is_valid())
         _imp->fill(hi->impact_parameter(), event.weight());
-      
+
       // Check if we have any hit in either V0-A or -C.  If not, the
       // event is not selected and we get out
       if (!apply<ALICE::V0AndTrigger>(event,"V0-AND")()) return;
 
-      // Fill in the V0 multiplicity for this event 
+      // Fill in the V0 multiplicity for this event
       _v0m->fill(apply<ALICE::V0MMultiplicity>(event,"V0M")(), event.weight());
     }
 
@@ -84,7 +84,7 @@ Energies: [574080] # This is _total_ energy of beams, so this becomes 208*2760=5
 ```
 ## Preloading calibration files
 
-In order to run an analysis with preloading calbration file one needs to use '-p' flag (see rivet --help) to provide the path to the calibration .yoda file and choose a method of calibration by adding ':var=METHOD' after the name of the analysis. This will look something like that:
+In order to run an analysis with preloading a calibration file one needs to use the '-p' flag (see rivet --help) to provide the path to the calibration .yoda file and choose a method of calibration by adding ':var=METHOD' after the name of the analysis. This will look something like that:
 ```
 rivet -a ALICE_<year>_I<inspireID>:cent=GEN -p /path/to/calibration.yoda /path/to/generator.hepmc
 ```
@@ -92,7 +92,7 @@ This means that Rivet will run our selected analysis with an option GEN (generat
 
 ## Extracting centrality
 
-Preloading and selecting method of calibration of centrality gives us access to the centrality value inside our main analysis. This is done in a form of a special projection class CentralityProjection. It allows an analysis to cut on percentiles of single event quantities preloaded (or supplied by the experiment) from a histogram. In order to use it one needs to declare it in the init function:
+Preloading and selecting the method of calibration of centrality gives us access to the centrality estimator inside our main analysis. This is done in the form of a special projection class CentralityProjection. It allows an analysis to cut on percentiles of single event quantities preloaded (or supplied by the experiment) from a histogram. In order to use it one needs to declare it in the init function:
 ```cpp
 void init () {
   [...]
