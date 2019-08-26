@@ -1,6 +1,6 @@
 # Introduction to heavy-ion features
 
-Several heavy-ion features were added to the recent version of Rivet (2.7.x). The ones that will be used in this tutorial are described below. In order to get to know other heavy-ion features go to section ...
+Several heavy-ion features were added to the recent version of Rivet (2.7.x). The ones that will be used in this tutorial are described below. In order to get to know other, more advanced heavy-ion features go to [this](advanced-hi-features.md) section.
 
 A lot of heavy-ion analyses require the calibration of some global event observable, e.g. centrality, thrust, etc. There might be multiple approaches on how to deal with this: using the calibration provided by the experiment together with the analysis, generating your own calibration files, or even using values provided by the generator. All mentioned solutions are already supported by Rivet. On top of that, the first two methods are supported in a form of a new kind of analyses, so called calibration analyses. They are 'dummy' analyses used to produce calibration plots that are afterwards used by the main analysis.
 
