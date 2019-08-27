@@ -22,9 +22,9 @@ where the second command only lists analyses for ALICE publications. You can dis
 ```
 rivet --show-analysis ALICE_2010_S8625980
 ```
-Assuming you have some output from a Monte Carlo generator in a HepMC file (e.g. /eos/project/a/alipwgmm/rivet/hepmc/epos_PbPb2760.hepmc or see here for instructions on running MC generators), you can run an analysis (e.g. ALICE_2010_S8625980) on this input using:
+Assuming you have some output from a Monte Carlo generator in a HepMC file (e.g. /eos/project/a/alipwgmm/rivet/hepmc/pythia6_pp7000.hepmc or see here for instructions on running MC generators), you can run an analysis (e.g. ALICE_2010_S8625980) on this input using:
 ```
-rivet -a ALICE_2010_S8625980 /eos/project/a/alipwgmm/rivet/hepmc/epos_PbPb2760.hepmc
+rivet -a ALICE_2010_S8625980 /eos/project/a/alipwgmm/rivet/hepmc/pythia6_pp7000.hepmc
 ```
 where -a is used to specify the analysis you want to run (you can use any analysis that was distributed with Rivet). You can also list more than one analysis. The command line above runs the analysis on the given input (~1000 generated events, here) and stores the produced output, typically histograms, in the file Rivet.yoda. Based on this yoda file, you can produce plots by running:
 ```
