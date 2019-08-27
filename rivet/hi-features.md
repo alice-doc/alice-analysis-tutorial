@@ -98,7 +98,7 @@ void init () {
   [...]
   // Declare centrality projection for centrality estimation
   const CentralityProjection cp = declareCentrality(ALICE::V0MMultiplicity(),
-  "ALICE_2015_PBPBCentrality", "V0M", "V0M );
+  "ALICE_2015_PBPBCentrality", "V0M", "V0M");
   [...]
 }
 ```
@@ -238,29 +238,34 @@ After logging in you can enter the environment as follows:
 ```
 alienv enter Rivet
 ```
-This will load all the environment required for Rivet. You can try out that it is working by typing for example:
-```
-rivet --help
-```
-Also, the following command should prompt us that we are going to use Rivet version 2.7.2:
+This will load all the environment required for Rivet. The following command should prompt us that we are going to use Rivet version 2.7.2:
 ```
 rivet --version
 ```
-You can also list available ALICE analyses by typing:
+Let's create a directory for our results:
+```
+mkdir /path/to/rivet-hi-tutorial
+cd /path/to/rivet-hi-tutorial
+```
+Now, as an example we are going to use ALICE_2010_I880049 as our main analysis together with the calibration analysis ALICE_2015_PBPBCentrality. You can list available ALICE analyses and check that they are available to use by typing:
 ```
 rivet --list-analyses | grep ALICE_
 ```
-Now, as an example we are going to use the analysis ALICE_2010_I880049 together with the calibration analysis ALICE_2015_PBPBCentrality. We will use a .hepmc file that contains some events generated with EPOS-LHC for PbPb beam at 2.76 TeV, which corresponds to our analysis and is located here: /eos/project/a/alipwgmm/epos_PbPb_276TeV_1k.hepmc
+We will use an already generated .hepmc file that contains some events from EPOS-LHC for Pb-Pb beam at 2.76 TeV, which corresponds to our analysis. This file is located here: /eos/project/a/alipwgmm/rivet/hepmc/epos_PbPb2760.hepmc
 
-First, we need to run our calibration analysis
+First, we need to run our calibration analysis. Let's assume that our output files will be saved as /path/to/rivet-hi-tutorial/calibration.yoda
 ```
-rivet -a ALICE_2015_PBPBCentrality -o calibration.yoda /eos/project/a/alipwgmm/epos_PbPb_276TeV_1k.hepmc
+rivet -a ALICE_2015_PBPBCentrality -o /path/to/rivet-hi-tutorial/calibration.yoda /eos/project/a/alipwgmm/rivet/hepmc/epos_PbPb2760.hepmc
 ```
-This will produce our calibration plots (beware that this might take some time). In case of any problems with generating these plots you can use already generated ones here: /eos/project/a/alipwgmm/calibration.yoda
+This will produce our calibration plots (beware that this might take some time). In case of any problems with generating these plots you can use already generated ones from here: /eos/project/a/alipwgmm/rivet/yoda/calibration_epos_PbPb2760.yoda
 
 Next step is to run the main analysis. Let's choose for example generated V0M multiplicity distribution as calibration method. We will use the same .hepmc file as we used for calibration (it doesn't have to be the same) and run Rivet again:
 ```
-rivet -a ALICE_2010_I880049 -p /path/to/calibration.yoda /eos/project/a/alipwgmm/epos_PbPb_276TeV_1k.hepmc
+rivet -a ALICE_2010_I880049:cent=GEN -p /path/to/rivet-hi-tutorial/calibration.yoda /eos/project/a/alipwgmm/rivet/hepmc/epos_PbPb2760.hepmc
+```
+In case you want to use an already generated calibration file instead, you can try:
+```
+rivet -a ALICE_2010_I880049:cent=GEN -p /eos/project/a/alipwgmm/rivet/yoda/calibration_epos_PbPb2760.yoda /eos/project/a/alipwgmm/rivet/hepmc/epos_PbPb2760.hepmc
 ```
 Again, this might take some time. After it's done, you can create the plots like that:
 ```

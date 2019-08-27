@@ -175,7 +175,7 @@ rivet-mkanalysis ALICE_2015_I1357424
 As mentioned before, the analysis can already be compiled and run (even though it does nothing useful at this stage):
 ```
 rivet-buildplugin RivetALICE_2015_I1357424.so ALICE_2015_I1357424.cc
-rivet --pwd -a ALICE_2015_I1357424 /afs/cern.ch/work/a/alipwgmm/public/hepmc/pythia6_pp7000.hepmc
+rivet --pwd -a ALICE_2015_I1357424 /eos/project/a/alipwgmm/rivet/hepmc/epos_PbPb2760.hepmc
 ```
 
 ### initialisation (histograms and projections)
@@ -270,7 +270,7 @@ In the end, we build the particle ratios to pions (K/π and P/π) and normalize 
 Now, try and run the analysis on the test file:
 ```
 rivet-buildplugin Rivet_test.so ALICE_2015_I1357424.cc
-rivet --pwd -a ALICE_2015_I1357424 /afs/cern.ch/work/a/alipwgmm/public/hepmc/pythia6_pp7000.hepmc
+rivet --pwd -a ALICE_2015_I1357424 /eos/project/a/alipwgmm/rivet/hepmc/epos_PbPb2760.hepmc
 ```
 N.B.: Note the option --pwd which instructs Rivet to look for the specified analyses (also) in the current working directory.
 
