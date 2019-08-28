@@ -17,6 +17,7 @@ _prof = bookProfile1D("cos2phi_pt_h", 10, 0., 20.);
 ```
 
 ## Booking projections
+
 ### particle level
 In order to select all final state particles in a given rapidity range:
 ```cpp

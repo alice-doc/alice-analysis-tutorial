@@ -43,4 +43,5 @@
   * [Procedures for publishing Rivet analyses](rivet/publishing-procedures.md)
   * [Advanced topics](rivet/advanced-topics.md)
   * [Advanced heavy-ion features](rivet/advanced-hi-features.md)
+  * [Coding conventions for Rivet plugins](rivet/coding-conventions.md)
   * [References](rivet/references.md)

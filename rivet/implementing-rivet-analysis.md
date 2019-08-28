@@ -1,7 +1,7 @@
 # Implementing a Rivet analysis
 
 In order to implement a new analysis, you can start from a template created by the Rivet tools. Best start in a new directory for the implementation and create the template therein:
-```
+```bash
 mkdir myRivet
 cd myRivet
 rivet-mkanalysis <ID>
@@ -82,10 +82,10 @@ namespace Rivet {
   DECLARE_RIVET_PLUGIN(ALICE_2016_test);
 }
 ```
-Rivet usually does not use a separate header file for the implementation of the main class of the analysis (you can add further classes and headers if the analysis gets more complex). When extending the code for the Rivet plugin, be careful to follow Rivet coding conventions (which are different from the ALICE ones) such that the analysis can eventually be submitted to the Rivet team for integration into the official distribution.
+Rivet usually does not use a separate header file for the implementation of the main class of the analysis (you can add further classes and headers if the analysis gets more complex). When extending the code for the Rivet plugin, be careful to follow [Rivet coding conventions](https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMRivetCoding) (which are different from the ALICE ones) such that the analysis can eventually be submitted to the Rivet team for integration into the official distribution.
 
 You can already try and compile the plugin at this stage to make sure that the setup and preparations are correct:
-```
+```bash
 rivet-buildplugin RivetALICE_2016_test.so ALICE_2016_test.cc
 ```
 which builds the shared library RivetALICE_2016_test.so to be used by Rivet.
@@ -96,7 +96,7 @@ For the plugin to do something useful, you need to add code in a few places. The
 
 ### member variables
 
-You can add member variables in the private section (below the comment introducing Data members). They should follow the naming conventions of Rivet. This is the place where you add the pointers for histograms, profiles, etc. There are special Rivet structures for such pointers which should be used:
+You can add member variables in the private section (below the comment introducing Data members). They should follow the [naming conventions of Rivet](https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMRivetCoding). This is the place where you add the pointers for histograms, profiles, etc. There are special Rivet structures for such pointers which should be used:
 ```cpp
 Histo1DPtr   _h_0000; // for a histogram
 Profile1DPtr _h_0001; // for a profile
@@ -154,26 +154,27 @@ where sumOfWeights() is provided by Rivet.
 In order to explain the required steps in a real life situation, we will go through the implementation for the analysis published as :
 
 * Measurement of pion, kaon and proton production in proton-proton collisions at sqrt(s) = 7 TeV
-  * ALICE internal draft : ID-183￼
-  * journal reference : Eur.Phys.J C75 (2015) no. 5, 226￼,
-  * Inspire : ID-1357424￼,
-  * arXiv : arXiv:1504.00024￼.
+  * ALICE internal draft : [ID-183](https://alice-publications.web.cern.ch/node/183),
+  * journal reference : [Eur.Phys.J C75 (2015) no. 5, 226](http://dx.doi.org/10.1140/epjc/s10052-015-3422-9),
+  * Inspire : [ID-1357424](http://inspirehep.net/record/1357424),
+  * arXiv : [arXiv:1504.00024](https://arxiv.org/abs/1504.00024).
+
 The content we now want to reproduce in Rivet is the following:
 * transverse momentum spectra of identified pions, kaons, protons
 * particle ratios: kaons / pions, protons / pions
-For the implementation, you can to the ALICE Rivet reference page to look up the individual ingredients you might need for your analysis.
+For the implementation, you can to the [ALICE Rivet reference page](reference-manual.md) to look up the individual ingredients you might need for your analysis.
 
 Now, we go step by step.
 
 ### identifier and template
-First, we need to find the identifier for the analysis we want to implement. The analysis was published in 2015 and has the inspire ID 1357424. Thus, the identifier is ALICE_2015_I1357424.
+First, we need to find the identifier for the analysis we want to implement. The analysis was published in 2015 and has the inspire ID 1357424. Thus, the identifier is **ALICE_2015_I1357424**.
 
-Now, we can create the template structure (don't forget to load the environment for Rivet and to change to an appropriate directory):
-```
+Now, we can create the template structure (don't forget to [load the environment for Rivet](rivet-in-alice.md) and to change to an appropriate directory):
+```bash
 rivet-mkanalysis ALICE_2015_I1357424
 ```
 As mentioned before, the analysis can already be compiled and run (even though it does nothing useful at this stage):
-```
+```bash
 rivet-buildplugin RivetALICE_2015_I1357424.so ALICE_2015_I1357424.cc
 rivet --pwd -a ALICE_2015_I1357424 /eos/project/a/alipwgmm/rivet/hepmc/pythia6_pp7000.hepmc
 ```
@@ -201,17 +202,17 @@ So, we add the required member variables (in the private section):
 Then, we add the booking of the histograms (in the init method):
 ```cpp
   // plots from the paper
-  _histPtPions          = bookHisto1D("d01-x01-y01");    // pions
-  _histPtKaons          = bookHisto1D("d01-x01-y02");    // kaons
-  _histPtProtons        = bookHisto1D("d01-x01-y03");    // protons
-  _histPtKtoPi          = bookScatter2D("d02-x01-y01");  // K to pi ratio 
-  _histPtPtoPi          = bookScatter2D("d03-x01-y01");  // p to pi ratio
+  _histPtPions      = bookHisto1D("d01-x01-y01");    // pions
+  _histPtKaons      = bookHisto1D("d01-x01-y02");    // kaons
+  _histPtProtons    = bookHisto1D("d01-x01-y03");    // protons
+  _histPtKtoPi      = bookScatter2D("d02-x01-y01");  // K to pi ratio 
+  _histPtPtoPi      = bookScatter2D("d03-x01-y01");  // p to pi ratio
 
   // temp histos for ratios
-  _histPtPionsR1        = bookHisto1D("TMP/pT_pi1", refData(2, 1, 1)); // pi histo compatible with more restricted kaon binning
-  _histPtPionsR2        = bookHisto1D("TMP/pT_pi2", refData(3, 1, 1)); // pi histo compatible with more restricted proton binning
-  _histPtKaonsR         = bookHisto1D("TMP/pT_K",   refData(2, 1, 1)); // K histo with more restricted binning
-  _histPtProtonsR       = bookHisto1D("TMP/pT_p",   refData(3, 1, 1)); // p histo with more restricted binning
+  _histPtPionsR1    = bookHisto1D("TMP/pT_pi1", refData(2, 1, 1)); // pi histo compatible with more restricted kaon binning
+  _histPtPionsR2    = bookHisto1D("TMP/pT_pi2", refData(3, 1, 1)); // pi histo compatible with more restricted proton binning
+  _histPtKaonsR     = bookHisto1D("TMP/pT_K",   refData(2, 1, 1)); // K histo with more restricted binning
+  _histPtProtonsR   = bookHisto1D("TMP/pT_p",   refData(3, 1, 1)); // p histo with more restricted binning
 ```
 Next, we book the projections for the identified particles (also in the init method):
 ```cpp
@@ -268,17 +269,23 @@ In the end, we build the particle ratios to pions (K/π and P/π) and normalize 
 
 ### try your new analysis
 Now, try and run the analysis on the test file:
-```
+```bash
 rivet-buildplugin Rivet_test.so ALICE_2015_I1357424.cc
 rivet --pwd -a ALICE_2015_I1357424 /eos/project/a/alipwgmm/rivet/hepmc/pythia6_pp7000.hepmc
 ```
 N.B.: Note the option --pwd which instructs Rivet to look for the specified analyses (also) in the current working directory.
 
 Next, create the plots and compare:
-```
+```bash
 rivet-mkhtml --pwd Rivet.yoda
 ```
 (if needed copy plots/ directory locally).
 
 In case of problems, you can look at the [reference implementation](https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMRivetExampleReference) - but first try to sort it out yourself.
 
+### experiment with the analysis
+
+In order to gather experience with programming Rivet plugins, it is good to experiment a bit. You can e.g. try to:
+* replace the projection to use particle identification
+* move the primary selection to a separate function
+* ...
