@@ -42,7 +42,9 @@ Next, in the analyze method, one needs to check the type of an event the analysi
   }
 
 ```
-Note: This is not a perfect solution as this check does not always work in a predictable way. In the future versions of Rivet this will be replaced with a check directly on the beam type.
+{% callout "Note" %}
+This is not a perfect solution as this check does not always work in a predictable way. In the future versions of Rivet this will be replaced with a check directly on the beam type.
+{% endcallout %}
 
 Finally, the regular finalize method is called, but in case we have entries in the histograms for both beam types, we do an additional step of dividing them one by another to create R_AA plot:
 ```cpp
@@ -63,10 +65,11 @@ In order to run an analysis in the postprocessing mode one should run an analysi
 ```
 rivet-merge /path/to/result1.yoda /path/to/result2.yoda ...
 ```
-This will use the RAW histograms from you output files (check that your .yoda files contain them, they contain results from the analysis before the final scaling in the finalize method), merge them, and call finalize part of the analysis again on the merged histograms. Now, as all the histograms will be available, the finalize method will (in our case) create and fill R_AA histograms and save them to the output .yoda file containing final results. Note, that there is no information about beam and energy when running rivet-merge script. Also note, that an analysis with reentrant finalize must be implemented in a cetrain way to allow running in every mode, and so in the .info file it should be marked as:
-```
-Reentrant: True
-```
+This will use the RAW histograms from you output files (check that your .yoda files contain them, they contain results from the analysis before the final scaling in the finalize method), merge them, and call finalize part of the analysis again on the merged histograms. Now, as all the histograms will be available, the finalize method will (in our case) create and fill R_AA histograms and save them to the output .yoda file containing final results.
+{% callout "Beware" %}
+There is no information about beam and energy when running rivet-merge script - this should be taken into account when implementing such an analysis. Also note, that an analysis with reentrant finalize should be validated to allow running in every mode, and so in the .info file it should be marked as: `Reentrant: True`
+{% endcallout %}
+
 A full example of an analysis with the reentrant finalize mode enabled is provided below:
 ```cpp
 // -*- C++ -*-
@@ -269,7 +272,9 @@ namespace Rivet {
 
 ## Event mixing
 
-WARNING: This feature is still under development and its usage might change in the coming versions of Rivet. Description of this procedure was prepared for Rivet version 2.7.2.
+{% callout "WARNING" %}
+This feature is still under development and its usage might change in the coming versions of Rivet. Description of this procedure was prepared for Rivet version 2.7.2.
+{% endcallout %}
 
 Event mixing is a procedure that enables to project out an event mixed of several events. In Rivet it is implemented in a form of a projection class called EventMixingProjection. It is based on a mixing observable provided as an input to define what should qualify as a mixable event, where the mixing observable can be defined as number of final state particles, centrality, event plane angle, etc. It contains a buffer that is filled with events over the runtime. This buffer can be used within an analysis to perform required operations. A declaration of an event mixing projection looks like this:
 ```cpp
@@ -305,6 +310,7 @@ void analyze(const Event& event) {
   [...]
 }
 ```
+
 This enables to check if we already have enough events in our buffer (method hasMixingEvents will return false in case the number of events in the buffer is lower than requested) and gives us access to the mixing buffer within the analysis. Note, that in this case first few events will be skipped as we require our buffers to be filled before going further. Full example can be found here:
 ```cpp
 // -*- C++ -*-
@@ -491,5 +497,4 @@ namespace Rivet {
   DECLARE_RIVET_PLUGIN(ALICE_2016_I1507157);
 
 }
-
 ```
