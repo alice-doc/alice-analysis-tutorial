@@ -19,17 +19,17 @@ which you still have to fill with useful content, of course. We will explain the
 // -*- C++ -*-
 #include "Rivet/Analysis.hh"
 #include "Rivet/Projections/FinalState.hh"
-/// @todo Include more projections as required, e.g. ChargedFinalState, FastJets, ZFinder...
+#include "Rivet/Projections/FastJets.hh"
 
 namespace Rivet {
-  class ALICE_2016_test : public Analysis {
 
+
+  /// @brief Add a short analysis description here
+  class ALICE_2016_test : public Analysis {
   public:
 
     /// Constructor
-    ALICE_2016_test()
-      : Analysis("ALICE_2016_test")
-    {    }
+    DEFAULT_RIVET_ANALYSIS_CTOR(ALICE_2016_test);
 
 
     /// @name Analysis methods
@@ -38,18 +38,19 @@ namespace Rivet {
     /// Book histograms and initialise projections before the run
     void init() {
 
-      /// @todo Initialise and register projections here
+      // Initialise and register projections
+      declare(FinalState(Cuts::abseta < 5 && Cuts::pT > 100*MeV), "FS");
 
-      /// @todo Book histograms here, e.g.:
-      // _h_XXXX = bookProfile1D(1, 1, 1);
-      // _h_YYYY = bookHisto1D(2, 1, 1);
+      // Book histograms
+      _h_XXXX = bookHisto1D(1, 1, 1);
+      _p_AAAA = bookProfile1D(2, 1, 1);
+      _c_BBBB = bookCounter(3, 1, 1);
 
     }
 
 
     /// Perform the per-event analysis
     void analyze(const Event& event) {
-      const double weight = event.weight();
 
       /// @todo Do the event by event analysis here
 
@@ -59,27 +60,29 @@ namespace Rivet {
     /// Normalise histograms etc., after the run
     void finalize() {
 
-      /// @todo Normalise, scale and otherwise manipulate histograms here
-
-      // scale(_h_YYYY, crossSection()/sumOfWeights()); // norm to cross section
-      // normalize(_h_YYYY); // normalize to unity
+      normalize(_h_YYYY); // normalize to unity
+      scale(_h_ZZZZ, crossSection()/picobarn/sumOfWeights()); // norm to cross section
 
     }
 
     //@}
 
-  private:
-    // Data members like post-cuts event weight counters go here
 
     /// @name Histograms
     //@{
-    Profile1DPtr _h_XXXX;
-    Histo1DPtr _h_YYYY;
+    Histo1DPtr _h_XXXX, _h_YYYY, _h_ZZZZ;
+    Profile1DPtr _p_AAAA;
+    CounterPtr _c_BBBB;
     //@}
+
+
   };
+
 
   // The hook for the plugin system
   DECLARE_RIVET_PLUGIN(ALICE_2016_test);
+
+
 }
 ```
 Rivet usually does not use a separate header file for the implementation of the main class of the analysis (you can add further classes and headers if the analysis gets more complex). When extending the code for the Rivet plugin, be careful to follow [Rivet coding conventions](https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMRivetCoding) (which are different from the ALICE ones) such that the analysis can eventually be submitted to the Rivet team for integration into the official distribution.
@@ -96,7 +99,7 @@ For the plugin to do something useful, you need to add code in a few places. The
 
 ### member variables
 
-You can add member variables in the private section (below the comment introducing Data members). They should follow the [naming conventions of Rivet](https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMRivetCoding). This is the place where you add the pointers for histograms, profiles, etc. There are special Rivet structures for such pointers which should be used:
+You can add member variables in the private section (below the Analysis methods section). They should follow the [naming conventions of Rivet](https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMRivetCoding). This is the place where you add the pointers for histograms, profiles, etc. There are special Rivet structures for such pointers which should be used:
 ```cpp
 Histo1DPtr   _h_0000; // for a histogram
 Profile1DPtr _h_0001; // for a profile

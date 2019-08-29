@@ -54,7 +54,7 @@ In order to add a projection for jets, you first have to add (or re-use) a parti
       addProjection(fj02, "Jets02");
 ```
 ### and more ...
-The list of basic projections can be found under the Hepforge page for Rivet : Rivet code - projection dir￼.
+The list of basic projections can be found under the Hepforge page for Rivet (see [References](references.md)).
 
 ## Normalisation
 You can normalize a given histogram to unity:
