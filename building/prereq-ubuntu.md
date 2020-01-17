@@ -36,7 +36,7 @@ Install prerequisites for **Ubuntu 18.04**:
 ```bash
 sudo apt install -y curl libcurl4-gnutls-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libssl1.0 libssl1.0-dev libxml2-dev git unzip python-pip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev libboost-all-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
 ```
-Furthermore you will need the following Python packages:
+Afterwards install the required Python packages using:
 
 <!-- Dockerfile RUN_INLINE -->
 ```bash
