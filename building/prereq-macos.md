@@ -170,23 +170,6 @@ You should obtain:
 gfortran is /usr/local/bin/gfortran
 ```
 
-## Disable System Integrity Protection
-
-Starting from El Capitan (10.11), Apple has introduced a security feature called [System Integrity
-Protection](https://www.macworld.com/article/2986118/security/how-to-modify-system-integrity-protection-in-el-capitan.html), or SIP.
-
-At the moment, unfortunately, ALICE software requires this feature to be turned off.
-
-To turn SIP off:
-
-* Reboot your Mac in _Recovery Mode_. That is, before macOS starts up, hold down `Command-R` and
-  keep both keys pressed until the Apple logo appears.
-* From the **Utilities** menu open a **Terminal**.
-* Type: `csrutil disable`: a message will notify the success of your operation.
-* Select **Restart** from the  menu.
-
-**Note:** you can always re-enable it using `csrutil enable` instead.
-
 
 ## Get or upgrade pip
 
