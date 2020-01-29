@@ -1,4 +1,4 @@
-aliBuild prerequisites for Fedora
+aliBuild Prerequisites for Fedora
 =================================
 
 ALICE software on Fedora is supported on a best effort basis. There is no guarantee that software builds or runs correctly. Support requests might have low priority. We were able to successfully build on:
