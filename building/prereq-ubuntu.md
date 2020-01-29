@@ -14,13 +14,13 @@ With root permissions, _i.e._ `sudo` update your package sources:
 sudo apt update -y
 ```
 ### Ubuntu 16.04:
-
+With root permissions, _i.e._ `sudo` install the following packages:
 ```bash
 sudo apt install -y curl libcurl4-openssl-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libxml2-dev git unzip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
 ```
 
 ### Ubuntu 18.04: 
-
+With root permissions, _i.e._ `sudo` install the following packages:
 ```bash
 sudo apt install -y curl libcurl4-gnutls-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libxml2-dev git unzip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
 ```
@@ -31,7 +31,7 @@ In case
 ```bash
 pip show pip
 ``` 
-returns `command not found` or similar, install `pip` via: 
+returns `command not found` or similar, install `pip` with `root` permissions, i.e. `sudo` or as `root`:
 ```bash
 sudo apt -y install python3-pip
 sudo pip3 install --upgrade pip
