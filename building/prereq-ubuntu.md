@@ -13,14 +13,13 @@ With root permissions, _i.e._ `sudo` update your package sources:
 ```bash
 sudo apt update -y
 ```
-
-Install prerequisites for **Ubuntu 16.04 and 17.10**:
+### Ubuntu 16.04:
 
 ```bash
 sudo apt install -y curl libcurl4-openssl-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libxml2-dev git unzip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
 ```
 
-Install prerequisites for **Ubuntu 18.04**: 
+### Ubuntu 18.04: 
 
 ```bash
 sudo apt install -y curl libcurl4-gnutls-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libxml2-dev git unzip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
