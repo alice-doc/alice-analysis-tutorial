@@ -1,4 +1,4 @@
-aliBuild prerequisites for macOS
+aliBuild Prerequisites for macOS
 ================================
 
 ALICE software on macOS is supported on a best effort basis. Even though we systematically check macOS builds there is no guarantee that software builds or runs correctly. Support requests might have low priority. We were able to successfully build on:
@@ -22,7 +22,7 @@ sudo xcode-select --install
 sudo xcodebuild -license
 ```
 
-## Get or upgrade Homebrew
+## Get Homebrew
 
 [Homebrew](https://brew.sh) is the most poppular command-line package manager for macOS, and the only one we support.
 
@@ -46,7 +46,7 @@ brew install alisw/system-deps/o2-full-deps
 ```bash
 export PATH="/usr/local/opt/gettext/bin:/usr/local/bin:$PATH"
 ```
-* Close the terminal and reopen it to apply changes. 
+* Close Terminal and reopen it to apply changes. 
 
 ## GFortran
 
