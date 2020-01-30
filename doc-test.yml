@@ -1,0 +1,16 @@
+name: Test documentation
+
+on: [pull_request]
+
+jobs:
+  test-ubuntu-latest:
+    runs-on: ubuntu-latest
+    # strategy:
+    #   max-parallel: 6
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.13.1'
+      - run: npm install gitbook-cli -g
+      - run: make
