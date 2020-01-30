@@ -1,4 +1,4 @@
-aliBuild Prerequisites for Fedora
+aliBuild prerequisites for Fedora
 =================================
 
 ALICE software on Fedora is supported on a best effort basis. There is no guarantee that software builds or runs correctly. Support requests might have low priority. We were able to successfully build on:
@@ -10,7 +10,7 @@ ALICE software on Fedora is supported on a best effort basis. There is no guaran
 * Fedora 31
 
 
-## Install or Upgrade Required System Packages
+## Install required system packages
 
 ### Fedora 27, 28:
 With root permissions, i.e. `sudo` or as `root` install the prerequisites using:
