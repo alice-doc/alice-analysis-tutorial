@@ -1,3 +1,4 @@
+dist: bionic
 branches:
   only:
     - master
@@ -5,7 +6,7 @@ sudo: required
 services: docker
 language: node_js
 install:
-  - npm install gitbook-cli@2.3.0 -g
+  - npm install -g gitbook-cli@2.3.0
 node_js: '4.1'
 script:
   - '[[ $TRAVIS_PULL_REQUEST == false && $TRAVIS_BRANCH == master ]] && make publish || make'
