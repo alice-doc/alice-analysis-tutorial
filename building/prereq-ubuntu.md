@@ -9,62 +9,46 @@ aliBuild prerequisites for Ubuntu
 <!-- Dockerfile RUN apt install -y sudo -->
 <!-- Dockerfile RUN echo -e "13\n33" | apt install -y tzdata -->
 <!-- Dockerfile RUN test `cat /etc/timezone` = Etc/UTC -->
-At ALICE we do our best to support two versions of Ubuntu: the latest and greatest, and the latest
-LTS (Long Term Support) release. What we currently support is:
+ALICE software on Ubuntu is supported on a best effort basis. There is no guarantee that software builds or runs correctly. Support requests might have low priority. We were able to successfully build on:
 
 * Ubuntu 18.04 LTS
-* Ubuntu 17.10 _(not a LTS)_
 * Ubuntu 16.04 LTS
 
-**We do not support Ubuntu pre-releases** (_i.e._ if something breaks there, you are on your own).
+## Install required system packages
 
-Ubuntu has a [comprehensive page with its support policy](https://www.ubuntu.com/info/release-end-of-life).
+With root permissions, _i.e._ `sudo` update your package sources:
 
-**If your release is not mentioned (yet) in the list above, it means we cannot guarantee support for
-it.** It does not mean it does not work, however, and [we will be happy to review your
-contribution](../README.md) if you have more information!
-
-
-## Corresponding Docker containers
-
-Not an Ubuntu user, but you want to build on Ubuntu still? You can use one of the official [Ubuntu
-Docker images](https://hub.docker.com/_/ubuntu/). The images corresponding to the supported Ubuntu
-versions are:
-
-* `ubuntu:16.04`
-* `ubuntu:17.10`
-* `ubuntu:18.04`
-
-You can try following those instructions in one of the containers above.
-
-
-## Install or upgrade required packages
-
-Refresh the list of packages first (you need root, _i.e._ `sudo`, permissions):
 
 <!-- Dockerfile RUN_INLINE -->
 ```bash
 sudo apt update -y
 ```
-
-**On Ubuntu 16.04 and 17.10**, install packages with the following long line:
-
+### Ubuntu 16.04:
+With root permissions, _i.e._ `sudo` install the following packages:
 ```bash
-sudo apt install -y curl libcurl4-openssl-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libssl-dev libxml2-dev git unzip python-pip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev libboost-all-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
+sudo apt install -y curl libcurl4-openssl-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libxml2-dev git unzip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
 ```
 
-**On Ubuntu 18.04**, install the following list instead:
+### Ubuntu 18.04: 
+With root permissions, _i.e._ `sudo` install the following packages:
 
 <!-- Dockerfile RUN_INLINE -->
 ```bash
-sudo apt install -y curl libcurl4-gnutls-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libssl1.0 libssl1.0-dev libxml2-dev git unzip python-pip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev libboost-all-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
+sudo apt install -y curl libcurl4-gnutls-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libxml2-dev git unzip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
 ```
 
-Once this is done, install (as root) the required Python packages:
+## Python and pip
+AliBuild, our build tool, is installed via the python Package manager `pip`.
+In case  
+```bash
+pip show pip
+``` 
+returns `command not found` or similar, install `pip` with `root` permissions, i.e. `sudo` or as `root`:
 
 <!-- Dockerfile RUN_INLINE -->
 ```bash
-sudo pip install matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
+sudo apt -y install python3-pip
+sudo pip3 install --upgrade pip
 ```
 
 You are now ready for [installing aliBuild and start building ALICE
