@@ -1,4 +1,4 @@
-aliBuild Prerequisites for Ubuntu
+aliBuild prerequisites for Ubuntu
 =================================
 
 ALICE software on Ubuntu is supported on a best effort basis. There is no guarantee that software builds or runs correctly. Support requests might have low priority. We were able to successfully build on:
@@ -6,7 +6,7 @@ ALICE software on Ubuntu is supported on a best effort basis. There is no guaran
 * Ubuntu 18.04 LTS
 * Ubuntu 16.04 LTS
 
-## Install or Upgrade Required System Packages
+## Install required system packages
 
 With root permissions, _i.e._ `sudo` update your package sources:
 
