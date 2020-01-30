@@ -7,7 +7,7 @@ services: docker
 language: node_js
 install:
   - npm install -g gitbook-cli@2.3.0
-node_js: '4.1'
+node_js: '12.13.1'
 script:
   - '[[ $TRAVIS_PULL_REQUEST == false && $TRAVIS_BRANCH == master ]] && make publish || make'
   - 'set -e; if [[ $TRAVIS_PULL_REQUEST != false ]]; then building/doc2dock.py $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep ^building/prereq-); fi'
