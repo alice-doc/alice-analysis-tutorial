@@ -53,10 +53,10 @@ packages to install and configurations to perform.
 
 **Platforms supported on a best-effort basis:**
 
-* [macOS High Sierra (10.13) and Mojave (10.14)](prereq-macos.md)
-  ** ⚠️  only Mojave supported for Run 3 software ⚠️  **
-* [Ubuntu 18.04 LTS, 17.10 and 16.04 LTS](prereq-ubuntu.md)
-* [Fedora 27](prereq-fedora.md)
+* [macOS Mojave (10.14) and Catalina (10.15)](prereq-macos.md)
+  ** ⚠️  only Catalina supported for Run 3 software ⚠️  **
+* [Ubuntu 18.04 LTS](prereq-ubuntu.md)
+* [Fedora](prereq-fedora.md)
 
 If your operating system is _not_ in any list, it does not mean our software won't work on it;
 it will be just more difficult for you to get support for it.
