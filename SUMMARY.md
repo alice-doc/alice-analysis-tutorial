@@ -2,14 +2,14 @@
   * [Get a Grid certificate](start/cert.md)
 
 * [Build ALICE software](building/README.md)
-  * [🐳 Using alidock](https://github.com/alidock/alidock/wiki)
-  * [🛠 Custom installation](building/custom.md)
+  * [🧪 Installation via alibuild](building/custom.md)
     * [Prerequisites for CentOS 7](building/prereq-centos7.md)
     * [Prerequisites for macOS](building/prereq-macos.md)
     * [Prerequisites for Ubuntu](building/prereq-ubuntu.md)
     * [Prerequisites for Fedora](building/prereq-fedora.md)
-  * [🧪 Build the packages](building/build.md)
+  * [🛠 Build the packages](building/build.md)
   * [📦 Use the precompiled binaries](building/precomp.md)
+  * [🐳 Using alidock](https://github.com/alidock/alidock/wiki)
 
 * [Writing an analysis task](analysis/welcome.md)
   * [AliAnalysisTaskSE](analysis/classes.md)
