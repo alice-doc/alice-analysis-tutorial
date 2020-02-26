@@ -10,7 +10,7 @@ With very short update cycles of macOS, refrain from updating until we list the 
 
 ## Get Xcode
 
-Xcode provides the necessary tools to build software in the apple ecosystem
+Xcode bundles the necessary tools to build software in the apple ecosystem including compilers, build systems and version control
 * Download it from the [App Store](https://itunes.apple.com/gh/app/xcode/id497799835?mt=12)
 * Open once installed. It will ask to install additional components - approve the action.
 * Open a terminal (`Applicaions>Utilities>Terminal`) and install the command line tools using:
@@ -21,10 +21,29 @@ sudo xcode-select --install
 ```bash
 sudo xcodebuild -license
 ```
+## Disable System Integrity Protection (SIP)
+System Integrity Protection was introduced by Apple to Mac OSX since El Capitan and is meant to harden the system against malicious software. More details are available in [Apple's knowledge base](https://support.apple.com/en-us/HT204899).
+Unfortunately, some of the measures taken by SIP (in particular not propagating `LD_LIBRARY_PATH`) will cause ROOT to not find dynamic libraries. We therefore have to switch off SIP.
+
+* Reboot your Mac in _Recovery Mode_. by holding `Command-R` at startup until the Apple logo appears.
+* Open a Terminal: (`Utilities>Terminal`).
+* Disable SIP by executing
+```csrutil disable``` 
+* Restart your machine.
+* After the reboot, open a terminal (`Applicaions>Utilities>Terminal`) and check if 
+```bash
+csrutil status
+```
+returns `System Integrity Protection status: disabled.`
+
+The process can be reverted by following the above steps executing  
+```csrutil enable```
+
+The process is also documented in [Apple's developer documentation](https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html)
 
 ## Get Homebrew
 
-[Homebrew](https://brew.sh) is the most poppular command-line package manager for macOS, and the only one we support.
+[Homebrew](https://brew.sh) is a command-line package manager for macOS used to install software packages similar to `yum` on CentOS or `apt` on Ubuntu. There are several different package managers for macOS, but Homebrew is by far the most poppular , and the only one we support.
 
 * Install Homebrew using the [instructions on their webpage](https://brew.sh/).
 * Once installed detect any problems regarding Homebrew and your system using  
