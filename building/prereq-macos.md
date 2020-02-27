@@ -59,6 +59,7 @@ Note that Homebrew does not run as root. Do not prepend `sudo` to **any** of the
 ```bash
 brew install alisw/system-deps/o2-full-deps
 ```
+Various users have reported that this might terminate with an error. The solution funnily seems to be to execute the above command until brew does not complain anymore.
 * If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to force the reinstallation of already installed packages. You also might want to run `brew cleanup` at the end to free up some space.
 
 * Edit or create `~/.bash_profile` (Mojave) or `~/.zprofile` (Catalina) and add
