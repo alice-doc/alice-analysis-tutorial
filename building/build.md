@@ -13,8 +13,9 @@ Run 2 software, and O2 for Run 3.
 
 ## Prepare your source code
 
-We assume your work area is `~/alice`. If you are working in an [alidock](alidock.md) environment,
-you might as well use the container's `~` directly (which corresponds to your laptop's `~/alidock`).
+We assume your work area is `~/alice`. If you are working in an
+[alidock](https://github.com/alidock/alidock/wiki) environment, you might as well use the
+container's `~` directly (which corresponds to your laptop's `~/alidock`).
 
 So, first off, create the directory and move to it:
 
@@ -87,8 +88,8 @@ As a developer, and ALICE contributor, you must be capable of using and understa
 
 ## Check your prerequisites (skip if using alidock!)
 
-** 🐳 If you are building with [alidock](alidock.md), skip this part and [jump to the
-build](#build-and-rebuild). 🐳 **
+** 🐳 If you are building with [alidock](https://github.com/alidock/alidock/wiki), skip this part
+and [jump to the build](#build-and-rebuild). 🐳 **
 
 aliBuild comes with the command `aliDoctor` that will help you identifying if your prerequisites
 were installed correctly. In general, aliBuild is capable of building all required software
@@ -173,8 +174,9 @@ env ALIBUILD_O2_TESTS=1 aliBuild build O2 --defaults o2 --debug
 _⚠️  It is recommended to run the first O2 build without the tests enabled to let it complete. You
 will not have to rerun it from scratch because of test failures like this._
 
-Using the combinations above in an [alidock environment](alidock.md) or on CentOS 7 will make
-aliBuild automatically download the precompiled binaries for almost all packages.
+Using the combinations above in an [alidock environment](https://github.com/alidock/alidock/wiki) or
+on CentOS 7 will make aliBuild automatically download the precompiled binaries for almost all
+packages.
 
 {% callout "AliPhysics with ROOT 6 and the Grid" %}
 The command above will produce AliPhysics with ROOT 6 as a dependency. When using this version, you
@@ -227,7 +229,7 @@ later](#run-a-single-command-in-the-environment)):
 
 ```bash
 cd $ALIBUILD_WORK_DIR/BUILD/AliPhysics-latest/AliPhysics
-alienv setenv GCC-Toolchain/latest -c make -j <num-parallel-jobs>
+alienv setenv GCC-Toolchain/latest -c make -j <num-parallel-jobs> install
 ```
 
 Replace `<num-parallel-jobs>` with a sensible number (_e.g._ slightly more than the actual number of

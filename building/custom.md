@@ -1,8 +1,4 @@
-# 🐌 Custom installation
-
-This section covers the normal ALICE software installation on your computer without using our
-custom environment. Using [alidock](alidock.md) remains the preferred installation option: if you do
-not have good reasons not to use it, we recommend you switch to it.
+# 🧪 Installation via alibuild
 
 Building software has become an increasingly complicated operation, as our software has many
 dependencies and we expect it to work both on your laptop and on the Grid. In addition, we support
@@ -35,14 +31,15 @@ ALICE uses [aliBuild](https://alisw.github.io/alibuild) to build software. aliBu
 
 As per policy, the [primary supported platform is CERN
 CentOS 7](https://indico.cern.ch/event/642232/#3-wp3-common-tools-and-softwar):
-this is also our official deployment platform for Run 3 software. Given the popularity of other
-operating systems on laptops (including macOS), we provide a containerized installation method that
-allows you to keep using your favourite operating system by still having a consistent environment:
-
-* [🐳 Install using alidock](alidock.md)
-
+this is also our official deployment platform for Run 3 software.
 Other operating systems, such as macOS, are supported _as development platforms_ and _on a
-best-effort basis_. It is easier for us to support a single known environment through alidock.
+best-effort basis_.
+
+Given the popularity of other operating systems on laptops (including macOS), we provide a
+containerized installation method, always supported _on a best-effort basis_,
+that allows you to keep using your favorite operating system by still having a consistent environment:
+
+* [🐳 Install using alidock](https://github.com/alidock/alidock/wiki)
 
 
 ### Prerequisites
@@ -56,10 +53,10 @@ packages to install and configurations to perform.
 
 **Platforms supported on a best-effort basis:**
 
-* [macOS High Sierra (10.13) and Mojave (10.14)](prereq-macos.md)
-  ** ⚠️  only Mojave supported for Run 3 software ⚠️  **
-* [Ubuntu 18.04 LTS, 17.10 and 16.04 LTS](prereq-ubuntu.md)
-* [Fedora 27](prereq-fedora.md)
+* [macOS Mojave (10.14) and Catalina (10.15)](prereq-macos.md)
+  ** ⚠️  only Catalina supported for Run 3 software ⚠️  **
+* [Ubuntu 18.04 LTS](prereq-ubuntu.md)
+* [Fedora](prereq-fedora.md)
 
 If your operating system is _not_ in any list, it does not mean our software won't work on it;
 it will be just more difficult for you to get support for it.

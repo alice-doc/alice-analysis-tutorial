@@ -8,3 +8,5 @@ book.pdf
 /env.sh
 /building/Dockerfile_*
 /secrets.txt
+.idea/
+/.gitbook_install
