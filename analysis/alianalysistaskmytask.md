@@ -34,7 +34,9 @@ public:
    virtual void            Terminate(Option_t\* option);
   /// \cond CLASSDEF
   ClassDef(AliAnalysisTaskMyTask, 1);
-  /// \endcond};
+  /// \endcond
+
+};
 
 #endif
 ```
