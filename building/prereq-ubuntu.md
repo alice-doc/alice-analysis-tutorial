@@ -29,12 +29,12 @@ With root permissions, _i.e._ `sudo` install the following packages:
 sudo apt install -y curl libcurl4-openssl-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libxml2-dev git unzip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
 ```
 
-### Ubuntu 18.04: 
+### Ubuntu 18.04:
 With root permissions, _i.e._ `sudo` install the following packages:
 
 <!-- Dockerfile RUN_INLINE -->
 ```bash
-sudo apt install -y curl libcurl4-gnutls-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libxml2-dev git unzip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules
+sudo apt install -y curl libcurl4-gnutls-dev build-essential gfortran cmake libmysqlclient-dev xorg-dev libglu1-mesa-dev libfftw3-dev libxml2-dev git unzip autoconf automake autopoint texinfo gettext libtool libtool-bin pkg-config bison flex libperl-dev libbz2-dev swig liblzma-dev libnanomsg-dev libyaml-cpp-dev rsync lsb-release unzip environment-modules libglfw3-dev libglfw3
 ```
 
 ## Python and pip
@@ -42,7 +42,7 @@ AliBuild, our build tool, is installed via the python Package manager `pip`.
 In case  
 ```bash
 pip show pip
-``` 
+```
 returns `command not found` or similar, install `pip` with `root` permissions, i.e. `sudo` or as `root`:
 
 <!-- Dockerfile RUN_INLINE -->
