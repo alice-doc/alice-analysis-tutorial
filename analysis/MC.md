@@ -8,11 +8,24 @@ The main reason for analyzing MC events is that it enables the analyzer to calcu
 
 First, we have to download the MC data. Since we downloaded Pb-Pb data from the period LHC15o with run number 246757, we will download an AOD file from the same run of a MC that is anchored to this period; namely LHC16g1.
 
-```cpp
-aliensh
+
+
+```bash
+alien.py
 cd /alice/sim/2016/LHC16g1/246757/AOD198/0002/
-cp AliAOD.root file:.
+cp alien://AliAOD.root file://AliAOD.root
 ```
+
+{% callout "AliEn legacy shell" %}
+In case you are using AliEn legacy software please use _aliensh_ instead of _alien.py_.
+The syntax in aliensh is slightly different, you should use `alien:` and `file:` prefix. For example:
+
+```
+aliensh
+cp alien:AliAOD.root file:AliAOD.root
+```
+{% endcallout %}
+
 It might be useful to rename the file to AliAOD_MC.root to avoid confusion later on. If you do so, of course you have to change the name of the input data file that you specify in runAnalysis.C.
 
 Now if we don't do anything else and run the analysis, the MC data will be processed as if it was data, and should produce a similar output when compared to real data. But of course we want to and can do more!

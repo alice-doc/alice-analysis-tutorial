@@ -155,3 +155,8 @@ either `alienv` or the `alien-token-*` commands available in case you have never
 
 The `alien-token-init` command will ask you for a password. This is the last password you have used
 when you have converted your `.p12` certificate into two `.pem` files.
+
+{% callout "Creating JAliEn and AliEn tokens" %}
+Note that the new JAliEn Grid clients automatically create tokens, while AliEn-ROOT-Legacy (ROOT5) requires running _alien-token-init_ manually.
+There is _alien-token-init_ for JAliEn, and you can use it to test your credentials or (re)create tokens manually.
+{% endcallout %}

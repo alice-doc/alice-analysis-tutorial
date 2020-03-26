@@ -44,7 +44,7 @@ Remember, that for now, the name ‘AliAnalysisTaskMyTask’ doesn’t sound so 
 To run your own analysis task, you will also need to download a file that contains reconstructed collisions. This input file is called **AliAOD.root**, short for Analysis Object Data. In the following steps, will assume that we are looking at Pb-Pb data that was taken in 2015. You can also choose to run on data from a different period or collision system.  
 
 ## Source your environment
-We will get the data form the ALICE file catalogue. To access the file catalogue, you will need to use AliEn-Runtime and have a valid Grid certificate. This means that, at this point, we will assume that you have built all the ALICE software (see [our build manual for that](https://alice-doc.github.io/alice-analysis-tutorial/building/) ).
+We will get the data form the ALICE file catalogue. To access the file catalogue, you will need to use xjalienfs or xalienfs packages and have a valid Grid certificate. This means that, at this point, we will assume that you have built all the ALICE software (see [our build manual for that](https://alice-doc.github.io/alice-analysis-tutorial/building/) ).
 
 
 Load your ALICE environment as [explained here](https://alice-doc.github.io/alice-analysis-tutorial/building/#use-the-software-you-have-built), e.g. by doing
@@ -56,26 +56,39 @@ alienv enter AliPhysics::latest
 You should see which module files are currently loaded, e.g.
 
 ```
-  1) BASE/1.0
-  2) GCC-Toolchain/v6.2.0-alice1-1
-  3) AliEn-Runtime/v2-19-le-1
-  4) GSL/v1.16-1
-  5) Python-modules/1.0-1
-  6) ROOT/v6-10-06+git_c54db1c10b-1
-  7) boost/v1.59.0-1
-  8) cgal/v4.6.3-1
-  9) fastjet/v3.2.1_1.024-alice1-1
- 10) Vc/1.3.2-1
- 11) AliRoot/0742e9dc6e12c74634a1e353ab00ceba45335401_ROOT6-1
- 12) AliPhysics/latest
+ 1) BASE/1.0
+ 2) AliEn-Runtime/v2-19-le-49
+ 3) OpenSSL/v1.0.2o-9
+ 4) Python-modules/1.0-11
+ 5) XRootD/v4.11.1-14
+ 6) ROOT/v6-18-04-alice2-1
+ 7) boost/v1.70.0-6
+ 8) cgal/4.6.3-5
+ 9) fastjet/v3.2.1_1.024-alice3-21
+10) Vc/1.4.1-5
+11) xjalienfs/1.0.6-2
+12) JAliEn-ROOT/0.6.0-2
+13) AliRoot/master-1
+14) RooUnfold/V02-00-01-alice4-25
+15) treelite/a7a0839-2
+16) KFParticle/alice-v1.1-1-9
+17) AliPhysics/latest
+12) AliPhysics/latest
 Use alienv list to list loaded modules. Use exit to exit this environment.
 ```
 
-The module Alien-Runtime is now available, which is what we will use to get our data. 
+The module xjalienfs is now available, which is what we will use to get our data. 
 
-## Get a valid token
+## Get a valid token (optional)
 
-The ALICE file catalogue is only accessible if you are an ALICE member. To authenticate yourself, you will need to obtain a _token_
+{% callout "JAliEn tokens" %}
+You can skip this step if you are using JAliEn. JAliEn clients create the token automatically, but you can still run _alien-token-init_ to refresh it manually.
+{% endcallout %}
+
+The ALICE file catalogue is only accessible if you are an ALICE member. 
+
+If you are using AliEn-ROOT-Legacy or ROOT5, then you first need to authenticate yourself and obtain a _token_
+
 ```
 alien-token-init <username>
 ``` 
@@ -116,16 +129,46 @@ Creating token ..................................... Done
 Your token is valid until: Wed Nov  1 13:21:18 2017
 ```
 
-Once you have obtained a valid token, enter the alice environment shell by typing
+For comparison, here is the output from the JAlien _alien-token-init_
+
 ```
-aliensh
+[AliPhysics/latest] ~ > alien-token-init
+INFO: JAliEn client automatically creates tokens, alien-token-init is deprecated
+DN >>> /C=ch/O=AliEn2/CN=Users/CN=nhardi/OU=nhardi
+ISSUER >>> /C=ch/O=AliEn/CN=AliEn CA
+BEGIN >>> 2020-03-26 10:06:05
+EXPIRE >>> 2020-04-26 08:16:48
 ```
+
+## Open the AliEn shell
+
+You can now enter the alice environment shell by typing
+
+
+```
+alien.py
+```
+
 Once you type this command, a the alice environment shell is loaded, and you should see
+
+```
+[AliPhysics/latest] ~ > alien.py
+Welcome to the ALICE GRID
+support mail: adrian.sevcenco@cern.ch
+
+AliEn[nhardi]:/alice/cern.ch/user/n/nhardi/ >
+
+```
+
+
+The AliEn legacy shell _aliensh_ and JAliEn shell _alien.py_ are very similar. The command prompt for aliensh shell looks like this:
+
 ```
 [AliPhysics/latest] ~/sw $> aliensh
  [ aliensh 1.0.140x (C) ARDA/Alice: Andreas.Joachim.Peters@cern.ch/Derek.Feichtinger@cern.ch]
 aliensh:[alice] [1] /alice/cern.ch/user/r/rbertens/ >
 ```
+
 This shell works a lot like a normal unix shell, but it is not - not all commands that you expect to find are defined. 
 
 
@@ -134,6 +177,7 @@ Move to the directory where the data we are looking for is stored
 ```
 cd /alice/data/2015/LHC15o/000246757/pass1/AOD/002/
 ```
+NOTE: this example needs to be updated
 and copy the AliAOD.root file that is inside this folder to your ** local ** hard drive by doing
 ```
 cp AliAOD.root file:.
