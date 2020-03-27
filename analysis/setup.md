@@ -184,5 +184,9 @@ cp AliAOD.root file:.
 
 Note the syntax of the copy command, here we tell to copy the _remote_ file AliAOD.root to our own laptop by specifying _file:._ . 
 
+{% callout "JAliEn and AliEn shell documentation" %}
+You can find more information about the alien.py shell at [jalien.docs.cern.ch](https://jalien.docs.cern.ch). Reference documentation for the legacy AliEn shell is available at [alien.web.cern.ch](https://alien.web.cern.ch/content/documentation/howto/user/catalogue).
+{% endcallout %}
+
 ## Trouble ?
 If for some reason this does not work for you - no fear. You can ask a colleague to provide a file for you, or send a mail to our mailing lists  if you are having trouble with access.
