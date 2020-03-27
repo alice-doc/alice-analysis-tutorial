@@ -12,7 +12,7 @@ With root permissions, i.e. `sudo` or as `root` install the prerequisites using:
 
 <!-- Dockerfile RUN_INLINE -->
 ```bash
-yum install -y git mysql-devel curl curl-devel bzip2 bzip2-devel unzip autoconf automake texinfo gettext gettext-devel libtool freetype freetype-devel libpng libpng-devel sqlite sqlite-devel ncurses-devel mesa-libGLU-devel libX11-devel libXpm-devel libXext-devel libXft-devel libxml2 libxml2-devel motif motif-devel kernel-devel pciutils-devel kmod-devel bison flex perl-ExtUtils-Embed environment-modules tk-devel
+yum install -y git mysql-devel curl curl-devel bzip2 bzip2-devel unzip autoconf automake texinfo gettext gettext-devel libtool freetype freetype-devel libpng libpng-devel sqlite sqlite-devel ncurses-devel mesa-libGLU-devel libX11-devel libXpm-devel libXext-devel libXft-devel libxml2 libxml2-devel motif motif-devel kernel-devel pciutils-devel kmod-devel bison flex perl-ExtUtils-Embed environment-modules tk-devel glfw-devel
 ```
 
 ## Python and pip
@@ -20,7 +20,7 @@ AliBuild, our build tool, is installed via the python Package manager `pip`.
 In case  
 ```bash
 pip3 show pip
-``` 
+```
 returns `command not found` or similar, install `pip` with root permissions, i.e. `sudo` or as `root`:
 <!-- Dockerfile RUN_INLINE -->
 ```bash
@@ -46,11 +46,11 @@ Then, still with `root` permissions install compilers and developer tools via:
 ```bash
 yum install -y devtoolset-7
 ```
-By design these tools do not replace the standard tools shipped by the system and have to be enabled explicitly for every new shell session you open: 
+By design these tools do not replace the standard tools shipped by the system and have to be enabled explicitly for every new shell session you open:
 ```bash
 source scl_source enable devtoolset-7
 ```
-If desired so, the above line can be added to your `~/.bashrc` or `~/.bash_profile`, so that tools shipped via devtoolset are automatically available in every shell. However beware that in some special cases that this might have undesired side effects. 
+If desired so, the above line can be added to your `~/.bashrc` or `~/.bash_profile`, so that tools shipped via devtoolset are automatically available in every shell. However beware that in some special cases that this might have undesired side effects.
 
 You can check if you are running the correct version of GCC with:
 
