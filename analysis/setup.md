@@ -177,7 +177,6 @@ Move to the directory where the data we are looking for is stored
 ```
 cd /alice/data/2015/LHC15o/000246757/pass1/AOD/002/
 ```
-NOTE: this example needs to be updated
 and copy the AliAOD.root file that is inside this folder to your ** local ** hard drive by doing
 ```
 cp AliAOD.root file:.
