@@ -15,7 +15,7 @@ In order to run your analysis transparently either on your local computer or on 
 * Using all existing types of input data to be processed (root files, raw AliEn collections or XML collections) detecting their type automatically;
 * Generate XML collections corresponding to requested runs and/or data patterns;
 * Automatically detect presence of tags in input data and allow using tag-based cuts in a very simple way;
-* Automatically connect to AliEn (generate a token if needed) - still requires sourcing the environment file produced by alien.token-init;
+* Automatically connect to AliEn (generate a token if needed)
 * Generate automatically: JDL, analysis macro to be run in grid, execution and validation scripts according a simple to understand user-driven configuration; 
 * Copy all needed files in user's AliEn space and submit the job automatically;
 * Start an alien shell to allow inspecting the job status;
@@ -107,8 +107,8 @@ When you run an analysis in test mode, a Grid environment is simulated locally f
 
 Once your analysis test is finished, and you are convinced that your analysis output looks sane, you can submit your analysis to the Grid nodes. To do this, simply look at at the code snippet above, and assume that the variable `gridTest` is set to kFALSE. 
 
-{% callout "Do not forget your token!" %}
-Only ALICE members with a valid registration can submit jobs to the Grid and access the ALICE data. To identify yourself as an ALICE member, you will have to make sure that you have a valid token prior to launching your Grid jobs, be it in full or in test mode. To obtain a token, do
+{% callout "Create AliEn legacy token!" %}
+Only ALICE members with a valid registration can submit jobs to the Grid and access the ALICE data. To identify yourself as an ALICE member, you will have to make sure that you have a valid token prior to launching your Grid jobs, be it in full or in test mode. If you are using AliEn legacy, then you need to obtain a token manually. If you are using JAliEn, then the token will be obtained automatically.
 ```
 $ alien-token-init <username>
 ```

@@ -21,12 +21,12 @@ Note that we will first **test** if our code is actually 'grid compatible', by *
 
 ## Running a Grid test
 
+{% callout "AliEn-ROOT-Legacy tokens " %}
+In case you are using AliEn-ROOT-Legacy, for instance with ROOT5, then you should first create an access token using command _alien-token-init_.
+{% endcallout %}
 
-If you think everything is OK, initialize a token 
-```
-alien-token-init <username>
-```
-and run the Grid test by simply launching the runAnalysis macro
+
+If you think everything is OK, and run the Grid test by simply launching the runAnalysis macro
 ```
 aliroot runAnalysis.C
 ```
