@@ -32,3 +32,12 @@ cd O2/objs
 cmake .. -DBUILD_TEST_ROOT_MACROS=OFF
 make -j 20
 ```
+
+This is not a replacement for the full alibuild environment, which allows you to build multiple packages at once or to keep track of
+changes in alidist, however it should work already fairly well to develop a single package.
+
+## caveats:
+
+* You need to disable macro tests, as specified in the instructions.
+* A few packages need to be rebuilt and deployed on CVMFS with the new version of alibuild, which will relocate them properly (not fatal).
+* Runtime environment is currently not handled fully and you need to either use `-DCMAKE_INSTALL_PREFIX` or run executables from `stage/bin`.
