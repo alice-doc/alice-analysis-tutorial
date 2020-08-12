@@ -18,7 +18,7 @@ export ALIBUILD_ARCH_PREFIX=el7-x86_64/Packages
 assuming you want to use `nightly-20200810-1` as baseline, you can then do:
 
 ```bash
-. $WORK_DIR/$ALIBUILD_ARCH_PREFIX/O2/nightly-20200728-1/etc/profile.d/init.sh
+. $WORK_DIR/$ALIBUILD_ARCH_PREFIX/O2/nightly-20200810-1/etc/profile.d/init.sh
 ```
 
 This will fill your environment with all the requirements needed to properly build O2.
