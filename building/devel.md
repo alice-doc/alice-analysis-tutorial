@@ -29,6 +29,6 @@ You can checkout and build most of the AliceO2Group packages with:
 git clone https://github.com/AliceO2Group/AliceO2 O2
 mkdir O2/objs
 cd O2/objs
-cmake ..
+cmake .. -DBUILD_TEST_ROOT_MACROS=OFF
 make -j 20
 ```
