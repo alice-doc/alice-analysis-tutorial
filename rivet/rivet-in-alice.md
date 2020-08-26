@@ -13,7 +13,7 @@ You can then check which packages and versions are loaded using:
 ```bash
 alienv list
 ```
-Now you have all the rivet tools (rivet, rivet-buildplugin, ...) available. To list the available analyses (those distributed with the used version of Rivet), you can use:
+Now you have all the rivet tools (rivet, rivet-build, ...) available. To list the available analyses (those distributed with the used version of Rivet), you can use:
 ```bash
 rivet --list-analyses
 rivet --list-analyses ALICE_
@@ -37,10 +37,13 @@ rivet-mkhtml Rivet.yoda
 ```
 This command puts the plots in the subdirectory rivet-plots/. The directory also contains an index.html, which you can open in a browser to look and navigate through the plots. If you have run Rivet on an lxplus node you probably must copy this directory to your local PC and then point your browser to the directory, i.e.
 ```bash
-scp -r lxplus.cern.ch:<myRivetDir>/plots /tmp/myRivetPlots
+scp -r lxplus.cern.ch:<myRivetDir>/rivet-plots /tmp/myRivetPlots
 open /tmp/myRivetPlots/index.html (on Mac OS X, otherwise point browser to file:///tmp/myRivetPlots/index.html)
 ```
-(N.B.: If on lxplus you use a directory under /tmp you have to copy from the exact host you are working on instead of lxplus.cern.ch, e.g. lxplus012.cern.ch.)
+{% callout "N.B." %}
+If on lxplus you use a directory under /tmp you have to copy from the exact host you are working on instead of lxplus.cern.ch, e.g. lxplus012.cern.ch. You can get actual name of the hosting machine with `hostname`.
+We recommend not to use direclty the directory /tmp to avoid clashes with other user. Please use /tmp/<myUsername> to follow this tutorial even if stated differently.
+{% endcallout %}
 
 # Running Rivet together with a generator
 
@@ -59,10 +62,10 @@ alienv enter AliGenerators
 ```
 Then, you would have to do something like:
 ```bash
-mkfifo /tmp/fifo_$UID.hepmc
-aligenmc -o /tmp/fifo_$UID.hepmc &
-rivet -a ALICE_2010_S8625980 /tmp/fifo_$UID.hepmc
-rm /tmp/fifo_$UID.hepmc
+mkfifo /tmp/$USER/fifo_$UID.hepmc
+aligenmc -g pythia8 -E 7000 -N 10000 -o /tmp/$USER/fifo_$UID.hepmc &> /tmp/$USER/aligenmc_$UID.log &
+rivet -a ALICE_2010_S8625980 /tmp/$USER/fifo_$UID.hepmc
+rm /tmp/$USER/fifo_$UID.hepmc
 ```
 
 {% callout "Note" %}
@@ -70,4 +73,15 @@ aligenmc is the script developed within ALICE that does the running of a chosen 
 For further instructions on how to run different generators, see:
 * `aligenmc -h`
 * [MC generator documentation](https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMgeneratorsALICE)
+{% endcallout %}
+
+{% callout "Pythia8/Angantyr" %}
+aligenmc is not yet updated to generate heavy-ion collisions with the Pythia8/Angantyr model. In case you want to generate Pb-Pb collisions with Pythia8/Angantyr model you can 
+```bash
+run-pythia -n 100 -e 2760 -o /tmp/$USER/fifo_$UID.hepmc -c "Beams:idA 1000822080" -c "Beams:idB 1000822080" -c "HeavyIon:SigFitNGen = 0" -c "HeavyIon:SigFitDefPar = 12.32,1.63,0.19,0.0,0.0,0.0,0.0,0.0" 
+```
+Beware that this line is valid only for Pb-Pb 2.76 TeV collisions. Should you need to change the collision energy (the the beams), make sure you run only the initial part
+```bash
+run-pythia -n 100 -e 2760 -o /tmp/$USER/fifo_$UID.hepmc -c "Beams:idA 1000822080" -c "Beams:idB 1000822080"
+```
 {% endcallout %}
