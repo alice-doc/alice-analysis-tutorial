@@ -1,0 +1,997 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Running on Grid · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="lego.html" />
+    
+    
+    <link rel="prev" href="local.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start/">
+            
+                <a href="../start/">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../start/cert.html">
+            
+                <a href="../start/cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../building/">
+            
+                <a href="../building/">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../building/custom.html">
+            
+                <a href="../building/custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../building/prereq-centos7.html">
+            
+                <a href="../building/prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../building/prereq-macos.html">
+            
+                <a href="../building/prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../building/prereq-ubuntu.html">
+            
+                <a href="../building/prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../building/prereq-fedora.html">
+            
+                <a href="../building/prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../building/build.html">
+            
+                <a href="../building/build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../building/precomp.html">
+            
+                <a href="../building/precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../building/devel.html">
+            
+                <a href="../building/devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="welcome.html">
+            
+                <a href="welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="classes.html">
+            
+                <a href="classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="alianalysistaskmytask.html">
+            
+                <a href="alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="local.html">
+            
+                <a href="local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.4" data-path="rungrid.html">
+            
+                <a href="rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="lego.html">
+            
+                <a href="lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="monalisa.html">
+            
+                <a href="monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="trouble.html">
+            
+                <a href="trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="streamer.html">
+            
+                <a href="streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="destructor.html">
+            
+                <a href="destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="running.html">
+            
+                <a href="running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="modify.html">
+            
+                <a href="modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="track.html">
+            
+                <a href="track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="pid.html">
+            
+                <a href="pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="MC.html">
+            
+                <a href="MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="grid.html">
+            
+                <a href="grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="bonus.html">
+            
+                <a href="bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="hints.html">
+            
+                <a href="hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="ROOT5-to-6.html">
+            
+                <a href="ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../rivet/rivet-tutorial.html">
+            
+                <a href="../rivet/rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../rivet/getting-started.html">
+            
+                <a href="../rivet/getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../rivet/rivet-in-alice.html">
+            
+                <a href="../rivet/rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../rivet/implementing-rivet-analysis.html">
+            
+                <a href="../rivet/implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../rivet/hi-features.html">
+            
+                <a href="../rivet/hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../rivet/reference-manual.html">
+            
+                <a href="../rivet/reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../rivet/publishing-procedures.html">
+            
+                <a href="../rivet/publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../rivet/advanced-topics.html">
+            
+                <a href="../rivet/advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../rivet/advanced-hi-features.html">
+            
+                <a href="../rivet/advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../rivet/coding-conventions.html">
+            
+                <a href="../rivet/coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../rivet/references.html">
+            
+                <a href="../rivet/references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Running on Grid</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="running-on-grid">Running on Grid</h1>
+<p>The Worldwide LHC Computing Grid, usually simply referred to as Grid, is a global collaboration of computer centers. It has been up and running since 2002, to provide resources to store, distribute and analyze the petabytes of data that are generated by the LHC. </p>
+<p>On the picture below, from <a href="http://alimonitor.cern.ch/map.jsp" target="_blank">http://alimonitor.cern.ch/map.jsp</a>, you can see the distribution of computing centers that are working for the ALICE collaboration. We will the Grid to run your analysis on a larger scale than your laptop can provide. </p>
+<p><img src="figures/grid.png" alt="image"></p>
+<p>To run your analysis on the Grid, all we need to do is expand our steering macro a little bit. In this section, we will explain how. </p>
+<h2 id="configuring-the-alien-plugin">Configuring the AliEn plugin</h2>
+<p>In order to run your analysis transparently either on your local computer or on the Grid, we will use the <code>AliEn plugin</code>. The plugin hides a lot of complex operations that have to be performed in order to run your analysis on Grid, e.g.</p>
+<ul>
+<li>Using all existing types of input data to be processed (root files, raw AliEn collections or XML collections) detecting their type automatically;</li>
+<li>Generate XML collections corresponding to requested runs and/or data patterns;</li>
+<li>Automatically detect presence of tags in input data and allow using tag-based cuts in a very simple way;</li>
+<li>Automatically connect to AliEn (generate a token if needed)</li>
+<li>Generate automatically: JDL, analysis macro to be run in grid, execution and validation scripts according a simple to understand user-driven configuration; </li>
+<li>Copy all needed files in user&apos;s AliEn space and submit the job automatically;</li>
+<li>Start an alien shell to allow inspecting the job status;</li>
+<li>Do automatic output merging and terminate the analysis tasks.</li>
+</ul>
+<p>The implementation of the plugin is for the Alice Environment is provided in the class <code>AliAnalysisAlien</code>. In the following code snippet, you can an example of how the plugin is created.  These lines would go into your <code>runAnalysis.C</code> steering macro. Read through the code and the comments, and make sure that you understand what happens in each line. </p>
+<pre><code class="lang-cpp">    <span class="hljs-comment">// create an instance of the plugin</span>
+    AliAnalysisAlien *alienHandler = <span class="hljs-keyword">new</span> AliAnalysisAlien();
+    <span class="hljs-comment">// if our class relies on code that has to be compiled, then we need to tell the Grid nodes</span>
+    <span class="hljs-comment">// where the headers can be found</span>
+    alienHandler-&gt;AddIncludePath(<span class="hljs-string">&quot;-I. -I$ROOTSYS/include -I$ALICE_ROOT -I$ALICE_ROOT/include -I$ALICE_PHYSICS/include&quot;</span>);
+    <span class="hljs-comment">// here we tell which source files need to be copied to the Grid nodes</span>
+    alienHandler-&gt;SetAdditionalLibs(<span class="hljs-string">&quot;AliAnalysisTaskMyTask.cxx AliAnalysisTaskMyTask.h&quot;</span>);
+    alienHandler-&gt;SetAnalysisSource(<span class="hljs-string">&quot;AliAnalysisTaskMyTask.cxx&quot;</span>);
+    <span class="hljs-comment">// here we specify which version of aliphysics will be used on the Grid nodes</span>
+    <span class="hljs-comment">// only specificy the AliPhysics version, other dependencies (AliRoot, ROOT, etc)</span>
+    <span class="hljs-comment">// will be resolved automatically</span>
+    alienHandler-&gt;SetAliPhysicsVersion(<span class="hljs-string">&quot;vAN-20160330-2&quot;</span>);
+    <span class="hljs-comment">// here we specify where the input data of our analysis is stored</span>
+    alienHandler-&gt;SetGridDataDir(<span class="hljs-string">&quot;/alice/data/2011/LHC11h_2&quot;</span>);
+    <span class="hljs-comment">// and here we specify a specific pattern of filenames</span>
+    alienHandler-&gt;SetDataPattern(<span class="hljs-string">&quot;*ESDs/pass2/AOD145/*AOD.root&quot;</span>);
+    <span class="hljs-comment">// here we set the run prefix: use &apos;000&apos; for data, or nothing for MC</span>
+    alienHandler-&gt;SetRunPrefix(<span class="hljs-string">&quot;000&quot;</span>);
+    <span class="hljs-comment">// specify the runnumber to be analyzed. you can call this function multiple times with </span>
+    <span class="hljs-comment">// different runnumbers</span>
+    alienHandler-&gt;AddRunNumber(<span class="hljs-number">167813</span>);
+</code></pre>
+<p>So far, we have defined the following things</p>
+<ul>
+<li>Which input data has to be analyzed;</li>
+<li>Which AliPhysics version has to be used;</li>
+<li>What kind of analysis sources have to be used.</li>
+</ul>
+<p>These are options that you likely have to change very often. However, there are many more analysis details that we can provide:</p>
+<pre><code class="lang-cpp">    <span class="hljs-comment">// number of files per subjob, this specifies how many input files</span>
+    <span class="hljs-comment">// each Grid node will analyze. For slow analyses, you might want to </span>
+    <span class="hljs-comment">// lower this number</span>
+    alienHandler-&gt;SetSplitMaxInputFileNumber(<span class="hljs-number">40</span>);
+    <span class="hljs-comment">// the TTL is the &apos;time to live&apos;, which specifies how long a job can run, in seconds</span>
+    <span class="hljs-comment">// the longer you make this time, the lower the jobs priority will be. However, if the job doesn&apos;t</span>
+    <span class="hljs-comment">// finish within its TTL, it will be killed, so choose a reasonable number</span>
+    alienHandler-&gt;SetTTL(<span class="hljs-number">10000</span>);
+    <span class="hljs-comment">// do you want to create a subfolder in which the output of each runnumber is stored? </span>
+    alienHandler-&gt;SetOutputToRunNo(kTRUE);
+    <span class="hljs-comment">// do you want to keep your jobs log files ? </span>
+    alienHandler-&gt;SetKeepLogs(kTRUE);
+    <span class="hljs-comment">// we can specify that we want to, later on, use Grid to also merge</span>
+    <span class="hljs-comment">// our output. to enable this, we will set &apos;SetMergeViaJDL&apos; to kTRUE</span>
+    alienHandler-&gt;SetMergeViaJDL(kTRUE);
+    alienHandler-&gt;SetMaxMergeStages(<span class="hljs-number">1</span>);
+    <span class="hljs-comment">// define the output folders, and give them a sensible name</span>
+    <span class="hljs-comment">// jobs *cannot* overwrite output, so make sure that</span>
+    <span class="hljs-comment">// folders with names as these do not yet exist in your AliEn space</span>
+    alienHandler-&gt;SetGridWorkingDir(<span class="hljs-string">&quot;myWorkingDir&quot;</span>);
+    alienHandler-&gt;SetGridOutputDir(<span class="hljs-string">&quot;myOutputDir&quot;</span>);
+    <span class="hljs-comment">// lastly, we give names to the automatically generated analysis scripts</span>
+    alienHandler-&gt;SetJDLName(<span class="hljs-string">&quot;myTask.jdl&quot;</span>);
+    alienHandler-&gt;SetExecutable(<span class="hljs-string">&quot;myTask.sh&quot;</span>);
+</code></pre>
+<h2 id="test-of-full-mode-">Test of full mode ?</h2>
+<p>We are nearly ready to launch our analysis on Grid. But before we go &apos;full blast&apos; and use thousands of CPU&apos;s, we might want to do a test run to make sure that everything is configured correctly (and to make sure that we do not misuse ROOT&apos;s streamer, which will be covered in a later section). </p>
+<p>To test your Grid analysis, we can specify to the plugin that we want to go for a test run, rather than launching a complete analysis. In the code snippet presented below, let&apos;s assume that the variable <code>gridTest</code> is set to kTRUE. As you can see, we specify to the plugin that we want to run in <em>test</em> mode. We also specify that we want to run over one test file (if you want to run over more test files, you can increase this number). </p>
+<pre><code class="lang-cpp">        <span class="hljs-comment">// connect the alien plugin to the manager</span>
+        mgr-&gt;SetGridHandler(alienHandler);
+        <span class="hljs-keyword">if</span>(gridTest) {
+            <span class="hljs-comment">// speficy on how many files you want to run</span>
+            alienHandler-&gt;SetNtestFiles(<span class="hljs-number">1</span>);
+            <span class="hljs-comment">// and launch the analysis</span>
+            alienHandler-&gt;SetRunMode(<span class="hljs-string">&quot;test&quot;</span>);
+            mgr-&gt;StartAnalysis(<span class="hljs-string">&quot;grid&quot;</span>);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// else launch the full grid analysis</span>
+            alienHandler-&gt;SetRunMode(<span class="hljs-string">&quot;full&quot;</span>);
+            mgr-&gt;StartAnalysis(<span class="hljs-string">&quot;grid&quot;</span>);
+        }
+</code></pre>
+<h2 id="ready-to-go">Ready to go?</h2>
+<p>When you run an analysis in test mode, a Grid environment is simulated locally for testing. Input data is downloaded from the file catalogue, following your configuration of the analysis plugin. After this, your analysis is executed. Running in test mode is an excellent way of convincing yourself that you have set up the plugin correctly. </p>
+<p>Once your analysis test is finished, and you are convinced that your analysis output looks sane, you can submit your analysis to the Grid nodes. To do this, simply look at at the code snippet above, and assume that the variable <code>gridTest</code> is set to kFALSE. </p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(780722448);" id="create-alien-legacy-token"><i class="fa fa-info-circle"></i> Create AliEn legacy token!<span id="heading-780722448"></span></h3></div><div class="panel-body" id="panel-780722448"><p>Only ALICE members with a valid registration can submit jobs to the Grid and access the ALICE data. To identify yourself as an ALICE member, you will have to make sure that you have a valid token prior to launching your Grid jobs, be it in full or in test mode. If you are using AliEn legacy, then you need to obtain a token manually. If you are using JAliEn, then the token will be obtained automatically.</p>
+<pre><code>$ alien-token-init &lt;username&gt;
+</code></pre><p>if all is fine, you should be prompted for your password, and see something like</p>
+<pre><code>    =&gt; Trying to connect to Server [0] root://pcapiserv03.cern.ch:10000 as User &lt;username&gt;
+    ...
+    Creating token ..................................... Done
+    Your token is valid until: Thu Apr  7 15:23:52 2016
+</code></pre><p>after this, you are good to go, and can launch your analysis by executing your steering macro</p>
+<pre><code>$ aliroot runAnalysis.C 
+</code></pre></div></div></p>
+<h2 id="merging-output-on-grid">Merging output on Grid</h2>
+<p>You can check the progress of the jobs that are running on Grid by going to (<a href="http://alimonitor.cern.ch/map.jsp)[http://alimonitor.cern.ch/map.jsp" target="_blank">http://alimonitor.cern.ch/map.jsp)[http://alimonitor.cern.ch/map.jsp</a>] and clicking on the tab <em>My Jobs</em>, at the top left of the page. When all your jobs are finished (we will later, in the section <em>AliMonitor</em> look at tracing your jobs in more detail), you are of course interested in looking at the output that they have produced. However, this output is stored as thousands of files, scattered over multiple job sites. To obtain one, single file as output of your analysis, we need to <em>merge</em> all these thousands of files. </p>
+<h3 id="merging-via-jdl">Merging via JDL</h3>
+<p>The easiest way to merge your output is using the <code>MergeViaJDL</code> option that the plugin provides. Using this option will allow you to submit special <em>merging jobs</em>, which run on the Grid nodes and merge your output files. To enable merging via JDL, you have to configure your plugin as follows, <em>before</em> you start your analysis:</p>
+<pre><code class="lang-cpp">    alienHandler-&gt;SetMergeViaJDL(kTRUE);
+    alienHandler-&gt;SetMaxMergeStages(<span class="hljs-number">1</span>);  <span class="hljs-comment">// just one step</span>
+    ....
+    mgr-&gt;SetRunMode(<span class="hljs-string">&quot;full&quot;</span>);
+</code></pre>
+<p>This will prepare the plugin for writing merging jobs, when your analysis is done. 
+<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(8643735791);" id="more-than-on-merging-stage"><i class="fa fa-info-circle"></i> More than on merging stage?<span id="heading-8643735791"></span></h3></div><div class="panel-body" id="panel-8643735791"><p>By specifying</p>
+<pre><code class="lang-cpp">   alienHandler-&gt;SetMaxMergeStages(<span class="hljs-number">1</span>);
+</code></pre>
+<p>we tell the plugin that all output files can be merged in one go. </p>
+<p>If your output files are quite large, you might want to increase the number of merging stages by specifying a larger number here: this will tell the plugin that we want to merge in multiple, consecutive stages.</p>
+</div></div></p>
+<p>When all your normal analysis jobs have finished, we want to launch the merging jobs to Grid. To do this, we again make a small modification to our steering macro, and change the run mode from <code>full</code> to <code>terminate</code>:</p>
+<pre><code class="lang-cpp">    alienHandler-&gt;SetMergeViaJDL(kTRUE);
+    alienHandler-&gt;SetMaxMergeStages(<span class="hljs-number">1</span>);  <span class="hljs-comment">// just one</span>
+    ....
+    mgr-&gt;SetRunMode(<span class="hljs-string">&quot;terminate&quot;</span>);
+</code></pre>
+<p>To now launch the merging jobs, simply run</p>
+<pre><code>$ aliroot runAnalysis.C
+</code></pre><p>again. The merging jobs will be launched, and you can monitor their progress on via the &apos;Jobs&apos; tab on <a href="http://alimonitor.cern.ch/map.jsp" target="_blank">http://alimonitor.cern.ch/map.jsp</a>.</p>
+<p>When all your <em>merging jobs</em> have finished running, there is one step to be taken still, which is downloading the output of the merging jobs, so that you have your analysis output available on your laptop. This is done by again making a small change to your steering macro:</p>
+<pre><code class="lang-cpp">    alienHandler-&gt;SetMergeViaJDL(kFALSE);
+    alienHandler-&gt;SetMaxMergeStages(<span class="hljs-number">1</span>);  <span class="hljs-comment">// just one</span>
+    mgr-&gt;SetRunMode(<span class="hljs-string">&quot;terminate&quot;</span>);
+</code></pre>
+<p>and running <code>runAnalysis.C</code> a final time. This will trigger downloading of the merged output files (the resulting files from the merging jobs) and a final &apos;local&apos; merge of said files into one, single output file. When the process is <strong>done</strong> your high-statistics output files is ready - time to start writing a paper!</p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7081441264);" id="merging-is-dumb"><i class="fa fa-info-circle"></i> Merging is &apos;dumb&apos;<span id="heading-7081441264"></span></h3></div><div class="panel-body" id="panel-7081441264"><p>Keep in mind: merging can be a memory-hungry process. During merging, all files that are to be merged are kept in random access memory. ROOT files tend to be heavily compressed when written to disk, so their size in RAM might be surprisingly large. </p>
+<p>When your output files are large, or if you have a large number of output files to be merged, you might need to merge in multiple stages, to avoid running out of RAM!</p>
+</div></div></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="local.html" class="navigation navigation-prev " aria-label="Previous page: Running locally">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="lego.html" class="navigation navigation-next " aria-label="Next page: The LEGO train system">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Running on Grid","level":"1.4.4","depth":2,"next":{"title":"The LEGO train system","level":"1.4.5","depth":2,"path":"analysis/lego.md","ref":"analysis/lego.md","articles":[]},"previous":{"title":"Running locally","level":"1.4.3","depth":2,"path":"analysis/local.md","ref":"analysis/local.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"analysis/rungrid.md","mtime":"2020-08-26T13:26:44.707Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,938 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Some hints · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="ROOT5-to-6.html" />
+    
+    
+    <link rel="prev" href="bonus.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start/">
+            
+                <a href="../start/">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../start/cert.html">
+            
+                <a href="../start/cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../building/">
+            
+                <a href="../building/">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../building/custom.html">
+            
+                <a href="../building/custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../building/prereq-centos7.html">
+            
+                <a href="../building/prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../building/prereq-macos.html">
+            
+                <a href="../building/prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../building/prereq-ubuntu.html">
+            
+                <a href="../building/prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../building/prereq-fedora.html">
+            
+                <a href="../building/prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../building/build.html">
+            
+                <a href="../building/build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../building/precomp.html">
+            
+                <a href="../building/precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../building/devel.html">
+            
+                <a href="../building/devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="welcome.html">
+            
+                <a href="welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="classes.html">
+            
+                <a href="classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="alianalysistaskmytask.html">
+            
+                <a href="alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="local.html">
+            
+                <a href="local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="rungrid.html">
+            
+                <a href="rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="lego.html">
+            
+                <a href="lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="monalisa.html">
+            
+                <a href="monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="trouble.html">
+            
+                <a href="trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="streamer.html">
+            
+                <a href="streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="destructor.html">
+            
+                <a href="destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="running.html">
+            
+                <a href="running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="modify.html">
+            
+                <a href="modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="track.html">
+            
+                <a href="track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="pid.html">
+            
+                <a href="pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="MC.html">
+            
+                <a href="MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="grid.html">
+            
+                <a href="grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="bonus.html">
+            
+                <a href="bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.9" data-path="hints.html">
+            
+                <a href="hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="ROOT5-to-6.html">
+            
+                <a href="ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../rivet/rivet-tutorial.html">
+            
+                <a href="../rivet/rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../rivet/getting-started.html">
+            
+                <a href="../rivet/getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../rivet/rivet-in-alice.html">
+            
+                <a href="../rivet/rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../rivet/implementing-rivet-analysis.html">
+            
+                <a href="../rivet/implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../rivet/hi-features.html">
+            
+                <a href="../rivet/hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../rivet/reference-manual.html">
+            
+                <a href="../rivet/reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../rivet/publishing-procedures.html">
+            
+                <a href="../rivet/publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../rivet/advanced-topics.html">
+            
+                <a href="../rivet/advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../rivet/advanced-hi-features.html">
+            
+                <a href="../rivet/advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../rivet/coding-conventions.html">
+            
+                <a href="../rivet/coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../rivet/references.html">
+            
+                <a href="../rivet/references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Some hints</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="some-hints">Some hints</h1>
+<p>To create documentation of analysis code, we use a system called &#x2019;Doxygen&#x2019;. You can find explanation about Doxygen at this webpage: <a href="https://dberzano.github.io/alice/doxygen/" target="_blank">https://dberzano.github.io/alice/doxygen/</a>.</p>
+<p>The Doxygen documentation of AliROOT and AliPhysics is available here <a href="http://alidoc.cern.ch/" target="_blank">http://alidoc.cern.ch/</a> . It is generated daily.</p>
+<h2 id="cleaning-up-and-improving-your-code">Cleaning up and improving your code</h2>
+<ul>
+<li><p>One of the most important things you can do is make sure your code
+is <strong>readable</strong></p>
+</li>
+<li><p>This means using <strong>whitespace</strong> freely, <strong>consistent indentation</strong>,
+etc</p>
+</li>
+<li><p>This is <strong>valid</strong> C++ code:</p>
+</li>
+</ul>
+<pre><code class="lang-cpp">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">10</span>;i++){<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;i is &quot;</span>&lt;&lt;i&lt;&lt;<span class="hljs-built_in">endl</span>;}
+</code></pre>
+<p>but it looks <strong>bad</strong></p>
+<ul>
+<li>This is C++ code <strong>equivalent</strong> to that:</li>
+</ul>
+<pre><code class="lang-cpp">    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">10</span>; i++)
+      {
+        <span class="hljs-built_in">cout</span> &lt;&lt; <span class="hljs-string">&quot;i is &quot;</span> &lt;&lt; i &lt;&lt; <span class="hljs-built_in">endl</span>;
+      }
+</code></pre>
+<pre><code>and it looks much **better**
+</code></pre><ul>
+<li>There are no wrongs or rights, but be <strong>consistent</strong></li>
+</ul>
+<h2 id="fault-tolerance">Fault tolerance</h2>
+<ul>
+<li>Check e.g. the snippet</li>
+</ul>
+<pre><code class="lang-cpp">    <span class="hljs-keyword">for</span>(<span class="hljs-function">Int_t <span class="hljs-title">i</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>; i &lt; iTracks; i++) {
+        <span class="hljs-comment">// loop over all the tracks</span>
+        AliAODTrack* track = <span class="hljs-keyword">static_cast</span>&lt;AliAODTrack*&gt;(fAOD-&gt;GetTrack(i));
+        <span class="hljs-comment">// fill our histogram</span>
+        fHistPt-&gt;Fill(track-&gt;Pt());
+    }
+</code></pre>
+<ul>
+<li>We can build in fault tolerance:</li>
+</ul>
+<pre><code class="lang-cpp">    <span class="hljs-keyword">for</span>(<span class="hljs-function">Int_t <span class="hljs-title">i</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>; i &lt; iTracks; i++) {
+        <span class="hljs-comment">// loop over all the tracks</span>
+        AliAODTrack* track = <span class="hljs-keyword">static_cast</span>&lt;AliAODTrack*&gt;(fAOD-&gt;GetTrack(i));
+        <span class="hljs-keyword">if</span>(!track) <span class="hljs-keyword">continue</span>;
+        <span class="hljs-comment">// fill our histogram</span>
+        fHistPt-&gt;Fill(track-&gt;Pt());
+    }
+</code></pre>
+<ul>
+<li><p>Finally, it&#x2019;s a very good idea to comment your code</p>
+</li>
+<li><p>Comments improve readability and maintainability</p>
+</li>
+<li><p>Comments should be useful, though, and comments that are overly
+obvious can be avoided</p>
+</li>
+</ul>
+<pre><code class="lang-cpp">    <span class="hljs-comment">// no comment: bad</span>
+    a++;
+
+    <span class="hljs-comment">// pointless comment, also not so good</span>
+
+    a++; <span class="hljs-comment">// adding 1 to a</span>
+
+
+    <span class="hljs-comment">// descriptive comment, very good</span>
+
+    a++; <span class="hljs-comment">// adding 1 to a to make a point during a tutorial</span>
+</code></pre>
+<ul>
+<li>It&#x2019;s also a good idea to document your code as you&#x2019;re writing it -
+you <strong>will</strong> forget how it works and no-one will continue with
+uncommented tasks</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="bonus.html" class="navigation navigation-prev " aria-label="Previous page: Bonus content">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="ROOT5-to-6.html" class="navigation navigation-next " aria-label="Next page: Transition from ROOT5 to ROOT6">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Some hints","level":"1.5.9","depth":2,"next":{"title":"Transition from ROOT5 to ROOT6","level":"1.5.10","depth":2,"path":"analysis/ROOT5-to-6.md","ref":"analysis/ROOT5-to-6.md","articles":[]},"previous":{"title":"Bonus content","level":"1.5.8","depth":2,"path":"analysis/bonus.md","ref":"analysis/bonus.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"analysis/hints.md","mtime":"2020-08-26T13:26:44.707Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

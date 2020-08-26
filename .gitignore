@@ -1,0 +1,12 @@
+.DS_Store
+_book/
+node_modules/
+*.pyc
+*.swp
+book.pdf
+/analysis-essentials.pdf
+/env.sh
+/building/Dockerfile_*
+/secrets.txt
+.idea/
+/.gitbook_install

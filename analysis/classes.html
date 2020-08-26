@@ -1,0 +1,953 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>AliAnalysisTaskSE · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="alianalysistaskmytask.html" />
+    
+    
+    <link rel="prev" href="welcome.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start/">
+            
+                <a href="../start/">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../start/cert.html">
+            
+                <a href="../start/cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../building/">
+            
+                <a href="../building/">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../building/custom.html">
+            
+                <a href="../building/custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../building/prereq-centos7.html">
+            
+                <a href="../building/prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../building/prereq-macos.html">
+            
+                <a href="../building/prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../building/prereq-ubuntu.html">
+            
+                <a href="../building/prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../building/prereq-fedora.html">
+            
+                <a href="../building/prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../building/build.html">
+            
+                <a href="../building/build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../building/precomp.html">
+            
+                <a href="../building/precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../building/devel.html">
+            
+                <a href="../building/devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="welcome.html">
+            
+                <a href="welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.1" data-path="classes.html">
+            
+                <a href="classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="alianalysistaskmytask.html">
+            
+                <a href="alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="local.html">
+            
+                <a href="local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="rungrid.html">
+            
+                <a href="rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="lego.html">
+            
+                <a href="lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="monalisa.html">
+            
+                <a href="monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="trouble.html">
+            
+                <a href="trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="streamer.html">
+            
+                <a href="streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="destructor.html">
+            
+                <a href="destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="running.html">
+            
+                <a href="running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="modify.html">
+            
+                <a href="modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="track.html">
+            
+                <a href="track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="pid.html">
+            
+                <a href="pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="MC.html">
+            
+                <a href="MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="grid.html">
+            
+                <a href="grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="bonus.html">
+            
+                <a href="bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="hints.html">
+            
+                <a href="hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="ROOT5-to-6.html">
+            
+                <a href="ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../rivet/rivet-tutorial.html">
+            
+                <a href="../rivet/rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../rivet/getting-started.html">
+            
+                <a href="../rivet/getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../rivet/rivet-in-alice.html">
+            
+                <a href="../rivet/rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../rivet/implementing-rivet-analysis.html">
+            
+                <a href="../rivet/implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../rivet/hi-features.html">
+            
+                <a href="../rivet/hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../rivet/reference-manual.html">
+            
+                <a href="../rivet/reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../rivet/publishing-procedures.html">
+            
+                <a href="../rivet/publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../rivet/advanced-topics.html">
+            
+                <a href="../rivet/advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../rivet/advanced-hi-features.html">
+            
+                <a href="../rivet/advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../rivet/coding-conventions.html">
+            
+                <a href="../rivet/coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../rivet/references.html">
+            
+                <a href="../rivet/references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >AliAnalysisTaskSE</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="introduction---c-classes">Introduction - C++ classes</h1>
+<p>All the code that you will find in ROOT, AliRoot and AliPhysics is written in the form of C++ <em>classes</em>. A class is a data type which is defined by the user, and allows for creating data members and functions specific for that class. By convention, each class in AliPhysics, AliRoot, and ROOT, is stored in its own <strong>header</strong> (.h) and <strong>implementation</strong> file, which have the same name as the class it defines (so later on, we will see that your analysis class, stored in a file &apos;AliAnalysisTaskMyTask&apos;, is called &apos;AliAnalysisTaskMyTask&apos;). </p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(4400568888);" id="c--"><i class="fa fa-info-circle"></i> C++ .... ?<span id="heading-4400568888"></span></h3></div><div class="panel-body" id="panel-4400568888"><p>If you have never heard of classes (or C++), it might be a good idea to go through a C++ manual, an excellent one, with plenty of hands-on examples, can be found here: <a href="http://www.cplusplus.com/doc/tutorial/" target="_blank">http://www.cplusplus.com/doc/tutorial/</a>. </p>
+</div></div></p>
+<p>Classes are extended structures which contain both <strong>variables</strong> and <strong>functions</strong> (which are called <strong>methods</strong>) as <strong>members</strong>. Often, variables must be <strong>accessed</strong> through these methods. This might sound a bit abstract, but it becomes much more clear when you look at in a small code example:</p>
+<pre><code class="lang-cpp">    <span class="hljs-keyword">class</span> Rectangle
+    {
+     <span class="hljs-keyword">private</span>:
+      <span class="hljs-keyword">int</span> width, height;
+     <span class="hljs-keyword">public</span>:
+      Rectangle(<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>);
+      <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">GetArea</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> height * width;}
+    }
+</code></pre>
+<p>Here we defined a class, called <strong>Rectangle</strong>, which has variables <strong>width</strong> and <strong>height</strong>, and a <strong>method</strong> called <code>GetArea</code> which gives us access to the members. </p>
+<h3 id="inheritance">Inheritance</h3>
+<p>Classes are nice and important, because they can be <strong>derived</strong> from one-another (a feature called <strong>inheritance</strong>. Look at the figure below </p>
+<p><img src="figures/inheritance.png" alt="image"></p>
+<p>In this figure, <code>Rectangle</code> is <strong>derived</strong> from <strong>base</strong> class <code>Polygon</code>, and <em>inherits</em> its members. If we want to define a second class, <code>Triangle</code>, which is also a polygon and will therefore have features in common with <code>Rectangle</code>, we can also derive it from base class <code>Polygon</code>. This  avoids having to <strong>repeat</strong> common code for multiple which share features. </p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(262559961);" id="beware"><i class="fa fa-info-circle"></i> Beware<span id="heading-262559961"></span></h3></div><div class="panel-body" id="panel-262559961"><p>Classes are very powerful, but inheritance can sometimes make it tricky to understand how code is structured!</p>
+</div></div></p>
+<p>Let&apos;s take a look at how our classes would look like when we put them down as C++ code. First, we define out base class, the polygon</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">class</span> Polygon
+{
+ <span class="hljs-keyword">private</span>:
+  <span class="hljs-keyword">int</span> width, height;
+}
+</code></pre>
+<p>This example lives in 2-dimensional space, so our polygon is fully defined by its width and its height. The two polygons that we want to define, are a rectangle and a triangle. The rectangle can be defined as follows</p>
+<pre><code class="lang-cpp">    <span class="hljs-keyword">class</span> Rectangle : <span class="hljs-keyword">public</span> Polygon
+    {
+     <span class="hljs-keyword">public</span>:
+      Rectangle(<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>);
+      <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">GetArea</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> height * width;}
+    }
+</code></pre>
+<p>Note that we <strong>do not</strong> have to define the members <code>height</code> and <code>width</code> here, as they are already defined in our base class! The only <em>method</em> that is specific to the rectangle, is the <code>GetArea</code> method. </p>
+<p>Our triangle class can be written as</p>
+<pre><code class="lang-cpp">    <span class="hljs-keyword">class</span> Triangle : <span class="hljs-keyword">public</span> Polygon
+    {
+     <span class="hljs-keyword">public</span>:
+      Triangle(<span class="hljs-keyword">int</span>,<span class="hljs-keyword">int</span>);
+      <span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">GetArea</span><span class="hljs-params">()</span> </span>{<span class="hljs-keyword">return</span> (height * width)/<span class="hljs-number">2</span>;}
+    }
+</code></pre>
+<p>Again, <code>width</code> and <code>height</code> are defined in the base class <code>Polygon</code>, but also the Triangle class gets its own <code>GetArea</code> method. So now we have seen how <strong>inheritance</strong> makes our classes (and our life) simpler: by defining common functionality in a base class, we avoid <em>repetition</em> of code, which could easily lead to mistakes.</p>
+<p><div class="panel panel-success"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7673340674);" id="example-from-aliphysics---the-alimcevent-class"><i class="fa fa-square-o"></i> Example from AliPhysics - The AliMCEvent class<span id="heading-7673340674"></span></h3></div><div class="panel-body" id="panel-7673340674"><p>Inheritance is used widely in C++ code, and therefore also in AliROOT and AliPhysics. Take a look at the <code>AliMCEvent</code> class below</p>
+<pre><code class="lang-cpp">    <span class="hljs-keyword">class</span> AliMCEvent : <span class="hljs-keyword">public</span> AliVEvent {
+      <span class="hljs-keyword">public</span>:
+      ....
+      <span class="hljs-keyword">private</span>:
+      ....
+    }
+</code></pre>
+<p>Here <code>AliMCEvent</code> is derived from its base class <code>AliVEvent</code>, in the same way as the <code>Triangle</code> is derived from the base class <code>Polygon</code>. Classes such as <code>AliESDEvent</code> and <code>AliAODEvent</code> are also derived from <code>AliVEvent</code>, preventing a lot of <em>boilerplate</em> (i.e. needlessly repetitive) code.</p>
+</div></div></p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7737704538);" id="class-headers---"><i class="fa fa-info-circle"></i> Class headers ... ? <span id="heading-7737704538"></span></h3></div><div class="panel-body" id="panel-7737704538"><p>C++ classes are, in code bases, usually split into a <em>header</em> file (extention .h) and an implementation file (extension .cxx). A header file is generally used to define all of the functions, variables and constants contained in a class. There are multiple good reasons for splitting code into an implementation and a header - can you think of a few? </p>
+</div></div></p>
+<h1 id="alianalysistaskse">AliAnalysisTaskSE</h1>
+<p>Now that you are an expert at C++ classes, you might wonder why classes are relevant to writing an analysis task. The reason is the following: in the AliPhysics analysis framework, <strong>all analysis tasks are derived from the same base class, called <code>AliAnalysisTaskSE</code></strong>, where SE stands for &apos;single event&apos;. This class in turn, is derived from the class <code>AliAnalysisTask</code> (if you are interested, you can go through the code and follow the full chain of inheritance). </p>
+<p>Since all analysis tasks derive from <code>AliAnalysisTaskSE</code>, all analyses share the following common, base methods:</p>
+<pre><code class="lang-cpp">        AliAnalysisTaskSE::AliAnalysisTaskSE();
+        AliAnalysisTaskSE::AliAnalysisTaskSE(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>*);
+        AliAnalysisTaskSE::~AliAnalysisTaskSE();
+        AliAnalysisTaskSE::UserCreateOutputObjects();
+        AliAnalysisTaskSE::UserExec(Option_t*);
+        AliAnalysisTaskSE::Terminate(Option_t*);
+</code></pre>
+<p>These are methods that you will always need to implement. </p>
+<p>In the following section, we will go through these methods in detail.</p>
+<h2 id="class-constructors-and-destructors">Class constructors and destructors</h2>
+<p>The functions</p>
+<pre><code class="lang-cpp">        AliAnalysisTaskSE::AliAnalysisTaskSE();                 <span class="hljs-comment">// class constructor</span>
+        AliAnalysisTaskSE::AliAnalysisTaskSE(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>*);      <span class="hljs-comment">// class constructor</span>
+        AliAnalysisTaskSE::~AliAnalysisTaskSE();                <span class="hljs-comment">// class destructor</span>
+</code></pre>
+<p>are your class <strong>constructors</strong> and <strong>destructor</strong>. These are standard C++ features, that are called when you create or delete an instance of your class. We will later on see, why you need to define <em>two</em> different class constructors. </p>
+<h2 id="alianalysistaskseusercreateoutputobjects">AliAnalysisTaskSE::UserCreateOutputObjects()</h2>
+<p>In this function, the user (i.e. the analyzer) can define the output objects of the analysis. These are e.g. histograms in which you store your physics results. These output objects can be attached to the output file(s) of the analysis. </p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(2555033280);" id="please-note"><i class="fa fa-info-circle"></i> Please note<span id="heading-2555033280"></span></h3></div><div class="panel-body" id="panel-2555033280"><p>When you are designing your class for your analysis, it (obviously) pays off to think about which output you need to extract the physics; do you want ten 1D histograms, or will four 2D histograms supply much more information? Or would you prefer writing certain information to a TTree, such that you have full information available when post-processing on your laptop? All these different output objects bring memory and size considerations, so choose well.</p>
+</div></div></p>
+<h2 id="alianalysistaskseuserexec">AliAnalysisTaskSE::UserExec()</h2>
+<p>This function is called <em>for each, single event</em> over which your analysis task runs. This function is your &apos;event loop&apos;. Examples of useful things to do in the UserExec() function:</p>
+<ul>
+<li>Check if an event has properties that you want to have in your analysis, if not <code>return;</code></li>
+<li>Access the physics objects specific to your analysis (e.g. the charged particles in this event, or find the highest momentum particle)</li>
+<li>Fill the histograms or other output objects</li>
+</ul>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7227798991);" id="please-note"><i class="fa fa-info-circle"></i> Please note<span id="heading-7227798991"></span></h3></div><div class="panel-body" id="panel-7227798991"><p>If the function <code>AliAnalysisTaskSE::SelectCollisionCandidates(UInt_t trigger_mask)</code> is called before you launch your analysis, <code>UserExec()</code> will only be executed for events which pass the trigger selection that you have specified. </p>
+</div></div></p>
+<h2 id="alianalysistaskseterminate">AliAnalysisTaskSE::Terminate()</h2>
+<p>The <code>Terminate</code> function is called at the very end of the analysis, when all events in your input data have been analyzed. Often, you leave the <code>Terminate</code> function empty: usually it is more practical to write a small macro that performs post-processing on your analysis output files, rather than deferring this functionality to the <code>Terminate</code> function.   </p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="welcome.html" class="navigation navigation-prev " aria-label="Previous page: Writing an analysis task">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="alianalysistaskmytask.html" class="navigation navigation-next " aria-label="Next page: Your analysis task">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"AliAnalysisTaskSE","level":"1.4.1","depth":2,"next":{"title":"Your analysis task","level":"1.4.2","depth":2,"path":"analysis/alianalysistaskmytask.md","ref":"analysis/alianalysistaskmytask.md","articles":[]},"previous":{"title":"Writing an analysis task","level":"1.4","depth":1,"path":"analysis/welcome.md","ref":"analysis/welcome.md","articles":[{"title":"AliAnalysisTaskSE","level":"1.4.1","depth":2,"path":"analysis/classes.md","ref":"analysis/classes.md","articles":[]},{"title":"Your analysis task","level":"1.4.2","depth":2,"path":"analysis/alianalysistaskmytask.md","ref":"analysis/alianalysistaskmytask.md","articles":[]},{"title":"Running locally","level":"1.4.3","depth":2,"path":"analysis/local.md","ref":"analysis/local.md","articles":[]},{"title":"Running on Grid","level":"1.4.4","depth":2,"path":"analysis/rungrid.md","ref":"analysis/rungrid.md","articles":[]},{"title":"The LEGO train system","level":"1.4.5","depth":2,"path":"analysis/lego.md","ref":"analysis/lego.md","articles":[]},{"title":"AliMonitor","level":"1.4.6","depth":2,"path":"analysis/monalisa.md","ref":"analysis/monalisa.md","articles":[]},{"title":"Troubleshooting","level":"1.4.7","depth":2,"path":"analysis/trouble.md","ref":"analysis/trouble.md","articles":[]},{"title":"The ROOT streamer","level":"1.4.8","depth":2,"path":"analysis/streamer.md","ref":"analysis/streamer.md","articles":[]},{"title":"Destructors","level":"1.4.9","depth":2,"path":"analysis/destructor.md","ref":"analysis/destructor.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"analysis/classes.md","mtime":"2020-08-26T13:26:44.695Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

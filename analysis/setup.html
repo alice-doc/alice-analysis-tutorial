@@ -1,0 +1,989 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Step 1 - Setup the tutorial · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="running.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start/">
+            
+                <a href="../start/">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../start/cert.html">
+            
+                <a href="../start/cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../building/">
+            
+                <a href="../building/">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../building/custom.html">
+            
+                <a href="../building/custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../building/prereq-centos7.html">
+            
+                <a href="../building/prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../building/prereq-macos.html">
+            
+                <a href="../building/prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../building/prereq-ubuntu.html">
+            
+                <a href="../building/prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../building/prereq-fedora.html">
+            
+                <a href="../building/prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../building/build.html">
+            
+                <a href="../building/build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../building/precomp.html">
+            
+                <a href="../building/precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../building/devel.html">
+            
+                <a href="../building/devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="welcome.html">
+            
+                <a href="welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="classes.html">
+            
+                <a href="classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="alianalysistaskmytask.html">
+            
+                <a href="alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="local.html">
+            
+                <a href="local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="rungrid.html">
+            
+                <a href="rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="lego.html">
+            
+                <a href="lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="monalisa.html">
+            
+                <a href="monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="trouble.html">
+            
+                <a href="trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="streamer.html">
+            
+                <a href="streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="destructor.html">
+            
+                <a href="destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.5.1" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="running.html">
+            
+                <a href="running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="modify.html">
+            
+                <a href="modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="track.html">
+            
+                <a href="track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="pid.html">
+            
+                <a href="pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="MC.html">
+            
+                <a href="MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="grid.html">
+            
+                <a href="grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="bonus.html">
+            
+                <a href="bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="hints.html">
+            
+                <a href="hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="ROOT5-to-6.html">
+            
+                <a href="ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../rivet/rivet-tutorial.html">
+            
+                <a href="../rivet/rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../rivet/getting-started.html">
+            
+                <a href="../rivet/getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../rivet/rivet-in-alice.html">
+            
+                <a href="../rivet/rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../rivet/implementing-rivet-analysis.html">
+            
+                <a href="../rivet/implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../rivet/hi-features.html">
+            
+                <a href="../rivet/hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../rivet/reference-manual.html">
+            
+                <a href="../rivet/reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../rivet/publishing-procedures.html">
+            
+                <a href="../rivet/publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../rivet/advanced-topics.html">
+            
+                <a href="../rivet/advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../rivet/advanced-hi-features.html">
+            
+                <a href="../rivet/advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../rivet/coding-conventions.html">
+            
+                <a href="../rivet/coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../rivet/references.html">
+            
+                <a href="../rivet/references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Step 1 - Setup the tutorial</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="obtain-your-source-code">Obtain your source code</h1>
+<p>The starting point for these exercises is the analysis template called <em>AliAnalysisTaskMyTask</em>. To obtain the source code of this analysis, choose one of the following two options: </p>
+<ol>
+<li>Clone the Git repository. Programmers use version control systems when developing their code. You will also use version control (in our case through Git) when you are contributing to the ALICE code base. So why not start with Git right now? You can <em>clone</em> the example task repository, which you can find it on <a href="https://github.com/rbertens/ALICE_analysis_tutorial" target="_blank">here</a>, by typing, in a terminal</li>
+</ol>
+<pre><code class="lang-bash">git <span class="hljs-built_in">clone</span> https://github.com/rbertens/ALICE_analysis_tutorial.git
+</code></pre>
+<p>This will <em>clone</em> the remote repository, so that you have access to a carbon copy of the full repository on your local computer. </p>
+<ol>
+<li>A more robust approach to working with Git, is creating a remote <em>fork</em> of a certain repository, and working on this fork. For this, you will need to open a GitHub [<a href="https://github.com/" target="_blank">https://github.com/</a>] account (which you will need in any case if you want to contribute to ALICE software). If you have a GitHub account, you create a <em>fork</em> of the example task repository by surfing <a href="https://github.com/rbertens/ALICE_analysis_tutorial" target="_blank">here</a> and clicking on <em>fork</em> at the top right of the screen. If you have forked the repository, you can proceed to cloning it on your laptop in the way as explained in option 1; this then allows you to develop the code, and push commits to your own fork</li>
+</ol>
+<p>Whichever approach you chose, the end result should be that you have stored these files on your laptop. One word of caution: <strong> the path in which you store these files cannot contain spaces! E.g. /home/my  task/ will not work, use /home/my_task/ </strong> .</p>
+<h1 id="a-first-look-at-your-task">A first look at your task</h1>
+<p>As a start, just take a look at code that makes up the task:</p>
+<ul>
+<li><p>AliAnalysisTaskMyTask.cxx</p>
+</li>
+<li><p>AliAnalysisTaskMyTask.h</p>
+</li>
+<li><p>AddMyTask.C</p>
+</li>
+<li><p>runAnalysis.C</p>
+</li>
+</ul>
+<p>You will see that the code is extensively documented. Can you tell</p>
+<ul>
+<li><p>which function is called for each event?</p>
+</li>
+<li><p>where are the output histogram defined?</p>
+</li>
+<li><p>where are the output histogram filled?</p>
+</li>
+</ul>
+<p>Remember, that for now, the name &#x2018;AliAnalysisTaskMyTask&#x2019; doesn&#x2019;t sound so bad, but when you develop a task &#x2018;in real life&#x2019;, make sure to give it a meaningful name, that explains what the task is aimed at.</p>
+<h1 id="obtain-input-data">Obtain input data</h1>
+<p>To run your own analysis task, you will also need to download a file that contains reconstructed collisions. This input file is called <strong>AliAOD.root</strong>, short for Analysis Object Data. In the following steps, will assume that we are looking at Pb-Pb data that was taken in 2015. You can also choose to run on data from a different period or collision system.  </p>
+<h2 id="source-your-environment">Source your environment</h2>
+<p>We will get the data form the ALICE file catalogue. To access the file catalogue, you will need to use xjalienfs or xalienfs packages and have a valid Grid certificate. This means that, at this point, we will assume that you have built all the ALICE software (see <a href="https://alice-doc.github.io/alice-analysis-tutorial/building/" target="_blank">our build manual for that</a> ).</p>
+<p>Load your ALICE environment as <a href="https://alice-doc.github.io/alice-analysis-tutorial/building/#use-the-software-you-have-built" target="_blank">explained here</a>, e.g. by doing</p>
+<pre><code>alienv enter AliPhysics::latest
+</code></pre><p>You should see which module files are currently loaded, e.g.</p>
+<pre><code> 1) BASE/1.0
+ 2) AliEn-Runtime/v2-19-le-49
+ 3) OpenSSL/v1.0.2o-9
+ 4) Python-modules/1.0-11
+ 5) XRootD/v4.11.1-14
+ 6) ROOT/v6-18-04-alice2-1
+ 7) boost/v1.70.0-6
+ 8) cgal/4.6.3-5
+ 9) fastjet/v3.2.1_1.024-alice3-21
+10) Vc/1.4.1-5
+11) xjalienfs/1.0.6-2
+12) JAliEn-ROOT/0.6.0-2
+13) AliRoot/master-1
+14) RooUnfold/V02-00-01-alice4-25
+15) treelite/a7a0839-2
+16) KFParticle/alice-v1.1-1-9
+17) AliPhysics/latest
+12) AliPhysics/latest
+Use alienv list to list loaded modules. Use exit to exit this environment.
+</code></pre><p>The module xjalienfs is now available, which is what we will use to get our data. </p>
+<h2 id="get-a-valid-token-optional">Get a valid token (optional)</h2>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7044060325);" id="jalien-tokens"><i class="fa fa-info-circle"></i> JAliEn tokens<span id="heading-7044060325"></span></h3></div><div class="panel-body" id="panel-7044060325"><p>You can skip this step if you are using JAliEn. JAliEn clients create the token automatically, but you can still run <em>alien-token-init</em> to refresh it manually.</p>
+</div></div></p>
+<p>The ALICE file catalogue is only accessible if you are an ALICE member. </p>
+<p>If you are using AliEn-ROOT-Legacy or ROOT5, then you first need to authenticate yourself and obtain a <em>token</em></p>
+<pre><code>alien-token-init &lt;username&gt;
+</code></pre><p>where <em>username</em> is your CERN username. You should be prompted to provide your PEM pass phrase, which is <strong> not the same as your CERN password </strong> unless you set them to be the same yourself. </p>
+<p>If all goes well, you will see something like</p>
+<pre><code>[AliPhysics/latest] ~/sw $&gt; alien-token-init rbertens
+---------------------------------------------------------------
+Setting central config:
+===============================================================
+export alien_API_SERVER_LIST=&quot;pcapiserv03.cern.ch:10000|pcapiserv08.cern.ch:10000|&quot;
+export TERMINFO=/usr/share/terminfo
+===============================================================
+---------------------------------------------------------------
+Setting closest site to: CERN
+===============================================================
+Using X509_CERT_DIR=/home/rbertens/sw/slc7_x86-64/AliEn-Runtime/v2-19-le-1/globus/share/certificates
+*********************************************************************************
+Attention: You don&apos;t have a valid grid proxy ( or less than 1 hour left ) - doing xrdgsiproxy init for you ...
+*********************************************************************************
+Enter PEM pass phrase:
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+file        : /tmp/x509up_u1000
+issuer      : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=rbertens/CN=718303/CN=Redmer Alexander Bertens
+subject     : /DC=ch/DC=cern/OU=Organic Units/OU=Users/CN=rbertens/CN=718303/CN=Redmer Alexander Bertens/CN=708532894
+path length : 0
+bits        : 512
+time left   : 12h:0m:0s
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+=&gt; Trying to connect to Server [1] root://pcapiserv08.cern.ch:10000 as User rbertens 
+/alice/cern.ch/user/a/alidaq/
+/alice/cern.ch/user/r/rbertens/
+Your identity: rbertens
+Creating token ..................................... Done
+Your token is valid until: Wed Nov  1 13:21:18 2017
+</code></pre><p>For comparison, here is the output from the JAlien <em>alien-token-init</em></p>
+<pre><code>[AliPhysics/latest] ~ &gt; alien-token-init
+INFO: JAliEn client automatically creates tokens, alien-token-init is deprecated
+DN &gt;&gt;&gt; /C=ch/O=AliEn2/CN=Users/CN=nhardi/OU=nhardi
+ISSUER &gt;&gt;&gt; /C=ch/O=AliEn/CN=AliEn CA
+BEGIN &gt;&gt;&gt; 2020-03-26 10:06:05
+EXPIRE &gt;&gt;&gt; 2020-04-26 08:16:48
+</code></pre><h2 id="open-the-alien-shell">Open the AliEn shell</h2>
+<p>You can now enter the alice environment shell by typing</p>
+<pre><code>alien.py
+</code></pre><p>Once you type this command, a the alice environment shell is loaded, and you should see</p>
+<pre><code>[AliPhysics/latest] ~ &gt; alien.py
+Welcome to the ALICE GRID
+support mail: adrian.sevcenco@cern.ch
+
+AliEn[nhardi]:/alice/cern.ch/user/n/nhardi/ &gt;
+</code></pre><p>The AliEn legacy shell <em>aliensh</em> and JAliEn shell <em>alien.py</em> are very similar. The command prompt for aliensh shell looks like this:</p>
+<pre><code>[AliPhysics/latest] ~/sw $&gt; aliensh
+ [ aliensh 1.0.140x (C) ARDA/Alice: Andreas.Joachim.Peters@cern.ch/Derek.Feichtinger@cern.ch]
+aliensh:[alice] [1] /alice/cern.ch/user/r/rbertens/ &gt;
+</code></pre><p>This shell works a lot like a normal unix shell, but it is not - not all commands that you expect to find are defined. </p>
+<p>Move to the directory where the data we are looking for is stored</p>
+<pre><code>cd /alice/data/2015/LHC15o/000246757/pass1/AOD/002/
+</code></pre><p>and copy the AliAOD.root file that is inside this folder to your <strong> local </strong> hard drive by doing</p>
+<pre><code>cp AliAOD.root file:.
+</code></pre><p>Note the syntax of the copy command, here we tell to copy the <em>remote</em> file AliAOD.root to our own laptop by specifying <em>file:.</em> . </p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(6814168561);" id="jalien-and-alien-shell-documentation"><i class="fa fa-info-circle"></i> JAliEn and AliEn shell documentation<span id="heading-6814168561"></span></h3></div><div class="panel-body" id="panel-6814168561"><p>You can find more information about the alien.py shell at <a href="https://jalien.docs.cern.ch" target="_blank">jalien.docs.cern.ch</a>. Reference documentation for the legacy AliEn shell is available at <a href="https://alien.web.cern.ch/content/documentation/howto/user/catalogue" target="_blank">alien.web.cern.ch</a>.</p>
+</div></div></p>
+<h2 id="trouble-">Trouble ?</h2>
+<p>If for some reason this does not work for you - no fear. You can ask a colleague to provide a file for you, or send a mail to our mailing lists  if you are having trouble with access.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Analysis tutorial exercises">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="running.html" class="navigation navigation-next " aria-label="Next page: Step 2 - Running the task">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Step 1 - Setup the tutorial","level":"1.5.1","depth":2,"next":{"title":"Step 2 - Running the task","level":"1.5.2","depth":2,"path":"analysis/running.md","ref":"analysis/running.md","articles":[]},"previous":{"title":"Analysis tutorial exercises","level":"1.5","depth":1,"path":"analysis/README.md","ref":"analysis/README.md","articles":[{"title":"Step 1 - Setup the tutorial","level":"1.5.1","depth":2,"path":"analysis/setup.md","ref":"analysis/setup.md","articles":[]},{"title":"Step 2 - Running the task","level":"1.5.2","depth":2,"path":"analysis/running.md","ref":"analysis/running.md","articles":[]},{"title":"Step 3 - Modify the task","level":"1.5.3","depth":2,"path":"analysis/modify.md","ref":"analysis/modify.md","articles":[]},{"title":"Step 4 -The track loop","level":"1.5.4","depth":2,"path":"analysis/track.md","ref":"analysis/track.md","articles":[]},{"title":"Step 5 -Particle identification","level":"1.5.5","depth":2,"path":"analysis/pid.md","ref":"analysis/pid.md","articles":[]},{"title":"Step 6 -Using Monte Carlo data","level":"1.5.6","depth":2,"path":"analysis/MC.md","ref":"analysis/MC.md","articles":[]},{"title":"Step 7 -Run your code on GRID","level":"1.5.7","depth":2,"path":"analysis/grid.md","ref":"analysis/grid.md","articles":[]},{"title":"Bonus content","level":"1.5.8","depth":2,"path":"analysis/bonus.md","ref":"analysis/bonus.md","articles":[]},{"title":"Some hints","level":"1.5.9","depth":2,"path":"analysis/hints.md","ref":"analysis/hints.md","articles":[]},{"title":"Transition from ROOT5 to ROOT6","level":"1.5.10","depth":2,"path":"analysis/ROOT5-to-6.md","ref":"analysis/ROOT5-to-6.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"analysis/setup.md","mtime":"2020-08-26T13:26:44.707Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

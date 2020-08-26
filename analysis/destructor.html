@@ -1,0 +1,1002 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Destructors · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="./" />
+    
+    
+    <link rel="prev" href="streamer.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start/">
+            
+                <a href="../start/">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../start/cert.html">
+            
+                <a href="../start/cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../building/">
+            
+                <a href="../building/">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../building/custom.html">
+            
+                <a href="../building/custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../building/prereq-centos7.html">
+            
+                <a href="../building/prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../building/prereq-macos.html">
+            
+                <a href="../building/prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../building/prereq-ubuntu.html">
+            
+                <a href="../building/prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../building/prereq-fedora.html">
+            
+                <a href="../building/prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../building/build.html">
+            
+                <a href="../building/build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../building/precomp.html">
+            
+                <a href="../building/precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../building/devel.html">
+            
+                <a href="../building/devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="welcome.html">
+            
+                <a href="welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="classes.html">
+            
+                <a href="classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="alianalysistaskmytask.html">
+            
+                <a href="alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="local.html">
+            
+                <a href="local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="rungrid.html">
+            
+                <a href="rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="lego.html">
+            
+                <a href="lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="monalisa.html">
+            
+                <a href="monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="trouble.html">
+            
+                <a href="trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="streamer.html">
+            
+                <a href="streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.9" data-path="destructor.html">
+            
+                <a href="destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="running.html">
+            
+                <a href="running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="modify.html">
+            
+                <a href="modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="track.html">
+            
+                <a href="track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="pid.html">
+            
+                <a href="pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="MC.html">
+            
+                <a href="MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="grid.html">
+            
+                <a href="grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="bonus.html">
+            
+                <a href="bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="hints.html">
+            
+                <a href="hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="ROOT5-to-6.html">
+            
+                <a href="ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../rivet/rivet-tutorial.html">
+            
+                <a href="../rivet/rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../rivet/getting-started.html">
+            
+                <a href="../rivet/getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../rivet/rivet-in-alice.html">
+            
+                <a href="../rivet/rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../rivet/implementing-rivet-analysis.html">
+            
+                <a href="../rivet/implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../rivet/hi-features.html">
+            
+                <a href="../rivet/hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../rivet/reference-manual.html">
+            
+                <a href="../rivet/reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../rivet/publishing-procedures.html">
+            
+                <a href="../rivet/publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../rivet/advanced-topics.html">
+            
+                <a href="../rivet/advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../rivet/advanced-hi-features.html">
+            
+                <a href="../rivet/advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../rivet/coding-conventions.html">
+            
+                <a href="../rivet/coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../rivet/references.html">
+            
+                <a href="../rivet/references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Destructors</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="destructors">Destructors</h1>
+<p>We are at the end of the manual for writing a task, but we forgot to implement one important aspect of our analysis task: the destructor, copy constructor and assignment operator. Out class dynamically allocates memory (use of the <strong>new</strong>), for example when we create our histograms</p>
+<pre><code class="lang-cpp">
+        <span class="hljs-comment">// create our histo and add it to the list</span>
+        fHistPt = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;fHistPt&quot;</span>, <span class="hljs-string">&quot;fHistPt&quot;</span>, <span class="hljs-number">100</span>, <span class="hljs-number">0</span>, <span class="hljs-number">100</span>);
+</code></pre>
+<p>This has two implications:</p>
+<ul>
+<li><p>After usage, <strong>we</strong> are responsible for freeing the allocated memory
+(else it&#x2019;s <strong>lost</strong>!)</p>
+</li>
+<li><p>A bit more advanced: you might have to think about the copy constructor
+and assignment operator </p>
+</li>
+</ul>
+<h2 id="implementing-the-destructor">Implementing the destructor</h2>
+<p>Memory allocated with <strong>new</strong> cannot be used again, unless it is realased by <strong>delete</strong>. Never deleting memory is called a <strong>memory leak</strong>. Leaks are <strong>bad</strong>: they waste resources and can crash your system, and for that reason, we should implement a destructor</p>
+<p>Suppose we have a <strong>constructor</strong> that looks like this</p>
+<pre><code class="lang-cpp">    MyClass::MyClass()
+    {
+      n = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>;
+      p = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>;
+      x = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[<span class="hljs-number">5</span>];
+    }
+</code></pre>
+<p>The <strong>destructor</strong> should be</p>
+<pre><code class="lang-cpp">    MyClass::~MyClass()
+    {
+      <span class="hljs-keyword">delete</span> n;
+      <span class="hljs-keyword">delete</span> p;
+      <span class="hljs-keyword">delete</span>[] x;
+    }
+</code></pre>
+<p>Our life is not so easy however: </p>
+<ul>
+<li><p>We did not allocate memory in the class constructor but in
+<code>UserCreateOutputObjects</code></p>
+</li>
+<li><p>We <strong>might</strong> want to free that memory, but what if
+<code>UserCreateOutputObjects</code> was <strong>not</strong> called? &#x2014;if it hasn&#x2019;t, freeing
+the memory will cause serious problems (the infamous &#x2018;glibc double
+free or corruption&#x2019;)</p>
+</li>
+<li><p>To avoid this, initialize our pointers to NULL in the member
+initialization list</p>
+<pre><code class="lang-cpp">     ...
+    AliAnalysisTaskMyTask::AliAnalysisTaskMyTask() : AliAnalysisTaskSE(), 
+        fAOD(<span class="hljs-number">0</span>), fOutputList(<span class="hljs-number">0</span>), fHistPt(<span class="hljs-number">0</span>)
+    {
+        <span class="hljs-comment">// ROOT IO constructor, don&apos;t allocate memory here!</span>
+    }
+     ...
+</code></pre>
+</li>
+<li>With our pointers initialized to NULL, we can go ahead and write our
+destructor</li>
+</ul>
+<pre><code class="lang-cpp">    AliAnalysisMyTask::~AliAnalysisMyTask()
+    {
+      <span class="hljs-keyword">if</span>(fOutputList) <span class="hljs-keyword">delete</span> fOutputList;
+    }
+</code></pre>
+<ul>
+<li><p>A little trick we applied is</p>
+<pre><code>fOutputList-&gt;SetOwner(kTRUE);
+</code></pre><p>which tells the destructor of TList* to delete all objects added to
+it</p>
+</li>
+<li><p>Note that fAOD is not deleted - this pointer points to memory that
+was <strong>not</strong> allocated by our task</p>
+</li>
+</ul>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(9922078258);" id="new---delete"><i class="fa fa-info-circle"></i> new - delete<span id="heading-9922078258"></span></h3></div><div class="panel-body" id="panel-9922078258"><p>Rule of thumb: all calls to <strong>new</strong> should be accompanied by a call to
+<strong>delete</strong> somewhere in your code</p>
+</div></div></p>
+<h2 id="destructors-and-proof">Destructors and PROOF</h2>
+<p>If you run on <code>PROOF</code>, your analysis class is not the owner of its output list. A little trick to avoid segmentation violations when running on PROOF is to write</p>
+<pre><code class="lang-cpp">    AliAnalysisMyTask::~AliAnalysisMyTask()
+    {
+      <span class="hljs-keyword">if</span>(AliAnalysisManager::GetAnalysisManager()-&gt;GetAnalysisType()
+        != AliAnalysisManager::kProofAnalysis) <span class="hljs-keyword">delete</span> fOutputList;
+    }
+</code></pre>
+<p>This only deletes the output list if you&#x2019;re not running PROOF. </p>
+<h2 id="copy-constructor-and-assignment-operator">Copy constructor and assignment operator</h2>
+<p>Sometimes in AliRoot code you see copy constructors and assignment operators (these two always go together). In principle, we don&#x2019;t need them because our analysis class is never copied (apart from the streamer actions, which do not rely on these constructors). However, you might occasionally see compiler warnings such as</p>
+<pre><code>     warning: &apos;class AliAnalysisTaskMyTask&apos; has pointer 
+     data members but does not override &apos;AliAnalysisTaskMyTask(const
+     AliAnalysisTaskMyTask&amp;)&apos; or &apos;operator=(const AliAnalysisTaskMyTask&amp;)&apos; 
+     [-Weffc++]&quot;
+</code></pre><p>Generally, these can be squashed by defining prototypes </p>
+<pre><code class="lang-cpp">    <span class="hljs-keyword">private</span>:
+      <span class="hljs-comment">// not implemented</span>
+      AliAnalysisTaskMyTask(<span class="hljs-keyword">const</span> AliAnalysisTaskMyTask&amp;); 
+      AliAnalysisTaskMyTask&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> AliAnalysisTaskMyTask&amp;);
+</code></pre>
+<p>Defining these functions as <code>private</code> implicates that we do not have provide an implementation. </p>
+<p>So what does this mean, what are copy constructors and assignment operators, why do I need them, and how can I get them? If you are interested in this, keep reading. </p>
+<p>In a nutshell:</p>
+<pre><code class="lang-cpp">        MyObject A;      <span class="hljs-comment">// initialization by default constructor</span>
+        <span class="hljs-function">MyObject <span class="hljs-title">B</span><span class="hljs-params">(A)</span></span>;   <span class="hljs-comment">// initialization by copy constructor</span>
+        MyObject C = A;  <span class="hljs-comment">// Also initialization by copy constructor</span>
+        B = C;           <span class="hljs-comment">// assignment by copy assignment operator</span>
+</code></pre>
+<p>The copy constructor and assignment operator are <strong>automatically generated</strong>, but if your class has <strong>pointer members</strong>, they need to be customized (this is <strong>not</strong> a ROOT feature, just c++!). </p>
+<p>If we wanted to implement our own copy constructor for our class, here is what it would look like</p>
+<pre><code class="lang-cpp">    AliAnalysisMyTask::AliAnalysisMyTask
+      (<span class="hljs-keyword">const</span> AliAnalysisMyTask&amp; other) : AliAnalysisTaskSE(other),
+      fOutputList(<span class="hljs-literal">NULL</span>), fHistPt(<span class="hljs-literal">NULL</span>)
+    {
+      <span class="hljs-keyword">if</span>(other.fOutputList) fOutputList = (TList*)other.fOutputList-&gt;Clone();
+      <span class="hljs-keyword">if</span>(other.fHistPt) fHistPt = <span class="hljs-keyword">new</span> TH1F(*other.fHistPt);
+    }
+</code></pre>
+<ul>
+<li><p>Operating on NULL pointers is not allowed and the code will crash if
+you attempt to do that</p>
+</li>
+<li><p>Operating on uninitialized pointers is <em>undefined</em> and much more
+dangerous</p>
+</li>
+<li><p>The TH1F and most ROOT histogram classes have public copy
+constructors, so we can use them</p>
+</li>
+<li><p>The TList copy constructor is private, so we need to make a Clone of
+it instead</p>
+</li>
+</ul>
+<p>The assignment operator is very similar to the copy constructor, but it has the additional requirements for checking for self-assignment and returning a value. In our case, it could look like</p>
+<pre><code class="lang-cpp">    AliAnalysisMyTask&amp; AliAnalysisMyTask::<span class="hljs-keyword">operator</span>=
+      (<span class="hljs-keyword">const</span> AliAnalysisMyTask&amp; other)
+    {
+      <span class="hljs-keyword">if</span>(&amp;other == <span class="hljs-keyword">this</span>) <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+      outputlist = <span class="hljs-literal">NULL</span>;
+      fHistPt = <span class="hljs-literal">NULL</span>;
+      AliAnalysisTaskSE::<span class="hljs-keyword">operator</span>=(other);
+      <span class="hljs-keyword">if</span>(other.fOutputList) fOutputList = (TList*)other.fOutputList-&gt;Clone();
+      <span class="hljs-keyword">if</span>(other.fHistPt) fHistPt = <span class="hljs-keyword">new</span> TProfile(*other.fHistPt);
+      <span class="hljs-keyword">return</span> *<span class="hljs-keyword">this</span>;
+    }
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="streamer.html" class="navigation navigation-prev " aria-label="Previous page: The ROOT streamer">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="./" class="navigation navigation-next " aria-label="Next page: Analysis tutorial exercises">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Destructors","level":"1.4.9","depth":2,"next":{"title":"Analysis tutorial exercises","level":"1.5","depth":1,"path":"analysis/README.md","ref":"analysis/README.md","articles":[{"title":"Step 1 - Setup the tutorial","level":"1.5.1","depth":2,"path":"analysis/setup.md","ref":"analysis/setup.md","articles":[]},{"title":"Step 2 - Running the task","level":"1.5.2","depth":2,"path":"analysis/running.md","ref":"analysis/running.md","articles":[]},{"title":"Step 3 - Modify the task","level":"1.5.3","depth":2,"path":"analysis/modify.md","ref":"analysis/modify.md","articles":[]},{"title":"Step 4 -The track loop","level":"1.5.4","depth":2,"path":"analysis/track.md","ref":"analysis/track.md","articles":[]},{"title":"Step 5 -Particle identification","level":"1.5.5","depth":2,"path":"analysis/pid.md","ref":"analysis/pid.md","articles":[]},{"title":"Step 6 -Using Monte Carlo data","level":"1.5.6","depth":2,"path":"analysis/MC.md","ref":"analysis/MC.md","articles":[]},{"title":"Step 7 -Run your code on GRID","level":"1.5.7","depth":2,"path":"analysis/grid.md","ref":"analysis/grid.md","articles":[]},{"title":"Bonus content","level":"1.5.8","depth":2,"path":"analysis/bonus.md","ref":"analysis/bonus.md","articles":[]},{"title":"Some hints","level":"1.5.9","depth":2,"path":"analysis/hints.md","ref":"analysis/hints.md","articles":[]},{"title":"Transition from ROOT5 to ROOT6","level":"1.5.10","depth":2,"path":"analysis/ROOT5-to-6.md","ref":"analysis/ROOT5-to-6.md","articles":[]}]},"previous":{"title":"The ROOT streamer","level":"1.4.8","depth":2,"path":"analysis/streamer.md","ref":"analysis/streamer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"analysis/destructor.md","mtime":"2020-08-26T13:26:44.695Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

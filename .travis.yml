@@ -1,0 +1,16 @@
+dist: bionic
+branches:
+  only:
+    - master
+sudo: required
+services: docker
+language: node_js
+install:
+  - npm install -g gitbook-cli@2.3.0
+node_js: '12.13.1'
+script:
+  - '[[ $TRAVIS_PULL_REQUEST == false && $TRAVIS_BRANCH == master ]] && make publish || make'
+  - 'set -e; if [[ $TRAVIS_PULL_REQUEST != false ]]; then building/doc2dock.py $(git diff --name-only $TRAVIS_COMMIT_RANGE | grep ^building/prereq-); fi'
+env:
+  global:
+    secure: "LMmQTQMYL6wU9D03jHGtrcDm9/Z/SJBe4/92TUeJLRRoYJbxfzr8/Fy6204Zuo/c8hON3/79kCmYE99RQhy73LqhWajmnwIROcxj2q9vA8SWUW4cn2J2wPbJvRpoNEck1W9duCAP4ffKdTii0ObAEr6ZFr+eTMkmyvPakFsjjiMquaLa5vM3ytmpPjhVO/Yr7FOaG6FzVh4RnrdRx5A4LdocOmG21iyF0nWSd49J+J+lfcYT4g7pX93DESHIE8NThl4+FnjmJztyNcytQ0A/RsFkKoI5baEbMD6M5RQ8vE+McRI8jE1dTBLge1mfgnpFbvKpPhVjF8a4KNdgnjSewIlkh0UNrOdnI4HDw0mxH3euHGlFy2pcK8MS+NdY3D7nQEvy8zgZtgPA8iukK+auaBACO4rwsWQ6grm126UTiSzVvpM0DaKshL4cBv1opUU9Zs8Y3fzjZsABN++yX5f4zKFRATcO09FE1KCovrJ2O1M+0FEtWisx/eETWPVqyMmz4cRMbFHMR8EET5/12SqG9vVoP7ESnRDJeh29qsMSIcjS7D3Dqjvvs6Ir18GsH39jCMEjymwAB1ulI9eeQb61/EW33YFX/tejxJHIlj7C7zNEfLkxV9c9gxTDASJc5I51JtFUzVSbXlhpx/Ui6E2x+wVYNKwm8yjvQoAJMcUiptA="

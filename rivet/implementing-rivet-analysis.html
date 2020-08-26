@@ -1,0 +1,1180 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Implementing a Rivet analysis · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="hi-features.html" />
+    
+    
+    <link rel="prev" href="rivet-in-alice.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start/">
+            
+                <a href="../start/">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../start/cert.html">
+            
+                <a href="../start/cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../building/">
+            
+                <a href="../building/">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../building/custom.html">
+            
+                <a href="../building/custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../building/prereq-centos7.html">
+            
+                <a href="../building/prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../building/prereq-macos.html">
+            
+                <a href="../building/prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../building/prereq-ubuntu.html">
+            
+                <a href="../building/prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../building/prereq-fedora.html">
+            
+                <a href="../building/prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../building/build.html">
+            
+                <a href="../building/build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../building/precomp.html">
+            
+                <a href="../building/precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../building/devel.html">
+            
+                <a href="../building/devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../analysis/welcome.html">
+            
+                <a href="../analysis/welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../analysis/classes.html">
+            
+                <a href="../analysis/classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../analysis/alianalysistaskmytask.html">
+            
+                <a href="../analysis/alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../analysis/local.html">
+            
+                <a href="../analysis/local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../analysis/rungrid.html">
+            
+                <a href="../analysis/rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../analysis/lego.html">
+            
+                <a href="../analysis/lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../analysis/monalisa.html">
+            
+                <a href="../analysis/monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../analysis/trouble.html">
+            
+                <a href="../analysis/trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../analysis/streamer.html">
+            
+                <a href="../analysis/streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../analysis/destructor.html">
+            
+                <a href="../analysis/destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../analysis/">
+            
+                <a href="../analysis/">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../analysis/setup.html">
+            
+                <a href="../analysis/setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../analysis/running.html">
+            
+                <a href="../analysis/running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../analysis/modify.html">
+            
+                <a href="../analysis/modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../analysis/track.html">
+            
+                <a href="../analysis/track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../analysis/pid.html">
+            
+                <a href="../analysis/pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../analysis/MC.html">
+            
+                <a href="../analysis/MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../analysis/grid.html">
+            
+                <a href="../analysis/grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../analysis/bonus.html">
+            
+                <a href="../analysis/bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../analysis/hints.html">
+            
+                <a href="../analysis/hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../analysis/ROOT5-to-6.html">
+            
+                <a href="../analysis/ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="rivet-tutorial.html">
+            
+                <a href="rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="getting-started.html">
+            
+                <a href="getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="rivet-in-alice.html">
+            
+                <a href="rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.3" data-path="implementing-rivet-analysis.html">
+            
+                <a href="implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="hi-features.html">
+            
+                <a href="hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="reference-manual.html">
+            
+                <a href="reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="publishing-procedures.html">
+            
+                <a href="publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="advanced-topics.html">
+            
+                <a href="advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="advanced-hi-features.html">
+            
+                <a href="advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="coding-conventions.html">
+            
+                <a href="coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="references.html">
+            
+                <a href="references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Implementing a Rivet analysis</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="implementing-a-rivet-analysis">Implementing a Rivet analysis</h1>
+<p>In order to implement a new analysis, you can start from a template created by the Rivet tools. Best start in a new directory for the implementation and create the template therein:</p>
+<pre><code class="lang-bash">mkdir myRivet
+<span class="hljs-built_in">cd</span> myRivet
+rivet-mkanalysis &lt;ID&gt;
+</code></pre>
+<p>where ID specifies the identifier of the analysis. If you are aiming for an official analysis, you should use the proper identifier; if you are just testing, you can use essentially what you want. If you use an identifier referring to a published analysis, e.g. ALICE_2011_I1080735, you automatically get the reference data (taken from HepData) and the metadata (taken from spires/inspire) for this analysis.</p>
+<p>In the next step, you &quot;just&quot; have to add the missing bits and pieces to the template. In more detail, the rivet-mkanalysis command will give you a bunch of files, amongst others a cc-file for the implementation of the analysis. This cc-file contains already the required class and the mandatory methods:</p>
+<ul>
+<li>init</li>
+<li>analyze</li>
+<li>finalize</li>
+</ul>
+<p>which you still have to fill with useful content, of course. We will explain the required implementations in more details below, the template (for an assumed analysis ALICE_2016_test) contains:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// -*- C++ -*-</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Analysis.hh&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Projections/FinalState.hh&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Projections/FastJets.hh&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Projections/DressedLeptons.hh&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Projections/MissingMomentum.hh&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Projections/PromptFinalState.hh&quot;</span></span>
+
+<span class="hljs-keyword">namespace</span> Rivet {
+
+
+  <span class="hljs-comment">/// @brief Add a short analysis description here</span>
+  <span class="hljs-keyword">class</span> ALICE_2016_test : <span class="hljs-keyword">public</span> Analysis {
+  <span class="hljs-keyword">public</span>:
+
+    <span class="hljs-comment">/// Constructor</span>
+    DEFAULT_RIVET_ANALYSIS_CTOR(ALICE_2016_test);
+
+
+    <span class="hljs-comment">/// @name Analysis methods</span>
+    <span class="hljs-comment">///@{</span>
+
+    <span class="hljs-comment">/// Book histograms and initialise projections before the run</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>{
+
+      <span class="hljs-comment">// Initialise and register projections</span>
+
+      <span class="hljs-comment">// The basic final-state projection:</span>
+      <span class="hljs-comment">// all final-state particles within</span>
+      <span class="hljs-comment">// the given eta acceptance</span>
+      <span class="hljs-function"><span class="hljs-keyword">const</span> FinalState <span class="hljs-title">fs</span><span class="hljs-params">(Cuts::abseta &lt; <span class="hljs-number">4.9</span>)</span></span>;
+
+      <span class="hljs-comment">// The final-state particles declared above are clustered using FastJet with</span>
+      <span class="hljs-comment">// the anti-kT algorithm and a jet-radius parameter 0.4</span>
+      <span class="hljs-comment">// muons and neutrinos are excluded from the clustering</span>
+      <span class="hljs-function">FastJets <span class="hljs-title">jetfs</span><span class="hljs-params">(fs, FastJets::ANTIKT, <span class="hljs-number">0.4</span>, JetAlg::Muons::NONE, JetAlg::Invisibles::NONE)</span></span>;
+      declare(jetfs, <span class="hljs-string">&quot;jets&quot;</span>);
+
+      <span class="hljs-comment">// FinalState of prompt photons and bare muons and electrons in the event</span>
+      <span class="hljs-function">PromptFinalState <span class="hljs-title">photons</span><span class="hljs-params">(Cuts::abspid == PID::PHOTON)</span></span>;
+      <span class="hljs-function">PromptFinalState <span class="hljs-title">bare_leps</span><span class="hljs-params">(Cuts::abspid == PID::MUON || Cuts::abspid == PID::ELECTRON)</span></span>;
+
+      <span class="hljs-comment">// Dress the prompt bare leptons with prompt photons within dR &lt; 0.1,</span>
+      <span class="hljs-comment">// and apply some fiducial cuts on the dressed leptons</span>
+      Cut lepton_cuts = Cuts::abseta &lt; <span class="hljs-number">2.5</span> &amp;&amp; Cuts::pT &gt; <span class="hljs-number">20</span>*GeV;
+      <span class="hljs-function">DressedLeptons <span class="hljs-title">dressed_leps</span><span class="hljs-params">(photons, bare_leps, <span class="hljs-number">0.1</span>, lepton_cuts)</span></span>;
+      declare(dressed_leps, <span class="hljs-string">&quot;leptons&quot;</span>);
+
+      <span class="hljs-comment">// Missing momentum</span>
+      declare(MissingMomentum(fs), <span class="hljs-string">&quot;MET&quot;</span>);
+
+      <span class="hljs-comment">// Book histograms</span>
+      <span class="hljs-comment">// specify custom binning</span>
+      book(_h[<span class="hljs-string">&quot;XXXX&quot;</span>], <span class="hljs-string">&quot;myh1&quot;</span>, <span class="hljs-number">20</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">100.0</span>);
+      book(_h[<span class="hljs-string">&quot;YYYY&quot;</span>], <span class="hljs-string">&quot;myh2&quot;</span>, logspace(<span class="hljs-number">20</span>, <span class="hljs-number">1e-2</span>, <span class="hljs-number">1e3</span>));
+      book(_h[<span class="hljs-string">&quot;ZZZZ&quot;</span>], <span class="hljs-string">&quot;myh3&quot;</span>, {<span class="hljs-number">0.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">4.0</span>, <span class="hljs-number">8.0</span>, <span class="hljs-number">16.0</span>});
+      <span class="hljs-comment">// take binning from reference data using HEPData ID (digits in &quot;d01-x01-y01&quot; etc.)</span>
+      book(_h[<span class="hljs-string">&quot;AAAA&quot;</span>], <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+      book(_p[<span class="hljs-string">&quot;BBBB&quot;</span>], <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+      book(_c[<span class="hljs-string">&quot;CCCC&quot;</span>], <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+
+    }
+
+
+    <span class="hljs-comment">/// Perform the per-event analysis</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">analyze</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Event&amp; event)</span> </span>{
+
+      <span class="hljs-comment">// Retrieve dressed leptons, sorted by pT</span>
+      <span class="hljs-built_in">vector</span>&lt;DressedLepton&gt; leptons = apply&lt;DressedLeptons&gt;(event, <span class="hljs-string">&quot;leptons&quot;</span>).dressedLeptons();
+
+      <span class="hljs-comment">// Retrieve clustered jets, sorted by pT, with a minimum pT cut</span>
+      Jets jets = apply&lt;FastJets&gt;(event, <span class="hljs-string">&quot;jets&quot;</span>).jetsByPt(Cuts::pT &gt; <span class="hljs-number">30</span>*GeV);
+
+      <span class="hljs-comment">// Remove all jets within dR &lt; 0.2 of a dressed lepton</span>
+      idiscardIfAnyDeltaRLess(jets, leptons, <span class="hljs-number">0.2</span>);
+
+      <span class="hljs-comment">// Select jets ghost-associated to B-hadrons with a certain fiducial selection</span>
+      Jets bjets = filter_select(jets, [](<span class="hljs-keyword">const</span> Jet&amp; jet) {
+        <span class="hljs-keyword">return</span>  jet.bTagged(Cuts::pT &gt; <span class="hljs-number">5</span>*GeV &amp;&amp; Cuts::abseta &lt; <span class="hljs-number">2.5</span>);
+      });
+
+      <span class="hljs-comment">// Veto event if there are no b-jets</span>
+      <span class="hljs-keyword">if</span> (bjets.empty())  vetoEvent;
+
+      <span class="hljs-comment">// Apply a missing-momentum cut</span>
+      <span class="hljs-keyword">if</span> (apply&lt;MissingMomentum&gt;(event, <span class="hljs-string">&quot;MET&quot;</span>).missingPt() &lt; <span class="hljs-number">30</span>*GeV)  vetoEvent;
+
+      <span class="hljs-comment">// Fill histogram with leading b-jet pT</span>
+      _h[<span class="hljs-string">&quot;XXXX&quot;</span>]-&gt;fill(bjets[<span class="hljs-number">0</span>].pT()/GeV);
+
+    }
+
+
+    <span class="hljs-comment">/// Normalise histograms etc., after the run</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">finalize</span><span class="hljs-params">()</span> </span>{
+
+      normalize(_h[<span class="hljs-string">&quot;XXXX&quot;</span>]); <span class="hljs-comment">// normalize to unity</span>
+      normalize(_h[<span class="hljs-string">&quot;YYYY&quot;</span>], crossSection()/picobarn); <span class="hljs-comment">// normalize to generated cross-section in fb (no cuts)</span>
+      scale(_h[<span class="hljs-string">&quot;ZZZZ&quot;</span>], crossSection()/picobarn/sumW()); <span class="hljs-comment">// norm to generated cross-section in pb (after cuts)</span>
+
+    }
+
+    <span class="hljs-comment">///@}</span>
+
+
+    <span class="hljs-comment">/// @name Histograms</span>
+    <span class="hljs-comment">///@{</span>
+    <span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, Histo1DPtr&gt; _h;
+    <span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, Profile1DPtr&gt; _p;
+    <span class="hljs-built_in">map</span>&lt;<span class="hljs-built_in">string</span>, CounterPtr&gt; _c;
+    <span class="hljs-comment">///@}</span>
+
+
+  };
+
+
+  DECLARE_RIVET_PLUGIN(ALICE_2016_test);
+
+}
+</code></pre>
+<p>Rivet usually does not use a separate header file for the implementation of the main class of the analysis (you can add further classes and headers if the analysis gets more complex). When extending the code for the Rivet plugin, be careful to follow <a href="https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMRivetCoding" target="_blank">Rivet coding conventions</a> (which are different from the ALICE ones) such that the analysis can eventually be submitted to the Rivet team for integration into the official distribution.</p>
+<p>You can already try and compile the plugin at this stage to make sure that the setup and preparations are correct:</p>
+<pre><code class="lang-bash">rivet-build RivetALICE_2016_test.so ALICE_2016_test.cc
+</code></pre>
+<p>which builds the shared library RivetALICE_2016_test.so to be used by Rivet.</p>
+<h2 id="required-member-variables-and-methods">Required member variables and methods</h2>
+<p>For the plugin to do something useful, you need to add code in a few places. The basic steps are usually very straight-forward.</p>
+<h3 id="member-variables">member variables</h3>
+<p>You can add member variables in the private section (below the Analysis methods section). They should follow the <a href="https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMRivetCoding" target="_blank">naming conventions of Rivet</a>. This is the place where you add the pointers for histograms, profiles, etc. There are special Rivet structures for such pointers which should be used:</p>
+<pre><code class="lang-cpp">Histo1DPtr   _h_0000; <span class="hljs-comment">// for a histogram</span>
+Profile1DPtr _h_0001; <span class="hljs-comment">// for a profile</span>
+</code></pre>
+<p>Of course, you can also add variables of your own, e.g. to define pt/rapidity ranges, jet radii, ...</p>
+<h3 id="init">init</h3>
+<p>The code in this method is run once at the beginning of the run. It is used to set up the analysis.</p>
+<p>Here, you have to book the histograms (using the previously added pointers). When implementing a published analysis, the preferred way to book the histograms is to let Rivet take the histogram details from the reference data:</p>
+<pre><code class="lang-cpp">book(_h_0000, <span class="hljs-string">&quot;d01-x01-y01&quot;</span>);
+book(_h_0001, <span class="hljs-string">&quot;TMP/test&quot;</span>, refData(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+</code></pre>
+<p>where d01-x01-y01 refers to the reference data (following HepData naming conventions for the histograms). If you don&apos;t have a reference histogram or you need to use a different binning, you can book a histogram as follows:</p>
+<pre><code class="lang-cpp">book(_hist, <span class="hljs-string">&quot;pt_h&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">0.</span>, <span class="hljs-number">20.</span>);
+</code></pre>
+<p>In addition to the histogram bookings, you need to add all the projections required for the analysis. Rivet uses projections to extract (and re-use) observables from the final state, e.g. particles (after cuts), jets, .... E.g. for an analysis based on charged particles in the rapidity interval etamax, you would use:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// need to #include &quot;Rivet/Projections/ChargedFinalState.hh&quot;</span>
+<span class="hljs-function"><span class="hljs-keyword">const</span> ChargedFinalState <span class="hljs-title">cfs</span><span class="hljs-params">(Cuts::abseta &lt; _etamax)</span></span>;
+declare(cfs, <span class="hljs-string">&quot;CFS&quot;</span>);
+</code></pre>
+<p>For an analysis based on jets you would use:</p>
+<pre><code class="lang-cpp">const FinalState fs_jet(Cuts::abseta &lt; (_etamax + _jet_r));
+declare(fs_jet, &quot;FS_JET&quot;);
+FastJets fj02(fs_jet, FastJets::ANTIKT, _jet_r);
+fj02.useInvisibles();
+declare(fj02, &quot;Jets02&quot;);
+</code></pre>
+<p>For an analysis based on primary particles according to the ALICE definition you would use:</p>
+<pre><code class="lang-cpp"><span class="hljs-comment">// need to #include &quot;Rivet/Projections/AliceCommon.hh&quot;</span>
+<span class="hljs-comment">// Charged, primary particles with |eta| &lt; 0.5 and pT &gt; 150 MeV</span>
+declare(ALICE::PrimaryParticles(Cuts::abseta &lt; <span class="hljs-number">0.5</span> &amp;&amp; Cuts::pT &gt; <span class="hljs-number">150</span>*MeV &amp;&amp; Cuts::abscharge &gt; <span class="hljs-number">0</span>), <span class="hljs-string">&quot;APRIM&quot;</span>);
+</code></pre>
+<p>For more details on possible projections, see the <a href="reference-manual.html">reference page</a></p>
+<h3 id="analyze">analyze</h3>
+<p>The code in this method is run for every event and is used for the actual (event-wise) analysis. The event for analysis is passed as parameter to the function. Commonly, you apply the projections, and fill some histograms:</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">const</span> ALICE::PrimaryParticles &amp; aprim = apply&lt;ALICE::PrimaryParticles&gt;(event, <span class="hljs-string">&quot;APRIM&quot;</span>);
+
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> Particle &amp;p : aprim.particles()) {
+  _h_0000-&gt;fill(p.pT()/GeV);
+}
+</code></pre>
+<p>N.B.: Here, the iterations use C++11 constructs.</p>
+<h3 id="finalize">finalize</h3>
+<p>The code in this method is run once after the run. It is typically used for scaling and/or normalization of histograms. In order to normalize a histogram to the number of events, you can make use of Rivet helpers:</p>
+<pre><code class="lang-cpp">scale(_h_0000, <span class="hljs-number">1.</span>/sumOfWeights());
+</code></pre>
+<p>where sumOfWeights() is provided by Rivet.</p>
+<h2 id="example-analysis">example analysis</h2>
+<p>In order to explain the required steps in a real life situation, we will go through the implementation for the analysis published as :</p>
+<ul>
+<li>Measurement of pion, kaon and proton production in proton-proton collisions at sqrt(s) = 7 TeV<ul>
+<li>ALICE internal draft : <a href="https://alice-publications.web.cern.ch/node/183" target="_blank">ID-183</a>,</li>
+<li>journal reference : <a href="http://dx.doi.org/10.1140/epjc/s10052-015-3422-9" target="_blank">Eur.Phys.J C75 (2015) no. 5, 226</a>,</li>
+<li>Inspire : <a href="http://inspirehep.net/record/1357424" target="_blank">ID-1357424</a>,</li>
+<li>arXiv : <a href="https://arxiv.org/abs/1504.00024" target="_blank">arXiv:1504.00024</a>.</li>
+</ul>
+</li>
+</ul>
+<p>The content we now want to reproduce in Rivet is the following:</p>
+<ul>
+<li>transverse momentum spectra of identified pions, kaons, protons</li>
+<li>particle ratios: kaons / pions, protons / pions
+For the implementation, you can to the <a href="reference-manual.html">ALICE Rivet reference page</a> to look up the individual ingredients you might need for your analysis.</li>
+</ul>
+<p>Now, we go step by step.</p>
+<h3 id="identifier-and-template">identifier and template</h3>
+<p>First, we need to find the identifier for the analysis we want to implement. The analysis was published in 2015 and has the inspire ID 1357424. Thus, the identifier is <strong>ALICE_2015_I1357424</strong>.</p>
+<p>Now, we can create the template structure (don&apos;t forget to <a href="rivet-in-alice.html">load the environment for Rivet</a> and to change to an appropriate directory):</p>
+<pre><code class="lang-bash">rivet-mkanalysis ALICE_2015_I1357424
+</code></pre>
+<p>As mentioned before, the analysis can already be compiled and run (even though it does nothing useful at this stage):</p>
+<pre><code class="lang-bash">rivet-build RivetALICE_2015_I1357424.so ALICE_2015_I1357424.cc
+rivet --pwd <span class="hljs-_">-a</span> ALICE_2015_I1357424 /eos/project/a/alipwgmm/rivet/hepmc/pythia6_pp7000.hepmc
+</code></pre>
+<h3 id="initialisation-histograms-and-projections">initialisation (histograms and projections)</h3>
+<p>First, we book the required histograms. We need one histogram for each of the pt spectra of pions, kaons, and protons. Eventually, we also want to plot the ratios of the spectra for which a different binning was used. Therefore, we need additional temporary histograms.</p>
+<p>So, we add the required member variables (in the private section):</p>
+<pre><code class="lang-cpp">  <span class="hljs-comment">// histograms for spectra</span>
+  Histo1DPtr _histPtPions;
+  Histo1DPtr _histPtProtons;
+  Histo1DPtr _histPtKaons;
+
+  <span class="hljs-comment">// temporary histograms for ratios</span>
+  Histo1DPtr _histPtPionsR1;
+  Histo1DPtr _histPtPionsR2;
+  Histo1DPtr _histPtProtonsR;
+  Histo1DPtr _histPtKaonsR;
+
+  <span class="hljs-comment">// scatter plots for ratios</span>
+  Scatter2DPtr _histPtKtoPi;
+  Scatter2DPtr _histPtPtoPi;
+</code></pre>
+<p>Then, we add the booking of the histograms (in the init method):</p>
+<pre><code class="lang-cpp">  <span class="hljs-comment">// plots from the paper</span>
+  book(_histPtPions   , <span class="hljs-string">&quot;d01-x01-y01&quot;</span>);  <span class="hljs-comment">// pions</span>
+  book(_histPtKaons   , <span class="hljs-string">&quot;d01-x01-y02&quot;</span>);  <span class="hljs-comment">// kaons</span>
+  book(_histPtProtons , <span class="hljs-string">&quot;d01-x01-y03&quot;</span>);  <span class="hljs-comment">// protons</span>
+  book(_histPtKtoPi   , <span class="hljs-string">&quot;d02-x01-y01&quot;</span>);  <span class="hljs-comment">// K to pi ratio </span>
+  book(_histPtPtoPi   , <span class="hljs-string">&quot;d03-x01-y01&quot;</span>);  <span class="hljs-comment">// p to pi ratio</span>
+
+  <span class="hljs-comment">// temp histos for ratios</span>
+  book(_histPtPionsR1   , <span class="hljs-string">&quot;TMP/pT_pi1&quot;</span>, refData(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)); <span class="hljs-comment">// pi histo compatible with more restricted kaon binning</span>
+  book(_histPtPionsR2   , <span class="hljs-string">&quot;TMP/pT_pi2&quot;</span>, refData(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)); <span class="hljs-comment">// pi histo compatible with more restricted proton binning</span>
+  book(_histPtKaonsR    , <span class="hljs-string">&quot;TMP/pT_K&quot;</span>,   refData(<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)); <span class="hljs-comment">// K histo with more restricted binning</span>
+  book(_histPtProtonsR  , <span class="hljs-string">&quot;TMP/pT_p&quot;</span>,   refData(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)); <span class="hljs-comment">// p histo with more restricted binning</span>
+</code></pre>
+<p>Next, we book the projections for the identified particles (also in the init method):</p>
+<pre><code class="lang-cpp">  <span class="hljs-function"><span class="hljs-keyword">const</span> ChargedFinalState <span class="hljs-title">cfs</span><span class="hljs-params">(Cuts::absrap &lt; <span class="hljs-number">0.5</span>)</span></span>;
+  addProjection(cfs, <span class="hljs-string">&quot;CFS&quot;</span>);
+</code></pre>
+<p>Here, we use the charged final state (with a rapidity cut) and will deal with the particle identification directly in the analysis code.</p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(3141377298);" id="note"><i class="fa fa-info-circle"></i> Note<span id="heading-3141377298"></span></h3></div><div class="panel-body" id="panel-3141377298"><p>This example did not use the ALICE::PrimaryParticles projection because it was implemented before this projection was introduced in Rivet. The selection of primary particles according to the ALICE definition is therefore done by hand, by looking at the particle ancestors. The code below could in principle be simplified by removing the large set of if statements if the ALICE::PrimaryParticles projection is used</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">const</span> ALICE::PrimaryParticles&amp; aprim = apply&lt;ALICE::PrimaryParticles&gt;(event, <span class="hljs-string">&quot;APRIM&quot;</span>);
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> Particle&amp; p : aprim.particles()) {
+  ...
+}
+</code></pre>
+<p>We did not modify this tutorial to reflect the actual code for this analysis as in Rivet.</p>
+</div></div></p>
+<h3 id="analysis">analysis</h3>
+<p>Here, we just use the previously declared projection to loop over all the charged particles in the selected rapidity range and to fill the histograms. 
+Note: We exclude feed-down from particles decaying weakly into &#x3C0;, K, p:</p>
+<pre><code class="lang-cpp">  <span class="hljs-keyword">const</span> ChargedFinalState&amp; cfs = apply&lt;ChargedFinalState&gt;(event, <span class="hljs-string">&quot;CFS&quot;</span>);
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> Particle&amp; p : cfs.particles()) {
+    <span class="hljs-comment">// protections against mc generators decaying long-lived particles</span>
+    <span class="hljs-keyword">if</span> ( !(p.hasAncestor(<span class="hljs-number">310</span>)  || p.hasAncestor(<span class="hljs-number">-310</span>)  ||     <span class="hljs-comment">// K0s</span>
+           p.hasAncestor(<span class="hljs-number">130</span>)  || p.hasAncestor(<span class="hljs-number">-130</span>)  ||     <span class="hljs-comment">// K0l</span>
+           p.hasAncestor(<span class="hljs-number">3322</span>) || p.hasAncestor(<span class="hljs-number">-3322</span>) ||     <span class="hljs-comment">// Xi0</span>
+           p.hasAncestor(<span class="hljs-number">3122</span>) || p.hasAncestor(<span class="hljs-number">-3122</span>) ||     <span class="hljs-comment">// Lambda</span>
+           p.hasAncestor(<span class="hljs-number">3222</span>) || p.hasAncestor(<span class="hljs-number">-3222</span>) ||     <span class="hljs-comment">// Sigma+/-</span>
+           p.hasAncestor(<span class="hljs-number">3312</span>) || p.hasAncestor(<span class="hljs-number">-3312</span>) ||     <span class="hljs-comment">// Xi-/+ </span>
+           p.hasAncestor(<span class="hljs-number">3334</span>) || p.hasAncestor(<span class="hljs-number">-3334</span>) ))     <span class="hljs-comment">// Omega-/+     </span>
+      {  
+        <span class="hljs-keyword">switch</span> (<span class="hljs-built_in">abs</span>(p.pid())) {
+        <span class="hljs-keyword">case</span> <span class="hljs-number">211</span>: <span class="hljs-comment">// pi+</span>
+          _histPtPions-&gt;fill(p.pT()/GeV);
+          _histPtPionsR1-&gt;fill(p.pT()/GeV);
+          _histPtPionsR2-&gt;fill(p.pT()/GeV);
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">2212</span>: <span class="hljs-comment">// proton</span>
+          _histPtProtons-&gt;fill(p.pT()/GeV);
+          _histPtProtonsR-&gt;fill(p.pT()/GeV);
+          <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-number">321</span>: <span class="hljs-comment">// K+</span>
+          _histPtKaons-&gt;fill(p.pT()/GeV);
+          _histPtKaonsR-&gt;fill(p.pT()/GeV);
+          <span class="hljs-keyword">break</span>;
+      } <span class="hljs-comment">// particle switch</span>
+    } <span class="hljs-comment">// primary pi, K, p only</span>
+  } <span class="hljs-comment">// particle loop</span>
+</code></pre>
+<h3 id="finalise">finalise</h3>
+<p>In the end, we build the particle ratios to pions (K/&#x3C0; and P/&#x3C0;) and normalize the histograms in order to show 1/Nev d&#xB2;N/dpt dy event-normalised spectra :</p>
+<pre><code class="lang-cpp">  divide(_histPtKaonsR,   _histPtPionsR1, _histPtKtoPi);
+  divide(_histPtProtonsR, _histPtPionsR2, _histPtPtoPi);
+
+  scale(_histPtPions,       <span class="hljs-number">1.</span>/sumOfWeights());
+  scale(_histPtProtons,     <span class="hljs-number">1.</span>/sumOfWeights());
+  scale(_histPtKaons,       <span class="hljs-number">1.</span>/sumOfWeights());
+</code></pre>
+<h3 id="try-your-new-analysis">try your new analysis</h3>
+<p>Now, try and run the analysis on the test file:</p>
+<pre><code class="lang-bash">rivet-buildplugin Rivet_test.so ALICE_2015_I1357424.cc
+rivet --pwd <span class="hljs-_">-a</span> ALICE_2015_I1357424 /eos/project/a/alipwgmm/rivet/hepmc/pythia6_pp7000.hepmc
+</code></pre>
+<p>N.B.: Note the option --pwd which instructs Rivet to look for the specified analyses (also) in the current working directory.</p>
+<p>Next, create the plots and compare:</p>
+<pre><code class="lang-bash">rivet-mkhtml --pwd Rivet.yoda
+</code></pre>
+<p>(if needed copy plots/ directory locally).</p>
+<p>In case of problems, you can look at the <a href="https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMRivetExampleReference" target="_blank">reference implementation</a> - but first try to sort it out yourself.</p>
+<h3 id="experiment-with-the-analysis">experiment with the analysis</h3>
+<p>In order to gather experience with programming Rivet plugins, it is good to experiment a bit. You can e.g. try to:</p>
+<ul>
+<li>replace the projection to use particle identification</li>
+<li>move the primary selection to a separate function</li>
+<li>...</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="rivet-in-alice.html" class="navigation navigation-prev " aria-label="Previous page: Using Rivet in ALICE">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="hi-features.html" class="navigation navigation-next " aria-label="Next page: Introduction to heavy-ion features">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Implementing a Rivet analysis","level":"1.6.3","depth":2,"next":{"title":"Introduction to heavy-ion features","level":"1.6.4","depth":2,"path":"rivet/hi-features.md","ref":"rivet/hi-features.md","articles":[]},"previous":{"title":"Using Rivet in ALICE","level":"1.6.2","depth":2,"path":"rivet/rivet-in-alice.md","ref":"rivet/rivet-in-alice.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"rivet/implementing-rivet-analysis.md","mtime":"2020-08-26T13:26:44.711Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

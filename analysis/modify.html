@@ -1,0 +1,955 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Step 3 - Modify the task · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="track.html" />
+    
+    
+    <link rel="prev" href="running.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start/">
+            
+                <a href="../start/">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../start/cert.html">
+            
+                <a href="../start/cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../building/">
+            
+                <a href="../building/">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../building/custom.html">
+            
+                <a href="../building/custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../building/prereq-centos7.html">
+            
+                <a href="../building/prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../building/prereq-macos.html">
+            
+                <a href="../building/prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../building/prereq-ubuntu.html">
+            
+                <a href="../building/prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../building/prereq-fedora.html">
+            
+                <a href="../building/prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../building/build.html">
+            
+                <a href="../building/build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../building/precomp.html">
+            
+                <a href="../building/precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../building/devel.html">
+            
+                <a href="../building/devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="welcome.html">
+            
+                <a href="welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="classes.html">
+            
+                <a href="classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="alianalysistaskmytask.html">
+            
+                <a href="alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="local.html">
+            
+                <a href="local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="rungrid.html">
+            
+                <a href="rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="lego.html">
+            
+                <a href="lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="monalisa.html">
+            
+                <a href="monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="trouble.html">
+            
+                <a href="trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="streamer.html">
+            
+                <a href="streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="destructor.html">
+            
+                <a href="destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="running.html">
+            
+                <a href="running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.3" data-path="modify.html">
+            
+                <a href="modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="track.html">
+            
+                <a href="track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="pid.html">
+            
+                <a href="pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="MC.html">
+            
+                <a href="MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="grid.html">
+            
+                <a href="grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="bonus.html">
+            
+                <a href="bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="hints.html">
+            
+                <a href="hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="ROOT5-to-6.html">
+            
+                <a href="ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../rivet/rivet-tutorial.html">
+            
+                <a href="../rivet/rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../rivet/getting-started.html">
+            
+                <a href="../rivet/getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../rivet/rivet-in-alice.html">
+            
+                <a href="../rivet/rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../rivet/implementing-rivet-analysis.html">
+            
+                <a href="../rivet/implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../rivet/hi-features.html">
+            
+                <a href="../rivet/hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../rivet/reference-manual.html">
+            
+                <a href="../rivet/reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../rivet/publishing-procedures.html">
+            
+                <a href="../rivet/publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../rivet/advanced-topics.html">
+            
+                <a href="../rivet/advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../rivet/advanced-hi-features.html">
+            
+                <a href="../rivet/advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../rivet/coding-conventions.html">
+            
+                <a href="../rivet/coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../rivet/references.html">
+            
+                <a href="../rivet/references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Step 3 - Modify the task</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="step-3">Step 3</h1>
+<p>If you managed to run the task, congratulations! This is step one towards becoming a professional physicist (no turning back from here ... ) If it didn&#x2019;t work, ask for help. Also this is a very significant part of becoming a physicist ...</p>
+<p>At this point, it&#x2019;s time to expand our task a bit. What we will do is</p>
+<ul>
+<li><p>Add some event selection criteria</p>
+</li>
+<li><p>Add some track selection criteria</p>
+</li>
+</ul>
+<p>But let&#x2019;s not go too fast.</p>
+<h1 id="the-event-loop">The event loop</h1>
+<p>Collisions are referred to as &#x2018;events&#x2019;. In our analysis task, the function </p>
+<pre><code>AliAnalysisTaskSE::UserExec
+</code></pre><p>is called once for each event in the input data set. <strong>You never have to explicitly call this function yourself</strong> ! Remember, from programming 101 classes, the lecture about <strong>inheritance</strong> in C++? The <code>UserExec</code> function is called by a <strong>base</strong> class that you do not have to worry about. We will later see that this function is only called when an event passes your <strong>trigger selection</strong>. </p>
+<h2 id="fun-">Fun !</h2>
+<p>It&#x2019;s time to add some code to our task. First, create additional output histograms in which you&#x2019;ll store</p>
+<ul>
+<li>The primary vertex positions along the beam line for all events</li>
+</ul>
+<p>Just like the example histogram <code>fHistPt</code>, you have to add these histograms as members of your class. So: create the pointers in the header file, remember to initialize the pointers in your class constructors, and don&#x2019;t forget to create instances of the histograms in the <code>UserCreateOutput</code> method.</p>
+<p>One of the trickiest things in programming can be <em>finding out what methods to use</em> out of millions of lines of code. To help you out, here&apos;s a line of code to obtain the vertex position along the beam line</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">float</span> vertexZ = fAOD-&gt;GetPrimaryVertex()-&gt;GetZ();
+</code></pre>
+<p>You can of course just copy-paste these lines into your task and hope that it works, but try to think of</p>
+<ul>
+<li><p>do you understand the <em>logic</em> of these lines?</p>
+</li>
+<li><p>can you find out in which classes these methods are defined?</p>
+</li>
+</ul>
+<p>Try to run the code again, after you&#x2019;ve added these histograms.</p>
+<h1 id="all-set">All set?</h1>
+<p>It&#x2019;s <em>almost</em> time to run the modified analysis. Not all collisions in the detector are actually usable for physics analysis. Events which happen very far from the center of the detector, for example, are usually not used for analysis (any idea why?). To make sure that we only look at high quality data, we do &#x2019;event selection&#x2019;. Let&#x2019;s add some event selection criteria to your task.</p>
+<ul>
+<li>Modify the code such that only primary vertices are accepted within 10 cm of detector center. Such selections in the event sample or track sample are usually referred to as &#x2018;cuts&#x2019;. </li>
+<li>Generally, we want to see how much data we &#x2018;throw away&#x2019; when applying a cut. How would you go about doing that?</li>
+</ul>
+<p>Besides rejecting data via cuts, we also make data selection while data taking, by <em>&#x2018;triggering&#x2019;</em>: selecting collisions in which we expect certain processes to have occurred. You can check which triggers are selected in the <code>AddMyTask.C</code> macro , where we call</p>
+<pre><code>    task-&gt;SelectCollisionCandidates(AliVEvent::kAnyINT);
+</code></pre><p>As you can see, trigger classes are defined in the class AliVEvent. A quick look into the source code of that classt tells us which triggers are available</p>
+<pre><code>  enum EOfflineTriggerTypes { 
+    kMB                = BIT( 0), // Minimum bias trigger in PbPb 2010-11
+    kINT1              = BIT( 0), // V0A | V0C | SPD minimum bias trigger
+    kINT7              = BIT( 1), // V0AND minimum bias trigger
+    kMUON              = BIT( 2), // Single muon trigger in pp2010-11, INT1 suite
+    kHighMult          = BIT( 3), // High-multiplicity SPD trigger
+    kHighMultSPD       = BIT( 3), // High-multiplicity SPD trigger
+    kEMC1              = BIT( 4), // EMCAL trigger in pp2011, INT1 suite
+    kCINT5             = BIT( 5), // V0OR minimum bias trigger
+    kINT5              = BIT( 5), // V0OR minimum bias trigger
+    kCMUS5             = BIT( 6), // Single muon trigger, INT5 suite
+    kMUSPB             = BIT( 6), // Single muon trigger in PbPb 2011
+    kINT7inMUON        = BIT( 6), // INT7 in MUON or MUFAST cluster
+    kMuonSingleHighPt7 = BIT( 7), // Single muon high-pt, INT7 suite
+    kMUSH7             = BIT( 7), // Single muon high-pt, INT7 suite
+    kMUSHPB            = BIT( 7), // Single muon high-pt in PbPb 2011
+    kMuonLikeLowPt7    = BIT( 8), // Like-sign dimuon low-pt, INT7 suite
+    kMUL7              = BIT( 8), // Like-sign dimuon low-pt, INT7 suite
+    kMuonLikePB        = BIT( 8), // Like-sign dimuon low-pt in PbPb 2011
+    kMuonUnlikeLowPt7  = BIT( 9), // Unlike-sign dimuon low-pt, INT7 suite
+    kMUU7              = BIT( 9), // Unlike-sign dimuon low-pt, INT7 suite
+    kMuonUnlikePB      = BIT( 9), // Unlike-sign dimuon low-pt in PbPb 2011
+    kEMC7              = BIT(10), // EMCAL/DCAL L0 trigger, INT7 suite
+    kEMC8              = BIT(10), // EMCAL/DCAL L0 trigger, INT8 suite
+    kMUS7              = BIT(11), // Single muon low-pt, INT7 suite
+    kMuonSingleLowPt7  = BIT(11), // Single muon low-pt, INT7 suite
+    kPHI1              = BIT(12), // PHOS L0 trigger in pp2011, INT1 suite
+    kPHI7              = BIT(13), // PHOS trigger, INT7 suite
+    kPHI8              = BIT(13), // PHOS trigger, INT8 suite
+    kPHOSPb            = BIT(13), // PHOS trigger in PbPb 2011
+    kEMCEJE            = BIT(14), // EMCAL/DCAL L1 jet trigger
+    kEMCEGA            = BIT(15), // EMCAL/DCAL L1 gamma trigger
+    kHighMultV0        = BIT(16), // High-multiplicity V0 trigger
+    kCentral           = BIT(16), // Central trigger in PbPb 2011
+    kSemiCentral       = BIT(17), // Semicentral trigger in PbPb 2011
+    kDG                = BIT(18), // Double gap diffractive
+    kDG5               = BIT(18), // Double gap diffractive
+    kZED               = BIT(19), // ZDC electromagnetic dissociation
+    kSPI7              = BIT(20), // Power interaction trigger
+    kSPI               = BIT(20), // Power interaction trigger
+    kINT8              = BIT(21), // 0TVX trigger
+    kMuonSingleLowPt8  = BIT(22), // Single muon low-pt, INT8 suite
+    kMuonSingleHighPt8 = BIT(23), // Single muon high-pt, INT8 suite
+    kMuonLikeLowPt8    = BIT(24), // Like-sign dimuon low-pt, INT8 suite
+    kMuonUnlikeLowPt8  = BIT(25), // Unlike-sign dimuon low-pt, INT8 suite
+    kMuonUnlikeLowPt0  = BIT(26), // Unlike-sign dimuon low-pt, no additional L0 requirement
+    kUserDefined       = BIT(27), // Set when custom trigger classes are set in AliPhysicsSelection
+    kTRD               = BIT(28), // TRD trigger
+    // Bits 29 and above are reserved for FLAGS
+    kFastOnly          = BIT(30), // The fast cluster fired. This bit is set in to addition another trigger bit, e.g. kMB
+    kAny               = 0xffffffff, // to accept any defined trigger
+    kAnyINT            = kMB | kINT7 | kINT5 | kINT8 | kSPI7 // to accept any interaction (aka minimum bias) trigger
+  };
+</code></pre><p>but that may be a bit cryptic .. We won&#x2019;t have time to cover triggers in detail, but if you have questions, ask - and if you do analysis - make sure that you are using the correct trigger configuration. </p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="running.html" class="navigation navigation-prev " aria-label="Previous page: Step 2 - Running the task">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="track.html" class="navigation navigation-next " aria-label="Next page: Step 4 -The track loop">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Step 3 - Modify the task","level":"1.5.3","depth":2,"next":{"title":"Step 4 -The track loop","level":"1.5.4","depth":2,"path":"analysis/track.md","ref":"analysis/track.md","articles":[]},"previous":{"title":"Step 2 - Running the task","level":"1.5.2","depth":2,"path":"analysis/running.md","ref":"analysis/running.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"analysis/modify.md","mtime":"2020-08-26T13:26:44.707Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

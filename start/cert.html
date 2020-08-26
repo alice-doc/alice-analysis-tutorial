@@ -1,0 +1,961 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Get a Grid certificate · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../building/" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="cert.html">
+            
+                <a href="cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../building/">
+            
+                <a href="../building/">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../building/custom.html">
+            
+                <a href="../building/custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../building/prereq-centos7.html">
+            
+                <a href="../building/prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../building/prereq-macos.html">
+            
+                <a href="../building/prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../building/prereq-ubuntu.html">
+            
+                <a href="../building/prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../building/prereq-fedora.html">
+            
+                <a href="../building/prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../building/build.html">
+            
+                <a href="../building/build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../building/precomp.html">
+            
+                <a href="../building/precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../building/devel.html">
+            
+                <a href="../building/devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../analysis/welcome.html">
+            
+                <a href="../analysis/welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../analysis/classes.html">
+            
+                <a href="../analysis/classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../analysis/alianalysistaskmytask.html">
+            
+                <a href="../analysis/alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../analysis/local.html">
+            
+                <a href="../analysis/local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../analysis/rungrid.html">
+            
+                <a href="../analysis/rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../analysis/lego.html">
+            
+                <a href="../analysis/lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../analysis/monalisa.html">
+            
+                <a href="../analysis/monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../analysis/trouble.html">
+            
+                <a href="../analysis/trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../analysis/streamer.html">
+            
+                <a href="../analysis/streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../analysis/destructor.html">
+            
+                <a href="../analysis/destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../analysis/">
+            
+                <a href="../analysis/">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../analysis/setup.html">
+            
+                <a href="../analysis/setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../analysis/running.html">
+            
+                <a href="../analysis/running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../analysis/modify.html">
+            
+                <a href="../analysis/modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../analysis/track.html">
+            
+                <a href="../analysis/track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../analysis/pid.html">
+            
+                <a href="../analysis/pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../analysis/MC.html">
+            
+                <a href="../analysis/MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../analysis/grid.html">
+            
+                <a href="../analysis/grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../analysis/bonus.html">
+            
+                <a href="../analysis/bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../analysis/hints.html">
+            
+                <a href="../analysis/hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../analysis/ROOT5-to-6.html">
+            
+                <a href="../analysis/ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../rivet/rivet-tutorial.html">
+            
+                <a href="../rivet/rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../rivet/getting-started.html">
+            
+                <a href="../rivet/getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../rivet/rivet-in-alice.html">
+            
+                <a href="../rivet/rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../rivet/implementing-rivet-analysis.html">
+            
+                <a href="../rivet/implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../rivet/hi-features.html">
+            
+                <a href="../rivet/hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../rivet/reference-manual.html">
+            
+                <a href="../rivet/reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../rivet/publishing-procedures.html">
+            
+                <a href="../rivet/publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../rivet/advanced-topics.html">
+            
+                <a href="../rivet/advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../rivet/advanced-hi-features.html">
+            
+                <a href="../rivet/advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../rivet/coding-conventions.html">
+            
+                <a href="../rivet/coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../rivet/references.html">
+            
+                <a href="../rivet/references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Get a Grid certificate</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="get-a-grid-certificate">Get a Grid certificate</h1>
+<p>We will illustrate how to get, renew, register and prepare your digital certificates to use the
+ALICE Grid services.</p>
+<h2 id="obtain-a-digital-certificate">Obtain a digital certificate</h2>
+<p>Your home institute may provide you with a digital certificate. However, we reccommend you get one
+from CERN, because the procedure is very easy and automated when you have a CERN account.</p>
+<ul>
+<li><a href="https://ca.cern.ch/ca/user/Request.aspx?template=EE2User" target="_blank">Generate a new CERN Grid User
+ certificate</a></li>
+</ul>
+<p>You will be asked whether you want to protect your certificate with a password. Note that in most
+cases you will not be allowed to import the certificate if you don&apos;t specify a password, so please
+protect it with a password.</p>
+<p><em>&#x26A0;&#xFE0F; This is not your CERN password. Use a new, arbitrary one.</em></p>
+<p>Proceed until you get a message saying that your certificate is ready to be downloaded: click on it
+and a file called <code>myCertificate.p12</code> will be downloaded.</p>
+<h2 id="register-your-certificate-in-your-browser">Register your certificate in your browser</h2>
+<p>There are several ways to add your newly downloaded certificate to your browser, and they depend on
+the browser and the operating system. We will focus on Firefox as an example.</p>
+<p>Open Firefox, go to the <strong>Preferences</strong>, select <strong>Privacy and security</strong> on the left hand menu.
+Scroll the settings page to the bottom and click on the <strong>Show certificates...</strong> button.</p>
+<p>A new window will open: click the <strong>Personal certificates</strong> tab. Click <strong>Import...</strong> and select the
+<code>myCertificate.p12</code> file you have just generated. Type the password you have used in the
+previous step (this is not your CERN password).</p>
+<p>Your newly imported certificate will appear in the list.</p>
+<h2 id="add-the-cern-grid-certificates-to-your-browser">Add the CERN Grid certificates to your browser</h2>
+<p>In case you navigate to an ALICE HTTPS site and you get a security warning, it is probably because
+your browser does not have any means to recognize the site as valid.</p>
+<p><em>&#x26A0;&#xFE0F; Most people ignore security exceptions. <strong>Do not do that, ever.</strong> This is bad, very bad. Someone
+can steal your data. For real. Without you knowing it.</em></p>
+<p>Go to <a href="https://cafiles.cern.ch/cafiles/certificates/Grid.aspx" target="_blank">this site</a>, there are two links at
+the bottom of the page saying &quot;CERN Root/Grid Certification Authority&quot;, etc.: with Firefox as your
+browser, click on both of them, and Firefox will ask you if you want to &quot;trust&quot; them: say &quot;yes&quot; to
+all questions.</p>
+<h2 id="test-your-browser-setup">Test your browser setup</h2>
+<p>Navigate to the <a href="https://alimonitor.cern.ch/" target="_blank">ALICE Grid monitoring</a> page. If you have your personal
+certificate installed, and the CERN Grid certificates installed as well, Firefox should ask you to
+select a certificate to be used to authenticate to the site.</p>
+<p>In case you have many, select the one that identifies you (it should have your full name somewhere)
+issued by the CERN Grid Certification Authority, and tell Firefox to remember it.</p>
+<p>You should be able to see the page without further ado. Next to the address bar, a green lock icon
+should appear. If you see broken locks, red icons, warnings of various kinds, then there is some
+kind of security problem and you should repeat the steps above.</p>
+<h2 id="register-your-certificate-to-the-alice-grid">Register your certificate to the ALICE Grid</h2>
+<p>This operation needs to be performed only once. With Firefox, click on <a href="https://voms2.cern.ch:8443/voms/alice" target="_blank">this
+link</a> and follow the guided procedure, after having selected
+your personal certificate for authenticating.</p>
+<p>When the registration to the VO is successful, you will receive an email informing you. The
+registration procedure does not involve any modification or re-download of your current certificate.
+In case you are not receiving this email, you might want to ping Latchezar Betev:</p>
+<latchezar.betev@cern.ch>
+
+
+<h2 id="convert-your-certificate-for-using-the-grid-tools">Convert your certificate for using the Grid tools</h2>
+<p>Keep at hand the <code>myCertificate.p12</code> file you have previously downloaded. You need to convert it
+into two files (a &quot;certificate&quot; and a &quot;key&quot;) in order to use the ALICE Grid services from the
+command line.</p>
+<p>You will export your certificates to the following directory:</p>
+<pre><code>~/alidock/.globus
+</code></pre><p>So, first off, open a Terminal, create the directory, and link <code>~/.globus</code> to it (and not the other
+way around):</p>
+<pre><code class="lang-bash">mkdir -p ~/alidock/.globus
+ln -nfs ~/alidock/.globus ~/.globus
+</code></pre>
+<p><em>&#x26A0;&#xFE0F; If the second command fails, it&apos;s because you already have a <code>~/.globus</code> directory. Just move its
+contents to <code>~/alidock/.globus</code> and recreate the symbolic link with <code>ln</code>.</em></p>
+<p>Now export the <strong>certificate</strong> with the following command (you will be prompted for the export
+password you have selected when you have generated it):</p>
+<pre><code class="lang-bash">openssl pkcs12 -clcerts -nokeys -in ~/Downloads/myCertificate.p12 -out ~/alidock/.globus/usercert.pem
+</code></pre>
+<p>The result will be a file called <code>usercert.pem</code> in your <code>~/alidock/.globus</code> directory. Note that
+your input file ending with <code>.p12</code> may have a different name and may be stored in a different
+location.</p>
+<p>Time to export the <strong>private key</strong>:</p>
+<pre><code class="lang-bash">openssl pkcs12 -nocerts -in ~/Downloads/myCertificate.p12 -out ~/alidock/.globus/userkey.pem
+chmod 0400 ~/alidock/.globus/userkey.pem
+</code></pre>
+<p>When it says:</p>
+<pre><code>Enter Import Password:
+</code></pre><p>you should provide it with the export password you have entered when you generated it. The next
+question will be:</p>
+<pre><code>Enter PEM pass phrase:
+</code></pre><p>You should provide it with <em>another</em> password that will be used to protect the private key. You can
+use the same password as before if you want, but please <strong>do not use your CERN password</strong> (yes, we
+are stressing this point <em>a lot</em>). This question will be asked twice for confirmation.</p>
+<h2 id="test-your-certificate">Test your certificate</h2>
+<p>Your certificate will be available to the ALICE Grid command line client whether you are using
+<a href="https://github.com/alidock/alidock/wiki" target="_blank">alidock</a> or another installation method.</p>
+<p>Enter your ALICE environment and create a &quot;temporary access token&quot;:</p>
+<pre><code class="lang-bash">alienv enter AliPhysics/latest
+alien-token-destroy
+alien-token-init YOUR_ALIEN_USERNAME
+</code></pre>
+<p><em>&#x26A0;&#xFE0F; This assumes you have completed your <a href="../building/">installation</a>. You do not have
+either <code>alienv</code> or the <code>alien-token-*</code> commands available in case you have never done it.</em></p>
+<p>The <code>alien-token-init</code> command will ask you for a password. This is the last password you have used
+when you have converted your <code>.p12</code> certificate into two <code>.pem</code> files.</p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7835337486);" id="creating-jalien-and-alien-tokens"><i class="fa fa-info-circle"></i> Creating JAliEn and AliEn tokens<span id="heading-7835337486"></span></h3></div><div class="panel-body" id="panel-7835337486"><p>Note that the new JAliEn Grid clients automatically create tokens, while AliEn-ROOT-Legacy (ROOT5) requires running <em>alien-token-init</em> manually.
+There is <em>alien-token-init</em> for JAliEn, and you can use it to test your credentials or (re)create tokens manually.</p>
+</div></div></p>
+</latchezar.betev@cern.ch>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Getting started">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../building/" class="navigation navigation-next " aria-label="Next page: Build ALICE software">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Get a Grid certificate","level":"1.2.1","depth":2,"next":{"title":"Build ALICE software","level":"1.3","depth":1,"path":"building/README.md","ref":"building/README.md","articles":[{"title":"🧪 Installation via alibuild","level":"1.3.1","depth":2,"path":"building/custom.md","ref":"building/custom.md","articles":[{"title":"Prerequisites for CentOS 7","level":"1.3.1.1","depth":3,"path":"building/prereq-centos7.md","ref":"building/prereq-centos7.md","articles":[]},{"title":"Prerequisites for macOS","level":"1.3.1.2","depth":3,"path":"building/prereq-macos.md","ref":"building/prereq-macos.md","articles":[]},{"title":"Prerequisites for Ubuntu","level":"1.3.1.3","depth":3,"path":"building/prereq-ubuntu.md","ref":"building/prereq-ubuntu.md","articles":[]},{"title":"Prerequisites for Fedora","level":"1.3.1.4","depth":3,"path":"building/prereq-fedora.md","ref":"building/prereq-fedora.md","articles":[]}]},{"title":"🛠 Build the packages","level":"1.3.2","depth":2,"path":"building/build.md","ref":"building/build.md","articles":[]},{"title":"📦 Use the precompiled binaries","level":"1.3.3","depth":2,"path":"building/precomp.md","ref":"building/precomp.md","articles":[]},{"title":"💪 Develop a single package (Experimental)","level":"1.3.4","depth":2,"path":"building/devel.md","ref":"building/devel.md","articles":[]},{"title":"🐳 Using alidock","level":"1.3.5","depth":2,"url":"https://github.com/alidock/alidock/wiki","ref":"https://github.com/alidock/alidock/wiki","articles":[]}]},"previous":{"title":"Getting started","level":"1.2","depth":1,"path":"start/README.md","ref":"start/README.md","articles":[{"title":"Get a Grid certificate","level":"1.2.1","depth":2,"path":"start/cert.md","ref":"start/cert.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"start/cert.md","mtime":"2020-08-26T13:26:44.711Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

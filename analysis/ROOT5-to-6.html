@@ -1,0 +1,1157 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Transition from ROOT5 to ROOT6 · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../rivet/rivet-tutorial.html" />
+    
+    
+    <link rel="prev" href="hints.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start/">
+            
+                <a href="../start/">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../start/cert.html">
+            
+                <a href="../start/cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../building/">
+            
+                <a href="../building/">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../building/custom.html">
+            
+                <a href="../building/custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../building/prereq-centos7.html">
+            
+                <a href="../building/prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../building/prereq-macos.html">
+            
+                <a href="../building/prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../building/prereq-ubuntu.html">
+            
+                <a href="../building/prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../building/prereq-fedora.html">
+            
+                <a href="../building/prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../building/build.html">
+            
+                <a href="../building/build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../building/precomp.html">
+            
+                <a href="../building/precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../building/devel.html">
+            
+                <a href="../building/devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="welcome.html">
+            
+                <a href="welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="classes.html">
+            
+                <a href="classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="alianalysistaskmytask.html">
+            
+                <a href="alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="local.html">
+            
+                <a href="local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="rungrid.html">
+            
+                <a href="rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="lego.html">
+            
+                <a href="lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="monalisa.html">
+            
+                <a href="monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="trouble.html">
+            
+                <a href="trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="streamer.html">
+            
+                <a href="streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="destructor.html">
+            
+                <a href="destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="setup.html">
+            
+                <a href="setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="running.html">
+            
+                <a href="running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="modify.html">
+            
+                <a href="modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="track.html">
+            
+                <a href="track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="pid.html">
+            
+                <a href="pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="MC.html">
+            
+                <a href="MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="grid.html">
+            
+                <a href="grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="bonus.html">
+            
+                <a href="bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="hints.html">
+            
+                <a href="hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5.10" data-path="ROOT5-to-6.html">
+            
+                <a href="ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../rivet/rivet-tutorial.html">
+            
+                <a href="../rivet/rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../rivet/getting-started.html">
+            
+                <a href="../rivet/getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../rivet/rivet-in-alice.html">
+            
+                <a href="../rivet/rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../rivet/implementing-rivet-analysis.html">
+            
+                <a href="../rivet/implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../rivet/hi-features.html">
+            
+                <a href="../rivet/hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../rivet/reference-manual.html">
+            
+                <a href="../rivet/reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../rivet/publishing-procedures.html">
+            
+                <a href="../rivet/publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../rivet/advanced-topics.html">
+            
+                <a href="../rivet/advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../rivet/advanced-hi-features.html">
+            
+                <a href="../rivet/advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../rivet/coding-conventions.html">
+            
+                <a href="../rivet/coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../rivet/references.html">
+            
+                <a href="../rivet/references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Transition from ROOT5 to ROOT6</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="transition-from-root5-to-root6">Transition from ROOT5 to ROOT6</h1>
+<p><em>ROOT6</em> is similar to <em>ROOT5</em>: It comes with the same library of classes (base
+classes, histogram classes like TH1, ...) which share the same interface as under
+<em>ROOT5</em>. It provides a command line interface as <em>ROOT5</em>, and runs macros just
+like under <em>ROOT5</em>. Therefore it is possible to build and run the ALICE
+simulation, reconstruction and analysis framework under ROOT6. AliPhysics can be
+built against <em>ROOT6</em> in the following way:</p>
+<pre><code class="lang-bash">aliBuild -z --defaults root6 build AliPhysics
+</code></pre>
+<p>For classes in AliRoot or AliPhysics this transition is transparent. For code in
+macros there are however a few difference. This page tries to summarize the
+differences in behaviour observed so far and gives some suggestions how to solve
+these issues so work can go on smoothly under <em>ROOT6</em>.</p>
+<h2 id="what-is-a-just-in-time-compiler">What is a just-in-time compiler?</h2>
+<p>For the command line interface and running macros <em>ROOT5</em> uses <em>CINT</em>, which is an
+interpreter for C/C++. An interpreter processes a macro line-by-line. It depends
+on the implementation of the interpreter how C++ code will be handled and how
+close the interpretation comes to the language standard. <em>ROOT5</em> allows for some
+deviations from the language standards, which means that some coding errors
+which would thrown by a compiler leading in a break of the compilation are still
+tolerated by <em>ROOT5</em>. Furthermore the standard library is not fully supported as
+its handling has to be implemented into the compiler. Macro can however also be
+run in the compiled mode by ROOT5 (adding a &quot;+&quot; to the macro name). In this case
+ROOT calls an external compiler to compile the macro to a library which is loaded
+into ROOT. Once the macro runs in compiled mode it is expected to be fully
+compatible with the C++ standard and coding error free as the compiler will not
+tolerate compiler errors.</p>
+<p>In contrast to this <em>ROOT6</em> uses a just-in-time compiler called <em>cling</em>. A
+just-in-time compiler translates each statement, no matter whether it is a single
+command or a complicated macro, into machine code as it would be a program and
+only afterwards runs this piece of code. In order to translate code into machine
+code the compiler must know how to translate every single line. Based on powerful
+compiler library this means for <em>ROOT6</em> that all macro must comply to 100% with
+the C++ language standard, and exceptions will not be tolerated. Furthermore this
+also means that all symbols and objects must be known at compile time. This has
+three side effects:</p>
+<ul>
+<li>Loading Functions with <code>gROOT-&gt;LoadMacro(...);</code>: This function loads all
+functions it finds within the macro into ROOT during run time. For an interpreter
+this is sufficient as the functions are used after they are loaded. However the
+compiler must know all symbols used in a macro at compile time.</li>
+<li>Loading libraries with <code>gSystem-&gt;Load(...);</code>: Here we have the same problem:
+The symbols in the libraries must be known before they are used.</li>
+<li>Compiling ALICE analysis tasks on the fly with <code>gROOT-&gt;LoadMacro(&quot;...+&quot;);</code>:
+As the analysis task compiled like this will be converted in a library it must be
+know to the just-in-time compiler before.</li>
+</ul>
+<p>For all three cases exist workarounds which will be discussed in the next
+sections. In general macros which were running under <em>ROOT5</em> in the compiled mode
+will also run under <em>ROOT6</em>. Macros which were running only in the interpreted
+mode might contain coding errors which were not handled by <em>ROOT5</em> and might
+therefore need fixes. However the just-in-time compiler will give precise error
+messages leading exactly to the lines which need fixes.</p>
+<h2 id="how-can-i-call-macros-inside-macros">How can I call macros inside macros?</h2>
+<p>Calling macros inside macros is a bit tricky as the result of a macro will be
+available only at runtime. There are however several workarounds which cover the 
+most common use cases:</p>
+<ul>
+<li><p>Using ROOT&apos;s TMacro:</p>
+<p>TMacro is a wrapper class around the macro processing. It is constructed with
+the macro path. The macro is run using TMacro::Exec. The result of
+TMacro::Exec() is a number representing an address in memory where to
+find the resulting object. This has to be cast into a pointer to an object of
+the expected type. Example:</p>
+<pre><code class="lang-C++">TMacro physseladd(gSystem-&gt;ExpandPathName(&quot;$ALICE_PHYSICS/OADB/macros/AddTaskPhysicsSelection.C&quot;));
+AliPhysicsSelectionTask *physseltask = reinterpret_cast&lt;AliPhysicsSelectionTask *&gt;(physseladd.Exec());
+</code></pre>
+<p>The macro is still evaluated at runtime, however with the reinterpret_cast to
+AliPhysicsSelectionTask * we tell ROOT that the result of the macro
+interpretation must be of type AliPhysicsSelectionTask *, so the type is known
+at compile time. TMacro::Exec optionally gets a string representation of the
+function arguments. This might be a bit complicated to handle, particularly if
+the arguments are dynamic and change at run time. The method works both for
+<em>ROOT5</em> and <em>ROOT6</em>.</p>
+</li>
+<li><p>Using gROOT/gInterpreter-&gt;ProcessLine: </p>
+<p>Macro execution can be launched as well via gROOT-&gt;ProcessLine() /
+gInterpreter-&gt;ProcessLine(). As with TMacro this method is focused on running
+a macro and not loading content from it. The ProcessLine method returns a
+long number representing an address in memory where to find the output objects.
+This number has to be cast to the expected output type using a
+reinterpret_cast in order to access the content of the output objects. The
+following example runs the add macro for the physics selection task:</p>
+<pre><code class="lang-C++">AliPhysicsSelectionTask *physseltask = <span class="hljs-keyword">reinterpret_cast</span>&lt;AliPhysicsSelectionTask *&gt;(gInterpreter-&gt;ProcessLine(Form(<span class="hljs-string">&quot;.x %s&quot;</span>, gSystem-&gt;ExpandPathName(<span class="hljs-string">&quot;$ALICE_PHYSICS/OADB/macros/AddTaskPhysicsSelection.C&quot;</span>))))
+</code></pre>
+<p>Adding function arguments is possible here as well as a simple string
+representation after the macro path, surrounded with (). This method also works
+both under <em>ROOT5</em> and <em>ROOT6</em>.</p>
+</li>
+<li><p>Including macros:</p>
+<p>As <em>ROOT6</em> compiles the macro it is possible to include macros and treat them
+as if they were header files. In order for this to work it is essential to tell
+ROOT before where to find the macro. This can be done using the preprocessor
+macro <code>R_ADD_INCLUDE_PATH(...)</code>. For the just-in-time compiler macros
+included will look as if they were part of the code itself. The following macro
+runs under <em>ROOT6</em>:</p>
+<pre><code class="lang-C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">ifdef</span> __CLING__</span>
+<span class="hljs-comment">// Tell  ROOT where to find AliRoot headers</span>
+R__ADD_INCLUDE_PATH($ALICE_ROOT)
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;ANALYSIS/macros/train/AddESDHandler.C&gt;</span></span>
+
+<span class="hljs-comment">// Tell ROOT where to find AliPhysics headers</span>
+R__ADD_INCLUDE_PATH($ALICE_PHYSICS)
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;OADB/macros/AddTaskPhysicsSelection.C&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">simpleaddtest</span><span class="hljs-params">()</span></span>{
+  AliAnalysisManager *mgr = <span class="hljs-keyword">new</span> AliAnalysisManager;
+
+  <span class="hljs-comment">// Take function from macro AddESDHandler</span>
+  <span class="hljs-comment">// no gROOT-&gt;LoadMacro for ROOT6</span>
+  AddESDHandler();
+
+  AliPhysicsSelectionTask *test = AddTaskPhysicsSelection(kTRUE);
+
+  mgr-&gt;InitAnalysis();
+  mgr-&gt;PrintStatus();
+}
+</code></pre>
+<p>In particular when passing arguments to the macro (in the example above passing
+kTRUE to AddTaskPhysicsSelection) this method is very convenient. This method
+is specific to <em>ROOT6</em>. The part including macros has to be protected (see
+below).</p>
+</li>
+</ul>
+<h2 id="do-i-need-to-include-header-files-in-my-macros">Do I need to include header files in my macros?</h2>
+<p><em>ROOT6</em> comes with a technique called pre-compiled header files. Header files
+from a certain library are compiled to a binary format by <code>rootcling</code>, the
+successor of <code>rootcint</code>, and loaded into <em>ROOT6</em> by an auto-loading mechanism
+similar to the rootmap mechanism. Once <code>rootcling</code> is invoked with the
+argument <code>-rml name</code> a <strong>.pcm</strong>-file is created containing the pre-compiled
+headers. <em>ROOT6</em> will search for .pcm-files in the <strong>LD_LIBRARY_PATH</strong>.</p>
+<p>The following packages in ALICE provide .pcm support:</p>
+<ul>
+<li>AliRoot</li>
+<li>AliPhysics</li>
+<li>RooUnfold</li>
+<li>FairRoot</li>
+<li>o2</li>
+</ul>
+<p>For libraries providing .pcm-support <strong>NO</strong> headers should be included in macros.</p>
+<p>For libraries handled by the user make sure to</p>
+<ul>
+<li>run <code>rootcling</code> with the arguments <code>-rmf</code> for the .rootmap file
+and <code>-rml</code> for the .pcm file</li>
+<li>Install both the .rootmap and the .pcm file of your library path in the 
+library location (usually PROJECT_PATH/lib)</li>
+</ul>
+<h2 id="i-get-a-huge-amount-of-errors-and-my-macro-doesnt-run-what-can-i-do">I get a huge amount of errors, and my macro doesn&apos;t run. What can I do?</h2>
+<p>Here are few examples that commonly appear in user macros and which are tolerated by ROOT5 but not anymore by ROOT6:</p>
+<ul>
+<li><p>Undefined symbols:</p>
+<p>Maybe you have something like this in your code:</p>
+<pre><code class="lang-C++">taskname = <span class="hljs-string">&quot;mytask&quot;</span>;
+</code></pre>
+<p>The variable <code>taskname</code> was not defined before. It was implicitly defined in <em>ROOT5</em> as <code>const char *</code>. In <em>ROOT6</em> this leads to the error</p>
+<pre><code>error: use of undeclared identifier &apos;taskname&apos;
+</code></pre><p>The variable <code>taskname</code> must be defined with a type before a value can be assigned. In this case the proper code would be</p>
+<pre><code class="lang-C++"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *taskname = <span class="hljs-string">&quot;mytask&quot;</span>;
+</code></pre>
+<p>Thanks to C++11 <em>ROOT6</em> can also detect the type implicitly using the keyword
+<code>auto</code>. In this case the code looks the following:</p>
+<pre><code class="lang-C++"><span class="hljs-keyword">auto</span> taskname = <span class="hljs-string">&quot;mytask&quot;</span>;
+</code></pre>
+<p>This will however not be transparent to <em>ROOT5</em> as <em>ROOT5</em> doesn&apos;t understand
+C++11.</p>
+<p><strong>Note</strong>: On the command line <em>ROOT6</em> automatically adds the auto keyword. The 
+statement above will be possible in the interpreted mode of <em>ROOT6</em>.</p>
+</li>
+<li><p>Missing forward declarations</p>
+<p>Consider this macro:</p>
+<pre><code class="lang-C++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fail_forward</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">int</span> result = test(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>);
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;2 + 4 = %d\n&quot;</span>, result);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>{
+  <span class="hljs-keyword">return</span> a + b;
+}
+</code></pre>
+<p>Under <em>ROOT5</em> this macro will run, but under <em>ROOT6</em> it will raise the following compiler error:</p>
+<pre><code>error: use of undeclared identifier &apos;test&apos;
+</code></pre><p>The function test is defined, but after it is used. In <em>ROOT5</em> this is
+no problem: During interpretation the interpreter loads all functions. But
+under <em>ROOT6</em> the macro is compiled, and now the order matters: Functions need
+to be declared before they are used. Adding a forward declaration is 
+sufficient in order to make the macro working. The following version of
+the macro will run also under <em>ROOT6</em>:</p>
+<pre><code class="lang-C++"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">run_forward</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">int</span> result = test(<span class="hljs-number">2</span>,<span class="hljs-number">4</span>);
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;2 + 4 = %d\n&quot;</span>, result);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>{
+  <span class="hljs-keyword">return</span> a + b;
+}
+</code></pre>
+</li>
+<li><p>Handling of pointer and objects:</p>
+<p><em>ROOT5</em> does not enforce using the proper access operator for objects, pointers and
+references, but will allow the usage of the <code>operator -&gt;</code> for
+references and the <code>operator .</code> for pointers. <em>ROOT6</em> distinguishes
+between them, and consequently the proper access operator needs to be used.</p>
+<p>Consider the following macro:</p>
+<pre><code class="lang-C++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fail_access</span><span class="hljs-params">()</span></span>{
+  TH1F *ptr = <span class="hljs-keyword">new</span> TH1F(<span class="hljs-string">&quot;ptr&quot;</span>, <span class="hljs-string">&quot;ptr&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0.</span>, <span class="hljs-number">1.</span>);
+  ptr.SetTitle(<span class="hljs-string">&quot;test1&quot;</span>);
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Title 1: %s\n&quot;</span>, ptr.GetTitle());
+
+  <span class="hljs-function">TH1F <span class="hljs-title">obj</span><span class="hljs-params">(<span class="hljs-string">&quot;obj&quot;</span>, <span class="hljs-string">&quot;obj&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0.</span>, <span class="hljs-number">1.</span>)</span></span>;
+  obj-&gt;SetTitle(<span class="hljs-string">&quot;test2&quot;</span>);
+  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Title 2: %s\n&quot;</span>, obj.GetTitle());
+}
+</code></pre>
+<p>Consequently the wrong access operator is used. <em>ROOT5</em> will warn about the
+incorrect access operator, but it will run the macro. Trying this under <em>ROOT6</em>
+ends in the following errors:</p>
+<pre><code>...: error: member reference type &apos;TH1F *&apos; is a pointer; did you mean to use &apos;-&gt;&apos;?
+ptr.SetTitle(&quot;test1&quot;);
+  ~~~^
+     -&gt;
+...: error: member reference type &apos;TH1F *&apos; is a pointer; did you mean to use &apos;-&gt;&apos;?
+  printf(&quot;Title 1: %s\n&quot;, ptr.GetTitle());
+                          ~~~^
+                             -&gt;
+...: error: member reference type &apos;TH1F&apos; is not a pointer; did you mean to use &apos;.&apos;?
+  obj-&gt;SetTitle(&quot;test2&quot;);
+  ~~~^~
+     .
+...: error: member reference type &apos;TH1F&apos; is not a pointer; did you mean to use &apos;.&apos;?
+  printf(&quot;Title 2: %s\n&quot;, obj-&gt;GetTitle());
+                          ~~~^~
+                             .
+</code></pre></li>
+</ul>
+<h2 id="i-get-a-huge-amount-of-unknown-symbols-from-classes-in-aliroot-or-aliphysics-do-i-still-need-to-include-header-files">I get a huge amount of unknown symbols from classes in AliRoot or AliPhysics? Do I still need to include header files?</h2>
+<p>In case the compilation of a macro under <em>ROOT6</em> fails libraries and pre-compiled
+headers from external packages are not loaded. The consequence is that <em>ROOT6</em>
+does not know about these classes and will raise errors about unknown symbols.
+Once <strong>all</strong> the initial compiler errors are fixed (usually at the very top of
+the error log), the next time the macros are compiled <em>ROOT6</em> will also load the
+libraries and .pch files from external libraries and the errors disappear. Header
+from ALICE libraries should <strong>NOT</strong> be included.</p>
+<h2 id="how-do-i-distinguish-between-root5-and-root6-in-my-macros">How do I distinguish between <em>ROOT5</em> and <em>ROOT6</em> in my macros?</h2>
+<p>Sometimes macros require different treatment for <em>ROOT5</em> and <em>ROOT6</em>. It is then
+necessary to know which ROOT version is used while the macro is running.</p>
+<p><em>ROOT5</em> defines the preprocessor macro <code>__CINT__</code>, which can be used to check
+whether one is in an interpreter session. In current (up to at least v6-12-04)
+however also <em>ROOT6</em> exports <code>__CINT__</code>, so this macro cannot be used to
+distinguish between ROOT versions.</p>
+<p><em>ROOT6</em> in addition <code>__CLING__</code> which is not present in <em>ROOT5</em>. The following lines 
+indicate how to run <em>ROOT5</em>/<em>ROOT6</em> specific code:</p>
+<pre><code class="lang-C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">if</span> defined(__CLING__)</span>
+  <span class="hljs-comment">// ROOT6-specific code here ...</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">elif</span> defined(__CINT__)</span>
+  <span class="hljs-comment">// ROOT5-specific code here ...</span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span>
+</code></pre>
+<h2 id="i-heard-tf1-has-changed-fundamentally-is-there-something-to-be-aware-of">I heard TF1 has changed fundamentally. Is there something to be aware of?</h2>
+<p>TF1 is based on TFormula for the formula representation. TFormula got a heavy
+change: In <em>ROOT5</em> formulas were always interpreted on-the-fly. With <em>ROOT6</em> they
+are compiled by the just-in-time compiler. While this leads to a significant
+speedup in particular when the formula is evaluated multiple times (in fit
+procedures for example) it comes on cost of breaking backward compatibility, for
+which reading TFormula/TF1 object created with <em>ROOT6</em> with <em>ROOT5</em> will lead to
+errors. For what concerns TFormala a <em>ROOT5</em>-compatible version has been added to
+<em>ROOT6</em> as <code>ROOT::v5::TFormula</code>, however something similar does not exist for
+TF1. In order to read a TF1 object from a ROOT file under <em>ROOT5</em> it has to be
+created under <em>ROOT5</em>.</p>
+<h2 id="now-my-macro-finally-works-under-root6-will-it-still-work-under-root5">Now my macro finally works under <em>ROOT6</em>. Will it still work under <em>ROOT5</em>?</h2>
+<p>It depends whether the macro now contains something which <em>ROOT5</em> does <strong>NOT</strong>
+understand.</p>
+<ul>
+<li><em>ROOT6</em> is fully compatible with C++11. In <em>ROOT5</em> C++11 support is not
+implemented, but the standard C++98 is used. C++11-specific code will not
+be understood.</li>
+<li>All <strong>NEW</strong> features provided by <em>ROOT6</em> are of course not ported to <em>ROOT5</em>.
+This in particular affects:<ul>
+<li>TTreeReader</li>
+<li>TProcPool</li>
+<li>TDataFrame</li>
+<li>...</li>
+</ul>
+</li>
+<li>Standard library support in <em>ROOT5</em>, while it comes out-if-the-box in <em>ROOT6</em>.
+If the macro should run under both ROOT versions consider ROOT containers
+instead.<ul>
+<li>If your classes write stl-containers containing ROOT-objects to a ROOT-file 
+they must be declared to <em>ROOT5</em> in your LinkDef.h file. Example:<pre><code class="lang-C++"><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> link C++ class std::vector&lt;AliAnalysisTaskEmcalJetTreeBase::AliEmcalJetInfoSummaryPP&gt;+;</span>
+</code></pre>
+For <em>ROOT6</em> this is not necessary.</li>
+</ul>
+</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="hints.html" class="navigation navigation-prev " aria-label="Previous page: Some hints">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../rivet/rivet-tutorial.html" class="navigation navigation-next " aria-label="Next page: Rivet">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Transition from ROOT5 to ROOT6","level":"1.5.10","depth":2,"next":{"title":"Rivet","level":"1.6","depth":1,"path":"rivet/rivet-tutorial.md","ref":"rivet/rivet-tutorial.md","articles":[{"title":"Getting started with Rivet","level":"1.6.1","depth":2,"path":"rivet/getting-started.md","ref":"rivet/getting-started.md","articles":[]},{"title":"Using Rivet in ALICE","level":"1.6.2","depth":2,"path":"rivet/rivet-in-alice.md","ref":"rivet/rivet-in-alice.md","articles":[]},{"title":"Implementing a Rivet analysis","level":"1.6.3","depth":2,"path":"rivet/implementing-rivet-analysis.md","ref":"rivet/implementing-rivet-analysis.md","articles":[]},{"title":"Introduction to heavy-ion features","level":"1.6.4","depth":2,"path":"rivet/hi-features.md","ref":"rivet/hi-features.md","articles":[]},{"title":"Reference manual for Rivet in ALICE","level":"1.6.5","depth":2,"path":"rivet/reference-manual.md","ref":"rivet/reference-manual.md","articles":[]},{"title":"Procedures for publishing Rivet analyses","level":"1.6.6","depth":2,"path":"rivet/publishing-procedures.md","ref":"rivet/publishing-procedures.md","articles":[]},{"title":"Advanced topics","level":"1.6.7","depth":2,"path":"rivet/advanced-topics.md","ref":"rivet/advanced-topics.md","articles":[]},{"title":"Advanced heavy-ion features","level":"1.6.8","depth":2,"path":"rivet/advanced-hi-features.md","ref":"rivet/advanced-hi-features.md","articles":[]},{"title":"Coding conventions for Rivet plugins","level":"1.6.9","depth":2,"path":"rivet/coding-conventions.md","ref":"rivet/coding-conventions.md","articles":[]},{"title":"References","level":"1.6.10","depth":2,"path":"rivet/references.md","ref":"rivet/references.md","articles":[]}]},"previous":{"title":"Some hints","level":"1.5.9","depth":2,"path":"analysis/hints.md","ref":"analysis/hints.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"analysis/ROOT5-to-6.md","mtime":"2020-08-26T13:26:44.691Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

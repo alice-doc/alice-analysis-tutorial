@@ -1,0 +1,967 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>🧪 Installation via alibuild · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="prereq-centos7.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start/">
+            
+                <a href="../start/">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../start/cert.html">
+            
+                <a href="../start/cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.3.1" data-path="custom.html">
+            
+                <a href="custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="prereq-centos7.html">
+            
+                <a href="prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="prereq-macos.html">
+            
+                <a href="prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="prereq-ubuntu.html">
+            
+                <a href="prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="prereq-fedora.html">
+            
+                <a href="prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="build.html">
+            
+                <a href="build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="precomp.html">
+            
+                <a href="precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="devel.html">
+            
+                <a href="devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../analysis/welcome.html">
+            
+                <a href="../analysis/welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../analysis/classes.html">
+            
+                <a href="../analysis/classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../analysis/alianalysistaskmytask.html">
+            
+                <a href="../analysis/alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../analysis/local.html">
+            
+                <a href="../analysis/local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../analysis/rungrid.html">
+            
+                <a href="../analysis/rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../analysis/lego.html">
+            
+                <a href="../analysis/lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../analysis/monalisa.html">
+            
+                <a href="../analysis/monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../analysis/trouble.html">
+            
+                <a href="../analysis/trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../analysis/streamer.html">
+            
+                <a href="../analysis/streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../analysis/destructor.html">
+            
+                <a href="../analysis/destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../analysis/">
+            
+                <a href="../analysis/">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../analysis/setup.html">
+            
+                <a href="../analysis/setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../analysis/running.html">
+            
+                <a href="../analysis/running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../analysis/modify.html">
+            
+                <a href="../analysis/modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../analysis/track.html">
+            
+                <a href="../analysis/track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../analysis/pid.html">
+            
+                <a href="../analysis/pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../analysis/MC.html">
+            
+                <a href="../analysis/MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../analysis/grid.html">
+            
+                <a href="../analysis/grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../analysis/bonus.html">
+            
+                <a href="../analysis/bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../analysis/hints.html">
+            
+                <a href="../analysis/hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../analysis/ROOT5-to-6.html">
+            
+                <a href="../analysis/ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../rivet/rivet-tutorial.html">
+            
+                <a href="../rivet/rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../rivet/getting-started.html">
+            
+                <a href="../rivet/getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../rivet/rivet-in-alice.html">
+            
+                <a href="../rivet/rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../rivet/implementing-rivet-analysis.html">
+            
+                <a href="../rivet/implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../rivet/hi-features.html">
+            
+                <a href="../rivet/hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../rivet/reference-manual.html">
+            
+                <a href="../rivet/reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../rivet/publishing-procedures.html">
+            
+                <a href="../rivet/publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../rivet/advanced-topics.html">
+            
+                <a href="../rivet/advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../rivet/advanced-hi-features.html">
+            
+                <a href="../rivet/advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../rivet/coding-conventions.html">
+            
+                <a href="../rivet/coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../rivet/references.html">
+            
+                <a href="../rivet/references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >🧪 Installation via alibuild</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x1F9EA;-installation-via-alibuild">&#x1F9EA; Installation via alibuild</h1>
+<p>Building software has become an increasingly complicated operation, as our software has many
+dependencies and we expect it to work both on your laptop and on the Grid. In addition, we support
+many Linux distributions and recent macOS versions.</p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(2215264911);" id="please-follow-the-instructions-closely"><i class="fa fa-info-circle"></i> Please follow the instructions closely!<span id="heading-2215264911"></span></h3></div><div class="panel-body" id="panel-2215264911"><p>Most of the paths and procedures presented here can be adapted to your system and your taste. You
+can for instance decide to use different path names, or a different directory structure, it&apos;s up to
+you, however we <strong>do not recommend you use different ways of installing the required
+dependencies.</strong></p>
+<p>In case you do not have particular needs, or you don&apos;t know what you are doing, please follow the
+procedure <strong>very carefully and without diverging from it at all</strong>.</p>
+<p>This will make support easier in case something does not work as expected.</p>
+</div></div></p>
+<h2 id="alibuild">aliBuild</h2>
+<p>ALICE uses <a href="https://alisw.github.io/alibuild" target="_blank">aliBuild</a> to build software. aliBuild:</p>
+<ul>
+<li>knows how to build software via <a href="https://github.com/alisw/alidist" target="_blank">per-package recipes</a>,</li>
+<li>manages the dependencies consistently,</li>
+<li>rebuilds only what&apos;s necessary,</li>
+<li>allows several versions of the same software to be installed at the same time.</li>
+</ul>
+<h2 id="operating-systems-we-support">Operating systems we support</h2>
+<p>As per policy, the <a href="https://indico.cern.ch/event/642232/#3-wp3-common-tools-and-softwar" target="_blank">primary supported platform is CERN
+CentOS 7</a>:
+this is also our official deployment platform for Run 3 software.
+Other operating systems, such as macOS, are supported <em>as development platforms</em> and <em>on a
+best-effort basis</em>.</p>
+<p>Given the popularity of other operating systems on laptops (including macOS), we provide a
+containerized installation method, always supported <em>on a best-effort basis</em>,
+that allows you to keep using your favorite operating system by still having a consistent environment:</p>
+<ul>
+<li><a href="https://github.com/alidock/alidock/wiki" target="_blank">&#x1F433; Install using alidock</a></li>
+</ul>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>According to your operating system, please follow the prerequisites below. You will find a list of
+packages to install and configurations to perform.</p>
+<p><strong>Primary supported platform:</strong></p>
+<ul>
+<li><a href="prereq-centos7.html">CentOS 7</a> (no need to follow it if using alidock)</li>
+</ul>
+<p><strong>Platforms supported on a best-effort basis:</strong></p>
+<ul>
+<li><a href="prereq-macos.html">macOS Mojave (10.14) and Catalina (10.15)</a>
+<strong> &#x26A0;&#xFE0F;  only Catalina supported for Run 3 software &#x26A0;&#xFE0F;  </strong></li>
+<li><a href="prereq-ubuntu.html">Ubuntu 18.04 LTS</a></li>
+<li><a href="prereq-fedora.html">Fedora</a></li>
+</ul>
+<p>If your operating system is <em>not</em> in any list, it does not mean our software won&apos;t work on it;
+it will be just more difficult for you to get support for it.</p>
+<h2 id="get-or-upgrade-alibuild">Get or upgrade aliBuild</h2>
+<p>Install or upgrade <a href="https://pypi.python.org/pypi/alibuild/" target="_blank">aliBuild</a> with <code>pip</code>:</p>
+<pre><code class="lang-bash">sudo pip install alibuild --upgrade
+</code></pre>
+<p>Now add the two following lines to your <code>~/.bashrc</code> or <code>~/.bash_profile</code> (depending on your
+configuration):</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">export</span> ALIBUILD_WORK_DIR=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/alice/sw&quot;</span>
+<span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;`alienv shell-helper`&quot;</span>
+</code></pre>
+<p>The first line tells what directory is used as &quot;build cache&quot;, the second line installs a &quot;shell
+helper&quot; that makes easier to run certain aliBuild-related commands.</p>
+<p>You need to close and reopen your terminal for the change to be effective. The directory
+<code>~/alice/sw</code> will be created the first time you run aliBuild.</p>
+<blockquote>
+<p>Note that this directory tends to grow in size over time, and it is the one you need to remove in
+case of cleanups.</p>
+</blockquote>
+<h3 id="i-dont-have-root-permissions">I don&apos;t have root permissions</h3>
+<p>In case you don&apos;t have root permissions, one of the possibilities is installing aliBuild under a
+user-owned directory. Start with opening your <code>~/.bashrc</code> or <code>~/.bash_profile</code> (this depends on your
+system), and add the following lines:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">export</span> PYTHONUSERBASE=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/user_python&quot;</span>
+<span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PYTHONUSERBASE</span>/bin:<span class="hljs-variable">$PATH</span>&quot;</span>
+</code></pre>
+<p>Now close all your terminals and reopen them to load the new configuration. Check if it works by
+printing the variable:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$PYTHONUSERBASE</span>
+</code></pre>
+<p>The operations above need to be performed only once. Now, to install or upgrade aliBuild, just do:</p>
+<pre><code class="lang-bash">pip install alibuild --upgrade --user
+</code></pre>
+<blockquote>
+<p>This time we did not specify <code>sudo</code> and we have added the <code>--user</code> option. The Python variable
+<code>PYTHONUSERBASE</code> tells <code>pip</code> where to install the package.</p>
+</blockquote>
+<p>Verify you have <code>aliBuild</code> in your path:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">type</span> aliBuild
+</code></pre>
+<h3 id="i-need-a-special-version-of-alibuild">I need a special version of aliBuild</h3>
+<p>In some cases you might want to install a &quot;release candidate&quot; version, or you want to get the code
+directly from GitHub. By default, the last stable version is installed. <strong>Do not install a special
+version of aliBuild if you were not instructed to do so or if you don&apos;t know what you are doing, we
+provide no support for unstable releases!</strong></p>
+<p>To install a release candidate (for instance, <code>v1.5.1rc3</code>):</p>
+<pre><code class="lang-bash">sudo pip install alibuild=v1.5.1rc3 --upgrade
+</code></pre>
+<p>To install from GitHub (you can specify a tag or a hash, or another branch, instead of <code>master</code>):</p>
+<pre><code class="lang-bash">sudo pip install git+https://github.com/alisw/alibuild@master --upgrade
+</code></pre>
+<blockquote>
+<p>Do not forget to drop <code>sudo</code> and add <code>--user</code> in case you do not have root permissions!</p>
+</blockquote>
+<h2 id="build-the-packages">Build the packages</h2>
+<p>When aliBuild is installed on your computer and your prerequisites are satisfied, you can move to
+the next step.</p>
+<ul>
+<li><a href="build.html">&#x1F6E0; Build the packages</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Build ALICE software">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="prereq-centos7.html" class="navigation navigation-next " aria-label="Next page: Prerequisites for CentOS 7">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"🧪 Installation via alibuild","level":"1.3.1","depth":2,"next":{"title":"Prerequisites for CentOS 7","level":"1.3.1.1","depth":3,"path":"building/prereq-centos7.md","ref":"building/prereq-centos7.md","articles":[]},"previous":{"title":"Build ALICE software","level":"1.3","depth":1,"path":"building/README.md","ref":"building/README.md","articles":[{"title":"🧪 Installation via alibuild","level":"1.3.1","depth":2,"path":"building/custom.md","ref":"building/custom.md","articles":[{"title":"Prerequisites for CentOS 7","level":"1.3.1.1","depth":3,"path":"building/prereq-centos7.md","ref":"building/prereq-centos7.md","articles":[]},{"title":"Prerequisites for macOS","level":"1.3.1.2","depth":3,"path":"building/prereq-macos.md","ref":"building/prereq-macos.md","articles":[]},{"title":"Prerequisites for Ubuntu","level":"1.3.1.3","depth":3,"path":"building/prereq-ubuntu.md","ref":"building/prereq-ubuntu.md","articles":[]},{"title":"Prerequisites for Fedora","level":"1.3.1.4","depth":3,"path":"building/prereq-fedora.md","ref":"building/prereq-fedora.md","articles":[]}]},{"title":"🛠 Build the packages","level":"1.3.2","depth":2,"path":"building/build.md","ref":"building/build.md","articles":[]},{"title":"📦 Use the precompiled binaries","level":"1.3.3","depth":2,"path":"building/precomp.md","ref":"building/precomp.md","articles":[]},{"title":"💪 Develop a single package (Experimental)","level":"1.3.4","depth":2,"path":"building/devel.md","ref":"building/devel.md","articles":[]},{"title":"🐳 Using alidock","level":"1.3.5","depth":2,"url":"https://github.com/alidock/alidock/wiki","ref":"https://github.com/alidock/alidock/wiki","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/custom.md","mtime":"2020-08-26T13:26:44.707Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

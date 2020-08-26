@@ -1,0 +1,932 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Using Rivet in ALICE · ALICE Analysis Tutorial</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-panels/panels.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-block-align/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-page-toc/page-toc.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+        <link rel="stylesheet" href="../css/website.css">
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="implementing-rivet-analysis.html" />
+    
+    
+    <link rel="prev" href="getting-started.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../start/">
+            
+                <a href="../start/">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../start/cert.html">
+            
+                <a href="../start/cert.html">
+            
+                    
+                    Get a Grid certificate
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../building/">
+            
+                <a href="../building/">
+            
+                    
+                    Build ALICE software
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../building/custom.html">
+            
+                <a href="../building/custom.html">
+            
+                    
+                    🧪 Installation via alibuild
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" data-path="../building/prereq-centos7.html">
+            
+                <a href="../building/prereq-centos7.html">
+            
+                    
+                    Prerequisites for CentOS 7
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.2" data-path="../building/prereq-macos.html">
+            
+                <a href="../building/prereq-macos.html">
+            
+                    
+                    Prerequisites for macOS
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.3" data-path="../building/prereq-ubuntu.html">
+            
+                <a href="../building/prereq-ubuntu.html">
+            
+                    
+                    Prerequisites for Ubuntu
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.4" data-path="../building/prereq-fedora.html">
+            
+                <a href="../building/prereq-fedora.html">
+            
+                    
+                    Prerequisites for Fedora
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../building/build.html">
+            
+                <a href="../building/build.html">
+            
+                    
+                    🛠 Build the packages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../building/precomp.html">
+            
+                <a href="../building/precomp.html">
+            
+                    
+                    📦 Use the precompiled binaries
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../building/devel.html">
+            
+                <a href="../building/devel.html">
+            
+                    
+                    💪 Develop a single package (Experimental)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" >
+            
+                <a target="_blank" href="https://github.com/alidock/alidock/wiki">
+            
+                    
+                    🐳 Using alidock
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../analysis/welcome.html">
+            
+                <a href="../analysis/welcome.html">
+            
+                    
+                    Writing an analysis task
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../analysis/classes.html">
+            
+                <a href="../analysis/classes.html">
+            
+                    
+                    AliAnalysisTaskSE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../analysis/alianalysistaskmytask.html">
+            
+                <a href="../analysis/alianalysistaskmytask.html">
+            
+                    
+                    Your analysis task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../analysis/local.html">
+            
+                <a href="../analysis/local.html">
+            
+                    
+                    Running locally
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../analysis/rungrid.html">
+            
+                <a href="../analysis/rungrid.html">
+            
+                    
+                    Running on Grid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../analysis/lego.html">
+            
+                <a href="../analysis/lego.html">
+            
+                    
+                    The LEGO train system
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../analysis/monalisa.html">
+            
+                <a href="../analysis/monalisa.html">
+            
+                    
+                    AliMonitor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../analysis/trouble.html">
+            
+                <a href="../analysis/trouble.html">
+            
+                    
+                    Troubleshooting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../analysis/streamer.html">
+            
+                <a href="../analysis/streamer.html">
+            
+                    
+                    The ROOT streamer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../analysis/destructor.html">
+            
+                <a href="../analysis/destructor.html">
+            
+                    
+                    Destructors
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../analysis/">
+            
+                <a href="../analysis/">
+            
+                    
+                    Analysis tutorial exercises
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../analysis/setup.html">
+            
+                <a href="../analysis/setup.html">
+            
+                    
+                    Step 1 - Setup the tutorial
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../analysis/running.html">
+            
+                <a href="../analysis/running.html">
+            
+                    
+                    Step 2 - Running the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../analysis/modify.html">
+            
+                <a href="../analysis/modify.html">
+            
+                    
+                    Step 3 - Modify the task
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../analysis/track.html">
+            
+                <a href="../analysis/track.html">
+            
+                    
+                    Step 4 -The track loop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../analysis/pid.html">
+            
+                <a href="../analysis/pid.html">
+            
+                    
+                    Step 5 -Particle identification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../analysis/MC.html">
+            
+                <a href="../analysis/MC.html">
+            
+                    
+                    Step 6 -Using Monte Carlo data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../analysis/grid.html">
+            
+                <a href="../analysis/grid.html">
+            
+                    
+                    Step 7 -Run your code on GRID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" data-path="../analysis/bonus.html">
+            
+                <a href="../analysis/bonus.html">
+            
+                    
+                    Bonus content
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" data-path="../analysis/hints.html">
+            
+                <a href="../analysis/hints.html">
+            
+                    
+                    Some hints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" data-path="../analysis/ROOT5-to-6.html">
+            
+                <a href="../analysis/ROOT5-to-6.html">
+            
+                    
+                    Transition from ROOT5 to ROOT6
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="rivet-tutorial.html">
+            
+                <a href="rivet-tutorial.html">
+            
+                    
+                    Rivet
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="getting-started.html">
+            
+                <a href="getting-started.html">
+            
+                    
+                    Getting started with Rivet
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.2" data-path="rivet-in-alice.html">
+            
+                <a href="rivet-in-alice.html">
+            
+                    
+                    Using Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="implementing-rivet-analysis.html">
+            
+                <a href="implementing-rivet-analysis.html">
+            
+                    
+                    Implementing a Rivet analysis
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="hi-features.html">
+            
+                <a href="hi-features.html">
+            
+                    
+                    Introduction to heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="reference-manual.html">
+            
+                <a href="reference-manual.html">
+            
+                    
+                    Reference manual for Rivet in ALICE
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="publishing-procedures.html">
+            
+                <a href="publishing-procedures.html">
+            
+                    
+                    Procedures for publishing Rivet analyses
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="advanced-topics.html">
+            
+                <a href="advanced-topics.html">
+            
+                    
+                    Advanced topics
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="advanced-hi-features.html">
+            
+                <a href="advanced-hi-features.html">
+            
+                    
+                    Advanced heavy-ion features
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="coding-conventions.html">
+            
+                <a href="coding-conventions.html">
+            
+                    
+                    Coding conventions for Rivet plugins
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="references.html">
+            
+                <a href="references.html">
+            
+                    
+                    References
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Using Rivet in ALICE</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="using-rivet-in-alice">Using Rivet in ALICE</h1>
+<p>Rivet has been integrated into the ALICE build system and is maintained there. Thus, it is also deployed to cvmfs, from where it can be used by Grid workernodes, interactive lxplus sessions, or other machines using software from cvmfs (e.g. CERN Linux desktops). It can also be installed locally using aliBuild. However, if you just get started and want to gain experience with Rivet, we recommend to use the cvmfs installation on lxplus, as this is maintained centrally and known to work (if it is not, please report!).</p>
+<h2 id="using-rivet-on-lxplus">Using Rivet on lxplus</h2>
+<p>In order to use Rivet on lxplus, you just have to logon and use alienv to enter a shell with the proper environment loaded (same procedure as for AliPhysics):</p>
+<pre><code class="lang-bash">ssh lxplus.cern.ch
+alienv enter Rivet
+</code></pre>
+<p>You can then check which packages and versions are loaded using:</p>
+<pre><code class="lang-bash">alienv list
+</code></pre>
+<p>Now you have all the rivet tools (rivet, rivet-build, ...) available. To list the available analyses (those distributed with the used version of Rivet), you can use:</p>
+<pre><code class="lang-bash">rivet --list-analyses
+rivet --list-analyses ALICE_
+</code></pre>
+<p>where the second command only lists analyses for ALICE publications. You can display the details of one of these analyses (here ALICE_2010_S8625980) using:</p>
+<pre><code class="lang-bash">rivet --show-analysis ALICE_2010_S8625980
+</code></pre>
+<p>Assuming you have some output from a Monte Carlo generator in a HepMC file (e.g. /eos/project/a/alipwgmm/rivet/hepmc/pythia6_pp7000.hepmc or see here for instructions on running MC generators), you can run an analysis (e.g. ALICE_2010_S8625980) on this input using:</p>
+<pre><code class="lang-bash">rivet <span class="hljs-_">-a</span> ALICE_2010_S8625980 /eos/project/a/alipwgmm/rivet/hepmc/pythia6_pp7000.hepmc
+</code></pre>
+<p>where -a is used to specify the analysis you want to run (you can use any analysis that was distributed with Rivet). You can also list more than one analysis.
+<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(1593987130);" id="beware"><i class="fa fa-info-circle"></i> Beware<span id="heading-1593987130"></span></h3></div><div class="panel-body" id="panel-1593987130"><p>Beware the absence (!) of extension of your analysis name specified at the rivet command, i.e. no &quot;rivet -a ALICE_2010_S8625980.cc ...&quot;. This would make your analysis not recognisable by Rivet, and it will complain so.</p>
+</div></div></p>
+<p>The command line above runs the analysis on the given input (~1000 generated events, here) and stores the produced output, typically histograms, in the file Rivet.yoda. Based on this yoda file, you can produce plots by running:</p>
+<pre><code class="lang-bash">rivet-mkhtml Rivet.yoda
+</code></pre>
+<p>This command puts the plots in the subdirectory rivet-plots/. The directory also contains an index.html, which you can open in a browser to look and navigate through the plots. If you have run Rivet on an lxplus node you probably must copy this directory to your local PC and then point your browser to the directory, i.e.</p>
+<pre><code class="lang-bash">scp -r lxplus.cern.ch:&lt;myRivetDir&gt;/rivet-plots /tmp/myRivetPlots
+open /tmp/myRivetPlots/index.html (on Mac OS X, otherwise point browser to file:///tmp/myRivetPlots/index.html)
+</code></pre>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(690379375);" id="nb"><i class="fa fa-info-circle"></i> N.B.<span id="heading-690379375"></span></h3></div><div class="panel-body" id="panel-690379375"><p>If on lxplus you use a directory under /tmp you have to copy from the exact host you are working on instead of lxplus.cern.ch, e.g. lxplus012.cern.ch. You can get actual name of the hosting machine with <code>hostname</code>.
+We recommend not to use direclty the directory /tmp to avoid clashes with other user. Please use /tmp/<myusername> to follow this tutorial even if stated differently.</myusername></p>
+</div></div></p>
+<h1 id="running-rivet-together-with-a-generator">Running Rivet together with a generator</h1>
+<p>You can use Rivet to run on the output of an arbitrary generator for which an interface to HepMC exists - e.g. those which have been integrated into the ALICE build system and are, thus, available on cvmfs or for local installation. There are two common options to run the generator and Rivet:</p>
+<ul>
+<li>intermediate file:<ul>
+<li>run generator writing to hepmc file</li>
+<li>run Rivet reading from hepmc file (see example above)</li>
+</ul>
+</li>
+<li>FIFO (first-in-first-out pipe, on Linux)<ul>
+<li>create FIFO (NB: not possible on afs, need to use /tmp on lxplus)</li>
+<li>run generator writing to FIFO (process won&apos;t finish)</li>
+<li>run Rivet reading from FIFO</li>
+</ul>
+</li>
+</ul>
+<p>The latter option avoids writing a file to disk and is beneficial if the generator is fast. You can run a generator directly or use <code>aligenmc</code> after you have set it up with:</p>
+<pre><code class="lang-bash">alienv enter AliGenerators
+</code></pre>
+<p>Then, you would have to do something like:</p>
+<pre><code class="lang-bash">mkfifo /tmp/<span class="hljs-variable">$USER</span>/fifo_<span class="hljs-variable">$UID</span>.hepmc
+aligenmc -g pythia8 -E 7000 -N 10000 -o /tmp/<span class="hljs-variable">$USER</span>/fifo_<span class="hljs-variable">$UID</span>.hepmc &amp;&gt; /tmp/<span class="hljs-variable">$USER</span>/aligenmc_<span class="hljs-variable">$UID</span>.log &amp;
+rivet <span class="hljs-_">-a</span> ALICE_2010_S8625980 /tmp/<span class="hljs-variable">$USER</span>/fifo_<span class="hljs-variable">$UID</span>.hepmc
+rm /tmp/<span class="hljs-variable">$USER</span>/fifo_<span class="hljs-variable">$UID</span>.hepmc
+</code></pre>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(2089585122);" id="note"><i class="fa fa-info-circle"></i> Note<span id="heading-2089585122"></span></h3></div><div class="panel-body" id="panel-2089585122"><p>aligenmc is the script developed within ALICE that does the running of a chosen generator, with a dedicated configuration file, and writing the output to the specified file/FIFO.
+For further instructions on how to run different generators, see:</p>
+<ul>
+<li><code>aligenmc -h</code></li>
+<li><a href="https://twiki.cern.ch/twiki/bin/view/ALICE/PWGMMgeneratorsALICE" target="_blank">MC generator documentation</a></li>
+</ul>
+</div></div></p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(1370919979);" id="pythia8angantyr"><i class="fa fa-info-circle"></i> Pythia8/Angantyr<span id="heading-1370919979"></span></h3></div><div class="panel-body" id="panel-1370919979"><p>aligenmc is not yet updated to generate heavy-ion collisions with the Pythia8/Angantyr model. In case you want to generate Pb-Pb collisions with Pythia8/Angantyr model you can </p>
+<pre><code class="lang-bash">run-pythia -n 100 <span class="hljs-_">-e</span> 2760 -o /tmp/<span class="hljs-variable">$USER</span>/fifo_<span class="hljs-variable">$UID</span>.hepmc -c <span class="hljs-string">&quot;Beams:idA 1000822080&quot;</span> -c <span class="hljs-string">&quot;Beams:idB 1000822080&quot;</span> -c <span class="hljs-string">&quot;HeavyIon:SigFitNGen = 0&quot;</span> -c <span class="hljs-string">&quot;HeavyIon:SigFitDefPar = 12.32,1.63,0.19,0.0,0.0,0.0,0.0,0.0&quot;</span> 
+</code></pre>
+<p>Beware that this line is valid only for Pb-Pb 2.76 TeV collisions. Should you need to change the collision energy (the the beams), make sure you run only the initial part</p>
+<pre><code class="lang-bash">run-pythia -n 100 <span class="hljs-_">-e</span> 2760 -o /tmp/<span class="hljs-variable">$USER</span>/fifo_<span class="hljs-variable">$UID</span>.hepmc -c <span class="hljs-string">&quot;Beams:idA 1000822080&quot;</span> -c <span class="hljs-string">&quot;Beams:idB 1000822080&quot;</span>
+</code></pre>
+</div></div></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page: Getting started with Rivet">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="implementing-rivet-analysis.html" class="navigation navigation-next " aria-label="Next page: Implementing a Rivet analysis">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Using Rivet in ALICE","level":"1.6.2","depth":2,"next":{"title":"Implementing a Rivet analysis","level":"1.6.3","depth":2,"path":"rivet/implementing-rivet-analysis.md","ref":"rivet/implementing-rivet-analysis.md","articles":[]},"previous":{"title":"Getting started with Rivet","level":"1.6.1","depth":2,"path":"rivet/getting-started.md","ref":"rivet/getting-started.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"rivet/rivet-in-alice.md","mtime":"2020-08-26T13:26:44.711Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T13:27:29.859Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-panels/panels.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-collapsible-menu/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/anchor-3.1.1.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-page-toc/page-toc.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
