@@ -20,6 +20,9 @@ which you still have to fill with useful content, of course. We will explain the
 #include "Rivet/Analysis.hh"
 #include "Rivet/Projections/FinalState.hh"
 #include "Rivet/Projections/FastJets.hh"
+#include "Rivet/Projections/DressedLeptons.hh"
+#include "Rivet/Projections/MissingMomentum.hh"
+#include "Rivet/Projections/PromptFinalState.hh"
 
 namespace Rivet {
 
@@ -33,18 +36,46 @@ namespace Rivet {
 
 
     /// @name Analysis methods
-    //@{
+    ///@{
 
     /// Book histograms and initialise projections before the run
     void init() {
 
       // Initialise and register projections
-      declare(FinalState(Cuts::abseta < 5 && Cuts::pT > 100*MeV), "FS");
+
+      // The basic final-state projection:
+      // all final-state particles within
+      // the given eta acceptance
+      const FinalState fs(Cuts::abseta < 4.9);
+
+      // The final-state particles declared above are clustered using FastJet with
+      // the anti-kT algorithm and a jet-radius parameter 0.4
+      // muons and neutrinos are excluded from the clustering
+      FastJets jetfs(fs, FastJets::ANTIKT, 0.4, JetAlg::Muons::NONE, JetAlg::Invisibles::NONE);
+      declare(jetfs, "jets");
+
+      // FinalState of prompt photons and bare muons and electrons in the event
+      PromptFinalState photons(Cuts::abspid == PID::PHOTON);
+      PromptFinalState bare_leps(Cuts::abspid == PID::MUON || Cuts::abspid == PID::ELECTRON);
+
+      // Dress the prompt bare leptons with prompt photons within dR < 0.1,
+      // and apply some fiducial cuts on the dressed leptons
+      Cut lepton_cuts = Cuts::abseta < 2.5 && Cuts::pT > 20*GeV;
+      DressedLeptons dressed_leps(photons, bare_leps, 0.1, lepton_cuts);
+      declare(dressed_leps, "leptons");
+
+      // Missing momentum
+      declare(MissingMomentum(fs), "MET");
 
       // Book histograms
-      _h_XXXX = bookHisto1D(1, 1, 1);
-      _p_AAAA = bookProfile1D(2, 1, 1);
-      _c_BBBB = bookCounter(3, 1, 1);
+      // specify custom binning
+      book(_h["XXXX"], "myh1", 20, 0.0, 100.0);
+      book(_h["YYYY"], "myh2", logspace(20, 1e-2, 1e3));
+      book(_h["ZZZZ"], "myh3", {0.0, 1.0, 2.0, 4.0, 8.0, 16.0});
+      // take binning from reference data using HEPData ID (digits in "d01-x01-y01" etc.)
+      book(_h["AAAA"], 1, 1, 1);
+      book(_p["BBBB"], 2, 1, 1);
+      book(_c["CCCC"], 3, 1, 1);
 
     }
 
@@ -52,7 +83,28 @@ namespace Rivet {
     /// Perform the per-event analysis
     void analyze(const Event& event) {
 
-      /// @todo Do the event by event analysis here
+      // Retrieve dressed leptons, sorted by pT
+      vector<DressedLepton> leptons = apply<DressedLeptons>(event, "leptons").dressedLeptons();
+
+      // Retrieve clustered jets, sorted by pT, with a minimum pT cut
+      Jets jets = apply<FastJets>(event, "jets").jetsByPt(Cuts::pT > 30*GeV);
+
+      // Remove all jets within dR < 0.2 of a dressed lepton
+      idiscardIfAnyDeltaRLess(jets, leptons, 0.2);
+
+      // Select jets ghost-associated to B-hadrons with a certain fiducial selection
+      Jets bjets = filter_select(jets, [](const Jet& jet) {
+        return  jet.bTagged(Cuts::pT > 5*GeV && Cuts::abseta < 2.5);
+      });
+
+      // Veto event if there are no b-jets
+      if (bjets.empty())  vetoEvent;
+
+      // Apply a missing-momentum cut
+      if (apply<MissingMomentum>(event, "MET").missingPt() < 30*GeV)  vetoEvent;
+
+      // Fill histogram with leading b-jet pT
+      _h["XXXX"]->fill(bjets[0].pT()/GeV);
 
     }
 
@@ -60,28 +112,27 @@ namespace Rivet {
     /// Normalise histograms etc., after the run
     void finalize() {
 
-      normalize(_h_YYYY); // normalize to unity
-      scale(_h_ZZZZ, crossSection()/picobarn/sumOfWeights()); // norm to cross section
+      normalize(_h["XXXX"]); // normalize to unity
+      normalize(_h["YYYY"], crossSection()/picobarn); // normalize to generated cross-section in fb (no cuts)
+      scale(_h["ZZZZ"], crossSection()/picobarn/sumW()); // norm to generated cross-section in pb (after cuts)
 
     }
 
-    //@}
+    ///@}
 
 
     /// @name Histograms
-    //@{
-    Histo1DPtr _h_XXXX, _h_YYYY, _h_ZZZZ;
-    Profile1DPtr _p_AAAA;
-    CounterPtr _c_BBBB;
-    //@}
+    ///@{
+    map<string, Histo1DPtr> _h;
+    map<string, Profile1DPtr> _p;
+    map<string, CounterPtr> _c;
+    ///@}
 
 
   };
 
 
-  // The hook for the plugin system
   DECLARE_RIVET_PLUGIN(ALICE_2016_test);
-
 
 }
 ```
@@ -89,7 +140,7 @@ Rivet usually does not use a separate header file for the implementation of the 
 
 You can already try and compile the plugin at this stage to make sure that the setup and preparations are correct:
 ```bash
-rivet-buildplugin RivetALICE_2016_test.so ALICE_2016_test.cc
+rivet-build RivetALICE_2016_test.so ALICE_2016_test.cc
 ```
 which builds the shared library RivetALICE_2016_test.so to be used by Rivet.
 
@@ -111,40 +162,45 @@ The code in this method is run once at the beginning of the run. It is used to s
 
 Here, you have to book the histograms (using the previously added pointers). When implementing a published analysis, the preferred way to book the histograms is to let Rivet take the histogram details from the reference data:
 ```cpp
-_h_0000 = bookHisto1D("d01-x01-y01");
-_h_0001 = bookHisto1D("TMP/test", refData(1, 1, 1));
+book(_h_0000, "d01-x01-y01");
+book(_h_0001, "TMP/test", refData(1, 1, 1));
 ```
 where d01-x01-y01 refers to the reference data (following HepData naming conventions for the histograms). If you don't have a reference histogram or you need to use a different binning, you can book a histogram as follows:
 ```cpp
-_hist = bookHisto1D("pt_h", 10, 0., 20., "final state particles", "$p_\\perp$", "counts");
+book(_hist, "pt_h", 10, 0., 20.);
 ```
 In addition to the histogram bookings, you need to add all the projections required for the analysis. Rivet uses projections to extract (and re-use) observables from the final state, e.g. particles (after cuts), jets, .... E.g. for an analysis based on charged particles in the rapidity interval etamax, you would use:
 ```cpp
-  const ChargedFinalState cfs(-_etamax, _etamax);
-  addProjection(cfs, "CFS");
+// need to #include "Rivet/Projections/ChargedFinalState.hh"
+const ChargedFinalState cfs(Cuts::abseta < _etamax);
+declare(cfs, "CFS");
 ```
 For an analysis based on jets you would use:
 ```cpp
-  const FinalState fs_jet(-_etamax - _jet_r, _etamax + _jet_r);
-  addProjection(fs_jet, "FS_JET");
-  FastJets fj02(fs_jet, FastJets::ANTIKT, _jet_r);
-  fj02.useInvisibles();
-  addProjection(fj02, "Jets02");
+const FinalState fs_jet(Cuts::abseta < (_etamax + _jet_r));
+declare(fs_jet, "FS_JET");
+FastJets fj02(fs_jet, FastJets::ANTIKT, _jet_r);
+fj02.useInvisibles();
+declare(fj02, "Jets02");
+```
+For an analysis based on primary particles according to the ALICE definition you would use:
+```cpp
+// need to #include "Rivet/Projections/AliceCommon.hh"
+// Charged, primary particles with |eta| < 0.5 and pT > 150 MeV
+declare(ALICE::PrimaryParticles(Cuts::abseta < 0.5 && Cuts::pT > 150*MeV && Cuts::abscharge > 0), "APRIM");
 ```
 For more details on possible projections, see the [reference page](reference-manual.md)
 
 ### analyze
-The code in this method is run for every event and is used for the actual (event-wise) analysis. The event for analysis is passed as parameter to the function. Commonly, you extract the event weight, apply the projections, and fill some histograms:
+The code in this method is run for every event and is used for the actual (event-wise) analysis. The event for analysis is passed as parameter to the function. Commonly, you apply the projections, and fill some histograms:
 ```cpp
-const double weight = event.weight();
+const ALICE::PrimaryParticles & aprim = apply<ALICE::PrimaryParticles>(event, "APRIM");
 
-const ChargedFinalState & cfs = applyProjection<ChargedFinalState>(event, "CFS");
-
-foreach (const Particle &p, cfs.particles()) {
-  _h_0000->fill(p.pT() / GeV, weight);
+for (const Particle &p : aprim.particles()) {
+  _h_0000->fill(p.pT()/GeV);
 }
 ```
-N.B.: Here, the iterations use boost constructs. In the future, this will probably be replaced by C++11 constructs. The ALICE build of Rivet already is C++11-enabled but so far Rivet allows to be built without C++11 support (i.e. contributed analyses must work without).
+N.B.: Here, the iterations use C++11 constructs.
 
 ### finalize
 The code in this method is run once after the run. It is typically used for scaling and/or normalization of histograms. In order to normalize a histogram to the number of events, you can make use of Rivet helpers:
@@ -178,7 +234,7 @@ rivet-mkanalysis ALICE_2015_I1357424
 ```
 As mentioned before, the analysis can already be compiled and run (even though it does nothing useful at this stage):
 ```bash
-rivet-buildplugin RivetALICE_2015_I1357424.so ALICE_2015_I1357424.cc
+rivet-build RivetALICE_2015_I1357424.so ALICE_2015_I1357424.cc
 rivet --pwd -a ALICE_2015_I1357424 /eos/project/a/alipwgmm/rivet/hepmc/pythia6_pp7000.hepmc
 ```
 
@@ -205,17 +261,17 @@ So, we add the required member variables (in the private section):
 Then, we add the booking of the histograms (in the init method):
 ```cpp
   // plots from the paper
-  _histPtPions      = bookHisto1D("d01-x01-y01");    // pions
-  _histPtKaons      = bookHisto1D("d01-x01-y02");    // kaons
-  _histPtProtons    = bookHisto1D("d01-x01-y03");    // protons
-  _histPtKtoPi      = bookScatter2D("d02-x01-y01");  // K to pi ratio 
-  _histPtPtoPi      = bookScatter2D("d03-x01-y01");  // p to pi ratio
+  book(_histPtPions   , "d01-x01-y01");  // pions
+  book(_histPtKaons   , "d01-x01-y02");  // kaons
+  book(_histPtProtons , "d01-x01-y03");  // protons
+  book(_histPtKtoPi   , "d02-x01-y01");  // K to pi ratio 
+  book(_histPtPtoPi   , "d03-x01-y01");  // p to pi ratio
 
   // temp histos for ratios
-  _histPtPionsR1    = bookHisto1D("TMP/pT_pi1", refData(2, 1, 1)); // pi histo compatible with more restricted kaon binning
-  _histPtPionsR2    = bookHisto1D("TMP/pT_pi2", refData(3, 1, 1)); // pi histo compatible with more restricted proton binning
-  _histPtKaonsR     = bookHisto1D("TMP/pT_K",   refData(2, 1, 1)); // K histo with more restricted binning
-  _histPtProtonsR   = bookHisto1D("TMP/pT_p",   refData(3, 1, 1)); // p histo with more restricted binning
+  book(_histPtPionsR1   , "TMP/pT_pi1", refData(2, 1, 1)); // pi histo compatible with more restricted kaon binning
+  book(_histPtPionsR2   , "TMP/pT_pi2", refData(3, 1, 1)); // pi histo compatible with more restricted proton binning
+  book(_histPtKaonsR    , "TMP/pT_K",   refData(2, 1, 1)); // K histo with more restricted binning
+  book(_histPtProtonsR  , "TMP/pT_p",   refData(3, 1, 1)); // p histo with more restricted binning
 ```
 Next, we book the projections for the identified particles (also in the init method):
 ```cpp
@@ -224,13 +280,23 @@ Next, we book the projections for the identified particles (also in the init met
 ```
 Here, we use the charged final state (with a rapidity cut) and will deal with the particle identification directly in the analysis code.
 
+{% callout "Note" %}
+This example did not use the ALICE::PrimaryParticles projection because it was implemented before this projection was introduced in Rivet. The selection of primary particles according to the ALICE definition is therefore done by hand, by looking at the particle ancestors. The code below could in principle be simplified by removing the large set of if statements if the ALICE::PrimaryParticles projection is used
+```cpp
+const ALICE::PrimaryParticles& aprim = apply<ALICE::PrimaryParticles>(event, "APRIM");
+for (const Particle& p : aprim.particles()) {
+  ...
+}
+```
+We did not modify this tutorial to reflect the actual code for this analysis as in Rivet.
+{% endcallout %}
+
 ### analysis
 Here, we just use the previously declared projection to loop over all the charged particles in the selected rapidity range and to fill the histograms. 
 Note: We exclude feed-down from particles decaying weakly into π, K, p:
 ```cpp
-  const double weight = event.weight();
-  const ChargedFinalState& cfs = applyProjection<ChargedFinalState>(event, "CFS");
-  foreach (const Particle& p, cfs.particles()) {
+  const ChargedFinalState& cfs = apply<ChargedFinalState>(event, "CFS");
+  for (const Particle& p : cfs.particles()) {
     // protections against mc generators decaying long-lived particles
     if ( !(p.hasAncestor(310)  || p.hasAncestor(-310)  ||     // K0s
            p.hasAncestor(130)  || p.hasAncestor(-130)  ||     // K0l
@@ -242,17 +308,17 @@ Note: We exclude feed-down from particles decaying weakly into π, K, p:
       {  
         switch (abs(p.pid())) {
         case 211: // pi+
-          _histPtPions->fill(p.pT()/GeV, weight);
-          _histPtPionsR1->fill(p.pT()/GeV, weight);
-          _histPtPionsR2->fill(p.pT()/GeV, weight);
+          _histPtPions->fill(p.pT()/GeV);
+          _histPtPionsR1->fill(p.pT()/GeV);
+          _histPtPionsR2->fill(p.pT()/GeV);
           break;
         case 2212: // proton
-          _histPtProtons->fill(p.pT()/GeV, weight);
-          _histPtProtonsR->fill(p.pT()/GeV, weight);
+          _histPtProtons->fill(p.pT()/GeV);
+          _histPtProtonsR->fill(p.pT()/GeV);
           break;
         case 321: // K+
-          _histPtKaons->fill(p.pT()/GeV, weight);
-          _histPtKaonsR->fill(p.pT()/GeV, weight);
+          _histPtKaons->fill(p.pT()/GeV);
+          _histPtKaonsR->fill(p.pT()/GeV);
           break;
       } // particle switch
     } // primary pi, K, p only
