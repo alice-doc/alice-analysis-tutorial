@@ -9,12 +9,23 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        with:
+          persist-credentials: false
 
-      - name: Install, Build 🔧  and deploy 🚀
+      - name: Setup Node
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
       
-      - run: |
+      - name: Build 🔧
+        run: |
           npm install -g gitbook-cli@2.3.0
-          make publish
+          make
+
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.5.9
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: _book # The folder the action should deploy.
