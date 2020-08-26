@@ -10,51 +10,68 @@ A calibration analysis is essential in case our generator does not provide some 
 ```cpp
 #include <Rivet/Analysis.hh>
 #include <Rivet/Projections/AliceCommon.hh>
+#include <Rivet/Projections/HepMCHeavyIon.hh>
 
 namespace Rivet {
 
+  /// Dummy analysis for centrality calibration in Pb-Pb at 5.02TeV
+  ///
+  /// @author Christian Holm Christensen <cholm@nbi.dk>
   class ALICE_2015_PBPBCentrality : public Analysis {
   public:
-    ALICE_2015_PBPBCentrality()
-      : Analysis("ALICE_2015_PBPBCentrality") { }
 
+    /// Constructor 
+    ALICE_2015_PBPBCentrality()
+      : Analysis("ALICE_2015_PBPBCentrality")
+    {    }
+
+    /// Initialize this analysis. 
     void init() {
       ALICE::V0AndTrigger v0and;
-      declare<ALICE::V0AndTrigger>(v0and, "V0-AND");
+      declare<ALICE::V0AndTrigger>(v0and,"V0-AND");
 
       ALICE::V0MMultiplicity v0m;
-      declare<ALICE::V0MMultiplicity>(v0m, "V0M");
+      declare<ALICE::V0MMultiplicity>(v0m,"V0M");
 
-      _v0m = bookHisto1D("V0M", "Forward multiplicity", "V0M", "Events");
-      _imp = bookHisto1D("V0M_IMP", 100, 0, 20, "Impact parameter", "b (fm)", "Events");
+       // Access the HepMC heavy ion info
+      declare(HepMCHeavyIon(), "HepMC");
+
+      book(_v0m, "V0M");
+      book(_imp, "V0M_IMP",100,0,20);
     }
 
-    void analyze(const Event& event) {
-      // Get and fill in the impact parameter value if the information is valid
-      const HepMC::GenEvent* ge = event.genEvent();
-      const HepMC::HeavyIon* hi = ge->heavy_ion();
-      if (hi && hi->is_valid())
-        _imp->fill(hi->impact_parameter(), event.weight());
 
+    /// Analyse a single event.
+    void analyze(const Event& event) {
+      // Get and fill in the impact parameter value if the information is valid.
+      _imp->fill(apply<HepMCHeavyIon>(event, "HepMC").impact_parameter());
+	  
       // Check if we have any hit in either V0-A or -C.  If not, the
-      // event is not selected and we get out
+      // event is not selected and we get out.
       if (!apply<ALICE::V0AndTrigger>(event,"V0-AND")()) return;
 
       // Fill in the V0 multiplicity for this event
-      _v0m->fill(apply<ALICE::V0MMultiplicity>(event,"V0M")(), event.weight());
+      _v0m->fill(apply<ALICE::V0MMultiplicity>(event,"V0M")());
     }
 
+
+    /// Finalize this analysis
     void finalize() {
       _v0m->normalize();
       _imp->normalize();
     }
 
-    // The distribution of V0M multiplicity
+    /// The distribution of V0M multiplicity
     Histo1DPtr _v0m;
-    // The distribution of impact parameters
+    /// The distribution of impact parameters
     Histo1DPtr _imp;
+
   };
+
+
+  // The hook for the plugin system
   DECLARE_RIVET_PLUGIN(ALICE_2015_PBPBCentrality);
+
 }
 ```
 
@@ -116,16 +133,12 @@ This gives us a value of centrality as a percentage and it can be used to do wha
 #include "Rivet/Projections/SingleValueProjection.hh"
 #include "Rivet/Tools/AliceCommon.hh"
 #include "Rivet/Projections/AliceCommon.hh"
-#include <fstream>
-
-#define _USE_MATH_DEFINES
-#include <cmath>
+#include "Rivet/Projections/HepMCHeavyIon.hh"
 
 namespace Rivet {
 
   /// @brief ALICE PbPb at 2.76 TeV multiplicity at mid-rapidity
-  class ALICE_2010_I880049 : public Analysis {
-
+  class ALICE_2010_I880049 : public Analysis {    
   public:
 
     /// Constructor
@@ -153,17 +166,18 @@ namespace Rivet {
       declare(ALICE::PrimaryParticles(Cuts::abseta < 0.5 &&
         Cuts::pT > 50*MeV && Cuts::abscharge > 0), "APRIM");
 
+      // Access the HepMC heavy ion info
+      declare(HepMCHeavyIon(), "HepMC");
+
       // Histograms and variables initialization
-      _histNchVsCentr = bookProfile1D(1, 1, 1);
-      _histNpartVsCentr = bookProfile1D(1, 1, 2);
+      book(_histNchVsCentr, 1, 1, 1);
+      book(_histNpartVsCentr, 1, 1, 2);
 
     }
 
 
     /// Perform the per-event analysis
     void analyze(const Event& event) {
-
-      const double weight = event.weight();
 
       // Charged, primary particles with at least pT = 50 MeV
       // in eta range of |eta| < 0.5
@@ -186,29 +200,24 @@ namespace Rivet {
       const CentralityProjection& centrProj =
         apply<CentralityProjection>(event, "V0M");
       double centr = centrProj();
-      if (centr > 80.)
-        vetoEvent;
-
+      if (centr > 80) vetoEvent;
       // Calculate number of charged particles and fill histogram
       double nch = chargedParticles.size();
-      _histNchVsCentr->fill(centr, nch, weight);
+      _histNchVsCentr->fill(centr, nch);
 
       // Attempt to extract Npart form GenEvent.
-      // TODO: Unclear how to handle this in HepMC3
-      const HepMC::HeavyIon* hi = event.genEvent()->heavy_ion();
-      if (hi && hi->is_valid()) {
-        _histNpartVsCentr->fill(centr, hi->Npart_proj() + hi->Npart_targ(),
-          weight);
+      if (event.genEvent()->heavy_ion()) {
+        const HepMCHeavyIon & hi = apply<HepMCHeavyIon>(event, "HepMC");
+        _histNpartVsCentr->fill(centr, hi.Npart_proj() + hi.Npart_targ());
       }
     }
 
-
+    
     /// Normalise histograms etc., after the run
-    void finalize() {
-
-    }
+    //void finalize() {   }
 
     //@}
+
 
   private:
 
@@ -219,6 +228,7 @@ namespace Rivet {
     //@}
 
   };
+
 
   // The hook for the plugin system
   DECLARE_RIVET_PLUGIN(ALICE_2010_I880049);
@@ -238,7 +248,7 @@ After logging in you can enter the environment as follows:
 ```
 alienv enter Rivet
 ```
-This will load all the environment required for Rivet. The following command should prompt us that we are going to use Rivet version 2.7.2:
+This will load all the environment required for Rivet. The following command should prompt us that we are going to use Rivet version 3.1.1:
 ```
 rivet --version
 ```
