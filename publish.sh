@@ -7,6 +7,7 @@ cd "$(dirname "$0")"
 PUSHURL=$(git remote get-url --push origin)
 
 pushd _book
+  touch .nojekyll
   git init .
   git config user.name 'ALICE Doc Bot'
   git config user.email 'alice-doc-bot@cern.ch'
