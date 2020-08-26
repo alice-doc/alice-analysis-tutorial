@@ -50,7 +50,7 @@ and several utilities coming along (Sacrifice for Pythia, ThePEG for Herwig, Agi
 The version of the generators as well as their dependencies naturally evolve with time and should normally be managed accordingly in ALICE.
 
 Such MC generators available in ALICE are encompassed into the bundle __AliGenerator__.
-One can find its constituents under [alimonitor.cern.ch/packages](http://alimonitor.cern.ch/packages/#VO_ALICE@AliGenerators::v20190924-1 "packages"), take for instance AliGenerators::v20190924-1.
+One can find its constituents under [http://alimonitor.cern.ch/packages/#VO_ALICE@AliGenerators::v20190924-1 "packages"](https://alimonitor.cern.ch/packages), take for instance AliGenerators::v20190924-1.
 
 
 Such a bundle can also be built locally with aliBuild and is managed via the recipe`alidist/aligenerators.sh` and `alidist/defaults-pwgmmtest.sh`. Such a meta-recipe relies on the recipes of the individual generators `alidist/[generator.sh]`.

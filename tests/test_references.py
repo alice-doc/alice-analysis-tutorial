@@ -5,7 +5,14 @@ import unittest
 
 class TestRefsInMarkdownFiles(unittest.TestCase):
     def test_refs(self):
-        pat = re.compile(r'\[[^\]]*\]\(([^\)]+)\)')
+        pat = r'```.*?```|`.*?`|\[[^\]]*\]\(([^\)]+)\)'
+        urlregexp = re.compile(
+            r'^(?:http|ftp)s?://' # http:// or https://
+            r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|' #domain...
+            r'localhost|' #localhost...
+            r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' # ...or ip
+            r'(?::\d+)?' # optional port
+            r'(?:/?|[/?]\S+)$', re.IGNORECASE)
         checked = set()
         to_check = ['SUMMARY.md']
         while to_check:
@@ -16,7 +23,13 @@ class TestRefsInMarkdownFiles(unittest.TestCase):
             checked.add(path)
             if path.endswith('.md'):
                 with open(path) as f:
-                    refs = pat.findall(f.read())
-                files = [os.path.normpath(os.path.join(root, ref.split('#', 1)[0]))
-                         for ref in refs if not ':' in ref ]
-                to_check += [f for f in files if f not in checked]
+                    matches = re.finditer(pat, f.read(), re.MULTILINE | re.DOTALL)
+                    for match in matches:
+                        if len(match.groups()) == 0 or match.group(1) == None:
+                            continue
+                        print(match.group(1))
+                        if urlregexp.match(match.group(1)):
+                            continue
+                        f = os.path.normpath(os.path.join(root, match.group(1).split('#', 1)[0]))
+                        if f not in checked:
+                            to_check.append(f)
