@@ -1,7 +1,8 @@
 Welcome to the ALICE Analysis Tutorial documentation
 ====================================================
 
-[![Build Status](https://travis-ci.org/alice-doc/alice-analysis-tutorial.svg?branch=master)](https://travis-ci.org/alice-doc/alice-analysis-tutorial)
+[![Build Status](https://github.com/alice-doc/alice-analysis-tutorial/workflows/Build%20and%20Deploy/badge.svg
+)](https://github.com/alice-doc/alice-analysis-tutorial/actions)
 
 This is a community-contributed place where we collect all our documentation. Every ALICE member can
 contribute, and the Analysis Tutorial Committee will review every contribution.
