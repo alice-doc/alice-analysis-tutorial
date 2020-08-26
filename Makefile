@@ -1,4 +1,4 @@
-.PHONY: all serve test clean publish
+.PHONY: all serve test clean
 
 all: test .gitbook_install
 	@echo Building page
@@ -22,7 +22,3 @@ test:
 clean:
 	@echo Cleaning up
 	@rm -rf _book node_modules .gitbook_install
-
-publish: all
-	@echo Publishing generated pages
-	@./publish.sh
