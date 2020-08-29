@@ -11,7 +11,7 @@ Postprocessing is a method that enables to merge results coming from different R
 In case of running an analysis for different beams/energies, first step is to declare them in the .info file like this:
 ```
 [...]
-Beams: [[p, p], [1000822080, 1000822080]]
+Beams: [[p, p], [Pb, Pb]]
 # This is _total_ energy of beams, so this becomes 208*2760=574080
 Energies: [2760, 574080]
 [...]
@@ -20,31 +20,43 @@ Then, inside the analysis' init function, one should declare objects for each be
 ```cpp
 void init() {
   // Initialize PbPb objects
-  _histNch = bookHisto1D(1, 1, 1);
-  _counterSOW = bookCounter("counter.pbpb", "Sum of weights counter for PbPb");
-  _counterNcoll = bookCounter("counter.ncoll", "Ncoll counter for PbPb");
+  book(_histNch, 1, 1, 1);
+  book(_counterSOW, "counter.pbpb"); // Sum of weights counter for PbPb
+  book(_counterNcoll, "counter.ncoll"); // Ncoll counter for PbPb
   // Initialize pp objects
-  std::string namePP = _histNch->name() + "-pp";
-  _histNchPP = bookHisto1D(namePP, refData(1, 1, 1));
-  _counterSOWPP = bookCounter("counter.pp", "Sum of weights counter for pp");
+  std::string namePP = _mkAxisCode(1, 1, 1) + "-pp";
+  book(_histNchPP, namePP, refData(1, 1, 1));
+  book(_counterSOWPP, "counter.pp"); // Sum of weights counter for pp
+  // Book ratios, to be used in finalize
+  book(_histRAA, 16, 1, 1);
   [...]
 }
 ```
-Next, in the analyze method, one needs to check the type of an event the analysis is run with, for example like this:
+Sill in the analyze method, one can check the beam type and assign the value to a variable (bool isHI, in this case) depending on the beam type
 ```cpp
-  // Check the type of event
-  const HepMC::HeavyIon* hi = event.genEvent()->heavy_ion();
-  if (hi && hi->is_valid()) {
-    // PbPb event, fill PbPb histograms
-  }
-  else {
-    // pp event, fill pp histograms
-  }
-
+const ParticlePair& beam = beams();
+if (beam.first.pid() == PID::PROTON && beam.second.pid() == PID::PROTON) isHI = false;
+else if (beam.first.pid() == PID::LEAD && beam.second.pid() == PID::LEAD) isHI = true;
+else {
+  MSG_ERROR("Beam error (found)!");
+  return;
+}
 ```
-{% callout "Note" %}
-This is not a perfect solution as this check does not always work in a predictable way. In the future versions of Rivet this will be replaced with a check directly on the beam type.
-{% endcallout %}
+In the analyze method, one can then use the information gathered about the beam type to steer the analysis as required
+```cpp
+if (isHI) {
+  const HepMC::HeavyIon* hi = event.genEvent()->heavy_ion();
+  if (!hi.ok()) {
+    MSG_WARNING("HEPMC Heavy ion container needed for this analysis, but not "
+                "found for this event. Skipping.");
+    vetoEvent;
+  }
+  // process PbPb event, fill PbPb histograms
+}
+else {
+  // process pp event, fill pp histograms
+}
+```
 
 Finally, the regular finalize method is called, but in case we have entries in the histograms for both beam types, we do an additional step of dividing them one by another to create R_AA plot:
 ```cpp
@@ -56,7 +68,6 @@ void finalize() {
   // entries in histograms for both beam types
   if (_histNchPP->numEntries() > 0 && _histNch->numEntries() > 0) {
     // Initialize and fill R_AA histograms
-    _histRAA = bookScatter2D(16, 1, 1);
     divide(_histNch, _histNchPP, _histRAA);
   }
 }
@@ -67,22 +78,20 @@ rivet-merge /path/to/result1.yoda /path/to/result2.yoda ...
 ```
 This will use the RAW histograms from you output files (check that your .yoda files contain them, they contain results from the analysis before the final scaling in the finalize method), merge them, and call finalize part of the analysis again on the merged histograms. Now, as all the histograms will be available, the finalize method will (in our case) create and fill R_AA histograms and save them to the output .yoda file containing final results.
 {% callout "Beware" %}
-There is no information about beam and energy when running rivet-merge script - this should be taken into account when implementing such an analysis. Also note, that an analysis with reentrant finalize should be validated to allow running in every mode, and so in the .info file it should be marked as: `Reentrant: True`
+There is no information about beam and energy when running rivet-merge script - this should be taken into account when implementing such an analysis. Also note, that an analysis with reentrant finalize should be validated to allow running in every mode, and so in the .info file it should be marked as: `Status: REENTRANT`
 {% endcallout %}
 
 A full example of an analysis with the reentrant finalize mode enabled is provided below:
 ```cpp
 // -*- C++ -*-
 #include "Rivet/Analysis.hh"
+#include "Rivet/Projections/Beam.hh"
 #include "Rivet/Projections/ChargedFinalState.hh"
 #include "Rivet/Tools/Cuts.hh"
 #include "Rivet/Projections/SingleValueProjection.hh"
 #include "Rivet/Tools/AliceCommon.hh"
 #include "Rivet/Projections/AliceCommon.hh"
-#include <fstream>
-
-#define _USE_MATH_DEFINES
-#include <math.h>
+#include "Rivet/Projections/HepMCHeavyIon.hh"
 
 namespace Rivet {
 
@@ -100,6 +109,9 @@ namespace Rivet {
     /// Book histograms and initialise projections before the run
     void init() {
 
+      // Access the HepMC heavy ion info
+      declare(HepMCHeavyIon(), "HepMC");
+
       // Declare centrality projection
       declareCentrality(ALICE::V0MMultiplicity(),
         "ALICE_2015_PBPBCentrality", "V0M", "V0M");
@@ -112,28 +124,28 @@ namespace Rivet {
       for (size_t ihist = 0; ihist < NHISTOS; ++ihist) {
 
         // Initialize PbPb objects
-        _histNch[PBPB][ihist] = bookHisto1D(ihist+1, 1, 1);
+        book(_histNch[PBPB][ihist], ihist+1, 1, 1);
 
         std::string nameCounterPbPb = "counter.pbpb." + std::to_string(ihist);
-        _counterSOW[PBPB][ihist] = bookCounter(nameCounterPbPb,
-          "Sum of weights counter for PbPb");
+        book(_counterSOW[PBPB][ihist], nameCounterPbPb); // Sum of weights counter for PbPb
 
         std::string nameCounterNcoll = "counter.ncoll." + std::to_string(ihist);
-        _counterNcoll[ihist] = bookCounter(nameCounterNcoll,
-          "Ncoll counter for PbPb");
+        book(_counterNcoll[ihist], nameCounterNcoll); // Ncoll counter for PbPb
 
         // Initialize pp objects. In principle, only one pp histogram would be
         // needed since centrality does not make any difference here. However,
         // in some cases in this analysis the binning differ from each other,
         // so this is easy-to-implement way to account for that.
-        std::string namePP = _histNch[PBPB][ihist]->name() + "-pp";
+        std::string namePP = mkAxisCode(ihist+1,1,1) + "-pp";
+        
         // The binning is taken from the reference data
-        _histNch[PP][ihist] = bookHisto1D(namePP, refData(ihist+1, 1, 1));
+        book(_histNch[PP][ihist], namePP, refData(ihist+1, 1, 1));
 
         std::string nameCounterpp = "counter.pp." + std::to_string(ihist);
-        _counterSOW[PP][ihist] = bookCounter(nameCounterpp,
-          "Sum of weights counter for pp");
+        book(_counterSOW[PP][ihist], nameCounterpp); // Sum of weights counter for pp
 
+        // Book ratios, to be used in finalize
+        book(_histRAA[ihist], ihist+16, 1, 1);
       }
 
       // Centrality regions keeping boundaries for a certain region.
@@ -145,46 +157,66 @@ namespace Rivet {
                        {0., 10.},  {0., 20.},  {20., 40.},
                        {40., 60.}, {40., 80.}, {60., 80.}};
 
+      // Find out the beam type, also specified from option.
+      string beamOpt = getOption<string>("beam","NONE");
+      if (beamOpt != "NONE") {
+        MSG_WARNING("You are using a specified beam type, instead of using what"
+	"is provided by the generator. "
+	"Only do this if you are completely sure what you are doing.");
+	if (beamOpt=="PP") isHI = false;
+	else if (beamOpt=="HI") isHI = true;
+	else {
+	  MSG_ERROR("Beam error (option)!");
+	  return;
+      	}
+      }
+      else {
+        const ParticlePair& beam = beams();
+        if (beam.first.pid() == PID::PROTON && beam.second.pid() == PID::PROTON) isHI = false;
+	else if (beam.first.pid() == PID::LEAD && beam.second.pid() == PID::LEAD)
+	  isHI = true;
+	else {
+	  MSG_ERROR("Beam error (found)!");
+	  return;
+	}
+      }
     }
-
 
     /// Perform the per-event analysis
     void analyze(const Event& event) {
 
-      const double weight = event.weight();
-
       // Charged, primary particles with at least pT = 150 MeV
       // in eta range of |eta| < 0.5
       Particles chargedParticles =
-        applyProjection<ALICE::PrimaryParticles>(event,"APRIM").particlesByPt();
+        apply<ALICE::PrimaryParticles>(event,"APRIM").particlesByPt();
 
-      // Check type of event. This may not be a perfect way to check for the
-      // type of event as there might be some weird conditions hidden inside.
-      // For example some HepMC versions check if number of hard collisions
-      // is equal to 0 and assign 'false' in that case, which is usually wrong.
-      // This might be changed in the future
-      const HepMC::HeavyIon* hi = event.genEvent()->heavy_ion();
-      if (hi && hi->is_valid()) {
+      // Check type of event.
+      if ( isHI ) {
 
+        const HepMCHeavyIon & hi = apply<HepMCHeavyIon>(event, "HepMC");
+        if (!hi.ok()) {
+	  MSG_WARNING("HEPMC Heavy ion container needed for this analysis, but not "
+	    "found for this event. Skipping.");
+	  vetoEvent;
+	}
         // Prepare centrality projection and value
         const CentralityProjection& centrProj =
           apply<CentralityProjection>(event, "V0M");
         double centr = centrProj();
         // Veto event for too large centralities since those are not used
         // in the analysis at all
-        if ((centr < 0.) || (centr > 80.))
-          vetoEvent;
+        if ((centr < 0.) || (centr > 80.)) vetoEvent;
 
         // Fill PbPb histograms and add weights based on centrality value
         for (size_t ihist = 0; ihist < NHISTOS; ++ihist) {
           if (inRange(centr, _centrRegions[ihist].first, _centrRegions[ihist].second)) {
-            _counterSOW[PBPB][ihist]->fill(weight);
-            _counterNcoll[ihist]->fill(event.genEvent()->heavy_ion()->Ncoll(), weight);
-            foreach (const Particle& p, chargedParticles) {
-              float pT = p.pT()/GeV;
+            _counterSOW[PBPB][ihist]->fill();
+            _counterNcoll[ihist]->fill(hi.Ncoll());
+            for (const Particle& p : chargedParticles) {
+              double pT = p.pT()/GeV;
               if (pT < 50.) {
-                double pTAtBinCenter = _histNch[PBPB][ihist]->binAt(pT).xMid();
-                _histNch[PBPB][ihist]->fill(pT, weight/pTAtBinCenter);
+                const double pTAtBinCenter = _histNch[PBPB][ihist]->binAt(pT).xMid();
+                _histNch[PBPB][ihist]->fill(pT, 1/pTAtBinCenter);
               }
             }
           }
@@ -195,12 +227,12 @@ namespace Rivet {
 
         // Fill all pp histograms and add weights
         for (size_t ihist = 0; ihist < NHISTOS; ++ihist) {
-          _counterSOW[PP][ihist]->fill(weight);
-          foreach (const Particle& p, chargedParticles) {
-            float pT = p.pT()/GeV;
+          _counterSOW[PP][ihist]->fill();
+          for (const Particle& p : chargedParticles) {
+            double pT = p.pT()/GeV;
             if (pT < 50.) {
-              double pTAtBinCenter = _histNch[PP][ihist]->binAt(pT).xMid();
-              _histNch[PP][ihist]->fill(pT, weight/pTAtBinCenter);
+              const double pTAtBinCenter = _histNch[PP][ihist]->binAt(pT).xMid();
+              _histNch[PP][ihist]->fill(pT, 1/pTAtBinCenter);
             }
           }
         }
@@ -228,7 +260,6 @@ namespace Rivet {
         // If there are entires in histograms for both beam types
         if (_histNch[PP][ihist]->numEntries() > 0 && _histNch[PBPB][ihist]->numEntries() > 0) {
           // Initialize and fill R_AA histograms
-          _histRAA[ihist] = bookScatter2D(ihist+16, 1, 1);
           divide(_histNch[PBPB][ihist], _histNch[PP][ihist], _histRAA[ihist]);
           // Scale by Ncoll. Unfortunately some generators does not provide
           // Ncoll value (eg. JEWEL), so the following scaling will be done
@@ -247,6 +278,7 @@ namespace Rivet {
 
   private:
 
+    bool isHI;
     static const int NHISTOS = 15;
     static const int EVENT_TYPES = 2;
     static const int PP = 0;
@@ -266,6 +298,7 @@ namespace Rivet {
 
   // The hook for the plugin system
   DECLARE_RIVET_PLUGIN(ALICE_2012_I1127497);
+
 
 }
 ```
