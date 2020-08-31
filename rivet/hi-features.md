@@ -95,7 +95,7 @@ The information about possible methods for a particular analysis is stored in th
 [...]
 Options:
  - cent=REF,GEN,IMP,USR
-Beams: [1000822080, 1000822080] # PDG of lead ion
+Beams: [Pb, Pb] # PDG of lead ion
 Energies: [574080] # This is _total_ energy of beams, so this becomes 208*2760=574080
 [...]
 ```
