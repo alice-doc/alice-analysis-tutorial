@@ -36,7 +36,7 @@ cmake --build .. --target all -j8
 This is not a replacement for the full alibuild environment, which allows you to build multiple packages at once or to keep track of
 changes in alidist, however it should work already fairly well to develop a single package.
 
-## caveats:
+## Caveats:
 
 * You need to disable macro tests, as specified in the instructions.
 * A few packages need to be rebuilt and deployed on CVMFS with the new version of alibuild, which will relocate them properly (not fatal).
