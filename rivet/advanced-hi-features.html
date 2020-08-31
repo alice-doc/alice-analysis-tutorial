@@ -770,35 +770,48 @@
 <p>Postprocessing is a method that enables to merge results coming from different Rivet runs. This is useful for analyses which require different beams and/or energies to obtain final results, but also is useful when one wants to simply increase the statistics by merging multiple runs for the same beam/energy. Note, that such an analysis must be implemented in a certain way to allow proper running for all modes, so one should take great care when writing it.</p>
 <p>In case of running an analysis for different beams/energies, first step is to declare them in the .info file like this:</p>
 <pre><code>[...]
-Beams: [[p, p], [1000822080, 1000822080]]
+Beams: [[p, p], [Pb, Pb]]
 # This is _total_ energy of beams, so this becomes 208*2760=574080
 Energies: [2760, 574080]
 [...]
 </code></pre><p>Then, inside the analysis&apos; init function, one should declare objects for each beam/energy separately, e.g.:</p>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>{
   <span class="hljs-comment">// Initialize PbPb objects</span>
-  _histNch = bookHisto1D(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
-  _counterSOW = bookCounter(<span class="hljs-string">&quot;counter.pbpb&quot;</span>, <span class="hljs-string">&quot;Sum of weights counter for PbPb&quot;</span>);
-  _counterNcoll = bookCounter(<span class="hljs-string">&quot;counter.ncoll&quot;</span>, <span class="hljs-string">&quot;Ncoll counter for PbPb&quot;</span>);
+  book(_histNch, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+  book(_counterSOW, <span class="hljs-string">&quot;counter.pbpb&quot;</span>); <span class="hljs-comment">// Sum of weights counter for PbPb</span>
+  book(_counterNcoll, <span class="hljs-string">&quot;counter.ncoll&quot;</span>); <span class="hljs-comment">// Ncoll counter for PbPb</span>
   <span class="hljs-comment">// Initialize pp objects</span>
-  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> namePP = _histNch-&gt;name() + <span class="hljs-string">&quot;-pp&quot;</span>;
-  _histNchPP = bookHisto1D(namePP, refData(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
-  _counterSOWPP = bookCounter(<span class="hljs-string">&quot;counter.pp&quot;</span>, <span class="hljs-string">&quot;Sum of weights counter for pp&quot;</span>);
+  <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> namePP = _mkAxisCode(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>) + <span class="hljs-string">&quot;-pp&quot;</span>;
+  book(_histNchPP, namePP, refData(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+  book(_counterSOWPP, <span class="hljs-string">&quot;counter.pp&quot;</span>); <span class="hljs-comment">// Sum of weights counter for pp</span>
+  <span class="hljs-comment">// Book ratios, to be used in finalize</span>
+  book(_histRAA, <span class="hljs-number">16</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
   [...]
 }
 </code></pre>
-<p>Next, in the analyze method, one needs to check the type of an event the analysis is run with, for example like this:</p>
-<pre><code class="lang-cpp">  <span class="hljs-comment">// Check the type of event</span>
-  <span class="hljs-keyword">const</span> HepMC::HeavyIon* hi = event.genEvent()-&gt;heavy_ion();
-  <span class="hljs-keyword">if</span> (hi &amp;&amp; hi-&gt;is_valid()) {
-    <span class="hljs-comment">// PbPb event, fill PbPb histograms</span>
-  }
-  <span class="hljs-keyword">else</span> {
-    <span class="hljs-comment">// pp event, fill pp histograms</span>
-  }
+<p>Sill in the analyze method, one can check the beam type and assign the value to a variable (bool isHI, in this case) depending on the beam type</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">const</span> ParticlePair&amp; beam = beams();
+<span class="hljs-keyword">if</span> (beam.first.pid() == PID::PROTON &amp;&amp; beam.second.pid() == PID::PROTON) isHI = <span class="hljs-literal">false</span>;
+<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (beam.first.pid() == PID::LEAD &amp;&amp; beam.second.pid() == PID::LEAD) isHI = <span class="hljs-literal">true</span>;
+<span class="hljs-keyword">else</span> {
+  MSG_ERROR(<span class="hljs-string">&quot;Beam error (found)!&quot;</span>);
+  <span class="hljs-keyword">return</span>;
+}
 </code></pre>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(3123724250);" id="note"><i class="fa fa-info-circle"></i> Note<span id="heading-3123724250"></span></h3></div><div class="panel-body" id="panel-3123724250"><p>This is not a perfect solution as this check does not always work in a predictable way. In the future versions of Rivet this will be replaced with a check directly on the beam type.</p>
-</div></div></p>
+<p>In the analyze method, one can then use the information gathered about the beam type to steer the analysis as required</p>
+<pre><code class="lang-cpp"><span class="hljs-keyword">if</span> (isHI) {
+  <span class="hljs-keyword">const</span> HepMC::HeavyIon* hi = event.genEvent()-&gt;heavy_ion();
+  <span class="hljs-keyword">if</span> (!hi.ok()) {
+    MSG_WARNING(<span class="hljs-string">&quot;HEPMC Heavy ion container needed for this analysis, but not &quot;</span>
+                <span class="hljs-string">&quot;found for this event. Skipping.&quot;</span>);
+    vetoEvent;
+  }
+  <span class="hljs-comment">// process PbPb event, fill PbPb histograms</span>
+}
+<span class="hljs-keyword">else</span> {
+  <span class="hljs-comment">// process pp event, fill pp histograms</span>
+}
+</code></pre>
 <p>Finally, the regular finalize method is called, but in case we have entries in the histograms for both beam types, we do an additional step of dividing them one by another to create R_AA plot:</p>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">finalize</span><span class="hljs-params">()</span> </span>{
   <span class="hljs-comment">// Regular finalize, scaling, etc.</span>
@@ -808,7 +821,6 @@ Energies: [2760, 574080]
   <span class="hljs-comment">// entries in histograms for both beam types</span>
   <span class="hljs-keyword">if</span> (_histNchPP-&gt;numEntries() &gt; <span class="hljs-number">0</span> &amp;&amp; _histNch-&gt;numEntries() &gt; <span class="hljs-number">0</span>) {
     <span class="hljs-comment">// Initialize and fill R_AA histograms</span>
-    _histRAA = bookScatter2D(<span class="hljs-number">16</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
     divide(_histNch, _histNchPP, _histRAA);
   }
 }
@@ -816,20 +828,18 @@ Energies: [2760, 574080]
 <p>In order to run an analysis in the postprocessing mode one should run an analysis for every beam/energy combination and then use the rivet-merge script with the output files from the previous runs provided as parameters (check rivet-merge --help):</p>
 <pre><code>rivet-merge /path/to/result1.yoda /path/to/result2.yoda ...
 </code></pre><p>This will use the RAW histograms from you output files (check that your .yoda files contain them, they contain results from the analysis before the final scaling in the finalize method), merge them, and call finalize part of the analysis again on the merged histograms. Now, as all the histograms will be available, the finalize method will (in our case) create and fill R_AA histograms and save them to the output .yoda file containing final results.
-<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(3391959058);" id="beware"><i class="fa fa-info-circle"></i> Beware<span id="heading-3391959058"></span></h3></div><div class="panel-body" id="panel-3391959058"><p>There is no information about beam and energy when running rivet-merge script - this should be taken into account when implementing such an analysis. Also note, that an analysis with reentrant finalize should be validated to allow running in every mode, and so in the .info file it should be marked as: <code>Reentrant: True</code></p>
+<div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(3598884395);" id="beware"><i class="fa fa-info-circle"></i> Beware<span id="heading-3598884395"></span></h3></div><div class="panel-body" id="panel-3598884395"><p>There is no information about beam and energy when running rivet-merge script - this should be taken into account when implementing such an analysis. Also note, that an analysis with reentrant finalize should be validated to allow running in every mode, and so in the .info file it should be marked as: <code>Status: REENTRANT</code></p>
 </div></div></p>
 <p>A full example of an analysis with the reentrant finalize mode enabled is provided below:</p>
 <pre><code class="lang-cpp"><span class="hljs-comment">// -*- C++ -*-</span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Analysis.hh&quot;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Projections/Beam.hh&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Projections/ChargedFinalState.hh&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Tools/Cuts.hh&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Projections/SingleValueProjection.hh&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Tools/AliceCommon.hh&quot;</span></span>
 <span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Projections/AliceCommon.hh&quot;</span></span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;fstream&gt;</span></span>
-
-<span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> _USE_MATH_DEFINES</span>
-<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;math.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-string">&quot;Rivet/Projections/HepMCHeavyIon.hh&quot;</span></span>
 
 <span class="hljs-keyword">namespace</span> Rivet {
 
@@ -847,6 +857,9 @@ Energies: [2760, 574080]
     <span class="hljs-comment">/// Book histograms and initialise projections before the run</span>
     <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>{
 
+      <span class="hljs-comment">// Access the HepMC heavy ion info</span>
+      declare(HepMCHeavyIon(), <span class="hljs-string">&quot;HepMC&quot;</span>);
+
       <span class="hljs-comment">// Declare centrality projection</span>
       declareCentrality(ALICE::V0MMultiplicity(),
         <span class="hljs-string">&quot;ALICE_2015_PBPBCentrality&quot;</span>, <span class="hljs-string">&quot;V0M&quot;</span>, <span class="hljs-string">&quot;V0M&quot;</span>);
@@ -859,28 +872,28 @@ Energies: [2760, 574080]
       <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> ihist = <span class="hljs-number">0</span>; ihist &lt; NHISTOS; ++ihist) {
 
         <span class="hljs-comment">// Initialize PbPb objects</span>
-        _histNch[PBPB][ihist] = bookHisto1D(ihist+<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+        book(_histNch[PBPB][ihist], ihist+<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
 
         <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> nameCounterPbPb = <span class="hljs-string">&quot;counter.pbpb.&quot;</span> + <span class="hljs-built_in">std</span>::to_string(ihist);
-        _counterSOW[PBPB][ihist] = bookCounter(nameCounterPbPb,
-          <span class="hljs-string">&quot;Sum of weights counter for PbPb&quot;</span>);
+        book(_counterSOW[PBPB][ihist], nameCounterPbPb); <span class="hljs-comment">// Sum of weights counter for PbPb</span>
 
         <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> nameCounterNcoll = <span class="hljs-string">&quot;counter.ncoll.&quot;</span> + <span class="hljs-built_in">std</span>::to_string(ihist);
-        _counterNcoll[ihist] = bookCounter(nameCounterNcoll,
-          <span class="hljs-string">&quot;Ncoll counter for PbPb&quot;</span>);
+        book(_counterNcoll[ihist], nameCounterNcoll); <span class="hljs-comment">// Ncoll counter for PbPb</span>
 
         <span class="hljs-comment">// Initialize pp objects. In principle, only one pp histogram would be</span>
         <span class="hljs-comment">// needed since centrality does not make any difference here. However,</span>
         <span class="hljs-comment">// in some cases in this analysis the binning differ from each other,</span>
         <span class="hljs-comment">// so this is easy-to-implement way to account for that.</span>
-        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> namePP = _histNch[PBPB][ihist]-&gt;name() + <span class="hljs-string">&quot;-pp&quot;</span>;
+        <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> namePP = mkAxisCode(ihist+<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>) + <span class="hljs-string">&quot;-pp&quot;</span>;
+
         <span class="hljs-comment">// The binning is taken from the reference data</span>
-        _histNch[PP][ihist] = bookHisto1D(namePP, refData(ihist+<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
+        book(_histNch[PP][ihist], namePP, refData(ihist+<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>));
 
         <span class="hljs-built_in">std</span>::<span class="hljs-built_in">string</span> nameCounterpp = <span class="hljs-string">&quot;counter.pp.&quot;</span> + <span class="hljs-built_in">std</span>::to_string(ihist);
-        _counterSOW[PP][ihist] = bookCounter(nameCounterpp,
-          <span class="hljs-string">&quot;Sum of weights counter for pp&quot;</span>);
+        book(_counterSOW[PP][ihist], nameCounterpp); <span class="hljs-comment">// Sum of weights counter for pp</span>
 
+        <span class="hljs-comment">// Book ratios, to be used in finalize</span>
+        book(_histRAA[ihist], ihist+<span class="hljs-number">16</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
       }
 
       <span class="hljs-comment">// Centrality regions keeping boundaries for a certain region.</span>
@@ -892,46 +905,66 @@ Energies: [2760, 574080]
                        {<span class="hljs-number">0.</span>, <span class="hljs-number">10.</span>},  {<span class="hljs-number">0.</span>, <span class="hljs-number">20.</span>},  {<span class="hljs-number">20.</span>, <span class="hljs-number">40.</span>},
                        {<span class="hljs-number">40.</span>, <span class="hljs-number">60.</span>}, {<span class="hljs-number">40.</span>, <span class="hljs-number">80.</span>}, {<span class="hljs-number">60.</span>, <span class="hljs-number">80.</span>}};
 
+      <span class="hljs-comment">// Find out the beam type, also specified from option.</span>
+      <span class="hljs-built_in">string</span> beamOpt = getOption&lt;<span class="hljs-built_in">string</span>&gt;(<span class="hljs-string">&quot;beam&quot;</span>,<span class="hljs-string">&quot;NONE&quot;</span>);
+      <span class="hljs-keyword">if</span> (beamOpt != <span class="hljs-string">&quot;NONE&quot;</span>) {
+        MSG_WARNING(<span class="hljs-string">&quot;You are using a specified beam type, instead of using what&quot;</span>
+    <span class="hljs-string">&quot;is provided by the generator. &quot;</span>
+    <span class="hljs-string">&quot;Only do this if you are completely sure what you are doing.&quot;</span>);
+    <span class="hljs-keyword">if</span> (beamOpt==<span class="hljs-string">&quot;PP&quot;</span>) isHI = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (beamOpt==<span class="hljs-string">&quot;HI&quot;</span>) isHI = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">else</span> {
+      MSG_ERROR(<span class="hljs-string">&quot;Beam error (option)!&quot;</span>);
+      <span class="hljs-keyword">return</span>;
+          }
+      }
+      <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">const</span> ParticlePair&amp; beam = beams();
+        <span class="hljs-keyword">if</span> (beam.first.pid() == PID::PROTON &amp;&amp; beam.second.pid() == PID::PROTON) isHI = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (beam.first.pid() == PID::LEAD &amp;&amp; beam.second.pid() == PID::LEAD)
+      isHI = <span class="hljs-literal">true</span>;
+    <span class="hljs-keyword">else</span> {
+      MSG_ERROR(<span class="hljs-string">&quot;Beam error (found)!&quot;</span>);
+      <span class="hljs-keyword">return</span>;
     }
-
+      }
+    }
 
     <span class="hljs-comment">/// Perform the per-event analysis</span>
     <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">analyze</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Event&amp; event)</span> </span>{
 
-      <span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> weight = event.weight();
-
       <span class="hljs-comment">// Charged, primary particles with at least pT = 150 MeV</span>
       <span class="hljs-comment">// in eta range of |eta| &lt; 0.5</span>
       Particles chargedParticles =
-        applyProjection&lt;ALICE::PrimaryParticles&gt;(event,<span class="hljs-string">&quot;APRIM&quot;</span>).particlesByPt();
+        apply&lt;ALICE::PrimaryParticles&gt;(event,<span class="hljs-string">&quot;APRIM&quot;</span>).particlesByPt();
 
-      <span class="hljs-comment">// Check type of event. This may not be a perfect way to check for the</span>
-      <span class="hljs-comment">// type of event as there might be some weird conditions hidden inside.</span>
-      <span class="hljs-comment">// For example some HepMC versions check if number of hard collisions</span>
-      <span class="hljs-comment">// is equal to 0 and assign &apos;false&apos; in that case, which is usually wrong.</span>
-      <span class="hljs-comment">// This might be changed in the future</span>
-      <span class="hljs-keyword">const</span> HepMC::HeavyIon* hi = event.genEvent()-&gt;heavy_ion();
-      <span class="hljs-keyword">if</span> (hi &amp;&amp; hi-&gt;is_valid()) {
+      <span class="hljs-comment">// Check type of event.</span>
+      <span class="hljs-keyword">if</span> ( isHI ) {
 
+        <span class="hljs-keyword">const</span> HepMCHeavyIon &amp; hi = apply&lt;HepMCHeavyIon&gt;(event, <span class="hljs-string">&quot;HepMC&quot;</span>);
+        <span class="hljs-keyword">if</span> (!hi.ok()) {
+      MSG_WARNING(<span class="hljs-string">&quot;HEPMC Heavy ion container needed for this analysis, but not &quot;</span>
+        <span class="hljs-string">&quot;found for this event. Skipping.&quot;</span>);
+      vetoEvent;
+    }
         <span class="hljs-comment">// Prepare centrality projection and value</span>
         <span class="hljs-keyword">const</span> CentralityProjection&amp; centrProj =
           apply&lt;CentralityProjection&gt;(event, <span class="hljs-string">&quot;V0M&quot;</span>);
         <span class="hljs-keyword">double</span> centr = centrProj();
         <span class="hljs-comment">// Veto event for too large centralities since those are not used</span>
         <span class="hljs-comment">// in the analysis at all</span>
-        <span class="hljs-keyword">if</span> ((centr &lt; <span class="hljs-number">0.</span>) || (centr &gt; <span class="hljs-number">80.</span>))
-          vetoEvent;
+        <span class="hljs-keyword">if</span> ((centr &lt; <span class="hljs-number">0.</span>) || (centr &gt; <span class="hljs-number">80.</span>)) vetoEvent;
 
         <span class="hljs-comment">// Fill PbPb histograms and add weights based on centrality value</span>
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> ihist = <span class="hljs-number">0</span>; ihist &lt; NHISTOS; ++ihist) {
           <span class="hljs-keyword">if</span> (inRange(centr, _centrRegions[ihist].first, _centrRegions[ihist].second)) {
-            _counterSOW[PBPB][ihist]-&gt;fill(weight);
-            _counterNcoll[ihist]-&gt;fill(event.genEvent()-&gt;heavy_ion()-&gt;Ncoll(), weight);
-            foreach (<span class="hljs-keyword">const</span> Particle&amp; p, chargedParticles) {
-              <span class="hljs-keyword">float</span> pT = p.pT()/GeV;
+            _counterSOW[PBPB][ihist]-&gt;fill();
+            _counterNcoll[ihist]-&gt;fill(hi.Ncoll());
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> Particle&amp; p : chargedParticles) {
+              <span class="hljs-keyword">double</span> pT = p.pT()/GeV;
               <span class="hljs-keyword">if</span> (pT &lt; <span class="hljs-number">50.</span>) {
-                <span class="hljs-keyword">double</span> pTAtBinCenter = _histNch[PBPB][ihist]-&gt;binAt(pT).xMid();
-                _histNch[PBPB][ihist]-&gt;fill(pT, weight/pTAtBinCenter);
+                <span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> pTAtBinCenter = _histNch[PBPB][ihist]-&gt;binAt(pT).xMid();
+                _histNch[PBPB][ihist]-&gt;fill(pT, <span class="hljs-number">1</span>/pTAtBinCenter);
               }
             }
           }
@@ -942,12 +975,12 @@ Energies: [2760, 574080]
 
         <span class="hljs-comment">// Fill all pp histograms and add weights</span>
         <span class="hljs-keyword">for</span> (<span class="hljs-keyword">size_t</span> ihist = <span class="hljs-number">0</span>; ihist &lt; NHISTOS; ++ihist) {
-          _counterSOW[PP][ihist]-&gt;fill(weight);
-          foreach (<span class="hljs-keyword">const</span> Particle&amp; p, chargedParticles) {
-            <span class="hljs-keyword">float</span> pT = p.pT()/GeV;
+          _counterSOW[PP][ihist]-&gt;fill();
+          <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> Particle&amp; p : chargedParticles) {
+            <span class="hljs-keyword">double</span> pT = p.pT()/GeV;
             <span class="hljs-keyword">if</span> (pT &lt; <span class="hljs-number">50.</span>) {
-              <span class="hljs-keyword">double</span> pTAtBinCenter = _histNch[PP][ihist]-&gt;binAt(pT).xMid();
-              _histNch[PP][ihist]-&gt;fill(pT, weight/pTAtBinCenter);
+              <span class="hljs-keyword">const</span> <span class="hljs-keyword">double</span> pTAtBinCenter = _histNch[PP][ihist]-&gt;binAt(pT).xMid();
+              _histNch[PP][ihist]-&gt;fill(pT, <span class="hljs-number">1</span>/pTAtBinCenter);
             }
           }
         }
@@ -975,7 +1008,6 @@ Energies: [2760, 574080]
         <span class="hljs-comment">// If there are entires in histograms for both beam types</span>
         <span class="hljs-keyword">if</span> (_histNch[PP][ihist]-&gt;numEntries() &gt; <span class="hljs-number">0</span> &amp;&amp; _histNch[PBPB][ihist]-&gt;numEntries() &gt; <span class="hljs-number">0</span>) {
           <span class="hljs-comment">// Initialize and fill R_AA histograms</span>
-          _histRAA[ihist] = bookScatter2D(ihist+<span class="hljs-number">16</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
           divide(_histNch[PBPB][ihist], _histNch[PP][ihist], _histRAA[ihist]);
           <span class="hljs-comment">// Scale by Ncoll. Unfortunately some generators does not provide</span>
           <span class="hljs-comment">// Ncoll value (eg. JEWEL), so the following scaling will be done</span>
@@ -994,6 +1026,7 @@ Energies: [2760, 574080]
 
   <span class="hljs-keyword">private</span>:
 
+    <span class="hljs-keyword">bool</span> isHI;
     <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> NHISTOS = <span class="hljs-number">15</span>;
     <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> EVENT_TYPES = <span class="hljs-number">2</span>;
     <span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> PP = <span class="hljs-number">0</span>;
@@ -1014,10 +1047,11 @@ Energies: [2760, 574080]
   <span class="hljs-comment">// The hook for the plugin system</span>
   DECLARE_RIVET_PLUGIN(ALICE_2012_I1127497);
 
+
 }
 </code></pre>
 <h2 id="event-mixing">Event mixing</h2>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(9160795154);" id="warning"><i class="fa fa-info-circle"></i> WARNING<span id="heading-9160795154"></span></h3></div><div class="panel-body" id="panel-9160795154"><p>This feature is still under development and its usage might change in the coming versions of Rivet. Description of this procedure was prepared for Rivet version 2.7.2.</p>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(5599983870);" id="warning"><i class="fa fa-info-circle"></i> WARNING<span id="heading-5599983870"></span></h3></div><div class="panel-body" id="panel-5599983870"><p>This feature is still under development and its usage might change in the coming versions of Rivet. Description of this procedure was prepared for Rivet version 2.7.2.</p>
 </div></div></p>
 <p>Event mixing is a procedure that enables to project out an event mixed of several events. In Rivet it is implemented in a form of a projection class called EventMixingProjection. It is based on a mixing observable provided as an input to define what should qualify as a mixable event, where the mixing observable can be defined as number of final state particles, centrality, event plane angle, etc. It contains a buffer that is filled with events over the runtime. This buffer can be used within an analysis to perform required operations. A declaration of an event mixing projection looks like this:</p>
 <pre><code class="lang-cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span> <span class="hljs-params">()</span> </span>{
@@ -1280,7 +1314,7 @@ namespace Rivet {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Advanced heavy-ion features","level":"1.6.8","depth":2,"next":{"title":"Coding conventions for Rivet plugins","level":"1.6.9","depth":2,"path":"rivet/coding-conventions.md","ref":"rivet/coding-conventions.md","articles":[]},"previous":{"title":"Advanced topics","level":"1.6.7","depth":2,"path":"rivet/advanced-topics.md","ref":"rivet/advanced-topics.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"rivet/advanced-hi-features.md","mtime":"2020-08-26T16:06:51.506Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-26T16:07:36.875Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Advanced heavy-ion features","level":"1.6.8","depth":2,"next":{"title":"Coding conventions for Rivet plugins","level":"1.6.9","depth":2,"path":"rivet/coding-conventions.md","ref":"rivet/coding-conventions.md","articles":[]},"previous":{"title":"Advanced topics","level":"1.6.7","depth":2,"path":"rivet/advanced-topics.md","ref":"rivet/advanced-topics.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"rivet/advanced-hi-features.md","mtime":"2020-08-31T09:37:07.150Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-31T09:37:58.235Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
