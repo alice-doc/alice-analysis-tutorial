@@ -107,7 +107,7 @@ For Run 2 software based on ROOT 6 (note: this is the only option on macOS):
 
 ```bash
 cd ~/alice
-aliDoctor AliPhysics --defaults root6
+aliDoctor AliPhysics --defaults next-root6
 ```
 
 For Run 3 software:
@@ -209,7 +209,6 @@ _⚠️  ROOT 5 does not work on macOS. Use a ROOT 6 version compatible with ROO
 
 ```bash
 aliBuild build AliPhysics --defaults user-root6  # without GEANT 3, GEANT 4, DPMJET
-aliBuild build AliPhysics --defaults root6       # full
 ```
 
 _⚠️  Use this version on macOS if you want to be able to submit Grid jobs with ROOT 5 Grid packages.
