@@ -55,7 +55,7 @@ packages to install and configurations to perform.
 
 * [macOS Mojave (10.14) and Catalina (10.15)](prereq-macos.md)
   ** ⚠️  only Catalina supported for Run 3 software ⚠️  **
-* [Ubuntu 18.04 LTS](prereq-ubuntu.md)
+* [Ubuntu (16.04 LTS, 18.04 LTS, 20.04 LTS)](prereq-ubuntu.md)
 * [Fedora](prereq-fedora.md)
 
 If your operating system is _not_ in any list, it does not mean our software won't work on it;
