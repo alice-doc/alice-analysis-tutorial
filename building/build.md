@@ -205,17 +205,6 @@ _⚠️  ROOT 5 does not work on macOS. Use a ROOT 6 version compatible with ROO
 
 ---
 
-**Build AliPhysics based on an old ROOT 6 version:**
-
-```bash
-aliBuild build AliPhysics --defaults user-root6  # without GEANT 3, GEANT 4, DPMJET
-```
-
-_⚠️  Use this version on macOS if you want to be able to submit Grid jobs with ROOT 5 Grid packages.
-This ROOT 6 version is compatible with the ROOT 5 version on the Grid and, unlike ROOT 5, works on
-macOS._
-
-
 ### Rebuild existing installations
 
 As a general rule, your existing installation can be smartly rebuilt by using the exact same
