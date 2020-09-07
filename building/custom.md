@@ -55,12 +55,16 @@ packages to install and configurations to perform.
 
 * [macOS Mojave (10.14) and Catalina (10.15)](prereq-macos.md)
   ** ⚠️  only Catalina supported for Run 3 software ⚠️  **
-* [Ubuntu 18.04 LTS](prereq-ubuntu.md)
+* [Ubuntu (16.04 LTS, 18.04 LTS, 20.04 LTS)](prereq-ubuntu.md)
 * [Fedora](prereq-fedora.md)
+* Linux Mint
+    * Follow the instructions for the Ubuntu version your Linux Mint version is based on.
+    * Specify the corresponding Ubuntu architecture when running the `aliBuild` command
+      using the `-a` option (e.g. `-a ubuntu2004_x86-64` for Ubuntu 20.04).
+      Use the `-a` option also with the `alienv` command.
 
 If your operating system is _not_ in any list, it does not mean our software won't work on it;
 it will be just more difficult for you to get support for it.
-
 
 ## Get or upgrade aliBuild
 
