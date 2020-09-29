@@ -48,7 +48,7 @@ returns `command not found` or similar, install `pip` with `root` permissions, i
 
 <!-- Dockerfile RUN_INLINE -->
 ```bash
-sudo apt install -y python3-pip
+sudo apt install -y python3 python3-pip python3-tk
 sudo pip3 install --upgrade pip
 ```
 
