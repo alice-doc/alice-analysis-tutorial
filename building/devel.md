@@ -30,7 +30,7 @@ git clone https://github.com/AliceO2Group/AliceO2 O2
 mkdir O2/objs
 cd O2/objs
 cmake .. -DBUILD_TEST_ROOT_MACROS=OFF 
-cmake --build .. --target all -j8
+cmake --build . --target all -j8
 ```
 
 This is not a replacement for the full alibuild environment, which allows you to build multiple packages at once or to keep track of
