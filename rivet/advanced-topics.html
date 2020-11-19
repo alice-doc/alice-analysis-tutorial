@@ -776,9 +776,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="advanced-topics">Advanced topics</h1>
+                                <h1 id="advanced-topics-installations">Advanced topics (installations)</h1>
 <h2 id="installing-rivet-locally">Installing Rivet locally</h2>
-<p>Rivet can be installed using aliBuild (analogous to AliPhysics). Assuming you have followed the instructions to install AliPhysics in a repository ~/alice, you can run:</p>
+<p>If beyond CVMFS deployment (lxplus, Grid nodes), you wish to have your own environment lcoally, note that Rivet can be installed using aliBuild (analogous to AliPhysics). 
+It can be done :</p>
+<ol>
+<li>in your local computer natively (beware the difficulties associated with software dependencies...) </li>
+<li>under alidock (a priori, smoother, but note the potential LaTeX dependencies of Rivet (See <a href="https://github.com/alidock/alidock/issues/145" target="_blank">alidock/issue-145</a> to have custom docker image).</li>
+</ol>
+<p>Assuming you have followed the instructions to install AliPhysics in a repository ~/alice, you can run:</p>
 <pre><code>cd ~/alice
 aliBuild build Rivet
 </code></pre><p>This will build and install Rivet as well as its dependencies (2019/10/18):</p>
@@ -803,27 +809,28 @@ aliBuild build Rivet
 <p>Under CVMFS, you will typically find generators that are centrally installed :</p>
 <ol>
 <li>AMPT, </li>
-<li>CRMC (= EPOS-LHC), </li>
+<li>CRMC (= EPOS-LHC, 2012), </li>
 <li>DPMJET, </li>
-<li>EPOS-3, </li>
+<li>EPOS-3.111 (2015), </li>
 <li>FONLL, </li>
 <li>Herwig-7, </li>
-<li>JEWEL,</li>
+<li>JETSCAPE-3</li>
+<li>JEWEL-2,</li>
 <li>POWHEG, </li>
-<li>(Rivet),</li>
-<li>SHERPA, </li>
+<li>(Rivet-3.x),</li>
+<li>SHERPA-2, </li>
 <li>Therminator2, </li>
 <li>(aligenmc),</li>
-<li>PYTHIA-6, </li>
-<li>PYTHIA-8</li>
+<li>PYTHIA-6.4, </li>
+<li>PYTHIA-8.2</li>
 </ol>
 <p>and several utilities coming along (Sacrifice for Pythia, ThePEG for Herwig, Agile for fortran MC, LHAPDF sets, ...).</p>
 <p>The version of the generators as well as their dependencies naturally evolve with time and should normally be managed accordingly in ALICE.</p>
-<p>Such MC generators available in ALICE are encompassed into the bundle <strong>AliGenerator</strong>.
-One can find its constituents under <a href="https://alimonitor.cern.ch/packages" target="_blank">http://alimonitor.cern.ch/packages/#VO_ALICE@AliGenerators::v20190924-1 &quot;packages&quot;</a>, take for instance AliGenerators::v20190924-1.</p>
+<p>Such MC generators available in ALICE are encompassed into the bundle <strong>AliGenerators</strong>.
+One can find its constituents under <a href="http://alimonitor.cern.ch/packages/#VO_ALICE@AliGenerators::v20191118-1" target="_blank">https://alimonitor.cern.ch/packages</a>, take for instance AliGenerators::v20190924-1.</p>
 <p>Such a bundle can also be built locally with aliBuild and is managed via the recipe<code>alidist/aligenerators.sh</code> and <code>alidist/defaults-pwgmmtest.sh</code>. Such a meta-recipe relies on the recipes of the individual generators <code>alidist/[generator.sh]</code>.</p>
 <pre><code>cd ~/alice
-aliBuild build AliGenerators
+aliBuild build AliGenerators --debug --defaults generators -j 6
 </code></pre>
                                 
                                 </section>
@@ -867,7 +874,7 @@ aliBuild build AliGenerators
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Advanced topics","level":"1.6.7","depth":2,"next":{"title":"Advanced heavy-ion features","level":"1.6.8","depth":2,"path":"rivet/advanced-hi-features.md","ref":"rivet/advanced-hi-features.md","articles":[]},"previous":{"title":"Procedures for publishing Rivet analyses","level":"1.6.6","depth":2,"path":"rivet/publishing-procedures.md","ref":"rivet/publishing-procedures.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"rivet/advanced-topics.md","mtime":"2020-11-10T09:16:53.720Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-10T09:17:53.593Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Advanced topics","level":"1.6.7","depth":2,"next":{"title":"Advanced heavy-ion features","level":"1.6.8","depth":2,"path":"rivet/advanced-hi-features.md","ref":"rivet/advanced-hi-features.md","articles":[]},"previous":{"title":"Procedures for publishing Rivet analyses","level":"1.6.6","depth":2,"path":"rivet/publishing-procedures.md","ref":"rivet/publishing-procedures.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"rivet/advanced-topics.md","mtime":"2020-11-19T14:39:14.468Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-11-19T14:40:01.593Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
