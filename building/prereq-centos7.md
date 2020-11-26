@@ -19,7 +19,7 @@ baseurl=https://s3.cern.ch/swift/v1/alibuild-repo/RPMS/o2-full-deps_x86-64/
 enabled=1
 gpgcheck=0
 EOF
-yum update
+yum update -y
 yum install -y alice-o2-full-deps
 ```
 
