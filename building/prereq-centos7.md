@@ -12,7 +12,15 @@ With root permissions, i.e. `sudo` or as `root` install the prerequisites using:
 
 <!-- Dockerfile RUN_INLINE -->
 ```bash
-yum install -y git mysql-devel curl curl-devel bzip2 bzip2-devel unzip autoconf automake texinfo gettext gettext-devel libtool freetype freetype-devel libpng libpng-devel sqlite sqlite-devel ncurses-devel mesa-libGLU-devel libX11-devel libXpm-devel libXext-devel libXft-devel libXi-devel libxml2 libxml2-devel motif motif-devel kernel-devel pciutils-devel kmod-devel bison flex perl-ExtUtils-Embed environment-modules tk-devel glfw-devel
+cat << EOF > /etc/yum.repos.d/alice-system-deps.repo
+[alice-system-deps]
+name=alice-system-deps
+baseurl=https://s3.cern.ch/swift/v1/alibuild-repo/RPMS/o2-full-deps_x86-64/
+enabled=1
+gpgcheck=0
+EOF
+yum update -y
+yum install -y alice-o2-full-deps
 ```
 
 ## Python and pip
