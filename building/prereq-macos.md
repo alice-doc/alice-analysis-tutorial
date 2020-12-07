@@ -5,8 +5,11 @@ ALICE software on macOS is supported on a best effort basis. Even though we syst
 
 * Mojave (10.14)
 * Catalina (10.15)
+* Big Sur (11.0)
 
-With very short update cycles of macOS, refrain from updating until we list the latest version of macOS as verified for your own good.
+With very short update cycles of macOS, refrain from updating until we list the latest version of macOS as verified. 
+
+In November 2020, Apple started a transition to theier own ARM based processor archtecture called "Apple Silicon" on the Mac. These differ significantly from the current Macs based on Intel X86 processors. In the forseeable future, these ARM based Macs will not be able to run ALICE code as software packages we depend on are not yet available for this platform. However with a big Mac community at ALICE we expect support to come once this is possible.
 
 ## Get Xcode
 
@@ -62,7 +65,7 @@ brew install alisw/system-deps/o2-full-deps
 Various users have reported that this might terminate with an error. The solution oddly enough seems to be to execute the above command multiple times until brew does not complain anymore.
 * If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to force the reinstallation of already installed packages. You also might want to run `brew cleanup` at the end to free up some space.
 
-* Edit or create `~/.bash_profile` (Mojave) or `~/.zprofile` (Catalina) and add
+* Edit or create `~/.bash_profile` (Mojave) or `~/.zprofile` (Catalina and later) and add
 ```bash
 export PATH="/usr/local/opt/gettext/bin:/usr/local/bin:$PATH"
 ```
@@ -76,18 +79,9 @@ type pip3
 ```
 If not present install with 
 ```bash
-sudo easy_install3.7 pip
+sudo easy_install3.9 pip
 sudo pip3 install --upgrade pip
 ```
-
-## (Optional) Python modules
-Optinally you can install the required python modules. If we cannot find them, our build system will do it for you.
-
-With the **system python**:
-```bash
-sudo pip3 install --upgrade --force-reinstall matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
-```
-For **Homebrew python**, leave out the `sudo`.
 
 ## (Optinal) Exclude your work directory from Spotlight
 The mac search engine (Spotlight) will be indexing the build directory which can have severe effects on your system performance. To avoid that, you can exclude your working directory (we are assuming `~/alice` - create if not yet existing).
