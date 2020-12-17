@@ -793,25 +793,10 @@
 <li>Open a terminal (<code>Applicaions&gt;Utilities&gt;Terminal</code>) and install the command line tools using:<pre><code class="lang-bash">sudo xcode-select --install
 </code></pre>
 </li>
-<li><p>approve the license conditions by</p>
-<pre><code class="lang-bash">sudo xcodebuild -license
+<li>approve the license conditions by<pre><code class="lang-bash">sudo xcodebuild -license
 </code></pre>
-<h2 id="disable-system-integrity-protection-sip">Disable System Integrity Protection (SIP)</h2>
-<p>System Integrity Protection was introduced by Apple to Mac OSX since El Capitan and is meant to harden the system against malicious software. More details are available in <a href="https://support.apple.com/en-us/HT204899" target="_blank">Apple&apos;s knowledge base</a>.
-Unfortunately, some of the measures taken by SIP (in particular not propagating <code>LD_LIBRARY_PATH</code>) will cause ROOT to not find dynamic libraries. We therefore have to switch off SIP.</p>
 </li>
-<li><p>Reboot your Mac in <em>Recovery Mode</em>. by holding <code>Command-R</code> at startup until the Apple logo appears.</p>
-</li>
-<li>Open a Terminal: (<code>Utilities&gt;Terminal</code>).</li>
-<li>Disable SIP by executing
-<code>csrutil disable</code> </li>
-<li>Restart your machine.</li>
-<li>After the reboot, open a terminal (<code>Applicaions&gt;Utilities&gt;Terminal</code>) and check if <pre><code class="lang-bash">csrutil status
-</code></pre>
-returns <code>System Integrity Protection status: disabled.</code></li>
 </ul>
-<p>The process can be reverted by following the above steps executing<br><code>csrutil enable</code></p>
-<p>The process is also documented in <a href="https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html" target="_blank">Apple&apos;s developer documentation</a></p>
 <h2 id="get-homebrew">Get Homebrew</h2>
 <p><a href="https://brew.sh" target="_blank">Homebrew</a> is a command-line package manager for macOS used to install software packages similar to <code>yum</code> on CentOS or <code>apt</code> on Ubuntu. There are several different package managers for macOS, but Homebrew is by far the most poppular , and the only one we support.</p>
 <ul>
@@ -891,7 +876,7 @@ software</a></p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Prerequisites for macOS","level":"1.3.1.2","depth":3,"next":{"title":"Prerequisites for Ubuntu","level":"1.3.1.3","depth":3,"path":"building/prereq-ubuntu.md","ref":"building/prereq-ubuntu.md","articles":[]},"previous":{"title":"Prerequisites for CentOS 7","level":"1.3.1.1","depth":3,"path":"building/prereq-centos7.md","ref":"building/prereq-centos7.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/prereq-macos.md","mtime":"2020-12-07T15:47:38.414Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-07T15:48:46.910Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Prerequisites for macOS","level":"1.3.1.2","depth":3,"next":{"title":"Prerequisites for Ubuntu","level":"1.3.1.3","depth":3,"path":"building/prereq-ubuntu.md","ref":"building/prereq-ubuntu.md","articles":[]},"previous":{"title":"Prerequisites for CentOS 7","level":"1.3.1.1","depth":3,"path":"building/prereq-centos7.md","ref":"building/prereq-centos7.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/prereq-macos.md","mtime":"2020-12-17T07:49:18.098Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-17T07:49:55.563Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
