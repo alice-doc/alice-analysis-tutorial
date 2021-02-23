@@ -1,4 +1,4 @@
-aliBuild Prerequisites for CentOS 7
+aliBuild Prerequisites for CentOS 8
 ===================================
 
 <!-- Dockerfile UPLOAD_NAME alisw/o2-cc7 -->
