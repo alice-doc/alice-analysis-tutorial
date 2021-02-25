@@ -5,8 +5,11 @@ ALICE software on macOS is supported on a best effort basis. Even though we syst
 
 * Mojave (10.14)
 * Catalina (10.15)
+* Big Sur (11.0)
 
-With very short update cycles of macOS, refrain from updating until we list the latest version of macOS as verified for your own good.
+With very short update cycles of macOS, refrain from updating until we list the latest version of macOS as verified. 
+
+In November 2020, Apple started a transition to theier own ARM based processor archtecture called "Apple Silicon" on the Mac. These differ significantly from the current Macs based on Intel X86 processors. In the forseeable future, these ARM based Macs will not be able to run ALICE code as software packages we depend on are not yet available for this platform. However with a big Mac community at ALICE we expect support to come once this is possible.
 
 ## Get Xcode
 
@@ -21,25 +24,6 @@ sudo xcode-select --install
 ```bash
 sudo xcodebuild -license
 ```
-## Disable System Integrity Protection (SIP)
-System Integrity Protection was introduced by Apple to Mac OSX since El Capitan and is meant to harden the system against malicious software. More details are available in [Apple's knowledge base](https://support.apple.com/en-us/HT204899).
-Unfortunately, some of the measures taken by SIP (in particular not propagating `LD_LIBRARY_PATH`) will cause ROOT to not find dynamic libraries. We therefore have to switch off SIP.
-
-* Reboot your Mac in _Recovery Mode_. by holding `Command-R` at startup until the Apple logo appears.
-* Open a Terminal: (`Utilities>Terminal`).
-* Disable SIP by executing
-```csrutil disable``` 
-* Restart your machine.
-* After the reboot, open a terminal (`Applicaions>Utilities>Terminal`) and check if 
-```bash
-csrutil status
-```
-returns `System Integrity Protection status: disabled.`
-
-The process can be reverted by following the above steps executing  
-```csrutil enable```
-
-The process is also documented in [Apple's developer documentation](https://developer.apple.com/library/archive/documentation/Security/Conceptual/System_Integrity_Protection_Guide/ConfiguringSystemIntegrityProtection/ConfiguringSystemIntegrityProtection.html)
 
 ## Get Homebrew
 
@@ -62,7 +46,7 @@ brew install alisw/system-deps/o2-full-deps
 Various users have reported that this might terminate with an error. The solution oddly enough seems to be to execute the above command multiple times until brew does not complain anymore.
 * If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to force the reinstallation of already installed packages. You also might want to run `brew cleanup` at the end to free up some space.
 
-* Edit or create `~/.bash_profile` (Mojave) or `~/.zprofile` (Catalina) and add
+* Edit or create `~/.bash_profile` (Mojave) or `~/.zprofile` (Catalina and later) and add
 ```bash
 export PATH="/usr/local/opt/gettext/bin:/usr/local/bin:$PATH"
 ```
@@ -76,18 +60,9 @@ type pip3
 ```
 If not present install with 
 ```bash
-sudo easy_install3.7 pip
+sudo easy_install3.9 pip
 sudo pip3 install --upgrade pip
 ```
-
-## (Optional) Python modules
-Optinally you can install the required python modules. If we cannot find them, our build system will do it for you.
-
-With the **system python**:
-```bash
-sudo pip3 install --upgrade --force-reinstall matplotlib numpy certifi ipython==5.1.0 ipywidgets ipykernel notebook metakernel pyyaml
-```
-For **Homebrew python**, leave out the `sudo`.
 
 ## (Optinal) Exclude your work directory from Spotlight
 The mac search engine (Spotlight) will be indexing the build directory which can have severe effects on your system performance. To avoid that, you can exclude your working directory (we are assuming `~/alice` - create if not yet existing).
