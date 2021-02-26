@@ -70,7 +70,7 @@ it will be just more difficult for you to get support for it.
 Install or upgrade [aliBuild](https://pypi.python.org/pypi/alibuild/) with `pip`:
 
 ```bash
-sudo pip install alibuild --upgrade
+sudo pip3 install alibuild --upgrade
 ```
 
 Now add the two following lines to your `~/.bashrc` or `~/.bash_profile` (depending on your
