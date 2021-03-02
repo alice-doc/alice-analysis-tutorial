@@ -53,7 +53,7 @@ packages to install and configurations to perform.
 
 **Platforms supported on a best-effort basis:**
 
-* [macOS Catalina (10.15) and Big Sur (11.00](prereq-macos.md)
+* [macOS Catalina (10.15), Big Sur (11.0)](prereq-macos.md)
 * [Ubuntu (18.04 LTS, 20.04 LTS)](prereq-ubuntu.md)
 * [Fedora](prereq-fedora.md)
 * Linux Mint

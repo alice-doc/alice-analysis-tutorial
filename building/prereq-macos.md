@@ -3,11 +3,10 @@ aliBuild prerequisites for macOS
 
 ALICE software on macOS is supported on a best effort basis. Even though we systematically check macOS builds there is no guarantee that software builds or runs correctly. Support requests might have low priority. We were able to successfully build on:
 
-* Mojave (10.14)
 * Catalina (10.15)
 * Big Sur (11.0)
 
-With very short update cycles of macOS, refrain from updating until we list the latest version of macOS as verified. 
+With very short update cycles of macOS, refrain from updating until we list the latest version of macOS as verified.
 
 In November 2020, Apple started a transition to theier own ARM based processor archtecture called "Apple Silicon" on the Mac. These differ significantly from the current Macs based on Intel X86 processors. In the forseeable future, these ARM based Macs will not be able to run ALICE code as software packages we depend on are not yet available for this platform. However with a big Mac community at ALICE we expect support to come once this is possible.
 
@@ -30,7 +29,7 @@ sudo xcodebuild -license
 [Homebrew](https://brew.sh) is a command-line package manager for macOS used to install software packages similar to `yum` on CentOS or `apt` on Ubuntu. There are several different package managers for macOS, but Homebrew is by far the most poppular , and the only one we support.
 
 * Install Homebrew using the [instructions on their webpage](https://brew.sh/).
-* Once installed detect any problems regarding Homebrew and your system using  
+* Once installed detect any problems regarding Homebrew and your system using
 ```bash
 brew doctor
 ```
@@ -50,7 +49,7 @@ Various users have reported that this might terminate with an error. The solutio
 ```bash
 export PATH="/usr/local/opt/gettext/bin:/usr/local/bin:$PATH"
 ```
-* Close Terminal and reopen it to apply changes. 
+* Close Terminal and reopen it to apply changes.
 
 ## Python
 In case you are using [Python from Anaconda](https://www.anaconda.com/) or Python from Homebrew
@@ -58,7 +57,7 @@ then you have `pip` already. Check it by typing:
 ```bash
 type pip3
 ```
-If not present install with 
+If not present install with
 ```bash
 sudo easy_install3.9 pip
 sudo pip3 install --upgrade pip
