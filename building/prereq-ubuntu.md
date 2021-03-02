@@ -11,8 +11,8 @@ aliBuild prerequisites for Ubuntu
 <!-- Dockerfile RUN test `cat /etc/timezone` = Etc/UTC -->
 ALICE software on Ubuntu is supported on a best effort basis. There is no guarantee that software builds or runs correctly. Support requests might have low priority. We were able to successfully build on:
 
-* Ubuntu 20.04 LTS
 * Ubuntu 18.04 LTS
+* Ubuntu 20.04 LTS
 
 ## Install required system packages
 
