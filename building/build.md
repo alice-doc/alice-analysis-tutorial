@@ -468,11 +468,10 @@ you can make aliBuild delete the rest with a little trick.
 
 1. Delete symlinks to all builds:
 ```bash
-find $ALIBUILD_WORK_DIR/<architecture>/ -mindepth 2 -maxdepth 2 -type l -delete
+find $ALIBUILD_WORK_DIR/$(aliBuild architecture)/ -mindepth 2 -maxdepth 2 -type l -delete
 find $ALIBUILD_WORK_DIR/BUILD/ -mindepth 1 -maxdepth 1 -type l -delete
 ```
-where `<architecture>` is the name of your system architecture, returned by `aliBuild architecture`
-(unless you specified it manually using the `-a` option with `aliBuild build`).
+In case you specified the architecture manually (using the `-a` option with `aliBuild build`), you should replace `$(aliBuild architecture)` with your manually specified architecture.
 1. Recreate symlinks to the latest builds of development packages (and their dependencies)
 by running `aliBuild build` for each development package.
 1. Let aliBuild delete all the other builds by running `aliBuild clean`.
