@@ -1,7 +1,7 @@
 # Develop a **single** package reusing a CVMFS / RPM installation **EXPERIMENTAL**
 
 For those cases where you want to develop a single O2Suite package, for example ALICE O2, it's now possible to reuse a preexisting installation in CVMFS or
-installed via the RPM packages. 
+installed via the RPM packages.
 
 In order to do so you must make sure you point `WORK_DIR` to your base installation folder. E.g. for lxplus:
 
@@ -26,10 +26,10 @@ This will fill your environment with all the requirements needed to properly bui
 You can checkout and build most of the AliceO2Group packages with:
 
 ```bash
-git clone https://github.com/AliceO2Group/AliceO2 O2
+git clone --origin upstream https://github.com/AliceO2Group/AliceO2 O2
 mkdir -p O2/objs
 cd O2/objs
-cmake .. 
+cmake ..
 cmake --build . --target all -j8
 ```
 

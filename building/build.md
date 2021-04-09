@@ -55,8 +55,9 @@ to keep them up-to-date manually.
 Update your software by `cd`ing into its directory and running:
 
 ```bash
-git checkout master  # use dev instead of master for O2
-git pull --rebase
+# use dev instead of master for O2
+git checkout master
+git pull --rebase upstream master
 ```
 
 This will work in most cases and will keep your changes. It will also complain if there is some
@@ -64,9 +65,10 @@ conflict you need to solve manually. You also have the nuclear option, to be use
 you do not have any important data:
 
 ```bash
-git checkout master             # use dev for O2
+# use dev instead of master for O2
+git checkout master
 git fetch --all
-git reset --hard origin/master  # use origin/dev for O2
+git reset --hard upstream/master
 ```
 
 Instead of resetting to the current upstream version, you may want to download specific versions of
@@ -424,7 +426,7 @@ move to the AliRoot directory and check the version out:
 
 ```bash
 cd ~/alice/AliRoot
-git fetch origin --tags
+git fetch upstream --tags
 git checkout v5-09-33
 ```
 
@@ -432,9 +434,8 @@ Then update your AliPhysics master:
 
 ```bash
 cd ~/alice/AliPhysics
-git fetch origin master
 git checkout master
-git reset --hard origin/master
+git pull --rebase upstream master
 ```
 
 and then build normally using the `aliBuild` command. You might want to build using different `-z`
