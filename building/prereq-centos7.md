@@ -36,38 +36,6 @@ yum install -y python3-pip
 pip3 install --upgrade pip
 ```
 
-## Get or Update Developer Toolset 7
-
-We require a more recent set of compilers than shipped by the OS. They can be obtained via [Softawre
-Collections](https://www.softwarecollections.org/).
-
-The only supported Developer Toolset for ALICE software is `devtoolset-7`.
-
-With root permissions, i.e. `sudo` or as `root` enable software collections:
-<!-- Dockerfile RUN_INLINE -->
-```bash
-yum install -y centos-release-scl
-yum-config-manager --enable rhel-server-rhscl-7-rpms
-```
-Then, still with `root` permissions install compilers and developer tools via:
-<!-- Dockerfile RUN_INLINE -->
-```bash
-yum install -y devtoolset-7
-```
-By design these tools do not replace the standard tools shipped by the system and have to be enabled explicitly for every new shell session you open:
-```bash
-source scl_source enable devtoolset-7
-```
-If desired so, the above line can be added to your `~/.bashrc` or `~/.bash_profile`, so that tools shipped via devtoolset are automatically available in every shell. However beware that in some special cases that this might have undesired side effects.
-
-You can check if you are running the correct version of GCC with:
-
-```bash
-gcc --version
-```
-
-It should report `GCC v7.3.1`.
-
 You are now ready for [installing aliBuild and start building ALICE
 software](README.md#get-or-upgrade-alibuild)
 
