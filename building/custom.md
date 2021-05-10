@@ -53,9 +53,8 @@ packages to install and configurations to perform.
 
 **Platforms supported on a best-effort basis:**
 
-* [macOS Mojave (10.14) and Catalina (10.15)](prereq-macos.md)
-  ** ⚠️  only Catalina supported for Run 3 software ⚠️  **
-* [Ubuntu (16.04 LTS, 18.04 LTS, 20.04 LTS)](prereq-ubuntu.md)
+* [macOS Catalina (10.15), Big Sur (11.0)](prereq-macos.md)
+* [Ubuntu (18.04 LTS, 20.04 LTS)](prereq-ubuntu.md)
 * [Fedora](prereq-fedora.md)
 * Linux Mint
     * Follow the instructions for the Ubuntu version your Linux Mint version is based on.
@@ -71,7 +70,7 @@ it will be just more difficult for you to get support for it.
 Install or upgrade [aliBuild](https://pypi.python.org/pypi/alibuild/) with `pip`:
 
 ```bash
-sudo pip install alibuild --upgrade
+sudo pip3 install alibuild --upgrade
 ```
 
 Now add the two following lines to your `~/.bashrc` or `~/.bash_profile` (depending on your

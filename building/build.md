@@ -440,3 +440,38 @@ git reset --hard origin/master
 and then build normally using the `aliBuild` command. You might want to build using different `-z`
 options [as explained here](#build-the-same-source-multiple-times-with-different-options) in order
 to have different builds usable in parallel without duplicating your source code.
+
+## 🧹 Delete obsolete builds
+
+With frequent rebuilding of packages, obsolete builds can pile up and occupy a lot of precious
+disk space.
+
+### Basic cleanup
+
+The simplest way to get rid of obsolete builds is to let aliBuild do its best by running:
+```bash
+aliBuild clean
+```
+which can take the optional argument `--aggressive-cleanup` that deletes also source code of built
+dependency packages and downloaded `.tar.gz` archives.
+
+In general, it's good practice to run `aliBuild clean` always after `aliBuild build`.
+
+This might not be enough, as aliBuild will not delete any build directory pointed to by a symlink
+that has "latest" in its name, even when that build is not needed by any other package anymore.
+Manual intervention is therefore sometimes needed.
+
+### Deep cleanup
+
+If you want to keep only the latest builds of your development packages (and their dependencies),
+you can make aliBuild delete the rest with a little trick.
+
+1. Delete symlinks to all builds:
+```bash
+find $ALIBUILD_WORK_DIR/$(aliBuild architecture)/ -mindepth 2 -maxdepth 2 -type l -delete
+find $ALIBUILD_WORK_DIR/BUILD/ -mindepth 1 -maxdepth 1 -type l -delete
+```
+In case you specified the architecture manually (using the `-a` option with `aliBuild build`), you should replace `$(aliBuild architecture)` with your manually specified architecture.
+1. Recreate symlinks to the latest builds of development packages (and their dependencies)
+by running `aliBuild build` for each development package.
+1. Let aliBuild delete all the other builds by running `aliBuild clean`.

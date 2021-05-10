@@ -52,7 +52,7 @@ sudo yum install npm
 Once `npm` is installed, you can install GitBook:
 
 ```bash
-sudo npm install -g gitbook-cli
+sudo npm install -g gitbook-cli@2.3.0
 ```
 
 **Do not use `sudo` on macOS.**
