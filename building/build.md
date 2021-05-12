@@ -52,6 +52,14 @@ The `alidist` directory contains software recipes, telling aliBuild how the soft
 `alidist` directory and your software source code are Git directories **managed by you**: you need
 to keep them up-to-date manually.
 
+{% callout "Check names of your remote repositories" %}
+With older versions of aliBuild, the central remote repository (used for pulling updates) would be
+called `origin` instead of the usual name `upstream` and the personal (fork) remote repository (used
+for pushing changes) would be called `<your-github-username>` instead of the usual name `origin`.
+Please check your settings using `git remote -v` and adjust the Git commands mentioned in
+the following instructions accordingly, if needed.
+{% endcallout %}
+
 Update your software by `cd`ing into its directory and running:
 
 ```bash
