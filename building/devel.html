@@ -789,7 +789,7 @@
                                 
                                 <h1 id="develop-a-single-package-reusing-a-cvmfs--rpm-installation-experimental">Develop a <strong>single</strong> package reusing a CVMFS / RPM installation <strong>EXPERIMENTAL</strong></h1>
 <p>For those cases where you want to develop a single O2Suite package, for example ALICE O2, it&apos;s now possible to reuse a preexisting installation in CVMFS or
-installed via the RPM packages. </p>
+installed via the RPM packages.</p>
 <p>In order to do so you must make sure you point <code>WORK_DIR</code> to your base installation folder. E.g. for lxplus:</p>
 <pre><code class="lang-bash"><span class="hljs-built_in">export</span> WORK_DIR=/cvmfs/alice.cern.ch
 </code></pre>
@@ -801,10 +801,10 @@ installed via the RPM packages. </p>
 </code></pre>
 <p>This will fill your environment with all the requirements needed to properly build O2.</p>
 <p>You can checkout and build most of the AliceO2Group packages with:</p>
-<pre><code class="lang-bash">git <span class="hljs-built_in">clone</span> https://github.com/AliceO2Group/AliceO2 O2
+<pre><code class="lang-bash">git <span class="hljs-built_in">clone</span> --origin upstream https://github.com/AliceO2Group/AliceO2 O2
 mkdir -p O2/objs
 <span class="hljs-built_in">cd</span> O2/objs
-cmake .. 
+cmake ..
 cmake --build . --target all -j8
 </code></pre>
 <p>This is not a replacement for the full alibuild environment, which allows you to build multiple packages at once or to keep track of
@@ -852,7 +852,7 @@ changes in alidist, however it should work already fairly well to develop a sing
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"💪 Develop a single package (Experimental)","level":"1.3.4","depth":2,"next":{"title":"🐳 Using alidock","level":"1.3.5","depth":2,"url":"https://github.com/alidock/alidock/wiki","ref":"https://github.com/alidock/alidock/wiki","articles":[]},"previous":{"title":"📦 Use the precompiled binaries","level":"1.3.3","depth":2,"path":"building/precomp.md","ref":"building/precomp.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/devel.md","mtime":"2021-05-11T15:50:24.746Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-11T15:51:21.302Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"💪 Develop a single package (Experimental)","level":"1.3.4","depth":2,"next":{"title":"🐳 Using alidock","level":"1.3.5","depth":2,"url":"https://github.com/alidock/alidock/wiki","ref":"https://github.com/alidock/alidock/wiki","articles":[]},"previous":{"title":"📦 Use the precompiled binaries","level":"1.3.3","depth":2,"path":"building/precomp.md","ref":"building/precomp.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/devel.md","mtime":"2021-05-16T22:14:04.223Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-16T22:14:58.595Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
