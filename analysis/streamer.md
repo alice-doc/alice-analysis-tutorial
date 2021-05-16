@@ -84,7 +84,6 @@ In the second subsection of this tutorial, you saw that the streamer directives 
 
 Doxygen uses both //!< and ///< to introduce a data member comment. Until ROOT 5, this allowed using //!< for indicating a transient data member. ROOT 6 abruptly broke this compatibility and //!< does not mean transient anymore: we are now forced to use //!<! for introducing a Doxygen comment interpreted as transient in both ROOT 5 and ROOT 6.
 
-For more information, see [https://dberzano.github.io/alice/doxygen/](https://dberzano.github.io/alice/doxygen/)
 {% endcallout %}
 
 # Pitfalls 
