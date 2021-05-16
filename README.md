@@ -22,9 +22,9 @@ First off you need a [GitHub](https://github.com) account. [Fork the
 laptop:
 
 ```bash
-git clone https://github.com/alice-doc/alice-analysis-tutorial
+git clone https://github.com/<your-github-username>/alice-analysis-tutorial
 cd alice-analysis-tutorial/
-git remote add <my_username> https://github.com/<my_username>/alice-analysis-tutorial
+git remote add upstream https://github.com/alice-doc/alice-analysis-tutorial
 ```
 
 Documentation is written in [Markdown](https://daringfireball.net/projects/markdown/syntax) and it
@@ -84,7 +84,7 @@ pull request, for instance:
 
 ```bash
 git commit -a -m 'I am happy with my doc'
-git push <my_username>
+git push origin
 ```
 
 then navigate to your GitHub repository online to open a pull request.
