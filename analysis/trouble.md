@@ -29,12 +29,6 @@ The trace tells you exactly how your job was handled, from copying of files to G
 
 If you have checked your job's trace, stdout and stderr, and still cannot solve an issue, it is completely fine to write a mail to the mailing list. However, be *complete* in your message, specify *what* goes wrong, and provide some examples of *job numbers*. Do not kill your jobs! If the jobs are purged from the queue, debug information is lost. 
 
-{% callout "Debugging 101" %}
-Heads-up: excellent **actual debugging** documentation is available at
--   https://dberzano.github.io/alice/debug/
-{% endcallout %}
-
-
 ### Example: validation error
 Let's take a look at an example of troubleshooting. We have some jobs running, and check their progress on MonALISA. Unfortunately, we see that *all* of our subjobs, corresponding to a given masterjob, go into the error state 'Validation error'
 ![image](figures/a3.png)
