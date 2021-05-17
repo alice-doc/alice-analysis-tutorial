@@ -37,7 +37,8 @@ best-effort basis_.
 
 Given the popularity of other operating systems on laptops (including macOS), we provide a
 containerized installation method, always supported _on a best-effort basis_,
-that allows you to keep using your favorite operating system by still having a consistent environment:
+that allows you to keep using your favorite operating system by still having a consistent environment.
+You can find instructions here:
 
 * [🐳 Install using alidock](https://github.com/alidock/alidock/wiki)
 
@@ -49,7 +50,7 @@ packages to install and configurations to perform.
 
 **Primary supported platform:**
 
-* [CentOS 7](prereq-centos7.md) (no need to follow it if using alidock)
+* [CentOS 7](prereq-centos7.md)
 
 **Platforms supported on a best-effort basis:**
 
