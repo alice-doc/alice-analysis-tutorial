@@ -13,10 +13,7 @@ Run 2 software, and O2 for Run 3.
 
 ## Prepare your source code
 
-We assume your work area is `~/alice`. If you are working in an
-[alidock](https://github.com/alidock/alidock/wiki) environment, you might as well use the
-container's `~` directly (which corresponds to your laptop's `~/alidock`).
-
+We assume your work area is `~/alice`.
 So, first off, create the directory and move to it:
 
 ```bash
@@ -96,10 +93,7 @@ As a developer, and ALICE contributor, you must be capable of using and understa
 {% endcallout %}
 
 
-## Check your prerequisites (skip if using alidock!)
-
-** 🐳 If you are building with [alidock](https://github.com/alidock/alidock/wiki), skip this part
-and [jump to the build](#build-and-rebuild). 🐳 **
+## Check your prerequisites
 
 aliBuild comes with the command `aliDoctor` that will help you identifying if your prerequisites
 were installed correctly. In general, aliBuild is capable of building all required software
@@ -184,9 +178,8 @@ env ALIBUILD_O2_TESTS=1 aliBuild build O2 --defaults o2 --debug
 _⚠️  It is recommended to run the first O2 build without the tests enabled to let it complete. You
 will not have to rerun it from scratch because of test failures like this._
 
-Using the combinations above in an [alidock environment](https://github.com/alidock/alidock/wiki) or
-on CentOS 7 will make aliBuild automatically download the precompiled binaries for almost all
-packages.
+Using the combinations above on CentOS 7 will make aliBuild automatically download the precompiled 
+binaries for almost all packages.
 
 {% callout "AliPhysics with ROOT 6 and the Grid" %}
 The command above will produce AliPhysics with ROOT 6 as a dependency. When using this version, you
@@ -198,7 +191,7 @@ just [use it from CVMFS](precomp.md) by logging in to `lxplus.cern.ch`.
 
 ### Other build options
 
-The options above are suitable for alidock or a CentOS 7 installation, since precompiled binaries
+The options above are suitable for a CentOS 7 installation, since precompiled binaries
 will be downloaded. You also have other installation options according to your needs: it is not
 guaranteed that cached binaries are available for the following options, but they may be faster to
 build.
@@ -339,9 +332,9 @@ aliBuild build AliPhysics --defaults user-next-root6 -j 1
 ```
 
 
-### Do not use the cache on alidock and CentOS 7
+### Do not use the cache on CentOS 7
 
-aliBuild will attempt to fetch the precompiled binaries automatically in an alidock environment or
+aliBuild will attempt to fetch the precompiled binaries automatically
 on CentOS 7: no need to specify extra options.
 
 If you want _not_ to use them for some reason, it is important you follow the [CentOS 7

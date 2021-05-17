@@ -87,36 +87,25 @@ command line.
 You will export your certificates to the following directory:
 
 ```
-~/alidock/.globus
+~/.globus
 ```
-
-So, first off, open a Terminal, create the directory, and link `~/.globus` to it (and not the other
-way around):
-
-```bash
-mkdir -p ~/alidock/.globus
-ln -nfs ~/alidock/.globus ~/.globus
-```
-
-_⚠️ If the second command fails, it's because you already have a `~/.globus` directory. Just move its
-contents to `~/alidock/.globus` and recreate the symbolic link with `ln`._
 
 Now export the **certificate** with the following command (you will be prompted for the export
 password you have selected when you have generated it):
 
 ```bash
-openssl pkcs12 -clcerts -nokeys -in ~/Downloads/myCertificate.p12 -out ~/alidock/.globus/usercert.pem
+openssl pkcs12 -clcerts -nokeys -in ~/Downloads/myCertificate.p12 -out ~/.globus/usercert.pem
 ```
 
-The result will be a file called `usercert.pem` in your `~/alidock/.globus` directory. Note that
+The result will be a file called `usercert.pem` in your `~/.globus` directory. Note that
 your input file ending with `.p12` may have a different name and may be stored in a different
 location.
 
 Time to export the **private key**:
 
 ```bash
-openssl pkcs12 -nocerts -in ~/Downloads/myCertificate.p12 -out ~/alidock/.globus/userkey.pem
-chmod 0400 ~/alidock/.globus/userkey.pem
+openssl pkcs12 -nocerts -in ~/Downloads/myCertificate.p12 -out ~/.globus/userkey.pem
+chmod 0400 ~/.globus/userkey.pem
 ```
 
 When it says:
@@ -139,8 +128,7 @@ are stressing this point _a lot_). This question will be asked twice for confirm
 
 ## Test your certificate
 
-Your certificate will be available to the ALICE Grid command line client whether you are using
-[alidock](https://github.com/alidock/alidock/wiki) or another installation method.
+Your certificate will be available to the ALICE Grid command line client.
 
 Enter your ALICE environment and create a "temporary access token":
 

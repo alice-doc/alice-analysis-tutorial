@@ -11,7 +11,6 @@
   * [🛠 Build the packages](building/build.md)
   * [📦 Use the precompiled binaries](building/precomp.md)
   * [💪 Develop a single package (Experimental)](building/devel.md)
-  * [🐳 Using alidock](https://github.com/alidock/alidock/wiki)
 
 * [Writing an analysis task](analysis/welcome.md)
   * [AliAnalysisTaskSE](analysis/classes.md)
