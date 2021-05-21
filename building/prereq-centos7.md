@@ -20,20 +20,7 @@ enabled=1
 gpgcheck=0
 EOF
 yum update -y
-yum install -y alice-o2-full-deps
-```
-
-## Python and pip
-AliBuild, our build tool, is installed via the python Package manager `pip`.
-In case  
-```bash
-pip3 show pip
-```
-returns `command not found` or similar, install `pip` with root permissions, i.e. `sudo` or as `root`:
-<!-- Dockerfile RUN_INLINE -->
-```bash
-yum install -y python3-pip
-pip3 install --upgrade pip
+yum install -y alice-o2-full-deps alibuild
 ```
 
 You are now ready for [installing aliBuild and start building ALICE
