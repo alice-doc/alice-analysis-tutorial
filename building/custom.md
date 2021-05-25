@@ -51,6 +51,7 @@ packages to install and configurations to perform.
 **Primary supported platform:**
 
 * [CentOS 7](prereq-centos7.md)
+* [CentOS 8](prereq-centos8.md)
 
 **Platforms supported on a best-effort basis:**
 
@@ -66,15 +67,10 @@ packages to install and configurations to perform.
 If your operating system is _not_ in any list, it does not mean our software won't work on it;
 it will be just more difficult for you to get support for it.
 
-## Get or upgrade aliBuild
+## Configure aliBuild
 
-Install or upgrade [aliBuild](https://pypi.python.org/pypi/alibuild/) with `pip`:
-
-```bash
-sudo pip3 install alibuild --upgrade
-```
-
-Now add the two following lines to your `~/.bashrc` or `~/.bash_profile` (depending on your
+After you are done installing alibuild you need to configure it by adding two
+following lines to your `~/.bashrc` or `~/.bash_profile` (depending on your
 configuration):
 
 ```bash
@@ -124,7 +120,6 @@ Verify you have `aliBuild` in your path:
 ```bash
 type aliBuild
 ```
-
 
 ### I need a special version of aliBuild
 
