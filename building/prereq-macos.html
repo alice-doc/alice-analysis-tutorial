@@ -807,7 +807,7 @@
 <h2 id="install-the-required-packages">Install the required packages</h2>
 <p>Note that Homebrew does not run as root. Do not prepend <code>sudo</code> to <strong>any</strong> of the following commands.</p>
 <ul>
-<li>Install the prerequisites via:<pre><code class="lang-bash">brew install alisw/system-deps/o2-full-deps
+<li>Install the prerequisites and aliBuild via:<pre><code class="lang-bash">brew install alisw/system-deps/o2-full-deps alisw/system-deps/alibuild
 </code></pre>
 Various users have reported that this might terminate with an error. The solution oddly enough seems to be to execute the above command multiple times until brew does not complain anymore.</li>
 <li><p>If you have just upgraded your Xcode or macOS, you should run <code>brew reinstall</code> instead, in order to force the reinstallation of already installed packages. You also might want to run <code>brew cleanup</code> at the end to free up some space.</p>
@@ -818,16 +818,7 @@ Various users have reported that this might terminate with an error. The solutio
 </li>
 <li>Close Terminal and reopen it to apply changes.</li>
 </ul>
-<h2 id="python">Python</h2>
-<p>In case you are using <a href="https://www.anaconda.com/" target="_blank">Python from Anaconda</a> or Python from Homebrew
-then you have <code>pip</code> already. Check it by typing:</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">type</span> pip3
-</code></pre>
-<p>If not present install with</p>
-<pre><code class="lang-bash">sudo easy_install3.9 pip
-sudo pip3 install --upgrade pip
-</code></pre>
-<h2 id="optinal-exclude-your-work-directory-from-spotlight">(Optinal) Exclude your work directory from Spotlight</h2>
+<h2 id="recommended-exclude-your-work-directory-from-spotlight">(Recommended) Exclude your work directory from Spotlight</h2>
 <p>The mac search engine (Spotlight) will be indexing the build directory which can have severe effects on your system performance. To avoid that, you can exclude your working directory (we are assuming <code>~/alice</code> - create if not yet existing).
 Go to <code>(Apple) menu&gt;System preferences&gt;Spotlight</code>. In the <code>Privacy</code> tab, hit the <code>+</code> button. Now select the <code>~/alice</code> directory and confirm.</p>
 <p>You are now ready for <a href="./#get-or-upgrade-alibuild">installing aliBuild and start building ALICE
@@ -875,7 +866,7 @@ software</a></p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Prerequisites for macOS","level":"1.3.1.3","depth":3,"next":{"title":"Prerequisites for Ubuntu","level":"1.3.1.4","depth":3,"path":"building/prereq-ubuntu.md","ref":"building/prereq-ubuntu.md","articles":[]},"previous":{"title":"Prerequisites for CentOS 8","level":"1.3.1.2","depth":3,"path":"building/prereq-centos8.md","ref":"building/prereq-centos8.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/prereq-macos.md","mtime":"2021-05-21T10:07:18.822Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-21T10:08:04.084Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Prerequisites for macOS","level":"1.3.1.3","depth":3,"next":{"title":"Prerequisites for Ubuntu","level":"1.3.1.4","depth":3,"path":"building/prereq-ubuntu.md","ref":"building/prereq-ubuntu.md","articles":[]},"previous":{"title":"Prerequisites for CentOS 8","level":"1.3.1.2","depth":3,"path":"building/prereq-centos8.md","ref":"building/prereq-centos8.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/prereq-macos.md","mtime":"2021-05-25T12:26:00.840Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-25T12:26:54.694Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
