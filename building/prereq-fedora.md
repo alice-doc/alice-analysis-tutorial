@@ -27,6 +27,31 @@ dnf install -y python3-pip
 pip3 install --upgrade pip
 ```
 
+## Get or upgrade aliBuild
+
+Install or upgrade [aliBuild](https://pypi.python.org/pypi/alibuild/) with `pip`:
+
+```bash
+sudo pip3 install alibuild --upgrade
+```
+
+Now add the two following lines to your `~/.bashrc` or `~/.bash_profile` (depending on your
+configuration):
+
+```bash
+export ALIBUILD_WORK_DIR="$HOME/alice/sw"
+eval "`alienv shell-helper`"
+```
+
+The first line tells what directory is used as "build cache", the second line installs a "shell
+helper" that makes easier to run certain aliBuild-related commands.
+
+You need to close and reopen your terminal for the change to be effective. The directory
+`~/alice/sw` will be created the first time you run aliBuild.
+
+> Note that this directory tends to grow in size over time, and it is the one you need to remove in
+> case of cleanups.
+
 You are now ready for [installing aliBuild and start building ALICE
 software](README.md#get-or-upgrade-alibuild)
 

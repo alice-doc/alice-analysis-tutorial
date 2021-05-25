@@ -38,9 +38,9 @@ brew doctor
 
 Note that Homebrew does not run as root. Do not prepend `sudo` to **any** of the following commands.
 
-* Install the prerequisites via:
+* Install the prerequisites and aliBuild via:
 ```bash
-brew install alisw/system-deps/o2-full-deps
+brew install alisw/system-deps/o2-full-deps alisw/system-deps/alibuild
 ```
 Various users have reported that this might terminate with an error. The solution oddly enough seems to be to execute the above command multiple times until brew does not complain anymore.
 * If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to force the reinstallation of already installed packages. You also might want to run `brew cleanup` at the end to free up some space.
@@ -51,19 +51,7 @@ export PATH="/usr/local/opt/gettext/bin:/usr/local/bin:$PATH"
 ```
 * Close Terminal and reopen it to apply changes.
 
-## Python
-In case you are using [Python from Anaconda](https://www.anaconda.com/) or Python from Homebrew
-then you have `pip` already. Check it by typing:
-```bash
-type pip3
-```
-If not present install with
-```bash
-sudo easy_install3.9 pip
-sudo pip3 install --upgrade pip
-```
-
-## (Optinal) Exclude your work directory from Spotlight
+## (Recommended) Exclude your work directory from Spotlight
 The mac search engine (Spotlight) will be indexing the build directory which can have severe effects on your system performance. To avoid that, you can exclude your working directory (we are assuming `~/alice` - create if not yet existing).
 Go to `(Apple) menu>System preferences>Spotlight`. In the `Privacy` tab, hit the `+` button. Now select the `~/alice` directory and confirm.
 
