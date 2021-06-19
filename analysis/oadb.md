@@ -12,6 +12,8 @@ We have preserved the same directory structure found on AliPhysics, and the
 same permissions: for instance, `PWGLF` is writable by all members of
 `alice-svn-pwglf` (whose members can be edited by the group conveners).
 
+### Using the OADB on the grid
+
 Every day, in concomitance with the AliPhysics daily tag (at 4pm Geneva time),
 this folder is snapshotted on CVMFS under the following path:
 
@@ -31,6 +33,28 @@ where the last component is the AliPhysics tag name.
 CVMFS brings the advantage to make data access from Grid jobs reliable and
 faster due to caching (files unchanged in two different snapshots are not
 downloaded twice).
+
+### Using the OADB on your local system
+
+If your system is connected to the network, you can access the OADB via (x)rootd, but setting the `ALICE_DATA` environment variable
+```bash
+export ALICE_DATA=root://eospublic.cern.ch//eos/experiment/alice/analysis-data
+```
+
+If you want to have your OADB data locally, you can download it from lxplus:
+
+```bash
+export OADB_PATH=/path/to/my/local/oadb
+rsync -av --delete cern_user@lxplus.cern.ch:/eos/experiment/alice/analysis-data/ $OADB_PATH/
+```
+
+> Trailing slashes are important to rsync! Do not forget them!
+
+Note that the variable `$OADB_PATH` must be exported to the environment where
+you run your local analysis in order to make it visible to the job.
+
+
+### Accessing the OADB from code
 
 In order to profit from the separate storage for large files we have created an
 interface in AliRoot to allow transparent access to OADB files using a relative
@@ -58,19 +82,7 @@ list of paths:
 6. `root://eospublic.cern.ch//eos/experiment/alice/analysis-data/OADB/<file>`
 
 This means that for laptop analysis it will always be possible to access data
-files, somehow, and in a transparent fashion. If you want to have your OADB
-data locally, you can download it from lxplus:
-
-```bash
-export OADB_PATH=/path/to/my/local/oadb
-rsync -av --delete cern_user@lxplus.cern.ch:/eos/experiment/alice/analysis-data/ $OADB_PATH/
-```
-
-> Trailing slashes are important to rsync! Do not forget them!
-
-Note that the variable `$OADB_PATH` must be exported to the environment where
-you run your local analysis in order to make it visible to the job.
-
+files, somehow, and in a transparent fashion. 
 
 ### Non-OADB data files
 
