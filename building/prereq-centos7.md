@@ -16,7 +16,9 @@ enabled=1
 gpgcheck=0
 EOF
 yum update -y
-yum install -y alice-o2-full-deps alibuild
+yum install -y alice-o2-full-deps 
+yum update -y
+yum install -y alibuild
 ```
 
 You are now ready to [start building ALICE software](README.md#get-or-upgrade-alibuild)
