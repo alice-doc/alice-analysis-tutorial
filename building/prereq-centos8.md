@@ -1,9 +1,6 @@
 aliBuild Prerequisites for CentOS 8
 ===================================
 
-For ALICE O2, CentOS 8 (CC8) is not yet an [officialy supported target platform](https://indico.cern.ch/event/642232/#3-wp3-common-tools-and-softwar).
-
-
 ## Install or Upgrade the Required Packages
 
 With root permissions, i.e. `sudo` or as `root` install the prerequisites using:
