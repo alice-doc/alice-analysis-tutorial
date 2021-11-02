@@ -8,6 +8,8 @@ ALICE software on macOS is supported on a best effort basis. Even though we syst
 
 With very short update cycles of macOS, refrain from updating until we list the latest version of macOS as verified.
 
+On 25/10/2021 Apple released macOS Monterey (12.0) which as of now is unable to compile ALICE software or its dependencies. It is therefore strongly advised to not upgrade until further notice.
+
 In November 2020, Apple started a transition to theier own ARM based processor archtecture called "Apple Silicon" on the Mac. These differ significantly from the current Macs based on Intel X86 processors. In the forseeable future, these ARM based Macs will not be able to run ALICE code as software packages we depend on are not yet available for this platform. However with a big Mac community at ALICE we expect support to come once this is possible.
 
 ## Get Xcode
