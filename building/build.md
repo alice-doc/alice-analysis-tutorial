@@ -8,7 +8,7 @@ will never need to access this directory. The source code for the packages you w
 will be stored elsewhere.
 
 In the following example, we will assume that you need to download AliRoot/AliPhysics for developing
-Run 2 software, and O2 for Run 3.
+Run 2 software, and O2/O2Physics for Run 3.
 
 
 ## Prepare your source code
@@ -33,12 +33,17 @@ Only if you need to develop the Run 2 core software (unlikely), download AliRoot
 aliBuild init AliRoot@master
 ```
 
-If you need to develop for Run 3, download O2 (note the `--defaults o2`):
+If you need to develop for Run 3, download O2Physics (note the `--defaults o2`):
+
+```bash
+aliBuild init O2Physics@master --defaults o2
+```
+
+Only if you need to develop the Run 3 core software (unlikely), download O2:
 
 ```bash
 aliBuild init O2@dev --defaults o2
 ```
-
 
 ### Source code and recipes
 
@@ -111,14 +116,14 @@ For Run 2 software based on ROOT 6 (note: this is the only option on macOS):
 
 ```bash
 cd ~/alice
-aliDoctor AliPhysics --defaults next-root6
+aliDoctor AliPhysics --defaults o2
 ```
 
 For Run 3 software:
 
 ```bash
 cd ~/alice
-aliDoctor O2 --defaults o2
+aliDoctor O2Physics --defaults o2
 ```
 
 aliDoctor will warn you that some packages have to be built as they could not be found from the
@@ -150,7 +155,7 @@ You can build the whole Run 2 software stack based on ROOT 6 with:
 
 ```
 cd ~/alice
-aliBuild build AliPhysics --defaults user-next-root6
+aliBuild build AliPhysics --defaults o2
 ```
 
 If you also need to work with GEANT 3, GEANT 4 and DPMJET, use:
@@ -160,11 +165,11 @@ cd ~/alice
 aliBuild build AliPhysics --defaults next-root6
 ```
 
-Similarly, for O2:
+Similarly, for O2Physics:
 
 ```
 cd ~/alice
-aliBuild build O2 --defaults o2
+aliBuild build O2Physics --defaults o2
 ```
 
 If you want to build O2 and run the tests as well (same way as they are run on the pull request
@@ -328,7 +333,7 @@ considerably slowing down your work. In some cases you may want to reduce the nu
 available to aliBuild by using the `-j <num-cores>` option:
 
 ```bash
-aliBuild build AliPhysics --defaults user-next-root6 -j 1
+aliBuild build AliPhysics --defaults o2 -j 1
 ```
 
 
@@ -375,13 +380,13 @@ alienv enter AliPhysics/latest-aliroot5-user
 **Let's now build the same AliPhysics with ROOT 6:**
 
 ```bash
-aliBuild build AliPhysics --defaults user-next-root6 -z aliroot6
+aliBuild build AliPhysics --defaults o2 -z aliroot6
 ```
 
 Now, the message tells us to type:
 
 ```bash
-alienv enter AliPhysics/latest-aliroot6-user-next-root6
+alienv enter AliPhysics/latest-aliroot6-o2
 ```
 
 Keep in mind that:
@@ -397,7 +402,7 @@ environment:
 
 ```bash
 alienv setenv AliPhysics/latest-aliroot5-user -c aliroot
-alienv setenv AliPhysics/latest-aliroot6-user-next-root6 -c aliroot
+alienv setenv AliPhysics/latest-aliroot6-o2 -c aliroot
 ```
 
 The `aliroot` command will be run with the correct environment in both cases.
