@@ -808,7 +808,7 @@ So, first off, create the directory and move to it:</p>
 <p>The <code>alidist</code> directory contains software recipes, telling aliBuild how the software is built. Your
 <code>alidist</code> directory and your software source code are Git directories <strong>managed by you</strong>: you need
 to keep them up-to-date manually.</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(8382086756);" id="check-names-of-your-remote-repositories"><i class="fa fa-info-circle"></i> Check names of your remote repositories<span id="heading-8382086756"></span></h3></div><div class="panel-body" id="panel-8382086756"><p>With older versions of aliBuild, the central remote repository (used for pulling updates) would be
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7375794636);" id="check-names-of-your-remote-repositories"><i class="fa fa-info-circle"></i> Check names of your remote repositories<span id="heading-7375794636"></span></h3></div><div class="panel-body" id="panel-7375794636"><p>With older versions of aliBuild, the central remote repository (used for pulling updates) would be
 called <code>origin</code> instead of the usual name <code>upstream</code> and the personal (fork) remote repository (used
 for pushing changes) would be called <code>&lt;your-github-username&gt;</code> instead of the usual name <code>origin</code>.
 Please check your settings using <code>git remote -v</code> and adjust the Git commands mentioned in
@@ -833,7 +833,7 @@ the software:</p>
 git fetch --all --tags
 git checkout v5-09-42-01
 </code></pre>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(9400224616);" id="why-manual-updates"><i class="fa fa-info-circle"></i> Why manual updates?<span id="heading-9400224616"></span></h3></div><div class="panel-body" id="panel-9400224616"><p>Software downloaded under your working directory is your responsibility. Our tools will not take any
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7627735224);" id="why-manual-updates"><i class="fa fa-info-circle"></i> Why manual updates?<span id="heading-7627735224"></span></h3></div><div class="panel-body" id="panel-7627735224"><p>Software downloaded under your working directory is your responsibility. Our tools will not take any
 action to update it: imagine if you lose important data because of an automatic update!</p>
 <p>As a developer, and ALICE contributor, you must be capable of using and understanding <code>git</code>.</p>
 </div></div></p>
@@ -894,7 +894,7 @@ env ALIBUILD_O2_TESTS=1 aliBuild build O2 --defaults o2 --debug
 will not have to rerun it from scratch because of test failures like this.</em></p>
 <p>Using the combinations above on CentOS 7 will make aliBuild automatically download the precompiled 
 binaries for almost all packages.</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7680116755);" id="aliphysics-with-root-6-and-the-grid"><i class="fa fa-info-circle"></i> AliPhysics with ROOT 6 and the Grid<span id="heading-7680116755"></span></h3></div><div class="panel-body" id="panel-7680116755"><p>The command above will produce AliPhysics with ROOT 6 as a dependency. When using this version, you
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7035182470);" id="aliphysics-with-root-6-and-the-grid"><i class="fa fa-info-circle"></i> AliPhysics with ROOT 6 and the Grid<span id="heading-7035182470"></span></h3></div><div class="panel-body" id="panel-7035182470"><p>The command above will produce AliPhysics with ROOT 6 as a dependency. When using this version, you
 will only be able to submit Grid analysis jobs using ROOT 6-based builds (whose name ends with
 <code>_ROOT6</code>). If you still need ROOT 5 only for submitting Grid jobs, there is no need to install it:
 just <a href="precomp.html">use it from CVMFS</a> by logging in to <code>lxplus.cern.ch</code>.</p>
@@ -923,7 +923,7 @@ alienv setenv GCC-Toolchain/latest -c cmake --build . -- -j &lt;num-parallel-job
 </code></pre>
 <p>Replace <code>&lt;num-parallel-jobs&gt;</code> with a sensible number (<em>e.g.</em> slightly more than the actual number of
 your cores).</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(4405720554);" id="you-lied-alibuild-is-rebuilding-everything-&#x1F92C;"><i class="fa fa-info-circle"></i> You lied. aliBuild is rebuilding everything! &#x1F92C;<span id="heading-4405720554"></span></h3></div><div class="panel-body" id="panel-4405720554"><p>One or more of the following actions might change the way aliBuild sees and uses the dependencies
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(2315583583);" id="you-lied-alibuild-is-rebuilding-everything-&#x1F92C;"><i class="fa fa-info-circle"></i> You lied. aliBuild is rebuilding everything! &#x1F92C;<span id="heading-2315583583"></span></h3></div><div class="panel-body" id="panel-2315583583"><p>One or more of the following actions might change the way aliBuild sees and uses the dependencies
 and might result in a <strong>full</strong> (or nearly) rebuild. So, if an important conference is approaching
 (well: it always does, doesn&apos;t it?) <strong>plan the following actions accordingly as they might increase
 the build time</strong>:</p>
@@ -949,7 +949,7 @@ find them automatically in the environment! <code>alienv enter</code> is verbose
 loaded packages if you have doubts.</em></p>
 <p>The <code>alienv enter</code> command drops you to a new shell. Unload the packages by simply exiting it with
 the <code>exit</code> command.</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7752470309);" id="i-have-several-aliphysics-versions-which-one-is-aliphysicslatest"><i class="fa fa-info-circle"></i> I have several AliPhysics versions. Which one is AliPhysics/latest?<span id="heading-7752470309"></span></h3></div><div class="panel-body" id="panel-7752470309"><p>aliBuild will tell you exactly what you need to type in order to load the software you have just
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(512352596);" id="i-have-several-aliphysics-versions-which-one-is-aliphysicslatest"><i class="fa fa-info-circle"></i> I have several AliPhysics versions. Which one is AliPhysics/latest?<span id="heading-512352596"></span></h3></div><div class="panel-body" id="panel-512352596"><p>aliBuild will tell you exactly what you need to type in order to load the software you have just
 built. Just use aliBuild&apos;s suggestion in place of <code>AliPhysics/latest</code> wherever appropriate: for
 instance, if you have several AliPhysics versions, <code>AliPhysics/latest</code> will point to the version you
 have built more recently, not the latest.</p>
@@ -969,7 +969,7 @@ with Bash scripts):</p>
 it in the current shell:</p>
 <pre><code class="lang-bash">alienv setenv AliPhysics/latest -c aliroot myMacro.C+
 </code></pre>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(6612216383);" id="&#x1F6AB;do-not-load-alienv-automatically-in-your-shell"><i class="fa fa-info-circle"></i> &#x1F6AB;Do not load alienv automatically in your shell<span id="heading-6612216383"></span></h3></div><div class="panel-body" id="panel-6612216383"><p>Even if this is technically possible, it is strongly not recommended to load the environment with
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(6685788172);" id="&#x1F6AB;do-not-load-alienv-automatically-in-your-shell"><i class="fa fa-info-circle"></i> &#x1F6AB;Do not load alienv automatically in your shell<span id="heading-6685788172"></span></h3></div><div class="panel-body" id="panel-6685788172"><p>Even if this is technically possible, it is strongly not recommended to load the environment with
 <code>alienv</code> in your <code>~/.bashrc</code>! <strong>You must keep your environment pristine for safely running
 aliBuild.</strong> By not loading the environment automatically, you will avoid a huge source of errors.</p>
 <p>Do you still find annoying to type <code>alienv enter AliPhysics/latest</code> every time you want to use it?
@@ -1030,7 +1030,7 @@ environment:</p>
 alienv setenv AliPhysics/latest-aliroot6-o2 -c aliroot
 </code></pre>
 <p>The <code>aliroot</code> command will be run with the correct environment in both cases.</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(6353860858);" id="migrating-from-root-5-to-root-6"><i class="fa fa-info-circle"></i> Migrating from ROOT 5 to ROOT 6<span id="heading-6353860858"></span></h3></div><div class="panel-body" id="panel-6353860858"><p>While you are at it, if you want to migrate your existing code to ROOT 6 (and make sure it works
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(6886628970);" id="migrating-from-root-5-to-root-6"><i class="fa fa-info-circle"></i> Migrating from ROOT 5 to ROOT 6<span id="heading-6886628970"></span></h3></div><div class="panel-body" id="panel-6886628970"><p>While you are at it, if you want to migrate your existing code to ROOT 6 (and make sure it works
 there) check out our <a href="../analysis/ROOT5-to-6.html">migration guide</a>.</p>
 </div></div></p>
 <h3 id="build-specific-releases-tags-of-the-software">Build specific releases (tags) of the software</h3>
@@ -1127,7 +1127,7 @@ by running <code>aliBuild build</code> for each development package.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"🛠 Build the packages","level":"1.3.2","depth":2,"next":{"title":"📦 Use the precompiled binaries","level":"1.3.3","depth":2,"path":"building/precomp.md","ref":"building/precomp.md","articles":[]},"previous":{"title":"Prerequisites for Fedora","level":"1.3.1.5","depth":3,"path":"building/prereq-fedora.md","ref":"building/prereq-fedora.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/build.md","mtime":"2021-11-11T17:32:09.055Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-11-11T17:33:21.398Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"🛠 Build the packages","level":"1.3.2","depth":2,"next":{"title":"📦 Use the precompiled binaries","level":"1.3.3","depth":2,"path":"building/precomp.md","ref":"building/precomp.md","articles":[]},"previous":{"title":"Prerequisites for Fedora","level":"1.3.1.5","depth":3,"path":"building/prereq-fedora.md","ref":"building/prereq-fedora.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/build.md","mtime":"2021-12-02T13:29:34.186Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-02T13:30:31.081Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
