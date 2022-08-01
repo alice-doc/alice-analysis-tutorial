@@ -50,6 +50,7 @@ packages to install and configurations to perform.
 * [macOS Catalina (10.15), Big Sur (11.0)](prereq-macos.md)
 * [Ubuntu (18.04 LTS, 20.04 LTS)](prereq-ubuntu.md)
 * [Fedora](prereq-fedora.md)
+* [ArchLinux](prereq-arch.md)
 * Linux Mint
     * Follow the instructions for the Ubuntu version your Linux Mint version is based on.
     * Specify the corresponding Ubuntu architecture when running the `aliBuild` command

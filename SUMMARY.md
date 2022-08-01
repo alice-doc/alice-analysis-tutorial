@@ -8,6 +8,7 @@
     * [Prerequisites for macOS](building/prereq-macos.md)
     * [Prerequisites for Ubuntu](building/prereq-ubuntu.md)
     * [Prerequisites for Fedora](building/prereq-fedora.md)
+    * [Prerequisites for ArchLinux](building/prereq-arch.md)
   * [🛠 Build the packages](building/build.md)
   * [📦 Use the precompiled binaries](building/precomp.md)
   * [💪 Develop a single package (Experimental)](building/devel.md)
