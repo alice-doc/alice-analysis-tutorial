@@ -1,16 +1,10 @@
 aliBuild prerequisites for macOS
 ================================
 
-ALICE software on macOS is supported on a best effort basis. Even though we systematically check macOS builds there is no guarantee that software builds or runs correctly. Support requests might have low priority. We were able to successfully build on:
+ALICE software on macOS is supported on a best effort basis. Even though we systematically check macOS builds there is no guarantee that software builds or runs correctly. Support requests might have low priority. That said, we were able to successfully build on:
 
-* Catalina (10.15)
 * Big Sur (11.0)
-
-With very short update cycles of macOS, refrain from updating until we list the latest version of macOS as verified.
-
-On 25/10/2021 Apple released macOS Monterey (12.0) which as of now is unable to compile ALICE software or its dependencies. It is therefore strongly advised to not upgrade until further notice.
-
-In November 2020, Apple started a transition to theier own ARM based processor archtecture called "Apple Silicon" on the Mac. These differ significantly from the current Macs based on Intel X86 processors. In the forseeable future, these ARM based Macs will not be able to run ALICE code as software packages we depend on are not yet available for this platform. However with a big Mac community at ALICE we expect support to come once this is possible.
+* Monterey (12.0) both x86 and M1
 
 ## Get Xcode
 
@@ -28,7 +22,7 @@ sudo xcodebuild -license
 
 ## Get Homebrew
 
-[Homebrew](https://brew.sh) is a command-line package manager for macOS used to install software packages similar to `yum` on CentOS or `apt` on Ubuntu. There are several different package managers for macOS, but Homebrew is by far the most poppular , and the only one we support.
+[Homebrew](https://brew.sh) is a command-line package manager for macOS used to install software packages similar to `yum` on CentOS or `apt` on Ubuntu.
 
 * Install Homebrew using the [instructions on their webpage](https://brew.sh/).
 * Once installed detect any problems regarding Homebrew and your system using
@@ -44,8 +38,6 @@ Note that Homebrew does not run as root. Do not prepend `sudo` to **any** of the
 ```bash
 brew install alisw/system-deps/o2-full-deps alisw/system-deps/alibuild
 ```
-Various users have reported that this might terminate with an error. The solution oddly enough seems to be to execute the above command multiple times until brew does not complain anymore.
-* If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to force the reinstallation of already installed packages. You also might want to run `brew cleanup` at the end to free up some space.
 
 * Edit or create `~/.zprofile` and add
 ```bash
@@ -54,8 +46,14 @@ export PATH="/usr/local/opt/gettext/bin:/usr/local/bin:$PATH"
 * Close Terminal and reopen it to apply changes.
 
 ## (Recommended) Exclude your work directory from Spotlight
+
 The mac search engine (Spotlight) will be indexing the build directory which can have severe effects on your system performance. To avoid that, you can exclude your working directory (we are assuming `~/alice` - create if not yet existing).
 Go to `(Apple) menu>System preferences>Spotlight`. In the `Privacy` tab, hit the `+` button. Now select the `~/alice` directory and confirm.
 
-You are now ready for [installing aliBuild and start building ALICE
-software](README.md#get-or-upgrade-alibuild)
+You are now ready for [installing aliBuild and start building ALICE software](README.md#get-or-upgrade-alibuild)
+
+## Troubleshooting:
+
+Some users have reported that homebrew commands might terminate with an error. The solution oddly enough seems to be to execute the above command multiple times until brew does not complain anymore.
+
+If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to force the reinstallation of already installed packages. You also might want to run `brew cleanup` at the end to free up some space.
