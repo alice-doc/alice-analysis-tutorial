@@ -37,7 +37,7 @@ On Ubuntu:
 sudo apt install npm
 ```
 
-On macOS (assuming you have [Homebrew](https://brew.sh/):
+On macOS (assuming you have [Homebrew](https://brew.sh/)):
 
 ```bash
 brew install npm
