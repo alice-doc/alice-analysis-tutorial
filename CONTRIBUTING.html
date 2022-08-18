@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · ALICE Analysis Tutorial</title>
+        <title>Contributing · ALICE Analysis Tutorial</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,8 +65,8 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="start/" />
     
+    <link rel="prev" href="rivet/references.html" />
     
 
     </head>
@@ -95,7 +95,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -761,7 +761,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="CONTRIBUTING.html">
+        <li class="chapter active" data-level="1.7" data-path="CONTRIBUTING.html">
             
                 <a href="CONTRIBUTING.html">
             
@@ -804,7 +804,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Contributing</a>
     </h1>
 </div>
 
@@ -820,15 +820,59 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="welcome-to-the-alice-analysis-tutorial-documentation">Welcome to the ALICE Analysis Tutorial documentation</h1>
+<p><a href="https://github.com/alice-doc/alice-analysis-tutorial/actions" target="_blank"><img src="https://github.com/alice-doc/alice-analysis-tutorial/workflows/Build%20and%20Deploy/badge.svg" alt="Build Status"></a></p>
 <p>This is a community-contributed place where we collect all our documentation. Every ALICE member can
 contribute, and the Analysis Tutorial Committee will review every contribution.</p>
-<ul>
-<li>As a first step, you should make sure you are <a href="https://alice-doc.github.io/alice-analysis-tutorial/start/" target="_blank">correctly registered as an ALICE user</a>.</li>
-<li>Then you should head of to the section on how to <a href="https://alice-doc.github.io/alice-analysis-tutorial/building/" target="_blank">build ALICE software</a>.</li>
-<li>Finally you can dive in in the <a href="https://aliceo2group.github.io/analysis-framework/" target="_blank">analysis framework documentation</a>.</li>
-<li>If you are looking for the old analysis tutorial using the old Run 2 framework, it can be found <a href="https://alice-doc.github.io/alice-analysis-tutorial/analysis/welcome.html" target="_blank">here</a>.</li>
-</ul>
-<p>If you would like to improve these pages you can have a look at the <a href="https://github.com/alice-doc/alice-analysis-tutorial/blob/master/CONTRIBUTING.md" target="_blank">CONTRIBUTING</a> documentation.</p>
+<h2 id="where-can-i-see-the-documentation-online">Where can I see the documentation online?</h2>
+<p>Documentation is published on GitHub pages at the following address:</p>
+<blockquote>
+<p><a href="https://alice-doc.github.io/alice-analysis-tutorial/" target="_blank">https://alice-doc.github.io/alice-analysis-tutorial/</a></p>
+</blockquote>
+<h2 id="how-can-i-contribute-to-the-documentation">How can I contribute to the documentation?</h2>
+<p>First off you need a <a href="https://github.com" target="_blank">GitHub</a> account. <a href="https://github.com/alice-doc/alice-analysis-tutorial/fork" target="_blank">Fork the
+<strong>alice-doc/alice-analysis-tutorial</strong> repository</a>, then clone it to your
+laptop:</p>
+<pre><code class="lang-bash">git <span class="hljs-built_in">clone</span> https://github.com/&lt;your-github-username&gt;/alice-analysis-tutorial
+<span class="hljs-built_in">cd</span> alice-analysis-tutorial/
+git remote add upstream https://github.com/alice-doc/alice-analysis-tutorial
+</code></pre>
+<p>Documentation is written in <a href="https://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown</a> and it
+is generated using <a href="https://www.gitbook.com/" target="_blank">GitBook</a>. You need to install GitBook first. GitBook
+is a NodeJS package, meaning that you need <code>npm</code> to install it. You can get <code>npm</code> easily.</p>
+<p>On Ubuntu:</p>
+<pre><code class="lang-bash">sudo apt install npm
+</code></pre>
+<p>On macOS (assuming you have <a href="https://brew.sh/" target="_blank">Homebrew</a>):</p>
+<pre><code class="lang-bash">brew install npm
+</code></pre>
+<p>On CentOS 7 (you need <a href="https://fedoraproject.org/wiki/EPEL" target="_blank">EPEL</a> enabled):</p>
+<pre><code class="lang-bash">sudo yum install npm
+</code></pre>
+<p>Once <code>npm</code> is installed, you can install GitBook:</p>
+<pre><code class="lang-bash">sudo npm install -g gitbook-cli@2.3.0
+</code></pre>
+<p><strong>Do not use <code>sudo</code> on macOS.</strong></p>
+<p>Once GitBook is installed, you should find it in your <code>$PATH</code>, check it with:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">type</span> gitbook
+</code></pre>
+<p>To preview the documentation pages locally while you are editing them, move to the repository&apos;s root
+directory and run:</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> alice-analysis-tutorial/
+make serve
+</code></pre>
+<p>The command will not exit and a local website will be visible at the following address:</p>
+<blockquote>
+<p><a href="http://localhost:4000" target="_blank">http://localhost:4000</a></p>
+</blockquote>
+<p>The website uses <a href="https://www.gitbook.com/" target="_blank">GitBook</a>. Editing the pages using your favorite text
+editor: whenever you save, the page currently opened in your local preview will be refreshed
+automatically.</p>
+<p>When you are happy with your modifications, commit them, push them to your repository and open a
+pull request, for instance:</p>
+<pre><code class="lang-bash">git commit <span class="hljs-_">-a</span> -m <span class="hljs-string">&apos;I am happy with my doc&apos;</span>
+git push origin
+</code></pre>
+<p>then navigate to your GitHub repository online to open a pull request.</p>
 
                                 
                                 </section>
@@ -856,10 +900,10 @@ contribute, and the Analysis Tutorial Committee will review every contribution.<
 
             
                 
-                
-                <a href="start/" class="navigation navigation-next navigation-unique" aria-label="Next page: Getting started">
-                    <i class="fa fa-angle-right"></i>
+                <a href="rivet/references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: References">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -868,7 +912,7 @@ contribute, and the Analysis Tutorial Committee will review every contribution.<
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Getting started","level":"1.2","depth":1,"path":"start/README.md","ref":"start/README.md","articles":[{"title":"Get a Grid certificate","level":"1.2.1","depth":2,"path":"start/cert.md","ref":"start/cert.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"README.md","mtime":"2022-08-18T09:50:12.663Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-18T09:51:04.986Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Contributing","level":"1.7","depth":1,"previous":{"title":"References","level":"1.6.10","depth":2,"path":"rivet/references.md","ref":"rivet/references.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"CONTRIBUTING.md","mtime":"2022-08-18T09:50:12.663Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-08-18T09:51:04.986Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
