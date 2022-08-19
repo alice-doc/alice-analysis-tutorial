@@ -14,53 +14,46 @@ Run 2 software, and O2/O2Physics for Run 3.
 ## Prepare your source code
 
 We assume your work area is `~/alice`.
-So, first off, create the directory and move to it:
+First off, create the directory and move to it, then download the build recipes for ALICE software:
 
 ```bash
 mkdir -p ~/alice
 cd ~/alice
+git clone -o upstream https://github.com/alisw/alidist
 ```
 
 If you want to develop analysis code, download AliPhysics:
 
 ```bash
-aliBuild init AliPhysics@master
+git clone -o upstream https://github.com/alisw/AliPhysics
 ```
 
 Only if you need to develop the Run 2 core software (unlikely), download AliRoot:
 
 ```bash
-aliBuild init AliRoot@master
+git clone -o upstream https://github.com/alisw/AliRoot
 ```
 
 If you need to develop for Run 3, download O2Physics (note the `--defaults o2`):
 
 ```bash
-aliBuild init O2Physics@master --defaults o2
+git clone -o upstream https://github.com/AliceO2Group/O2Physics
 ```
 
 Only if you need to develop the Run 3 core software (unlikely), download O2:
 
 ```bash
-aliBuild init O2@dev --defaults o2
+git clone -o upstream https://github.com/AliceO2Group/AliceO2 O2
 ```
 
 ### Source code and recipes
 
 If you perform `ls` under your work directory, you will see the packages you have downloaded via
-`aliBuild init`, plus an `alidist` directory.
+`git clone`, including an `alidist` directory.
 
 The `alidist` directory contains software recipes, telling aliBuild how the software is built. Your
 `alidist` directory and your software source code are Git directories **managed by you**: you need
 to keep them up-to-date manually.
-
-{% callout "Check names of your remote repositories" %}
-With older versions of aliBuild, the central remote repository (used for pulling updates) would be
-called `origin` instead of the usual name `upstream` and the personal (fork) remote repository (used
-for pushing changes) would be called `<your-github-username>` instead of the usual name `origin`.
-Please check your settings using `git remote -v` and adjust the Git commands mentioned in
-the following instructions accordingly, if needed.
-{% endcallout %}
 
 Update your software by `cd`ing into its directory and running:
 
@@ -357,7 +350,7 @@ aliBuild build AliPhysics --defaults user --always-prefer-system
 aliBuild and alienv give you the ability to build the same development source with different
 defaults without duplicating the source, and without conflicts.
 
-Imagine we are under `~/alice` and we have cloned AliRoot and AliPhysics with the `aliBuild init`
+Imagine we are under `~/alice` and we have cloned AliRoot and AliPhysics with the `git clone`
 command above. We build AliPhysics _twice_, once with ROOT 5 and a second time against ROOT 6.
 
 **Let's first build AliPhysics with ROOT 5:**
