@@ -5,6 +5,7 @@ ALICE software on Ubuntu is supported on a best effort basis. There is no guaran
 
 * Ubuntu 18.04 LTS
 * Ubuntu 20.04 LTS
+* Ubuntu 22.04 LTS
 
 ## Install required system packages
 
