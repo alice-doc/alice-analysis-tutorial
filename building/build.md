@@ -33,16 +33,16 @@ Only if you need to develop the Run 2 core software (unlikely), download AliRoot
 aliBuild init AliRoot@master
 ```
 
-If you need to develop for Run 3, download O2Physics (note the `--defaults o2`):
+If you need to develop for Run 3, download O2Physics:
 
 ```bash
-aliBuild init O2Physics@master --defaults o2
+aliBuild init O2Physics@master
 ```
 
 Only if you need to develop the Run 3 core software (unlikely), download O2:
 
 ```bash
-aliBuild init O2@dev --defaults o2
+aliBuild init O2@dev
 ```
 
 ### Source code and recipes
@@ -116,14 +116,14 @@ For Run 2 software based on ROOT 6 (note: this is the only option on macOS):
 
 ```bash
 cd ~/alice
-aliDoctor AliPhysics --defaults o2
+aliDoctor AliPhysics
 ```
 
 For Run 3 software:
 
 ```bash
 cd ~/alice
-aliDoctor O2Physics --defaults o2
+aliDoctor O2Physics
 ```
 
 aliDoctor will warn you that some packages have to be built as they could not be found from the
@@ -155,7 +155,7 @@ You can build the whole Run 2 software stack based on ROOT 6 with:
 
 ```
 cd ~/alice
-aliBuild build AliPhysics --defaults o2
+aliBuild build AliPhysics
 ```
 
 If you also need to work with GEANT 3, GEANT 4 and DPMJET, use:
@@ -169,7 +169,7 @@ Similarly, for O2Physics:
 
 ```
 cd ~/alice
-aliBuild build O2Physics --defaults o2
+aliBuild build O2Physics
 ```
 
 If you want to build O2 and run the tests as well (same way as they are run on the pull request
@@ -177,7 +177,7 @@ checkers), with `--debug` to see the full output:
 
 ```
 cd ~/alice
-env ALIBUILD_O2_TESTS=1 aliBuild build O2 --defaults o2 --debug
+env ALIBUILD_O2_TESTS=1 aliBuild build O2 --debug
 ```
 
 _⚠️  It is recommended to run the first O2 build without the tests enabled to let it complete. You
@@ -333,7 +333,7 @@ considerably slowing down your work. In some cases you may want to reduce the nu
 available to aliBuild by using the `-j <num-cores>` option:
 
 ```bash
-aliBuild build AliPhysics --defaults o2 -j 1
+aliBuild build AliPhysics -j 1
 ```
 
 
@@ -380,7 +380,7 @@ alienv enter AliPhysics/latest-aliroot5-user
 **Let's now build the same AliPhysics with ROOT 6:**
 
 ```bash
-aliBuild build AliPhysics --defaults o2 -z aliroot6
+aliBuild build AliPhysics -z aliroot6
 ```
 
 Now, the message tells us to type:
