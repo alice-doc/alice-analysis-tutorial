@@ -197,8 +197,8 @@ build.
 **Build AliPhysics based on ROOT 5 (legacy):**
 
 ```bash
-aliBuild build AliPhysics --defaults user  # without GEANT 3, GEANT 4, DPMJET
-aliBuild build AliPhysics                  # no defaults; full stack
+aliBuild build AliPhysics --defaults user      # without GEANT 3, GEANT 4, DPMJET
+aliBuild build AliPhysics --defaults release   # full ROOT 5 stack
 ```
 
 _⚠️  ROOT 5 does not work on macOS. Use a ROOT 6 version compatible with ROOT 5 if you really need it
@@ -341,7 +341,7 @@ possible from the system. You will then need to add the `--always-prefer-system`
 `aliBuild build` command. For instance:
 
 ```bash
-aliBuild build AliPhysics --defaults user --always-prefer-system
+aliBuild build AliPhysics --always-prefer-system
 ```
 
 
