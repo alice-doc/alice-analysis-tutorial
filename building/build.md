@@ -170,7 +170,7 @@ checkers), with `--debug` to see the full output:
 
 ```
 cd ~/alice
-env ALIBUILD_O2_TESTS=1 aliBuild build O2 --debug
+aliBuild build O2 --debug -e ALIBUILD_O2_TESTS=1
 ```
 
 _⚠️  It is recommended to run the first O2 build without the tests enabled to let it complete. You
