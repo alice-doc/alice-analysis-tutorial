@@ -158,13 +158,6 @@ cd ~/alice
 aliBuild build AliPhysics
 ```
 
-If you also need to work with GEANT 3, GEANT 4 and DPMJET, use:
-
-```
-cd ~/alice
-aliBuild build AliPhysics --defaults next-root6
-```
-
 Similarly, for O2Physics:
 
 ```
