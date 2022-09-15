@@ -8,8 +8,10 @@ simulation, reconstruction and analysis framework under ROOT6. AliPhysics can be
 built against *ROOT6* in the following way:
 
 ```bash
-aliBuild -z --defaults root6 build AliPhysics
+aliBuild -z --defaults o2 build AliPhysics
 ```
+
+_If you have `aliBuild` v1.12.0 or later, you don't need to specify `--defaults o2`._
 
 For classes in AliRoot or AliPhysics this transition is transparent. For code in
 macros there are however a few difference. This page tries to summarize the

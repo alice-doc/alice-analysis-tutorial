@@ -158,13 +158,6 @@ cd ~/alice
 aliBuild build AliPhysics
 ```
 
-If you also need to work with GEANT 3, GEANT 4 and DPMJET, use:
-
-```
-cd ~/alice
-aliBuild build AliPhysics --defaults next-root6
-```
-
 Similarly, for O2Physics:
 
 ```
@@ -177,7 +170,7 @@ checkers), with `--debug` to see the full output:
 
 ```
 cd ~/alice
-env ALIBUILD_O2_TESTS=1 aliBuild build O2 --debug
+aliBuild build O2 --debug -e ALIBUILD_O2_TESTS=1
 ```
 
 _⚠️  It is recommended to run the first O2 build without the tests enabled to let it complete. You
@@ -204,8 +197,8 @@ build.
 **Build AliPhysics based on ROOT 5 (legacy):**
 
 ```bash
-aliBuild build AliPhysics --defaults user  # without GEANT 3, GEANT 4, DPMJET
-aliBuild build AliPhysics                  # no defaults; full stack
+aliBuild build AliPhysics --defaults user      # without GEANT 3, GEANT 4, DPMJET
+aliBuild build AliPhysics --defaults release   # full ROOT 5 stack
 ```
 
 _⚠️  ROOT 5 does not work on macOS. Use a ROOT 6 version compatible with ROOT 5 if you really need it
@@ -348,7 +341,7 @@ possible from the system. You will then need to add the `--always-prefer-system`
 `aliBuild build` command. For instance:
 
 ```bash
-aliBuild build AliPhysics --defaults user --always-prefer-system
+aliBuild build AliPhysics --always-prefer-system
 ```
 
 
