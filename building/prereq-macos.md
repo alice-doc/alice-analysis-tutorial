@@ -57,3 +57,7 @@ You are now ready for [installing aliBuild and start building ALICE software](RE
 Some users have reported that homebrew commands might terminate with an error. The solution oddly enough seems to be to execute the above command multiple times until brew does not complain anymore.
 
 If you have just upgraded your Xcode or macOS, you should run `brew reinstall` instead, in order to force the reinstallation of already installed packages. You also might want to run `brew cleanup` at the end to free up some space.
+
+If you run into problems when loading shared libraries, check if the `LD_LIBRARY_PATH` environment variable is set in your `alienv` environment. If it is not, [disable System Integrity Protection][disable-sip] and try again.
+
+[disable-sip]: https://developer.apple.com/documentation/security/disabling_and_enabling_system_integrity_protection
