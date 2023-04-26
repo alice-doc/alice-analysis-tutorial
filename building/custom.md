@@ -43,12 +43,12 @@ packages to install and configurations to perform.
 **Primary supported platform:**
 
 * [CentOS 7](prereq-centos7.md)
-* [CentOS 8](prereq-centos8.md)
+* [CentOS/AlmaLinux 8](prereq-centos8.md)
 
 **Platforms supported on a best-effort basis:**
 
-* [macOS Catalina (10.15), Big Sur (11.0)](prereq-macos.md)
-* [Ubuntu (18.04 LTS, 20.04 LTS)](prereq-ubuntu.md)
+* [macOS Ventura (13.0)](prereq-macos.md)
+* [Ubuntu (20.04 LTS, 22.04 LTS)](prereq-ubuntu.md)
 * [Fedora](prereq-fedora.md)
 * Linux Mint
     * Follow the instructions for the Ubuntu version your Linux Mint version is based on.
