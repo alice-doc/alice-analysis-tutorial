@@ -3,10 +3,15 @@ aliBuild prerequisites for macOS
 
 ALICE software on macOS is supported on a best effort basis. Even though we systematically check macOS builds there is no guarantee that software builds or runs correctly. Support requests might have low priority. That said, we were able to successfully build on:
 
-* Big Sur (11.0)
-* Monterey (12.0) both x86 and M1
+* Ventura (13.0) on x86, M1 and M2
 
 ## Get Xcode
+
+{% callout "Make sure to install the right version!" %}
+As of April 2023, building with Xcode 14.3, and the associated command line tools, is broken. If you already upgraded to 14.3, or you do not have Xcode installed at all, you will have to download Xcode 14.2 and its associated command line tools from [the Apple Developer website][xcode-download].
+
+[xcode-download]: https://developer.apple.com/xcode/resources/
+{% endcallout %}
 
 Xcode bundles the necessary tools to build software in the apple ecosystem including compilers, build systems and version control
 * Download it from the [App Store](https://itunes.apple.com/gh/app/xcode/id497799835?mt=12)
@@ -35,15 +40,22 @@ brew doctor
 Note that Homebrew does not run as root. Do not prepend `sudo` to **any** of the following commands.
 
 * Install the prerequisites and aliBuild via:
-```bash
-brew install alisw/system-deps/o2-full-deps alisw/system-deps/alibuild
-```
-
-* Edit or create `~/.zprofile` and add
-```bash
-export PATH="/usr/local/opt/gettext/bin:/usr/local/bin:$PATH"
-```
+  ```bash
+  brew install alisw/system-deps/o2-full-deps alisw/system-deps/alibuild
+  ```
+* Set up Homebrew in your shell by running the following command:
+  ```bash
+  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+  ```
 * Close Terminal and reopen it to apply changes.
+
+{% callout "Check installed package versions" %}
+Homebrew might sometimes install multiple versions of some packages, such as `llvm` or `python`. This can happen after you have used `brew` for a while.
+
+Make sure you have only the currently-supported versions of packages installed, as listed in the dependencies of `alisw/system-deps/o2-full-deps`, paying particular attention to `llvm` and `python`.
+
+You may have to run `brew uninstall` for package versions that are unsupported by ALICE, if they have ended up installed on your system.
+{% endcallout %}
 
 ## (Recommended) Exclude your work directory from Spotlight
 
