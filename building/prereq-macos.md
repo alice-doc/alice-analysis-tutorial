@@ -7,13 +7,8 @@ ALICE software on macOS is supported on a best effort basis. Even though we syst
 
 ## Get Xcode
 
-{% callout "Make sure to install the right version!" %}
-As of April 2023, building with Xcode 14.3, and the associated command line tools, is broken. If you already upgraded to 14.3, or you do not have Xcode installed at all, you will have to download Xcode 14.2 and its associated command line tools from [the Apple Developer website][xcode-download].
+Xcode bundles the necessary tools to build software in the apple ecosystem including compilers, build systems and version control.
 
-[xcode-download]: https://developer.apple.com/xcode/resources/
-{% endcallout %}
-
-Xcode bundles the necessary tools to build software in the apple ecosystem including compilers, build systems and version control
 * Download it from the [App Store](https://itunes.apple.com/gh/app/xcode/id497799835?mt=12)
 * Open once installed. It will ask to install additional components - approve the action.
 * Open a terminal (`Applicaions>Utilities>Terminal`) and install the command line tools using:
