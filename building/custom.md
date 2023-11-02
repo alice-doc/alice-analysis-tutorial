@@ -44,6 +44,7 @@ packages to install and configurations to perform.
 
 * [CentOS 7](prereq-centos7.md)
 * [CentOS/AlmaLinux 8](prereq-centos8.md)
+* [AlmaLinux 9](prereq-alma9.md)
 
 **Platforms supported on a best-effort basis:**
 
