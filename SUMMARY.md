@@ -5,6 +5,7 @@
   * [🧪 Installation via alibuild](building/custom.md)
     * [Prerequisites for CentOS 7](building/prereq-centos7.md)
     * [Prerequisites for CentOS 8](building/prereq-centos8.md)
+    * [Prerequisites for Alma 9](building/prereq-alma9.md)
     * [Prerequisites for macOS](building/prereq-macos.md)
     * [Prerequisites for Ubuntu](building/prereq-ubuntu.md)
     * [Prerequisites for Fedora](building/prereq-fedora.md)
