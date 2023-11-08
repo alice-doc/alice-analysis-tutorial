@@ -30,6 +30,17 @@ sudo xcodebuild -license
 brew doctor
 ```
 
+## Uninstall ROOT
+
+If you have an existing ROOT installation on your system, this will interfere with the aliBuild installation, and will cause difficult-to-debug compilation errors.
+
+Please uninstall any existing copy of ROOT on your system.
+The uninstallation method depends on how you installed it.
+For example, if you originally installed ROOT using Homebrew, you should uninstall it using `brew uninstall root`.
+
+After uninstalling ROOT, remove any reference to ROOT from your `.zprofile`, `.zshrc` and any other shell configuration files.
+Then close and re-open your terminal window.
+
 ## Install the required packages
 
 Note that Homebrew does not run as root. Do not prepend `sudo` to **any** of the following commands.
