@@ -4,6 +4,7 @@ aliBuild prerequisites for macOS
 ALICE software on macOS is supported on a best effort basis. Even though we systematically check macOS builds there is no guarantee that software builds or runs correctly. Support requests might have low priority. That said, we were able to successfully build on:
 
 * Ventura (13.0) on x86, M1 and M2
+* Sonoma (14.0) on x86, M1 and M2
 
 ## Get Xcode
 
