@@ -1,7 +1,7 @@
 # 🛠 Build the packages
 
 ALICE software has several dependencies: aliBuild takes care of downloading them for you. aliBuild
-can also automatically download precompiled binaries if possible.
+will also automatically download precompiled binaries on [supported versions](./custom.md#operating-systems-we-support) of CentOS/Alma and Ubuntu.
 
 aliBuild will download and compile all the dependencies caching data under `$ALIBUILD_WORK_DIR`. You
 will never need to access this directory. The source code for the packages you will actually develop
