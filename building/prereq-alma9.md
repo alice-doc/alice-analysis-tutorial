@@ -9,6 +9,7 @@ With root permissions, i.e. `sudo` or as `root` install the prerequisites using:
 ```bash
 dnf install -y epel-release dnf-plugins-core
 dnf update -y
+dnf config-manager --set-enabled crb
 dnf group install -y 'Development Tools'
 cat << EOF > /etc/yum.repos.d/alice-system-deps.repo
 [alice-system-deps]
