@@ -248,6 +248,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.1.7" data-path="manual-install.html">
+            
+                <a href="manual-install.html">
+            
+                    
+                    Fall-back manual installation method
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -838,7 +851,7 @@
 <p>Building software has become an increasingly complicated operation, as our software has many
 dependencies and we expect it to work both on your laptop and on the Grid. In addition, we support
 many Linux distributions and recent macOS versions.</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7212606562);" id="please-follow-the-instructions-closely"><i class="fa fa-info-circle"></i> Please follow the instructions closely!<span id="heading-7212606562"></span></h3></div><div class="panel-body" id="panel-7212606562"><p>Most of the paths and procedures presented here can be adapted to your system and your taste. You
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(5752606518);" id="please-follow-the-instructions-closely"><i class="fa fa-info-circle"></i> Please follow the instructions closely!<span id="heading-5752606518"></span></h3></div><div class="panel-body" id="panel-5752606518"><p>Most of the paths and procedures presented here can be adapted to your system and your taste. You
 can for instance decide to use different path names, or a different directory structure, it&apos;s up to
 you, however we <strong>do not recommend you use different ways of installing the required
 dependencies.</strong></p>
@@ -871,7 +884,7 @@ packages to install and configurations to perform.</p>
 </ul>
 <p><strong>Platforms supported on a best-effort basis:</strong></p>
 <ul>
-<li><a href="prereq-macos.html">macOS Ventura (13.0)</a></li>
+<li><a href="prereq-macos.html">macOS Ventura and Sonoma (13.0, 14.0)</a></li>
 <li><a href="prereq-ubuntu.html">Ubuntu (20.04 LTS, 22.04 LTS)</a></li>
 <li><a href="prereq-fedora.html">Fedora</a></li>
 <li>Linux Mint<ul>
@@ -884,12 +897,14 @@ Use the <code>-a</code> option also with the <code>alienv</code> command.</li>
 </ul>
 <p>If your operating system is <em>not</em> in any list, it does not mean our software won&apos;t work on it;
 it will be just more difficult for you to get support for it.</p>
+<p>Only in case you cannot install aliBuild in the way described above, you can <a href="manual-install.html">install aliBuild manually</a>.
+This procedure should only be used as a fall-back, in case you cannot follow the instructions for your operating system linked above.</p>
 <h2 id="configure-alibuild">Configure aliBuild</h2>
-<p>After you are done installing alibuild you need to configure it by adding two
-following lines to your <code>~/.bashrc</code> or <code>~/.bash_profile</code> (depending on your
-configuration):</p>
+<p>After you are done installing alibuild you need to configure it by adding the two
+following lines to your <code>~/.bashrc</code>, <code>~/.bash_profile</code>, <code>~/.zshrc</code> or <code>~/.zprofile</code>
+(depending on your operating system and configuration):</p>
 <pre><code class="lang-bash"><span class="hljs-built_in">export</span> ALIBUILD_WORK_DIR=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/alice/sw&quot;</span>
-<span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;`alienv shell-helper`&quot;</span>
+<span class="hljs-built_in">eval</span> <span class="hljs-string">&quot;<span class="hljs-variable">$(alienv shell-helper)</span>&quot;</span>
 </code></pre>
 <p>The first line tells what directory is used as &quot;build cache&quot;, the second line installs a &quot;shell
 helper&quot; that makes easier to run certain aliBuild-related commands.</p>
@@ -898,41 +913,6 @@ helper&quot; that makes easier to run certain aliBuild-related commands.</p>
 <blockquote>
 <p>Note that this directory tends to grow in size over time, and it is the one you need to remove in
 case of cleanups.</p>
-</blockquote>
-<h3 id="i-dont-have-root-permissions">I don&apos;t have root permissions</h3>
-<p>In case you don&apos;t have root permissions, one of the possibilities is installing aliBuild under a
-user-owned directory. Start with opening your <code>~/.bashrc</code> or <code>~/.bash_profile</code> (this depends on your
-system), and add the following lines:</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">export</span> PYTHONUSERBASE=<span class="hljs-string">&quot;<span class="hljs-variable">$HOME</span>/user_python&quot;</span>
-<span class="hljs-built_in">export</span> PATH=<span class="hljs-string">&quot;<span class="hljs-variable">$PYTHONUSERBASE</span>/bin:<span class="hljs-variable">$PATH</span>&quot;</span>
-</code></pre>
-<p>Now close all your terminals and reopen them to load the new configuration. Check if it works by
-printing the variable:</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">echo</span> <span class="hljs-variable">$PYTHONUSERBASE</span>
-</code></pre>
-<p>The operations above need to be performed only once. Now, to install or upgrade aliBuild, just do:</p>
-<pre><code class="lang-bash">pip install alibuild --upgrade --user
-</code></pre>
-<blockquote>
-<p>This time we did not specify <code>sudo</code> and we have added the <code>--user</code> option. The Python variable
-<code>PYTHONUSERBASE</code> tells <code>pip</code> where to install the package.</p>
-</blockquote>
-<p>Verify you have <code>aliBuild</code> in your path:</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">type</span> aliBuild
-</code></pre>
-<h3 id="i-need-a-special-version-of-alibuild">I need a special version of aliBuild</h3>
-<p>In some cases you might want to install a &quot;release candidate&quot; version, or you want to get the code
-directly from GitHub. By default, the last stable version is installed. <strong>Do not install a special
-version of aliBuild if you were not instructed to do so or if you don&apos;t know what you are doing, we
-provide no support for unstable releases!</strong></p>
-<p>To install a release candidate (for instance, <code>v1.5.1rc3</code>):</p>
-<pre><code class="lang-bash">sudo pip install alibuild=v1.5.1rc3 --upgrade
-</code></pre>
-<p>To install from GitHub (you can specify a tag or a hash, or another branch, instead of <code>master</code>):</p>
-<pre><code class="lang-bash">sudo pip install git+https://github.com/alisw/alibuild@master --upgrade
-</code></pre>
-<blockquote>
-<p>Do not forget to drop <code>sudo</code> and add <code>--user</code> in case you do not have root permissions!</p>
 </blockquote>
 <h2 id="build-the-packages">Build the packages</h2>
 <p>When aliBuild is installed on your computer and your prerequisites are satisfied, you can move to
@@ -983,7 +963,7 @@ the next step.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"🧪 Installation via alibuild","level":"1.3.1","depth":2,"next":{"title":"Prerequisites for CentOS 7","level":"1.3.1.1","depth":3,"path":"building/prereq-centos7.md","ref":"building/prereq-centos7.md","articles":[]},"previous":{"title":"Build ALICE software","level":"1.3","depth":1,"path":"building/README.md","ref":"building/README.md","articles":[{"title":"🧪 Installation via alibuild","level":"1.3.1","depth":2,"path":"building/custom.md","ref":"building/custom.md","articles":[{"title":"Prerequisites for CentOS 7","level":"1.3.1.1","depth":3,"path":"building/prereq-centos7.md","ref":"building/prereq-centos7.md","articles":[]},{"title":"Prerequisites for CentOS 8","level":"1.3.1.2","depth":3,"path":"building/prereq-centos8.md","ref":"building/prereq-centos8.md","articles":[]},{"title":"Prerequisites for Alma 9","level":"1.3.1.3","depth":3,"path":"building/prereq-alma9.md","ref":"building/prereq-alma9.md","articles":[]},{"title":"Prerequisites for macOS","level":"1.3.1.4","depth":3,"path":"building/prereq-macos.md","ref":"building/prereq-macos.md","articles":[]},{"title":"Prerequisites for Ubuntu","level":"1.3.1.5","depth":3,"path":"building/prereq-ubuntu.md","ref":"building/prereq-ubuntu.md","articles":[]},{"title":"Prerequisites for Fedora","level":"1.3.1.6","depth":3,"path":"building/prereq-fedora.md","ref":"building/prereq-fedora.md","articles":[]}]},{"title":"🛠 Build the packages","level":"1.3.2","depth":2,"path":"building/build.md","ref":"building/build.md","articles":[]},{"title":"📦 Use the precompiled binaries","level":"1.3.3","depth":2,"path":"building/precomp.md","ref":"building/precomp.md","articles":[]},{"title":"💪 Develop a single package (Experimental)","level":"1.3.4","depth":2,"path":"building/devel.md","ref":"building/devel.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/custom.md","mtime":"2024-02-16T14:51:36.357Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-02-16T14:52:24.685Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"🧪 Installation via alibuild","level":"1.3.1","depth":2,"next":{"title":"Prerequisites for CentOS 7","level":"1.3.1.1","depth":3,"path":"building/prereq-centos7.md","ref":"building/prereq-centos7.md","articles":[]},"previous":{"title":"Build ALICE software","level":"1.3","depth":1,"path":"building/README.md","ref":"building/README.md","articles":[{"title":"🧪 Installation via alibuild","level":"1.3.1","depth":2,"path":"building/custom.md","ref":"building/custom.md","articles":[{"title":"Prerequisites for CentOS 7","level":"1.3.1.1","depth":3,"path":"building/prereq-centos7.md","ref":"building/prereq-centos7.md","articles":[]},{"title":"Prerequisites for CentOS 8","level":"1.3.1.2","depth":3,"path":"building/prereq-centos8.md","ref":"building/prereq-centos8.md","articles":[]},{"title":"Prerequisites for Alma 9","level":"1.3.1.3","depth":3,"path":"building/prereq-alma9.md","ref":"building/prereq-alma9.md","articles":[]},{"title":"Prerequisites for macOS","level":"1.3.1.4","depth":3,"path":"building/prereq-macos.md","ref":"building/prereq-macos.md","articles":[]},{"title":"Prerequisites for Ubuntu","level":"1.3.1.5","depth":3,"path":"building/prereq-ubuntu.md","ref":"building/prereq-ubuntu.md","articles":[]},{"title":"Prerequisites for Fedora","level":"1.3.1.6","depth":3,"path":"building/prereq-fedora.md","ref":"building/prereq-fedora.md","articles":[]},{"title":"Fall-back manual installation method","level":"1.3.1.7","depth":3,"path":"building/manual-install.md","ref":"building/manual-install.md","articles":[]}]},{"title":"🛠 Build the packages","level":"1.3.2","depth":2,"path":"building/build.md","ref":"building/build.md","articles":[]},{"title":"📦 Use the precompiled binaries","level":"1.3.3","depth":2,"path":"building/precomp.md","ref":"building/precomp.md","articles":[]},{"title":"💪 Develop a single package (Experimental)","level":"1.3.4","depth":2,"path":"building/devel.md","ref":"building/devel.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/custom.md","mtime":"2024-02-20T15:53:38.272Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-02-20T15:54:24.309Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
