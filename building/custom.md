@@ -48,7 +48,7 @@ packages to install and configurations to perform.
 
 **Platforms supported on a best-effort basis:**
 
-* [macOS Ventura (13.0)](prereq-macos.md)
+* [macOS Ventura and Sonoma (13.0, 14.0)](prereq-macos.md)
 * [Ubuntu (20.04 LTS, 22.04 LTS)](prereq-ubuntu.md)
 * [Fedora](prereq-fedora.md)
 * Linux Mint
@@ -60,15 +60,18 @@ packages to install and configurations to perform.
 If your operating system is _not_ in any list, it does not mean our software won't work on it;
 it will be just more difficult for you to get support for it.
 
+Only in case you cannot install aliBuild in the way described above, you can [install aliBuild manually](manual-install.md).
+This procedure should only be used as a fall-back, in case you cannot follow the instructions for your operating system linked above.
+
 ## Configure aliBuild
 
-After you are done installing alibuild you need to configure it by adding two
-following lines to your `~/.bashrc` or `~/.bash_profile` (depending on your
-configuration):
+After you are done installing alibuild you need to configure it by adding the two
+following lines to your `~/.bashrc`, `~/.bash_profile`, `~/.zshrc` or `~/.zprofile`
+(depending on your operating system and configuration):
 
 ```bash
 export ALIBUILD_WORK_DIR="$HOME/alice/sw"
-eval "`alienv shell-helper`"
+eval "$(alienv shell-helper)"
 ```
 
 The first line tells what directory is used as "build cache", the second line installs a "shell
@@ -79,61 +82,6 @@ You need to close and reopen your terminal for the change to be effective. The d
 
 > Note that this directory tends to grow in size over time, and it is the one you need to remove in
 > case of cleanups.
-
-
-### I don't have root permissions
-
-In case you don't have root permissions, one of the possibilities is installing aliBuild under a
-user-owned directory. Start with opening your `~/.bashrc` or `~/.bash_profile` (this depends on your
-system), and add the following lines:
-
-```bash
-export PYTHONUSERBASE="$HOME/user_python"
-export PATH="$PYTHONUSERBASE/bin:$PATH"
-```
-
-Now close all your terminals and reopen them to load the new configuration. Check if it works by
-printing the variable:
-
-```bash
-echo $PYTHONUSERBASE
-```
-
-The operations above need to be performed only once. Now, to install or upgrade aliBuild, just do:
-
-```bash
-pip install alibuild --upgrade --user
-```
-
-> This time we did not specify `sudo` and we have added the `--user` option. The Python variable
-> `PYTHONUSERBASE` tells `pip` where to install the package.
-
-Verify you have `aliBuild` in your path:
-
-```bash
-type aliBuild
-```
-
-### I need a special version of aliBuild
-
-In some cases you might want to install a "release candidate" version, or you want to get the code
-directly from GitHub. By default, the last stable version is installed. **Do not install a special
-version of aliBuild if you were not instructed to do so or if you don't know what you are doing, we
-provide no support for unstable releases!**
-
-To install a release candidate (for instance, `v1.5.1rc3`):
-
-```bash
-sudo pip install alibuild=v1.5.1rc3 --upgrade
-```
-
-To install from GitHub (you can specify a tag or a hash, or another branch, instead of `master`):
-
-```bash
-sudo pip install git+https://github.com/alisw/alibuild@master --upgrade
-```
-
-> Do not forget to drop `sudo` and add `--user` in case you do not have root permissions!
 
 
 ## Build the packages
