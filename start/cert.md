@@ -69,7 +69,7 @@ kind of security problem and you should repeat the steps above.
 ## Register your certificate to the ALICE Grid
 
 This operation needs to be performed only once. With Firefox, click on [this
-link](https://voms2.cern.ch:8443/voms/alice](https://alien.web.cern.ch/content/register-alice-virtual-organization) and follow the guided procedure, after having selected
+link](https://alien.web.cern.ch/content/register-alice-virtual-organization) and follow the guided procedure, after having selected
 your personal certificate for authenticating.
 
 
