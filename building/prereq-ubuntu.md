@@ -3,7 +3,6 @@ aliBuild prerequisites for Ubuntu
 
 ALICE software on Ubuntu is supported on a best effort basis. There is no guarantee that software builds or runs correctly. Support requests might have low priority. We were able to successfully build on:
 
-* Ubuntu 18.04 LTS
 * Ubuntu 20.04 LTS
 * Ubuntu 22.04 LTS
 * Ubuntu 24.04 LTS
