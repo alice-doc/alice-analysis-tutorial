@@ -49,7 +49,7 @@ packages to install and configurations to perform.
 **Platforms supported on a best-effort basis:**
 
 * [macOS Ventura and Sonoma (13.0, 14.0)](prereq-macos.md)
-* [Ubuntu (20.04 LTS, 22.04 LTS)](prereq-ubuntu.md)
+* [Ubuntu (20.04 LTS, 22.04 LTS, 24.04 LTS)](prereq-ubuntu.md)
 * [Fedora](prereq-fedora.md)
 * Linux Mint
     * Follow the instructions for the Ubuntu version your Linux Mint version is based on.
