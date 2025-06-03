@@ -56,6 +56,7 @@ packages to install and configurations to perform.
     * Specify the corresponding Ubuntu architecture when running the `aliBuild` command
       using the `-a` option (e.g. `-a ubuntu2004_x86-64` for Ubuntu 20.04).
       Use the `-a` option also with the `alienv` command.
+* [Arch Linux (Preliminary)](prereq-arch.md)
 
 If your operating system is _not_ in any list, it does not mean our software won't work on it;
 it will be just more difficult for you to get support for it.
