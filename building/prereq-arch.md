@@ -10,7 +10,7 @@ With root permissions, i.e. `sudo` or as `root` install the prerequisites using:
 ```bash
 pacman -S git python3 python-pip which gcc \
           make gcc-fortran \
-          base-level libxpm libxft glu gsl \
+          base-devel libxpm libxft glu gsl \
           libuv tbb xerces-c re2 libwebsockets grpc
 ```
 
