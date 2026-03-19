@@ -41,11 +41,8 @@ Run 1 / Run 2 stack, you can still use AliPhysics :
 aliBuild init AliPhysics@master
 ```
 
-Only if you need to develop the Run 2 core software (unlikely), download AliRoot:
-
-```bash
-aliBuild init AliRoot@master
-```
+Notice that for many analysis it's actually possible to simply use the converted
+Run 2 data with the Run 3 framework.
 {% endcallout %}
 
 
