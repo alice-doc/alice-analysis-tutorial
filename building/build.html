@@ -874,25 +874,27 @@ So, first off, create the directory and move to it:</p>
 <pre><code class="lang-bash">mkdir -p ~/alice
 <span class="hljs-built_in">cd</span> ~/alice
 </code></pre>
-<p>If you want to develop analysis code, download AliPhysics:</p>
-<pre><code class="lang-bash">aliBuild init AliPhysics@master
-</code></pre>
-<p>Only if you need to develop the Run 2 core software (unlikely), download AliRoot:</p>
-<pre><code class="lang-bash">aliBuild init AliRoot@master
-</code></pre>
 <p>If you need to develop for Run 3, download O2Physics:</p>
 <pre><code class="lang-bash">aliBuild init O2Physics@master
 </code></pre>
 <p>Only if you need to develop the Run 3 core software (unlikely), download O2:</p>
 <pre><code class="lang-bash">aliBuild init O2@dev
 </code></pre>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(2039484871);" id="obsolete--deprecated-stack"><i class="fa fa-info-circle"></i> Obsolete / Deprecated stack<span id="heading-2039484871"></span></h3></div><div class="panel-body" id="panel-2039484871"><p>If you absolutely need to develop analysis using the old, deprecated
+Run 1 / Run 2 stack, you can still use AliPhysics :</p>
+<pre><code class="lang-bash">aliBuild init AliPhysics@master
+</code></pre>
+<p>Only if you need to develop the Run 2 core software (unlikely), download AliRoot:</p>
+<pre><code class="lang-bash">aliBuild init AliRoot@master
+</code></pre>
+</div></div></p>
 <h3 id="source-code-and-recipes">Source code and recipes</h3>
 <p>If you perform <code>ls</code> under your work directory, you will see the packages you have downloaded via
 <code>aliBuild init</code>, plus an <code>alidist</code> directory.</p>
 <p>The <code>alidist</code> directory contains software recipes, telling aliBuild how the software is built. Your
 <code>alidist</code> directory and your software source code are Git directories <strong>managed by you</strong>: you need
 to keep them up-to-date manually.</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(1515308743);" id="check-names-of-your-remote-repositories"><i class="fa fa-info-circle"></i> Check names of your remote repositories<span id="heading-1515308743"></span></h3></div><div class="panel-body" id="panel-1515308743"><p>With older versions of aliBuild, the central remote repository (used for pulling updates) would be
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(6879575616);" id="check-names-of-your-remote-repositories"><i class="fa fa-info-circle"></i> Check names of your remote repositories<span id="heading-6879575616"></span></h3></div><div class="panel-body" id="panel-6879575616"><p>With older versions of aliBuild, the central remote repository (used for pulling updates) would be
 called <code>origin</code> instead of the usual name <code>upstream</code> and the personal (fork) remote repository (used
 for pushing changes) would be called <code>&lt;your-github-username&gt;</code> instead of the usual name <code>origin</code>.
 Please check your settings using <code>git remote -v</code> and adjust the Git commands mentioned in
@@ -913,11 +915,11 @@ git reset --hard upstream/master
 </code></pre>
 <p>Instead of resetting to the current upstream version, you may want to download specific versions of
 the software:</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/alice/AliPhysics
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/alice/O2
 git fetch --all --tags
 git checkout v5-09-42-01
 </code></pre>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(8449311314);" id="why-manual-updates"><i class="fa fa-info-circle"></i> Why manual updates?<span id="heading-8449311314"></span></h3></div><div class="panel-body" id="panel-8449311314"><p>Software downloaded under your working directory is your responsibility. Our tools will not take any
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(7499846498);" id="why-manual-updates"><i class="fa fa-info-circle"></i> Why manual updates?<span id="heading-7499846498"></span></h3></div><div class="panel-body" id="panel-7499846498"><p>Software downloaded under your working directory is your responsibility. Our tools will not take any
 action to update it: imagine if you lose important data because of an automatic update!</p>
 <p>As a developer, and ALICE contributor, you must be capable of using and understanding <code>git</code>.</p>
 </div></div></p>
@@ -926,14 +928,6 @@ action to update it: imagine if you lose important data because of an automatic 
 were installed correctly. In general, aliBuild is capable of building all required software
 dependencies, but it has also the ability to take them &quot;from the system&quot; if possible, resulting in
 less time spent for building for you.</p>
-<p>Run the <code>aliDoctor</code> command to check dependencies for Run 2 software:</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/alice
-aliDoctor AliPhysics
-</code></pre>
-<p>For Run 2 software based on ROOT 6 (note: this is the only option on macOS):</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/alice
-aliDoctor AliPhysics
-</code></pre>
 <p>For Run 3 software:</p>
 <pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/alice
 aliDoctor O2Physics
@@ -960,11 +954,13 @@ contains those packages, or less packages, then you are fine and you may continu
 installed it, it might just be that its version it&apos;s incompatible (this frequently happens with
 <code>CMake</code>) or you are missing the &quot;development&quot; package for that component.</p>
 </blockquote>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(8161324109);" id="obsolete--deprecated-stack"><i class="fa fa-info-circle"></i> Obsolete / Deprecated stack<span id="heading-8161324109"></span></h3></div><div class="panel-body" id="panel-8161324109"><p>For Run 2 software based on ROOT 6 (note: this is the only option on macOS):</p>
+<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/alice
+aliDoctor AliPhysics
+</code></pre>
+</div></div></p>
 <h2 id="build-and-rebuild">Build and rebuild</h2>
-<p>You can build the whole Run 2 software stack based on ROOT 6 with:</p>
-<pre><code>cd ~/alice
-aliBuild build AliPhysics
-</code></pre><p>Similarly, for O2Physics:</p>
+<p>You can build the whole Run 3 software stack with :</p>
 <pre><code>cd ~/alice
 aliBuild build O2Physics
 </code></pre><p>If you want to build O2 and run the tests as well (same way as they are run on the pull request
@@ -975,23 +971,14 @@ aliBuild build O2 --debug -e ALIBUILD_O2_TESTS=1
 will not have to rerun it from scratch because of test failures like this.</em></p>
 <p>Using the combinations above on CentOS 7 will make aliBuild automatically download the precompiled 
 binaries for almost all packages.</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(651680148);" id="aliphysics-with-root-6-and-the-grid"><i class="fa fa-info-circle"></i> AliPhysics with ROOT 6 and the Grid<span id="heading-651680148"></span></h3></div><div class="panel-body" id="panel-651680148"><p>The command above will produce AliPhysics with ROOT 6 as a dependency. When using this version, you
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(9641556263);" id="aliphysics-with-root-6-and-the-grid"><i class="fa fa-info-circle"></i> AliPhysics with ROOT 6 and the Grid<span id="heading-9641556263"></span></h3></div><div class="panel-body" id="panel-9641556263"><p>The command above will produce AliPhysics with ROOT 6 as a dependency. When using this version, you
 will only be able to submit Grid analysis jobs using ROOT 6-based builds (whose name ends with
 <code>_ROOT6</code>). If you still need ROOT 5 only for submitting Grid jobs, there is no need to install it:
 just <a href="precomp.html">use it from CVMFS</a> by logging in to <code>lxplus.cern.ch</code>.</p>
 </div></div></p>
-<h3 id="other-build-options">Other build options</h3>
-<p>The options above are suitable for a CentOS 7 installation, since precompiled binaries
-will be downloaded. You also have other installation options according to your needs: it is not
-guaranteed that cached binaries are available for the following options, but they may be faster to
-build.</p>
-<p><strong>Build AliPhysics based on ROOT 5 (legacy):</strong></p>
-<pre><code class="lang-bash">aliBuild build AliPhysics --defaults user      <span class="hljs-comment"># without GEANT 3, GEANT 4, DPMJET</span>
-aliBuild build AliPhysics --defaults release   <span class="hljs-comment"># full ROOT 5 stack</span>
-</code></pre>
-<p><em>&#x26A0;&#xFE0F;  ROOT 5 does not work on macOS. Use a ROOT 6 version compatible with ROOT 5 if you really need it
-(see below).</em></p>
-<hr>
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(6801055111);" id="obsolete--deprecated-stack"><i class="fa fa-info-circle"></i> Obsolete / Deprecated stack<span id="heading-6801055111"></span></h3></div><div class="panel-body" id="panel-6801055111"><pre><code>cd ~/alice
+aliBuild build AliPhysics
+</code></pre></div></div></p>
 <h3 id="rebuild-existing-installations">Rebuild existing installations</h3>
 <p>As a general rule, your existing installation can be smartly rebuilt by using the exact same
 <code>aliBuild build</code> command as you did the first time. aliBuild will not rebuild existing software and
@@ -1004,7 +991,7 @@ alienv setenv GCC-Toolchain/latest -c cmake --build . -- -j &lt;num-parallel-job
 </code></pre>
 <p>Replace <code>&lt;num-parallel-jobs&gt;</code> with a sensible number (<em>e.g.</em> slightly more than the actual number of
 your cores).</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(2262527872);" id="you-lied-alibuild-is-rebuilding-everything-&#x1F92C;"><i class="fa fa-info-circle"></i> You lied. aliBuild is rebuilding everything! &#x1F92C;<span id="heading-2262527872"></span></h3></div><div class="panel-body" id="panel-2262527872"><p>One or more of the following actions might change the way aliBuild sees and uses the dependencies
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(3160995282);" id="you-lied-alibuild-is-rebuilding-everything-&#x1F92C;"><i class="fa fa-info-circle"></i> You lied. aliBuild is rebuilding everything! &#x1F92C;<span id="heading-3160995282"></span></h3></div><div class="panel-body" id="panel-3160995282"><p>One or more of the following actions might change the way aliBuild sees and uses the dependencies
 and might result in a <strong>full</strong> (or nearly) rebuild. So, if an important conference is approaching
 (well: it always does, doesn&apos;t it?) <strong>plan the following actions accordingly as they might increase
 the build time</strong>:</p>
@@ -1023,148 +1010,45 @@ capable of switching between different versions of the same package without a ha
 <pre><code class="lang-bash">alienv q
 </code></pre>
 <p><strong>Load the latest version you have built of a package (AliPhysics for instance):</strong></p>
-<pre><code class="lang-bash">alienv enter AliPhysics/latest
+<pre><code class="lang-bash">alienv enter O2/latest
 </code></pre>
-<p><em>&#x26A0;&#xFE0F;  Dependencies are loaded automatically. Do not attempt to load AliRoot and ROOT as well, you will
+<p><em>&#x26A0;&#xFE0F;  Dependencies are loaded automatically. Do not attempt to load O2 and ROOT as well, you will
 find them automatically in the environment! <code>alienv enter</code> is verbose and will inform you about the
 loaded packages if you have doubts.</em></p>
 <p>The <code>alienv enter</code> command drops you to a new shell. Unload the packages by simply exiting it with
 the <code>exit</code> command.</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(3949126360);" id="i-have-several-aliphysics-versions-which-one-is-aliphysicslatest"><i class="fa fa-info-circle"></i> I have several AliPhysics versions. Which one is AliPhysics/latest?<span id="heading-3949126360"></span></h3></div><div class="panel-body" id="panel-3949126360"><p>aliBuild will tell you exactly what you need to type in order to load the software you have just
-built. Just use aliBuild&apos;s suggestion in place of <code>AliPhysics/latest</code> wherever appropriate: for
-instance, if you have several AliPhysics versions, <code>AliPhysics/latest</code> will point to the version you
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(2553147970);" id="i-have-several-o2-versions-which-one-is-o2latest"><i class="fa fa-info-circle"></i> I have several O2 versions. Which one is O2/latest?<span id="heading-2553147970"></span></h3></div><div class="panel-body" id="panel-2553147970"><p>aliBuild will tell you exactly what you need to type in order to load the software you have just
+built. Just use aliBuild&apos;s suggestion in place of <code>O2/latest</code> wherever appropriate: for
+instance, if you have several O2 versions, <code>O2/latest</code> will point to the version you
 have built more recently, not the latest.</p>
 </div></div></p>
 <h3 id="load-environment-in-the-current-shell-or-script">Load environment in the current shell or script</h3>
 <p>If you know what you are doing, you can also load the environment in your <em>current</em> shell, and
 subsequently unload it (this is not recommended):</p>
-<pre><code class="lang-bash">alienv load AliPhysics/latest
-alienv unload AliPhysics/latest
+<pre><code class="lang-bash">alienv load O2/latest
+alienv unload O2/latest
 </code></pre>
 <p>If you want to load the environment inside a script you are developing, just add this line (works
 with Bash scripts):</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">source</span> $(alienv printenv AliPhysics/latest)
+<pre><code class="lang-bash"><span class="hljs-built_in">source</span> $(alienv printenv O2/latest)
 </code></pre>
 <h3 id="run-a-single-command-in-the-environment">Run a single command in the environment</h3>
-<p>You can also run a single command (for instance, <code>aliroot</code>) in the given environment without loading
+<p>You can also run a single command (for instance, <code>root</code>) in the given environment without loading
 it in the current shell:</p>
-<pre><code class="lang-bash">alienv setenv AliPhysics/latest -c aliroot myMacro.C+
+<pre><code class="lang-bash">alienv setenv O2/latest -c root
 </code></pre>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(3726212995);" id="&#x1F6AB;do-not-load-alienv-automatically-in-your-shell"><i class="fa fa-info-circle"></i> &#x1F6AB;Do not load alienv automatically in your shell<span id="heading-3726212995"></span></h3></div><div class="panel-body" id="panel-3726212995"><p>Even if this is technically possible, it is strongly not recommended to load the environment with
+<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(651546721);" id="&#x1F6AB;do-not-load-alienv-automatically-in-your-shell"><i class="fa fa-info-circle"></i> &#x1F6AB;Do not load alienv automatically in your shell<span id="heading-651546721"></span></h3></div><div class="panel-body" id="panel-651546721"><p>Even if this is technically possible, it is strongly not recommended to load the environment with
 <code>alienv</code> in your <code>~/.bashrc</code>! <strong>You must keep your environment pristine for safely running
 aliBuild.</strong> By not loading the environment automatically, you will avoid a huge source of errors.</p>
-<p>Do you still find annoying to type <code>alienv enter AliPhysics/latest</code> every time you want to use it?
-You can add the following line in your <code>~/.bashrc</code> to make it more convenient:</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">alias</span> ali=<span class="hljs-string">&apos;alienv enter AliPhysics/latest&apos;</span>
-</code></pre>
-<p>You are creating an alias called <code>ali</code>, that will load the environment by just typing it at the
-prompt. Of course you can name it any way you want.</p>
 </div></div></p>
 <h2 id="special-build-needs">Special build needs</h2>
-<p>Read below if you have some advanced requirements for your local installation.</p>
-<h3 id="build-by-using-less-resources">Build by using less resources</h3>
-<p>Building takes by default all the available CPU and most of the memory of your computer,
-considerably slowing down your work. In some cases you may want to reduce the number of cores
-available to aliBuild by using the <code>-j &lt;num-cores&gt;</code> option:</p>
-<pre><code class="lang-bash">aliBuild build AliPhysics -j 1
-</code></pre>
-<h3 id="do-not-use-the-cache-on-centos-7">Do not use the cache on CentOS 7</h3>
-<p>aliBuild will attempt to fetch the precompiled binaries automatically
-on CentOS 7: no need to specify extra options.</p>
-<p>If you want <em>not</em> to use them for some reason, it is important you follow the <a href="prereq-centos7.html">CentOS 7
-prerequisites</a> first: this will allow aliBuild to take as many packages as
-possible from the system. You will then need to add the <code>--always-prefer-system</code> option to the
-<code>aliBuild build</code> command. For instance:</p>
-<pre><code class="lang-bash">aliBuild build AliPhysics --always-prefer-system
-</code></pre>
-<h3 id="build-the-same-source-multiple-times-with-different-options">Build the same source multiple times with different options</h3>
-<p>aliBuild and alienv give you the ability to build the same development source with different
-defaults without duplicating the source, and without conflicts.</p>
-<p>Imagine we are under <code>~/alice</code> and we have cloned AliRoot and AliPhysics with the <code>aliBuild init</code>
-command above. We build AliPhysics <em>twice</em>, once with ROOT 5 and a second time against ROOT 6.</p>
-<p><strong>Let&apos;s first build AliPhysics with ROOT 5:</strong></p>
-<pre><code class="lang-bash">aliBuild build AliPhysics --defaults user -z aliroot5
-</code></pre>
-<p><em>&#x26A0;&#xFE0F;  Note the <code>-z aliroot5</code> command; it is assigning a nickname to the build for distinguishing it
-more easily when using it.</em></p>
-<p>The command ends with a message saying what to do to use the package:</p>
-<pre><code class="lang-bash">alienv enter AliPhysics/latest-aliroot5-user
-</code></pre>
-<hr>
-<p><strong>Let&apos;s now build the same AliPhysics with ROOT 6:</strong></p>
-<pre><code class="lang-bash">aliBuild build AliPhysics -z aliroot6
-</code></pre>
-<p>Now, the message tells us to type:</p>
-<pre><code class="lang-bash">alienv enter AliPhysics/latest-aliroot6-o2
-</code></pre>
-<p>Keep in mind that:</p>
+<p>Please refer to the aliBuild documentation for special build options like:</p>
 <ul>
-<li>aliBuild always tells you what is the package name to load at the end of the build</li>
-<li>you can load the two environments separately, in two different shells, with no chance of a mixup</li>
-<li>you have used the same set of sources for generating two distinct builds</li>
-<li><code>alienv enter AliPhysics/latest</code> will load the <em>latest you have built</em>, which can either be the
-ROOT 5 or ROOT 6-based version: given its ambiguity, do use explicit names instead</li>
+<li>Building multiple branches in the same area</li>
+<li>Remove obsolete / unneeded packages</li>
+<li>Limit resource usage</li>
+<li>Cross platforms builds using docker / Apple Container</li>
 </ul>
-<p>It is also possible to directly run <code>aliroot</code> (or any command you want) without &quot;entering&quot; the
-environment:</p>
-<pre><code class="lang-bash">alienv setenv AliPhysics/latest-aliroot5-user -c aliroot
-alienv setenv AliPhysics/latest-aliroot6-o2 -c aliroot
-</code></pre>
-<p>The <code>aliroot</code> command will be run with the correct environment in both cases.</p>
-<p><div class="panel panel-primary"><div class="panel-heading"><h3 class="panel-title" onclick="javascript:toggle(4251240895);" id="migrating-from-root-5-to-root-6"><i class="fa fa-info-circle"></i> Migrating from ROOT 5 to ROOT 6<span id="heading-4251240895"></span></h3></div><div class="panel-body" id="panel-4251240895"><p>While you are at it, if you want to migrate your existing code to ROOT 6 (and make sure it works
-there) check out our <a href="../analysis/ROOT5-to-6.html">migration guide</a>.</p>
-</div></div></p>
-<h3 id="build-specific-releases-tags-of-the-software">Build specific releases (tags) of the software</h3>
-<p>It might come useful to build a certain tag of AliRoot and AliPhysics instead of simply pulling the
-master.</p>
-<blockquote>
-<p>Note that <strong>we only guarantee that the current AliPhysics master works against the latest AliRoot
-tag!</strong> It is therefore possible (though a rare occurrence) that the current AliRoot master breaks
-the current AliPhysics master.</p>
-</blockquote>
-<p>If you have your source code in &quot;development mode&quot; (<em>i.e.</em> downloaded locally by means of <code>aliBuild
-init</code>), since your AliRoot/AliPhysics/O2 directories <a href="#software-and-recipes-must-be-updated-manually">are mere Git
-repositories</a>, you simply need to <code>cd</code> into them and
-checkout the Git version you want.</p>
-<p>For instance, if you want to build AliPhysics against AliRoot v5-09-33, you would need to first
-move to the AliRoot directory and check the version out:</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/alice/AliRoot
-git fetch upstream --tags
-git checkout v5-09-33
-</code></pre>
-<p>Then update your AliPhysics master:</p>
-<pre><code class="lang-bash"><span class="hljs-built_in">cd</span> ~/alice/AliPhysics
-git checkout master
-git pull --rebase upstream master
-</code></pre>
-<p>and then build normally using the <code>aliBuild</code> command. You might want to build using different <code>-z</code>
-options <a href="#build-the-same-source-multiple-times-with-different-options">as explained here</a> in order
-to have different builds usable in parallel without duplicating your source code.</p>
-<h2 id="&#x1F9F9;-delete-obsolete-builds">&#x1F9F9; Delete obsolete builds</h2>
-<p>With frequent rebuilding of packages, obsolete builds can pile up and occupy a lot of precious
-disk space.</p>
-<h3 id="basic-cleanup">Basic cleanup</h3>
-<p>The simplest way to get rid of obsolete builds is to let aliBuild do its best by running:</p>
-<pre><code class="lang-bash">aliBuild clean
-</code></pre>
-<p>which can take the optional argument <code>--aggressive-cleanup</code> that deletes also source code of built
-dependency packages and downloaded <code>.tar.gz</code> archives.</p>
-<p>In general, it&apos;s good practice to run <code>aliBuild clean</code> always after <code>aliBuild build</code>.</p>
-<p>This might not be enough, as aliBuild will not delete any build directory pointed to by a symlink
-that has &quot;latest&quot; in its name, even when that build is not needed by any other package anymore.
-Manual intervention is therefore sometimes needed.</p>
-<h3 id="deep-cleanup">Deep cleanup</h3>
-<p>If you want to keep only the latest builds of your development packages (and their dependencies),
-you can make aliBuild delete the rest with a little trick.</p>
-<ol>
-<li>Delete symlinks to all builds:<pre><code class="lang-bash">find <span class="hljs-variable">$ALIBUILD_WORK_DIR</span>/$(aliBuild architecture)/ -mindepth 2 -maxdepth 2 -type l -delete
-find <span class="hljs-variable">$ALIBUILD_WORK_DIR</span>/BUILD/ -mindepth 1 -maxdepth 1 -type l -delete
-</code></pre>
-In case you specified the architecture manually (using the <code>-a</code> option with <code>aliBuild build</code>), you should replace <code>$(aliBuild architecture)</code> with your manually specified architecture.</li>
-<li>Recreate symlinks to the latest builds of development packages (and their dependencies)
-by running <code>aliBuild build</code> for each development package.</li>
-<li>Let aliBuild delete all the other builds by running <code>aliBuild clean</code>.</li>
-</ol>
 
                                 
                                 </section>
@@ -1208,7 +1092,7 @@ by running <code>aliBuild build</code> for each development package.</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"🛠 Build the packages","level":"1.3.2","depth":2,"next":{"title":"📦 Use the precompiled binaries","level":"1.3.3","depth":2,"path":"building/precomp.md","ref":"building/precomp.md","articles":[]},"previous":{"title":"Fall-back manual installation method","level":"1.3.1.8","depth":3,"path":"building/manual-install.md","ref":"building/manual-install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/build.md","mtime":"2025-06-06T08:22:29.512Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-06T08:23:14.587Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"🛠 Build the packages","level":"1.3.2","depth":2,"next":{"title":"📦 Use the precompiled binaries","level":"1.3.3","depth":2,"path":"building/precomp.md","ref":"building/precomp.md","articles":[]},"previous":{"title":"Fall-back manual installation method","level":"1.3.1.8","depth":3,"path":"building/manual-install.md","ref":"building/manual-install.md","articles":[]},"dir":"ltr"},"config":{"plugins":["katex","panels@git+https://github.com/lhcb/gitbook-plugin-panels.git#117012fdc18c96831cb88196980c0ea73b0c87b8","collapsible-menu","block-align","page-toc"],"styles":{"website":"css/website.css"},"pluginsConfig":{"collapsible-menu":{},"block-align":{},"search":{},"page-toc":{"position":"before-first","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4","showByDefault":true},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"panels":{},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css","website":"styles/website.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"ALICE Analysis Tutorial","gitbook":"*","description":"Introduction to the common analysis techniques and tools of ALICE"},"file":{"path":"building/build.md","mtime":"2026-03-19T09:28:51.548Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-03-19T09:29:38.129Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
