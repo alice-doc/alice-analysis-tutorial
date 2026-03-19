@@ -21,18 +21,6 @@ mkdir -p ~/alice
 cd ~/alice
 ```
 
-If you want to develop analysis code, download AliPhysics:
-
-```bash
-aliBuild init AliPhysics@master
-```
-
-Only if you need to develop the Run 2 core software (unlikely), download AliRoot:
-
-```bash
-aliBuild init AliRoot@master
-```
-
 If you need to develop for Run 3, download O2Physics:
 
 ```bash
@@ -44,6 +32,22 @@ Only if you need to develop the Run 3 core software (unlikely), download O2:
 ```bash
 aliBuild init O2@dev
 ```
+
+{% callout "Obsolete / Deprecated stack" %}
+If you absolutely need to develop analysis using the old, deprecated
+Run 1 / Run 2 stack, you can still use AliPhysics :
+
+```bash
+aliBuild init AliPhysics@master
+```
+
+Only if you need to develop the Run 2 core software (unlikely), download AliRoot:
+
+```bash
+aliBuild init AliRoot@master
+```
+{% endcallout %}
+
 
 ### Source code and recipes
 
@@ -85,7 +89,7 @@ Instead of resetting to the current upstream version, you may want to download s
 the software:
 
 ```bash
-cd ~/alice/AliPhysics
+cd ~/alice/O2
 git fetch --all --tags
 git checkout v5-09-42-01
 ```
@@ -104,20 +108,6 @@ aliBuild comes with the command `aliDoctor` that will help you identifying if yo
 were installed correctly. In general, aliBuild is capable of building all required software
 dependencies, but it has also the ability to take them "from the system" if possible, resulting in
 less time spent for building for you.
-
-Run the `aliDoctor` command to check dependencies for Run 2 software:
-
-```bash
-cd ~/alice
-aliDoctor AliPhysics
-```
-
-For Run 2 software based on ROOT 6 (note: this is the only option on macOS):
-
-```bash
-cd ~/alice
-aliDoctor AliPhysics
-```
 
 For Run 3 software:
 
@@ -148,17 +138,20 @@ contains those packages, or less packages, then you are fine and you may continu
 > installed it, it might just be that its version it's incompatible (this frequently happens with
 > `CMake`) or you are missing the "development" package for that component.
 
+{% callout "Obsolete / Deprecated stack" %}
+For Run 2 software based on ROOT 6 (note: this is the only option on macOS):
+
+```bash
+cd ~/alice
+aliDoctor AliPhysics
+```
+
+{% endcallout %}
+
 
 ## Build and rebuild
 
-You can build the whole Run 2 software stack based on ROOT 6 with:
-
-```
-cd ~/alice
-aliBuild build AliPhysics
-```
-
-Similarly, for O2Physics:
+You can build the whole Run 3 software stack with :
 
 ```
 cd ~/alice
@@ -186,25 +179,13 @@ will only be able to submit Grid analysis jobs using ROOT 6-based builds (whose 
 just [use it from CVMFS](precomp.md) by logging in to `lxplus.cern.ch`.
 {% endcallout %}
 
-
-### Other build options
-
-The options above are suitable for a CentOS 7 installation, since precompiled binaries
-will be downloaded. You also have other installation options according to your needs: it is not
-guaranteed that cached binaries are available for the following options, but they may be faster to
-build.
-
-**Build AliPhysics based on ROOT 5 (legacy):**
-
-```bash
-aliBuild build AliPhysics --defaults user      # without GEANT 3, GEANT 4, DPMJET
-aliBuild build AliPhysics --defaults release   # full ROOT 5 stack
+{% callout "Obsolete / Deprecated stack" %}
 ```
+cd ~/alice
+aliBuild build AliPhysics
+```
+{% endcallout %}
 
-_⚠️  ROOT 5 does not work on macOS. Use a ROOT 6 version compatible with ROOT 5 if you really need it
-(see below)._
-
----
 
 ### Rebuild existing installations
 
@@ -252,20 +233,20 @@ alienv q
 **Load the latest version you have built of a package (AliPhysics for instance):**
 
 ```bash
-alienv enter AliPhysics/latest
+alienv enter O2/latest
 ```
 
-_⚠️  Dependencies are loaded automatically. Do not attempt to load AliRoot and ROOT as well, you will
+_⚠️  Dependencies are loaded automatically. Do not attempt to load O2 and ROOT as well, you will
 find them automatically in the environment! `alienv enter` is verbose and will inform you about the
 loaded packages if you have doubts._
 
 The `alienv enter` command drops you to a new shell. Unload the packages by simply exiting it with
 the `exit` command.
 
-{% callout "I have several AliPhysics versions. Which one is AliPhysics/latest?" %}
+{% callout "I have several O2 versions. Which one is O2/latest?" %}
 aliBuild will tell you exactly what you need to type in order to load the software you have just
-built. Just use aliBuild's suggestion in place of `AliPhysics/latest` wherever appropriate: for
-instance, if you have several AliPhysics versions, `AliPhysics/latest` will point to the version you
+built. Just use aliBuild's suggestion in place of `O2/latest` wherever appropriate: for
+instance, if you have several O2 versions, `O2/latest` will point to the version you
 have built more recently, not the latest.
 {% endcallout %}
 
@@ -276,202 +257,39 @@ If you know what you are doing, you can also load the environment in your _curre
 subsequently unload it (this is not recommended):
 
 ```bash
-alienv load AliPhysics/latest
-alienv unload AliPhysics/latest
+alienv load O2/latest
+alienv unload O2/latest
 ```
 
 If you want to load the environment inside a script you are developing, just add this line (works
 with Bash scripts):
 
 ```bash
-source $(alienv printenv AliPhysics/latest)
+source $(alienv printenv O2/latest)
 ```
 
 
 ### Run a single command in the environment
 
-You can also run a single command (for instance, `aliroot`) in the given environment without loading
+You can also run a single command (for instance, `root`) in the given environment without loading
 it in the current shell:
 
 ```bash
-alienv setenv AliPhysics/latest -c aliroot myMacro.C+
+alienv setenv O2/latest -c root 
 ```
 
 {% callout "🚫Do not load alienv automatically in your shell" %}
 Even if this is technically possible, it is strongly not recommended to load the environment with
 `alienv` in your `~/.bashrc`! **You must keep your environment pristine for safely running
 aliBuild.** By not loading the environment automatically, you will avoid a huge source of errors.
-
-Do you still find annoying to type `alienv enter AliPhysics/latest` every time you want to use it?
-You can add the following line in your `~/.bashrc` to make it more convenient:
-
-```bash
-alias ali='alienv enter AliPhysics/latest'
-```
-
-You are creating an alias called `ali`, that will load the environment by just typing it at the
-prompt. Of course you can name it any way you want.
 {% endcallout %}
 
 
 ## Special build needs
 
-Read below if you have some advanced requirements for your local installation.
+Please refer to the aliBuild documentation for special build options like:
 
-
-### Build by using less resources
-
-Building takes by default all the available CPU and most of the memory of your computer,
-considerably slowing down your work. In some cases you may want to reduce the number of cores
-available to aliBuild by using the `-j <num-cores>` option:
-
-```bash
-aliBuild build AliPhysics -j 1
-```
-
-
-### Do not use the cache on CentOS 7
-
-aliBuild will attempt to fetch the precompiled binaries automatically
-on CentOS 7: no need to specify extra options.
-
-If you want _not_ to use them for some reason, it is important you follow the [CentOS 7
-prerequisites](prereq-centos7.md) first: this will allow aliBuild to take as many packages as
-possible from the system. You will then need to add the `--always-prefer-system` option to the
-`aliBuild build` command. For instance:
-
-```bash
-aliBuild build AliPhysics --always-prefer-system
-```
-
-
-### Build the same source multiple times with different options
-
-aliBuild and alienv give you the ability to build the same development source with different
-defaults without duplicating the source, and without conflicts.
-
-Imagine we are under `~/alice` and we have cloned AliRoot and AliPhysics with the `aliBuild init`
-command above. We build AliPhysics _twice_, once with ROOT 5 and a second time against ROOT 6.
-
-**Let's first build AliPhysics with ROOT 5:**
-
-```bash
-aliBuild build AliPhysics --defaults user -z aliroot5
-```
-
-_⚠️  Note the `-z aliroot5` command; it is assigning a nickname to the build for distinguishing it
-more easily when using it._
-
-The command ends with a message saying what to do to use the package:
-
-```bash
-alienv enter AliPhysics/latest-aliroot5-user
-```
-
----
-
-**Let's now build the same AliPhysics with ROOT 6:**
-
-```bash
-aliBuild build AliPhysics -z aliroot6
-```
-
-Now, the message tells us to type:
-
-```bash
-alienv enter AliPhysics/latest-aliroot6-o2
-```
-
-Keep in mind that:
-
-* aliBuild always tells you what is the package name to load at the end of the build
-* you can load the two environments separately, in two different shells, with no chance of a mixup
-* you have used the same set of sources for generating two distinct builds
-* `alienv enter AliPhysics/latest` will load the _latest you have built_, which can either be the
-  ROOT 5 or ROOT 6-based version: given its ambiguity, do use explicit names instead
-
-It is also possible to directly run `aliroot` (or any command you want) without "entering" the
-environment:
-
-```bash
-alienv setenv AliPhysics/latest-aliroot5-user -c aliroot
-alienv setenv AliPhysics/latest-aliroot6-o2 -c aliroot
-```
-
-The `aliroot` command will be run with the correct environment in both cases.
-
-{% callout "Migrating from ROOT 5 to ROOT 6" %}
-While you are at it, if you want to migrate your existing code to ROOT 6 (and make sure it works
-there) check out our [migration guide](../analysis/ROOT5-to-6.md).
-{% endcallout %}
-
-
-### Build specific releases (tags) of the software
-
-It might come useful to build a certain tag of AliRoot and AliPhysics instead of simply pulling the
-master.
-
-> Note that **we only guarantee that the current AliPhysics master works against the latest AliRoot
-> tag!** It is therefore possible (though a rare occurrence) that the current AliRoot master breaks
-> the current AliPhysics master.
-
-If you have your source code in "development mode" (_i.e._ downloaded locally by means of `aliBuild
-init`), since your AliRoot/AliPhysics/O2 directories [are mere Git
-repositories](#software-and-recipes-must-be-updated-manually), you simply need to `cd` into them and
-checkout the Git version you want.
-
-For instance, if you want to build AliPhysics against AliRoot v5-09-33, you would need to first
-move to the AliRoot directory and check the version out:
-
-```bash
-cd ~/alice/AliRoot
-git fetch upstream --tags
-git checkout v5-09-33
-```
-
-Then update your AliPhysics master:
-
-```bash
-cd ~/alice/AliPhysics
-git checkout master
-git pull --rebase upstream master
-```
-
-and then build normally using the `aliBuild` command. You might want to build using different `-z`
-options [as explained here](#build-the-same-source-multiple-times-with-different-options) in order
-to have different builds usable in parallel without duplicating your source code.
-
-## 🧹 Delete obsolete builds
-
-With frequent rebuilding of packages, obsolete builds can pile up and occupy a lot of precious
-disk space.
-
-### Basic cleanup
-
-The simplest way to get rid of obsolete builds is to let aliBuild do its best by running:
-```bash
-aliBuild clean
-```
-which can take the optional argument `--aggressive-cleanup` that deletes also source code of built
-dependency packages and downloaded `.tar.gz` archives.
-
-In general, it's good practice to run `aliBuild clean` always after `aliBuild build`.
-
-This might not be enough, as aliBuild will not delete any build directory pointed to by a symlink
-that has "latest" in its name, even when that build is not needed by any other package anymore.
-Manual intervention is therefore sometimes needed.
-
-### Deep cleanup
-
-If you want to keep only the latest builds of your development packages (and their dependencies),
-you can make aliBuild delete the rest with a little trick.
-
-1. Delete symlinks to all builds:
-```bash
-find $ALIBUILD_WORK_DIR/$(aliBuild architecture)/ -mindepth 2 -maxdepth 2 -type l -delete
-find $ALIBUILD_WORK_DIR/BUILD/ -mindepth 1 -maxdepth 1 -type l -delete
-```
-In case you specified the architecture manually (using the `-a` option with `aliBuild build`), you should replace `$(aliBuild architecture)` with your manually specified architecture.
-1. Recreate symlinks to the latest builds of development packages (and their dependencies)
-by running `aliBuild build` for each development package.
-1. Let aliBuild delete all the other builds by running `aliBuild clean`.
+- Building multiple branches in the same area
+- Remove obsolete / unneeded packages
+- Limit resource usage
+- Cross platforms builds using docker / Apple Container
